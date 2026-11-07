@@ -1,0 +1,228 @@
+import { doc, list, para, revised, section } from "./shared.ts";
+
+export const paidServices = revised(doc({
+  slug: "paid-services",
+  group: "everyone",
+  title: { en: "Paid Services Terms", ar: "شروط الخدمات المدفوعة",
+    de: "Bedingungen für kostenpflichtige Dienste" },
+  intro: {
+    en: "The rules for Feather, Wings, gifts and Discover promotion: prices, renewal, cancellation, your right of withdrawal, and refunds.",
+    ar: "قواعد «ريشة» و«أجنحة» والهدايا والترويج في «اكتشف»: الأسعار، والتجديد، والإلغاء، وحقك في الانسحاب، واسترداد المبالغ.",
+  },
+  sections: [
+    section(
+      "status",
+      { en: "Payments are not open yet", ar: "الدفع غير مفتوح بعد", de: "Zahlungen sind noch nicht geöffnet" },
+      {
+        en: para(
+          "Zrzur is free to use and nothing can be bought yet. The rest of this page describes how paid services will work once payments open; we will update it and tell you before the first sale.",
+          "Planned rule: purchases will be open only to people aged 18 or over, until a lawyer confirms otherwise. [Owner and lawyer to confirm before payments open (Q4).]",
+        ),
+        ar: para(
+          "استخدام زرزور مجاني ولا يمكن شراء أي شيء حاليًا. ويصف باقي هذه الصفحة كيف ستعمل الخدمات المدفوعة حين يُفتح الدفع؛ وسنحدّثها ونخبرك قبل أول عملية بيع.",
+          "القاعدة المخطَّطة: يقتصر الشراء على من بلغوا ١٨ عامًا فأكثر إلى أن يؤكد محامٍ خلاف ذلك. [Owner and lawyer to confirm before payments open (Q4).]",
+        ),
+        de: para(
+          "Zrzur ist kostenlos nutzbar, und es kann noch nichts gekauft werden. Der Rest dieser Seite beschreibt, wie kostenpflichtige Dienste funktionieren werden, sobald Zahlungen geöffnet sind; wir aktualisieren ihn und informieren dich vor dem ersten Verkauf.",
+          "Geplante Regel: Käufe sind nur für Personen ab 18 Jahren möglich, bis eine Anwältin oder ein Anwalt etwas anderes bestätigt. [Owner and lawyer to confirm before payments open (Q4).]",
+        ),
+      },
+    ),
+    section(
+      "what",
+      { en: "What you can buy", ar: "ما الذي يمكنك شراؤه" },
+      {
+        en: para(
+          "Zrzur is free. Paid services are optional extras:",
+          list(
+            "Feather — a member subscription that adds personal perks: longer messages, larger uploads, sharper screen sharing, one free Wing, a Feather badge you can hide, and faster review of what you send to Discover.",
+            "Wings — boosts you give to a Server to unlock Server perks for everyone in it.",
+            "Discover promotion — paid placement for a Server or bot in Discover: Promoted, Spotlight, Headline and Top row.",
+            "Gifts — Feather time you buy for someone else.",
+          ),
+          "The current perks of each product are listed in the app before you buy. These terms are part of the Terms of Service.",
+        ),
+        ar: para(
+          "زرزور مجاني. والخدمات المدفوعة إضافات اختيارية:",
+          list(
+            "«ريشة» — اشتراك للأعضاء يضيف مزايا شخصية: رسائل أطول، وملفات أكبر حجمًا عند الرفع، ومشاركة شاشة أوضح، وجناح واحد مجاني، وشارة «ريشة» يمكنك إخفاؤها، ومراجعة أسرع لما ترسله إلى «اكتشف».",
+            "«أجنحة» — تعزيزات تمنحها لسيرفر لتفتح مزايا السيرفر لجميع أعضائه.",
+            "الترويج في «اكتشف» — ظهور مدفوع لسيرفر أو بوت في «اكتشف»: مُروَّج، وتحت الأضواء، وفي الصدارة، والصف الأول.",
+            "الهدايا — مدة «ريشة» تشتريها لشخص آخر.",
+          ),
+          "تُعرض المزايا الحالية لكل منتج داخل التطبيق قبل الشراء. وهذه الشروط جزء من شروط الخدمة.",
+        ),
+      },
+    ),
+    section(
+      "prices",
+      { en: "Prices and payment", ar: "الأسعار والدفع" },
+      {
+        en: para(
+          "The price, currency, billing period and any taxes are shown at checkout before you confirm. Prices for consumers include VAT where it applies.",
+          "Payments will be processed by Stripe, PayPal or by the app store you buy through (for example Google Play or the Apple App Store). Zrzur never stores your card number. Where an app store handles the purchase, its own billing rules also apply, and cancellations and refunds may need to go through that store.",
+          "[Owner to decide: payment methods offered in regions where Stripe or app stores are not available.]",
+        ),
+        ar: para(
+          "يُعرض السعر والعملة ومدة الفوترة وأي ضرائب عند الدفع قبل أن تؤكد. وتشمل أسعار المستهلكين ضريبة القيمة المضافة حيث تنطبق.",
+          "ستُعالج المدفوعات عبر Stripe أو PayPal أو عبر متجر التطبيقات الذي تشتري منه (مثل Google Play أو Apple App Store). ولا يحفظ زرزور رقم بطاقتك أبدًا. وحين يتولّى متجر التطبيقات عملية الشراء، تسري قواعد الفوترة الخاصة به أيضًا، وقد يلزم إجراء الإلغاء والاسترداد عبر ذلك المتجر.",
+          "[Owner to decide: payment methods offered in regions where Stripe or app stores are not available.]",
+        ),
+      },
+    ),
+    section(
+      "renewal",
+      { en: "Auto-renewal and cancelling", ar: "التجديد التلقائي والإلغاء" },
+      {
+        en: para(
+          "Feather and Wings are subscriptions. They renew automatically at the end of each billing period (for example monthly or yearly) at the price shown when you subscribed, until you cancel.",
+          list(
+            "You can cancel at any time in the app settings, with one click, with no reason needed.",
+            "After you cancel, you keep your perks until the end of the period you already paid for. We do not charge you again.",
+            "We send a reminder before a yearly subscription renews.",
+            "If a payment fails, we try again for a short time. If it still fails, the perks end.",
+          ),
+          "If we want to raise the price of your subscription, we will tell you at least [30] days before the next renewal. The new price applies only from the next period, and you can cancel before then.",
+        ),
+        ar: para(
+          "«ريشة» و«أجنحة» اشتراكان يتجدّدان تلقائيًا في نهاية كل مدة فوترة (شهرية أو سنوية مثلًا) بالسعر المعروض عند اشتراكك، إلى أن تلغيهما.",
+          list(
+            "يمكنك الإلغاء في أي وقت من إعدادات التطبيق بنقرة واحدة، ودون ذكر سبب.",
+            "بعد الإلغاء، تحتفظ بمزاياك حتى نهاية المدة التي دفعت ثمنها، ولا نخصم منك مجددًا.",
+            "نرسل لك تذكيرًا قبل تجديد الاشتراك السنوي.",
+            "إذا فشل الدفع، نعيد المحاولة مدةً قصيرة، فإن استمر الفشل تنتهي المزايا.",
+          ),
+          "إذا أردنا رفع سعر اشتراكك، فسنخبرك قبل [30] يومًا على الأقل من التجديد التالي. ولا يسري السعر الجديد إلا من المدة التالية، ويمكنك الإلغاء قبل ذلك.",
+        ),
+      },
+    ),
+    section(
+      "withdrawal",
+      { en: "EU right of withdrawal (14 days)", ar: "حق الانسحاب في الاتحاد الأوروبي (١٤ يومًا)" },
+      {
+        en: para(
+          "If you are a consumer in the EU, you may withdraw from a purchase within 14 days of the contract, without giving a reason. To withdraw, use the withdrawal option in the app or send a clear statement to support@zrzur.com. [A model withdrawal form will be added.]",
+          "Paid services start right away. At checkout we ask you to confirm that you want the service to begin during the 14-day period. If you then withdraw:",
+          list(
+            "Feather and Wings: we refund what you paid, minus a fair amount for the days you already used.",
+            "Discover promotion: we refund what you paid, minus a fair amount for the time your listing was already promoted.",
+            "Your right of withdrawal ends once the service has been fully provided within the 14 days.",
+          ),
+          "We refund within 14 days using the same payment method you used, at no cost to you.",
+        ),
+        ar: para(
+          "إذا كنت مستهلكًا في الاتحاد الأوروبي، فيحق لك الانسحاب من الشراء خلال ١٤ يومًا من إبرام العقد، دون ذكر سبب. وللانسحاب، استخدم خيار الانسحاب في التطبيق أو أرسل بيانًا واضحًا إلى support@zrzur.com. [A model withdrawal form will be added.]",
+          "تبدأ الخدمات المدفوعة فورًا. وعند الدفع نطلب منك تأكيد رغبتك في بدء الخدمة خلال مدة الأيام الأربعة عشر. فإذا انسحبت بعد ذلك:",
+          list(
+            "«ريشة» و«أجنحة»: نردّ ما دفعته مخصومًا منه مبلغ منصف عن الأيام التي استخدمتها.",
+            "الترويج في «اكتشف»: نردّ ما دفعته مخصومًا منه مبلغ منصف عن المدة التي رُوّجت فيها قائمتك.",
+            "ينتهي حقك في الانسحاب متى قُدّمت الخدمة كاملةً خلال الأيام الأربعة عشر.",
+          ),
+          "نردّ المبلغ خلال ١٤ يومًا بوسيلة الدفع نفسها التي استخدمتها، ودون أي تكلفة عليك.",
+        ),
+      },
+    ),
+    section(
+      "refunds",
+      { en: "Other refunds", ar: "حالات الاسترداد الأخرى" },
+      {
+        en: para(
+          "Outside the withdrawal period, payments are generally not refundable, except:",
+          list(
+            "if you were charged by mistake or charged twice;",
+            "if a paid feature did not work for a long time because of a problem on our side;",
+            "if we close the Service or a paid product, for the unused prepaid time;",
+            "where the law gives you a right to a refund.",
+          ),
+          "Write to support@zrzur.com with your payment reference. If your account or Server is suspended or closed because you broke our rules, unused paid time is not refunded unless the law requires it.",
+        ),
+        ar: para(
+          "خارج مدة الانسحاب، لا تُستردّ المدفوعات عمومًا، إلا في الحالات الآتية:",
+          list(
+            "إذا خُصم منك مبلغ بالخطأ أو خُصم مرتين؛",
+            "إذا تعطّلت ميزة مدفوعة مدةً طويلة بسبب مشكلة من جهتنا؛",
+            "إذا أغلقنا الخدمة أو منتجًا مدفوعًا، فنردّ قيمة المدة المدفوعة مسبقًا غير المستخدمة؛",
+            "حيث يمنحك القانون حق الاسترداد.",
+          ),
+          "راسل support@zrzur.com مع مرجع الدفع. وإذا أُوقف حسابك أو سيرفرك أو أُغلق بسبب مخالفتك قواعدنا، فلا تُردّ قيمة المدة المدفوعة غير المستخدمة إلا إذا أوجب القانون ذلك.",
+        ),
+      },
+    ),
+    section(
+      "wings",
+      { en: "How Wings work", ar: "كيف تعمل «أجنحة»" },
+      {
+        en: list(
+          "Wings belong to you, not to the Server. You choose which Server to give them to.",
+          "You can move Wings to another Server. A short waiting period may apply; the app shows it before you move them.",
+          "If you leave or are removed from a Server, your Wings stop counting for it.",
+          "If a Server loses Wings, it may lose the perks that needed them. Content created with those perks may be hidden but is not deleted.",
+          "Server owners must not require members to give Wings, or reward them with money for it.",
+        ),
+        ar: list(
+          "«الأجنحة» ملك لك، لا للسيرفر، وأنت من يختار السيرفر الذي تمنحه إياها.",
+          "يمكنك نقل «أجنحتك» إلى سيرفر آخر، وقد تنطبق مدة انتظار قصيرة يعرضها التطبيق قبل النقل.",
+          "إذا غادرت سيرفرًا أو أُزلت منه، تتوقف «أجنحتك» عن الاحتساب له.",
+          "إذا فقد السيرفر بعض «الأجنحة»، فقد يفقد المزايا التي تتطلّبها. وقد يُخفى المحتوى المُنشأ بتلك المزايا، لكنه لا يُحذف.",
+          "لا يجوز لمالكي السيرفرات إلزام الأعضاء بمنح «أجنحة»، ولا مكافأتهم على ذلك بالمال.",
+        ),
+      },
+    ),
+    section(
+      "promotion",
+      { en: "Discover promotion", ar: "الترويج في «اكتشف»" },
+      {
+        en: para(
+          "Promoted, Spotlight, Headline and Top row are paid advertising placements. They are always shown with an \"Ad\" label, and buying them does not change how Zrzur reviews or ranks unpaid listings.",
+          "Promoted Servers and bots must follow the Discover Guidelines. We can refuse or stop a promotion that breaks them. Promotion buys visibility for a set time; it does not guarantee members, installs or results.",
+        ),
+        ar: para(
+          "مُروَّج، وتحت الأضواء، وفي الصدارة، والصف الأول، أماكن ظهور إعلانية مدفوعة. وتُعرض دائمًا مع وسم «إعلان»، ولا يغيّر شراؤها طريقة مراجعة زرزور للقوائم غير المدفوعة أو ترتيبها.",
+          "يجب أن تلتزم السيرفرات والبوتات المروَّج لها بإرشادات «اكتشف»، ويحق لنا رفض أي ترويج يخالفها أو إيقافه. والترويج يمنح ظهورًا مدةً محددة، ولا يضمن أعضاءً أو عمليات تثبيت أو نتائج.",
+        ),
+      },
+    ),
+    section(
+      "gifts",
+      { en: "Gifts", ar: "الهدايا" },
+      {
+        en: list(
+          "You can buy Feather time as a gift. The person receiving it redeems it once in the app.",
+          "Gifts that have not been redeemed can be refunded to the buyer under the rules above. After redemption, the gift belongs to the receiver and cannot be returned.",
+          "Gift links and codes must not be resold or offered as prizes in exchange for money. Keep them private: anyone with the link can redeem it.",
+          "An unredeemed gift expires after [12 months]; the app shows the expiry date.",
+        ),
+        ar: list(
+          "يمكنك شراء مدة «ريشة» هديةً، ويستخدمها المُهدى إليه مرة واحدة داخل التطبيق.",
+          "يمكن ردّ قيمة الهدايا غير المستخدمة إلى المشتري وفق القواعد السابقة. وبعد استخدامها، تصبح ملكًا للمُهدى إليه ولا يمكن إرجاعها.",
+          "لا يجوز إعادة بيع روابط الهدايا أو رموزها، ولا تقديمها جوائز مقابل المال. واحفظها بسرية، فكل من يملك الرابط يستطيع استخدامه.",
+          "تنتهي صلاحية الهدية غير المستخدمة بعد [12 months]، ويعرض التطبيق تاريخ الانتهاء.",
+        ),
+      },
+    ),
+    section(
+      "no-cash",
+      { en: "No cash value", ar: "لا قيمة نقدية" },
+      {
+        en: "Feather time, Wings, gifts and any rewards have no cash value. They cannot be exchanged for money, transferred outside the features the app offers, or sold.",
+        ar: "ليست لمدة «ريشة» ولا لـ«الأجنحة» ولا للهدايا ولا لأي مكافآت قيمة نقدية. ولا يجوز استبدالها بالمال، ولا نقلها خارج الميزات التي يتيحها التطبيق، ولا بيعها.",
+      },
+    ),
+    section(
+      "chargebacks",
+      { en: "Chargebacks", ar: "استرداد المبالغ عبر البنك" },
+      {
+        en: "If something went wrong, please contact support@zrzur.com first — we usually fix it faster than a bank can. If you file a chargeback, we pause the paid features linked to that payment while it is open. Fraudulent chargebacks may lead to account restrictions.",
+        ar: "إذا حدث خطأ ما، فنرجو التواصل أولًا مع support@zrzur.com، فنحن نحلّ المشكلة عادةً أسرع من البنك. وإذا قدّمت طلب استرداد عبر البنك، فإننا نعلّق الميزات المدفوعة المرتبطة بتلك الدفعة ما دام الطلب قائمًا. وقد تؤدي طلبات الاسترداد الاحتيالية إلى تقييد الحساب.",
+      },
+    ),
+    section(
+      "changes",
+      { en: "Changes to perks", ar: "التغييرات على المزايا" },
+      {
+        en: "We improve Zrzur over time, so perks can change. We will not remove a main perk from a period you already paid for. If we make a change that clearly reduces what you get, we will tell you in advance, and you can cancel and get a refund for the unused time.",
+        ar: "نطوّر زرزور باستمرار، لذا قد تتغيّر المزايا. ولن نزيل ميزة رئيسية من مدة دفعت ثمنها بالفعل. وإذا أجرينا تغييرًا يُنقص بوضوح ما تحصل عليه، فسنخبرك مسبقًا، ويمكنك الإلغاء واسترداد قيمة المدة غير المستخدمة.",
+      },
+    ),
+  ],
+}));

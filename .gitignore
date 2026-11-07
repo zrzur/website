@@ -1,0 +1,51 @@
+# Internal, never published
+_internal/
+.claude/
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.jks
+*.keystore
+Revolt.overrides.toml
+google-services.json
+
+# Data and logs
+*.log
+*.sqlite
+*.bson
+*.dump
+uploads/
+
+# Build output
+node_modules/
+target/
+dist/
+build/
+out/
+.gradle/
+
+# Personal editor files
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# ----- project-specific -----
+node_modules/
+.env
+.env.*
+!.env.example
+reports/*.png
+dist/
+.local/
+CLAUDE.local.md
+screenshots/
+test-results/
+playwright-report/
+coverage/
+*.har

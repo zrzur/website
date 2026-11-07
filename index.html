@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- theme and language before the first paint: no flash, right direction -->
+    <script>
+      (function () {
+        var root = document.documentElement;
+        // dark is the default; light only when the visitor chose it here
+        var theme = "dark";
+        try {
+          if (localStorage.getItem("zrzur-site-theme") === "light") theme = "light";
+        } catch (e) {}
+        root.dataset.theme = theme;
+        var match = location.pathname.match(/^\/(ar|de)(\/|$)/);
+        var language = match ? match[1] : "en";
+        root.lang = language;
+        root.dir = language === "ar" ? "rtl" : "ltr";
+        // the headline's font, before the first paint
+        var font = document.createElement("link");
+        font.rel = "preload";
+        font.as = "font";
+        font.type = "font/woff2";
+        font.crossOrigin = "";
+        font.href = language === "ar" ? "/assets/plex-arabic-700.woff2" : "/assets/plex-latin-wght.woff2";
+        document.head.appendChild(font);
+      })();
+    </script>
+    <meta name="theme-color" content="#0d0e16" />
+    <title>Where voices gather — Zrzur</title>
+    <meta
+      name="description"
+      content="An open-source group chat platform for friends and communities. Create your server and invite your friends in a minute."
+    />
+    <!-- Zrzur logo A on #1D1F2D (owner, 2026-11-03); ?v= drops cached older icons -->
+    <link rel="icon" type="image/svg+xml" href="/brand/favicon.svg?v=a-dark-1" />
+    <link rel="icon" href="/brand/favicon.ico?v=a-dark-1" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png?v=a-dark-1" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/brand/icon-180.png?v=a-dark-1" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Zrzur" />
+    <meta property="og:title" content="Where voices gather — Zrzur" />
+    <meta
+      property="og:description"
+      content="An open-source group chat platform for friends and communities. Create your server and invite your friends in a minute."
+    />
+    <meta property="og:url" content="https://zrzur.com/" />
+    <meta property="og:image" content="https://zrzur.com/brand/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="The Zrzur logo" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://zrzur.com/brand/og-image.png" />
+    <script type="module" src="/src/main.tsx"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript
+      ><div class="noscript">
+        Zrzur is where friends and communities meet. Enable JavaScript to explore
+        this website. Open-source licences and attribution are in NOTICE.
+        <p lang="ar" dir="rtl">
+          زرزور مكان يلتقي فيه الأصدقاء والمجتمعات. يرجى تفعيل JavaScript لعرض
+          الموقع. التراخيص ونسب المشروع مفتوحة المصدر في NOTICE.
+        </p>
+        <p lang="de">
+          Bei Zrzur treffen sich Freunde und Communitys. Bitte aktiviere
+          JavaScript, um die Website zu sehen. Lizenzen und Namensnennung stehen in
+          NOTICE.
+        </p>
+      </div></noscript
+    >
+  </body>
+</html>

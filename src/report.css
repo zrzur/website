@@ -1,0 +1,134 @@
+/* Public report form (DSA Art. 16): tokens from site.css only */
+.report-section {
+  width: min(720px, var(--page));
+  margin-inline: var(--edge) auto;
+  padding-block: 8px 96px;
+}
+.report-form {
+  display: grid;
+  gap: 24px;
+}
+.report-form fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.report-form legend,
+.report-field > label:first-child {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: var(--z-text);
+}
+.report-choices {
+  display: grid;
+  gap: 8px;
+}
+.report-choice,
+.report-check {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid var(--z-border-strong);
+  border-radius: 10px;
+  background: var(--z-nav);
+  color: var(--z-text);
+  cursor: pointer;
+}
+.report-choice:has(input:checked) {
+  border-color: var(--z-action);
+  background: var(--z-action-soft);
+}
+.report-choice input,
+.report-check input {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  accent-color: var(--z-action);
+}
+.report-field input[type="text"],
+.report-field input[type="email"],
+.report-field textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 12px 16px;
+  border: 1px solid var(--z-border-strong);
+  border-radius: 10px;
+  background: var(--z-nav);
+  color: var(--z-text);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.report-field textarea {
+  resize: vertical;
+}
+.report-field [aria-invalid="true"] {
+  border-color: var(--z-danger);
+}
+.report-form input:focus-visible,
+.report-form textarea:focus-visible,
+.report-form button:focus-visible {
+  outline: 2px solid var(--z-action);
+  outline-offset: 2px;
+}
+.report-hint {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--z-text-2);
+}
+.report-error {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: var(--z-danger);
+}
+.report-failure {
+  padding: 16px;
+  border: 1px solid var(--z-danger);
+  border-radius: 10px;
+}
+.report-failure p {
+  margin: 0;
+  color: var(--z-text);
+}
+.report-failure summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--z-text-2);
+}
+.report-failure code {
+  display: block;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  color: var(--z-text-2);
+}
+.report-form .button {
+  width: 100%;
+  min-height: 48px;
+}
+.report-done {
+  display: grid;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid var(--z-border-strong);
+  border-radius: 10px;
+  background: var(--z-nav);
+}
+.report-done h2,
+.report-done p {
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .report-section {
+    width: calc(100% - 32px);
+  }
+  .report-choice,
+  .report-check {
+    min-height: 48px;
+  }
+}
