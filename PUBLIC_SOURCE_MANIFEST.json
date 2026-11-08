@@ -208,254 +208,254 @@
     },
     {
       "path": "public/assets/product/ar-chat-dark.jpg",
-      "sha256": "0eed7b1420f9f08a3fedbe8c67364eb6f0e6485478989a179b08c1f7091deba2",
-      "bytes": 142492,
+      "sha256": "f1017c8593ffa5f02e91edd95181c7d855fa2592b3566aef165378f64fc1a7f6",
+      "bytes": 268685,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/ar-chat-light.jpg",
-      "sha256": "fb0a98b0c7a60ea59a56b4cb1fa62d795e255144e06841653bfaf3ad2283e950",
-      "bytes": 150221,
+      "sha256": "4e34c7091ac1469effa7acdaa150fe0576f293a95bdea3465214038e4a41a567",
+      "bytes": 276159,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/ar-chat-phone-dark.jpg",
-      "sha256": "c9b4ded380ce28a2bc87f613f5712d8efe38d1e8aa5f10e651393b07d4794090",
-      "bytes": 71721,
+      "sha256": "5987b157fe336555c87b96b390017f9dfaf451255f94338dddadc32a420657c7",
+      "bytes": 144463,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/ar-chat-phone-light.jpg",
-      "sha256": "1e8a7bca676ea77a97bdf649f6c1dfeb7a3273a2da2a18166f88424f487dffb3",
-      "bytes": 76189,
+      "sha256": "87581b49eb92f43f5e147ade42e7f77c8ef5ad5d4bb2eb3bcfdb7abe0f46b05a",
+      "bytes": 147797,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/ar-discover-dark.jpg",
-      "sha256": "4f8b7ee4dce73a404340b633ce8e1650f25fc31baf0e7c57a5d337043fc15874",
-      "bytes": 119884,
+      "sha256": "7e019dbe176e986e00ea7f4fd11f0df16f3d471ae298050e6222148fd2126eb0",
+      "bytes": 124855,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/ar-discover-light.jpg",
-      "sha256": "dfb09c9561edc6a27558c0298c02558f5ca55d0557f732ed30fc8184d99bfa92",
-      "bytes": 117653,
+      "sha256": "fa6709a42b92e3dd3c0acd083ee9effb9a68776f86b6b4764fc69a6e6a717ca9",
+      "bytes": 122335,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/ar-lobby-dark.jpg",
-      "sha256": "3ffe033b5e2d0d9f64a276d3dbe43540de5f4e456c3940d846ab51b3b244a8c1",
-      "bytes": 134880,
+      "sha256": "6cb1338959fd5885cedcd26c3e9a3bea981128a50b3102249ffe8aee732b5af6",
+      "bytes": 279907,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/ar-lobby-light.jpg",
-      "sha256": "9cda16a368c1b7c75dd0d0298d8db47c64f542e1638abe702786e9fea2cd8061",
-      "bytes": 145038,
+      "sha256": "ea41ebbd18b119e0ff234ef6c72524873b830c57184ecf5657004e09828af96d",
+      "bytes": 288775,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/ar-lobby-phone-dark.jpg",
-      "sha256": "2ef9793a2b0367927b2e9c26fa5194ff606c8548e34e6e807f5601d976e41bc0",
-      "bytes": 81688,
+      "sha256": "f3a68eca0d3d71a3eabbc5bb2805ffeb7d0c6203cb5623547eeeab077b143795",
+      "bytes": 134145,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/ar-lobby-phone-light.jpg",
-      "sha256": "3c63b95e830884ec445129a441c0edf390f46903d885f80164041d1d594c0f88",
-      "bytes": 86344,
+      "sha256": "614718716158a483ac9ce2b358628d957c1e20c3273489bd20f048b162c417c9",
+      "bytes": 140074,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/ar-roles-dark.jpg",
-      "sha256": "f9ed549a15fbb12840b3b58cd03ba095d0458881dbfc23699b89e45b11d78a80",
-      "bytes": 137561,
+      "sha256": "50f90da5ef06590c7ccb4ed3ef37094a636a9805a832f7e1cf622b0022bffc98",
+      "bytes": 219734,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/ar-roles-light.jpg",
-      "sha256": "2b08cea2b0b6af387aa6b057aaa64f3d5a1eaa2279a2f810e27756b576437279",
-      "bytes": 147862,
+      "sha256": "a6b64171ce99517d3d8407eb88639c074728f616d081d7910364a1b9d0c09a85",
+      "bytes": 232848,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/ar-settings-dark.jpg",
-      "sha256": "6ff23c7bebce1ef344a72dd6b8a3e5f80d7e3333b0097741d156268b241b7ea8",
-      "bytes": 58991,
+      "sha256": "d562ac8bde269a61ec52a4d8f0e25de702da4a7cde0403ffee910b0498ff0ec2",
+      "bytes": 57793,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/ar-settings-light.jpg",
-      "sha256": "134839229cf63ffc9a5be7c1794df37aa5b4900e44d30cb299bfac1b81a0289a",
-      "bytes": 60255,
+      "sha256": "9575a639d3481b0453ffd02398d8561028593392292c535e3b17f8cdfe35bb22",
+      "bytes": 59241,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/de-chat-dark.jpg",
-      "sha256": "df7d03219e1ad6e5390fa7c6aee787ff6cf2f56618808563a411b399f5523e16",
-      "bytes": 162429,
+      "sha256": "1651c62191127edb1f66d27934431ace9f624fc7c95410283fbb25a396a503ba",
+      "bytes": 267378,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/de-chat-light.jpg",
-      "sha256": "15d0a3adc178d283c628b1e1f108e5c2d0f2ef7c1adf94af1709f87dcef671ee",
-      "bytes": 170150,
+      "sha256": "4516ef2189ae40a15f47bc710d8838f06c5c905b3f1c5717619717afc33672a0",
+      "bytes": 276717,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/de-chat-phone-dark.jpg",
-      "sha256": "ac9c1a2e6f87df3125ef1abf72c8295f8e07004c2781c4806dbd6385ebf30fc4",
-      "bytes": 88530,
+      "sha256": "aa5f0854db07eb8b6e7c08479a1dfd053a8afa7d2ea8eed595aa160de259d885",
+      "bytes": 145907,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/de-chat-phone-light.jpg",
-      "sha256": "1061193347cb4ccc2ea622de277d712c99ac1c4cc1f94a27662059e6a1c3b99f",
-      "bytes": 92341,
+      "sha256": "5409b803c52f6317dd782d6db0e552cbc707cb5e631f31f4ecb83be0569da3d1",
+      "bytes": 150440,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/de-discover-dark.jpg",
-      "sha256": "ab0408d239514ef945b6c9b8f5b497968c1b25fb6f1639f63c24c2a2cf48e825",
-      "bytes": 150487,
+      "sha256": "e0c9e07bdea157e199968a94f0c0c6d9fe1dd0c012c753946b3ee39612cab0a2",
+      "bytes": 154975,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/de-discover-light.jpg",
-      "sha256": "4f7ac2e16b0f27c1d6331998200ea7c156e0120889852192d001511d73d7ef93",
-      "bytes": 147957,
+      "sha256": "258fa61fc21ac709cb030eff01a096d5fee01218d6777383b13d8104d78ba165",
+      "bytes": 152153,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/de-lobby-dark.jpg",
-      "sha256": "840ad3244ed4bcdf1712b59fedcec92382d78bcf717632b8f31c5a05f43a1301",
-      "bytes": 151416,
+      "sha256": "b8e3f833ac9168ebce4dc1fcbc2d3f34fe0db21266731cb253f2ebf293bab26e",
+      "bytes": 294827,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/de-lobby-light.jpg",
-      "sha256": "937668ba4a4fa0d153d6bd4b9390755b700ab37b6e2b03a73c5c10dbda727c3a",
-      "bytes": 163625,
+      "sha256": "afe4ca32171a4bfb8976f97b047a3cd8abcec6d8ed2643c6b57f8594ef54fd77",
+      "bytes": 304453,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/de-lobby-phone-dark.jpg",
-      "sha256": "0e32155f143ada6b9f237945a713879a16a6cca8c7a699fa0e7eed62358b7ef5",
-      "bytes": 93467,
+      "sha256": "3221346a465ef56b9e90b2e3c6d7c9705fb748af3f1eea495c187788acd8a720",
+      "bytes": 145200,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/de-lobby-phone-light.jpg",
-      "sha256": "a822f7ce93abb75c6ec615a8d3ca18f98ab1e488d4972411c62256e1f7bac97d",
-      "bytes": 98369,
+      "sha256": "126efb05d6a6f045530b98f2fee03807388f13d6a3ec94a8f6938fa561a709ce",
+      "bytes": 151241,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/de-roles-dark.jpg",
-      "sha256": "3d9178baeee30d5c4a351a55681a6559c7797529a51107aa9ca746138c6fb8fb",
-      "bytes": 162083,
+      "sha256": "2dbf1d4330ef3c3a57701e77346ca2f03966a97640a80db3f69a3c4cccb15dcf",
+      "bytes": 240493,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/de-roles-light.jpg",
-      "sha256": "a01ed08a800800f7b9548e6a85c711416f0a2b61703d41b93fd31cbfcd9c1b63",
-      "bytes": 172741,
+      "sha256": "cee9fdc0f1384d0e24a330405e8a14de66fcf6329cd431c3348e77c5506910ae",
+      "bytes": 255200,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/de-settings-dark.jpg",
-      "sha256": "0828a6ae6d0c5050dd2ea6b2da763c4f04b8fbfcb7920894b03b0d3e3a9c8b0f",
-      "bytes": 68249,
+      "sha256": "cf1cb2c0e6902a17cbbf48de8ffdb5c0a361b62e0cc6a62c2893955b265c8c60",
+      "bytes": 66345,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/de-settings-light.jpg",
-      "sha256": "248dde35e03c36e08a86d03956d9d89e23c8bb0ec300ce8dddff895dc4ad7850",
-      "bytes": 69576,
+      "sha256": "1b8f567113e2fc0c86d704c620d351c413dd3f3807b08b0b7999c201fbe6361c",
+      "bytes": 68129,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/en-chat-dark.jpg",
-      "sha256": "79dd9b7cf6d2285657a1cd0d9c9f23c37710045d17bb40b2294bf824d59d0857",
-      "bytes": 157707,
+      "sha256": "fbd11f0ce3d2b3519016e2ba9151291ca070177e5b3b9bce657f6cc747afc770",
+      "bytes": 263997,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/en-chat-light.jpg",
-      "sha256": "12e958cfde60e2d25a0b2f70d44113b81a9b0fa2fd425967ae858d2f93bff571",
-      "bytes": 164866,
+      "sha256": "e0699cf24ffe570b99b266f7c3c614e0d73f4a3599d58d152942da20f8938e11",
+      "bytes": 271684,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/en-chat-phone-dark.jpg",
-      "sha256": "5aa0f59f212391cbd7d5abdc45dd01633d3032e5de395e0e6183bbc0a70863e8",
-      "bytes": 83335,
+      "sha256": "f75bb79b6d3b33b4ba60d7946347aad827582b3bcd9c5365eab2f51464e338dc",
+      "bytes": 141975,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/en-chat-phone-light.jpg",
-      "sha256": "090d912e62ad5411463c1b768301a97a45f0a9fb6d98916f26e6c91f6d9cac65",
-      "bytes": 87701,
+      "sha256": "3ed983d7a3d2bd1369b3b30adf4b1b6c75ce17f83328bb34d48b34dcb89260ce",
+      "bytes": 145988,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/en-discover-dark.jpg",
-      "sha256": "cd31067211247fe332c1a619c44be3a6088e83775bb220744cc7021353ef3d1f",
-      "bytes": 144196,
+      "sha256": "597beafab9ef2e2f9faac828913da031c36ecc5b11bb40b65ee70450bd12f819",
+      "bytes": 148254,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/en-discover-light.jpg",
-      "sha256": "38c97524f907e54c694bdcd368e3c3d8c0c7c1d9d9762733ae8a2da4d14cd1be",
-      "bytes": 140722,
+      "sha256": "f41b7c0159a81283ea207c9b226da6da03803ddab8932da22e6ff83df8aa01d0",
+      "bytes": 145195,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/en-lobby-dark.jpg",
-      "sha256": "014953c20a545a62cf54eabb97caa4fc608280123c53d90bf5e0247588f0313a",
-      "bytes": 144880,
+      "sha256": "d36804d9efe8c7361268f4d03a0535b87c10bafb49e35adbe2f8d3c144abd536",
+      "bytes": 287962,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/en-lobby-light.jpg",
-      "sha256": "8d3beff0a0954562bdc0c37b862dcb572ab5be9564d71772b43f125154fc98d8",
-      "bytes": 156099,
+      "sha256": "42ef37aeecbacf782daa0ff15e4da0482d9b0f7f4bc643b2e636743f00c95a2e",
+      "bytes": 297366,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/en-lobby-phone-dark.jpg",
-      "sha256": "c49103964f71e98c6c3db4d5d944479361164a962e4c499489f0ae094dd632bf",
-      "bytes": 86830,
+      "sha256": "dc5f35458c3ca75ec4c952fbeb76f51b6135bdc19f48e616e0e517089f15b312",
+      "bytes": 139284,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/en-lobby-phone-light.jpg",
-      "sha256": "7567ea474a11d84bc66c2474e2ac340381e194f1ca86a90ce323c0443e17f6cd",
-      "bytes": 91444,
+      "sha256": "b2747388daaf206ca660496cf0d314f0748b3c902fce10f7e973a6cd4ab8d5ad",
+      "bytes": 145542,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/en-roles-dark.jpg",
-      "sha256": "e92d751e1e41bc631718ffd37d755ffa8a32af5bf10adde6fbdace0f680f425d",
-      "bytes": 153444,
+      "sha256": "75a3429ae5fdaa1f8415dbc2c4f1d31890e84fdd3e8cf7f5b89910df02bbea9c",
+      "bytes": 234491,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/en-roles-light.jpg",
-      "sha256": "fa03010868be02c669f5273353fe0a5441183a3dc750d2d256aa8296630b781a",
-      "bytes": 165007,
+      "sha256": "292d7dc6d0015494d186aebfb36073b2feaec90eb0557a82cbd6bd134a967e9f",
+      "bytes": 248790,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/en-settings-dark.jpg",
-      "sha256": "3e1259f0329094e332807ebd0cea790b8a086e6ba52c5ca0ce1e4fc0e0520994",
-      "bytes": 62362,
+      "sha256": "1144095bac7df565f4d6a994020fea030fa6bb7c67732b4eae60ae32a514129c",
+      "bytes": 61532,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/en-settings-light.jpg",
-      "sha256": "b12abf969e5df5afa6700dd22b159e0b52cb1a532a96e2e4ae09043fc56c0533",
-      "bytes": 63477,
+      "sha256": "3cf47849644e2731feb655b789432bb018d15ebbbc6ae211029cb791051a8df4",
+      "bytes": 62749,
       "category": "reviewed-product-asset"
     },
     {
@@ -628,8 +628,8 @@
     },
     {
       "path": "src/content.ts",
-      "sha256": "a974bddf92f9fb1c1fb1e12cd386f1aed5a78e7ad730dc6941a1a74a8208473e",
-      "bytes": 42061,
+      "sha256": "7872f29b4eeabef8768b00be5bd370b3a4763e8ff9c6b077259fb0b190056e79",
+      "bytes": 42248,
       "category": "product-source-or-build-manifest"
     },
     {
