@@ -640,8 +640,8 @@
     },
     {
       "path": "src/App.tsx",
-      "sha256": "f0a279b23451a7af7dc5bc4cc0aa3f782914e2948d7c3ce0c258dc417eeb35ca",
-      "bytes": 51440,
+      "sha256": "b4170e7c3cbb0401d5ed7c4bf8a0f9888ee19c010688538c91fde0671cf85a07",
+      "bytes": 51751,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -676,8 +676,8 @@
     },
     {
       "path": "src/content.ts",
-      "sha256": "9f116f7ccf220e15379688ef1f418986d129d6b8404b59b28ab42aad5b9b0c85",
-      "bytes": 61485,
+      "sha256": "5eb89d776cc23543a1ac5cab0eca7869ba1fdee9f3082a7ee134aba245dea8bd",
+      "bytes": 62609,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -838,8 +838,8 @@
     },
     {
       "path": "src/site.css",
-      "sha256": "68f47485c54defb599b7edb286567796ad2dc068eba32f2465ed3a800dbf39d9",
-      "bytes": 111706,
+      "sha256": "c03cac58db2bc6376e9987c0e56079df1aa7d1186fe9d06b01bc2fb0a63b2db5",
+      "bytes": 111846,
       "category": "product-source-or-build-manifest"
     },
     {
