@@ -408,16 +408,19 @@ export default function App() {
   }
   function FAQ() {
     return (
-      <dl class="faq-list">
+      <div class="faq-list">
         <For each={faqs}>
-          {(item) => (
-            <div data-rise>
-              <dt>{l(item.question)}</dt>
-              <dd>{l(item.answer)}</dd>
-            </div>
+          {(item, index) => (
+            <details open={index() === 0} data-rise>
+              <summary>
+                <span>{l(item.question)}</span>
+                <Icon name="plus" class="faq-sign" />
+              </summary>
+              <p>{l(item.answer)}</p>
+            </details>
           )}
         </For>
-      </dl>
+      </div>
     );
   }
   /**
@@ -470,23 +473,31 @@ export default function App() {
       ["channels", "sharing", "roles", "interests", "discover"].includes(feature.id),
     );
     const alt = { lobby: "lobbyAlt", chat: "chatAlt", settings: "commAlt", roles: "rolesAlt", discover: "discoverAlt" } as const;
+    // the tour's own words: a tab name, a short title and the screen's line
+    const tab = { lobby: "tabLobby", chat: "tabChat", settings: "tabRoles", roles: "tabInterests", discover: "tabDiscover" } as const;
+    const line = { lobby: "lobbyBody", chat: "chatBody", settings: "commBody", roles: "rolesBody", discover: "discoverBody" } as const;
+    const title = { lobby: "tourLobbyTitle", chat: "tourChatTitle", settings: "tourRolesTitle" } as const;
     return (
       <div class="product-stories" id="tour">
+        <header class="container tour-intro" data-rise>
+          <p class="eyebrow">{t("tourEyebrow")}</p>
+          <h2>{t("tourTitle")}</h2>
+          <p>{t("tourBody")}</p>
+        </header>
         <For each={scenes}>
           {(feature, index) => (
-            <>
-              <section class={`story-card ${index() % 2 ? "story-reverse" : ""}`} aria-labelledby={`story-${feature.id}`}>
-                <div class="story-copy" data-rise>
-                  <span class="story-number" aria-hidden="true">0{index() + 1}</span>
-                  <h2 id={`story-${feature.id}`}>{l(feature.title)}</h2>
-                  <p>{l(feature.body)}</p>
-                </div>
-                <div class={`story-media story-media-${feature.view}`} data-rise>
-                  <Shot view={feature.view} alt={alt[feature.view]} />
-                </div>
-              </section>
-              <Show when={index() === 1}><Voice /></Show>
-            </>
+            <section class={`story-card ${index() % 2 ? "story-reverse" : ""}`} aria-labelledby={`story-${feature.id}`}>
+              <div class="story-copy" data-rise>
+                <span class="eyebrow story-number">0{index() + 1} · {t(tab[feature.view])}</span>
+                <h3 id={`story-${feature.id}`}>
+                  {feature.view in title ? t(title[feature.view as keyof typeof title]) : l(feature.title)}
+                </h3>
+                <p>{t(line[feature.view])}</p>
+              </div>
+              <div class={`story-media story-media-${feature.view}`} data-rise>
+                <Shot view={feature.view} alt={alt[feature.view]} />
+              </div>
+            </section>
           )}
         </For>
       </div>
@@ -496,22 +507,67 @@ export default function App() {
     return (
       <section class="voice" id="voice" aria-labelledby="voice-title">
         <div class="voice-content">
-        <div class="container voice-head" data-rise>
-          <h2 id="voice-title">{t("voiceTitle")}</h2>
-          <p>{t("voiceBody")}</p>
+          <div class="voice-head" data-rise>
+            <p class="eyebrow">{t("voiceEyebrow")}</p>
+            <h2 id="voice-title">{t("voiceTitle")}</h2>
+            <p>{t("voiceBody")}</p>
+          </div>
+          <ul class="voice-points" data-rise>
+            <For each={["voiceP1", "voiceP2", "voiceP3"] as const}>
+              {(point) => <li>{t(point)}</li>}
+            </For>
+          </ul>
         </div>
-
-        <ul class="container voice-points" data-rise>
-          <For each={["voiceP1", "voiceP2", "voiceP3"] as const}>
-            {(point) => <li>{t(point)}</li>}
-          </For>
-        </ul>
-        </div>
-        <div class="voice-visual" data-rise>
-          <div class="flock-stage voice-stage" data-flock="wave" data-tone="voice" aria-hidden="true" />
-          <VoiceChannels t={t} />
-        </div>
+        <VoiceCall />
       </section>
+    );
+  }
+  /**
+   * A call as the app draws it: the shared screen on top, the people under it
+   * (who speaks has the ring), and the call's own buttons. A picture of the
+   * app, not a working call: the buttons are drawn, not focusable.
+   */
+  function VoiceCall() {
+    const people = [
+      { name: "demoPeople1", tone: "a", speaking: true },
+      { name: "demoPeople2", tone: "you", speaking: false },
+      { name: "demoPeople3", tone: "b", speaking: false },
+    ] as const;
+    return (
+      <figure
+        class="voice-call"
+        data-rise
+        role="img"
+        aria-label={`${t("demoLounge")} · ${t("voiceConnected")} · ${t("demoPeople1")} ${t("voiceSharing")}`}
+      >
+        <div class="call-bar" aria-hidden="true">
+          <Icon name="headphones" />
+          <strong>{t("demoLounge")}</strong>
+          <span>· {t("voiceConnected")}</span>
+          <span class="call-live"><span class="live-dot" />{t("voiceLive")}</span>
+        </div>
+        <div class="call-screen" aria-hidden="true">
+          <Shot view="lobby" alt="lobbyAlt" />
+          <span class="hero-chip call-sharing">{t("demoPeople1")} · {t("voiceSharing")}</span>
+        </div>
+        <div class="call-people" aria-hidden="true">
+          <For each={people}>
+            {(person) => (
+              <div classList={{ "call-person": true, speaking: person.speaking }}>
+                <span class={`call-avatar call-avatar-${person.tone}`} />
+                <span>{t(person.name)}</span>
+              </div>
+            )}
+          </For>
+        </div>
+        <div class="call-controls" aria-hidden="true">
+          <span class="call-round" title={t("voiceMute")}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3" /><path d="M5 11a7 7 0 0 0 14 0M12 18v3" /></svg>
+          </span>
+          <span class="call-round" title={t("voiceShareScreen")}><Icon name="monitor" /></span>
+          <span class="call-leave">{t("voiceLeave")}</span>
+        </div>
+      </figure>
     );
   }
   function Languages() {
@@ -522,9 +578,9 @@ export default function App() {
       <section class="languages" id="languages" aria-labelledby="languages-title">
         <div class="container languages-grid">
           <div class="languages-copy" data-rise>
+            <p class="eyebrow">{t("langEyebrow")}</p>
             <h2 id="languages-title">{t("langTitle")}</h2>
             <p>{t("langBody")}</p>
-            <div class="flock-stage languages-stage" data-flock="word" data-words="مرحبًا|Hello|Hallo" aria-hidden="true" />
           </div>
           <div class="languages-phones" data-rise>
             <For each={phones()}>
@@ -539,24 +595,25 @@ export default function App() {
     return (
       <section class="open" id="open-source" aria-labelledby="open-title">
         <div class="container open-grid">
-          <h2 id="open-title" data-rise>{t("openTitle")}</h2>
-          <div data-rise>
+          <div class="open-head" data-rise>
+            <p class="eyebrow">{t("openEyebrow")}</p>
+            <h2 id="open-title">{t("openTitle")}</h2>
             <p>{t("openBody")}</p>
-            <ul>
-              <For each={["openP1", "openP2", "openP3"] as const}>
-                {(point) => (
-                  <li>
-                    <Icon name="check" />
-                    {t(point)}
-                  </li>
-                )}
-              </For>
-            </ul>
-            <a class="text-link" href={SOURCE_URL} target="_blank" rel="noopener noreferrer">
-              {t("source")}
-              <Icon name="arrow" class="directional" />
-            </a>
           </div>
+          <ol class="open-cards" data-rise>
+            <For each={["openP1", "openP2", "openP3"] as const}>
+              {(point, index) => (
+                <li>
+                  <span class="eyebrow">0{index() + 1}</span>
+                  <strong>{t(point)}</strong>
+                </li>
+              )}
+            </For>
+          </ol>
+          <a class="text-link" href={SOURCE_URL} target="_blank" rel="noopener noreferrer">
+            {t("source")}
+            <Icon name="arrow" class="directional" />
+          </a>
         </div>
       </section>
     );
@@ -564,11 +621,12 @@ export default function App() {
   function CTA() {
     return (
       <section class="closing container" aria-labelledby="closing-title">
-        <h2 id="closing-title" data-rise>{t("ctaTitle")}</h2>
-        <div data-rise>
+        <div class="closing-flock" aria-hidden="true">{t("flockName")}</div>
+        <div class="closing-copy" data-rise>
+          <h2 id="closing-title">{t("ctaTitle")}</h2>
           <p>{t("ctaBody")}</p>
-          <AppAction />
         </div>
+        <AppAction />
       </section>
     );
   }
@@ -576,20 +634,47 @@ export default function App() {
     return (
       <>
         <section class="hero" aria-labelledby="hero-title">
-          <div class="flock-stage hero-stage" data-flock="word" data-words={t("flockName")} aria-hidden="true" />
           <div class="container hero-grid">
             <div class="hero-copy">
+              <p class="eyebrow">{t("heroEyebrow")}</p>
               <h1 id="hero-title">{t("heroTitle")}</h1>
               <p class="hero-lead">{t("heroBody")}</p>
               <div class="hero-action">
                 <AppAction />
-                <a class="hero-explore text-link" href="#tour">{t("explore")}<Icon name="arrow" class="directional" /></a>
+                <a class="button button-outline" href="#tour">{t("explore")}</a>
                 <p>{t("heroFacts")}</p>
+              </div>
+            </div>
+            <div class="hero-media">
+              <div class="flock-stage hero-stage" data-flock="word" data-words={t("flockName")} aria-hidden="true" />
+              <div class="hero-frame">
+                <Shot view="chat" alt="chatAlt" eager />
+                <span class="hero-chip hero-chip-share">
+                  <Icon name="monitor" />
+                  {t("demoPeople1")} · {t("voiceSharing")}
+                </span>
+                <span class="hero-chip hero-chip-room">
+                  <span class="live-dot" aria-hidden="true" />
+                  {t("demoLounge")} · {t("voiceConnected")}
+                </span>
               </div>
             </div>
           </div>
         </section>
+        <section class="facts" aria-label={t("factsLabel")}>
+          <ul class="container facts-list">
+            <For each={[1, 2, 3, 4] as const}>
+              {(n) => (
+                <li>
+                  <strong>{t(`fact${n}Title`)}</strong>
+                  <span>{t(`fact${n}Body`)}</span>
+                </li>
+              )}
+            </For>
+          </ul>
+        </section>
         <Tour />
+        <Voice />
         <Languages />
         <Open />
         <section class="questions container" id="faq" aria-labelledby="faq-title">
@@ -616,8 +701,9 @@ export default function App() {
     return (
       <div class="mission-grid">
         <For each={["Communication", "Language", "Development"] as const}>
-          {(part) => (
+          {(part, index) => (
             <article data-rise>
+              <span class="eyebrow">0{index() + 1}</span>
               <h3>{t(`pillar${part}` as Label)}</h3>
               <p>{t(`pillar${part}Body` as Label)}</p>
             </article>
@@ -659,52 +745,33 @@ export default function App() {
       </Switch>
     );
   }
+  /**
+   * Every feature as a card on one grid: wide and narrow cards take turns
+   * (7 + 5, then 5 + 7), so the page has a rhythm; each card shows its proof.
+   */
   function Features() {
-    const [current, setCurrent] = createSignal(0);
-    onMount(() => {
-      if (!("IntersectionObserver" in window)) return;
-      const rows = [...document.querySelectorAll<HTMLElement>(".feature-row")];
-      const observer = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries)
-            if (entry.isIntersecting) setCurrent(rows.indexOf(entry.target as HTMLElement));
-        },
-        { rootMargin: "-45% 0px -45% 0px" },
-      );
-      rows.forEach((row) => observer.observe(row));
-      onCleanup(() => observer.disconnect());
-    });
+    const wide = (index: number) => [0, 3, 4, 6].includes(index);
     return (
       <>
         <PageHeading title="featuresTitle" body="featuresBody" words="#" />
-        <section class="container feature-list" aria-label={t("features")}>
-          <div class="feature-rows">
-            <For each={features}>
-              {(feature, index) => (
-                <article id={feature.id} classList={{ "feature-row": true, "is-current": current() === index() }}>
-                  <h2>{l(feature.title)}</h2>
-                  <p>{l(feature.body)}</p>
-                  <ul>
-                    <For each={l(feature.detail).split(" · ")}>{(item) => <li>{item}</li>}</For>
-                  </ul>
-                  <div class="feature-inline">
-                    <FeatureProof view={feature.view} />
-                  </div>
-                </article>
-              )}
-            </For>
-          </div>
-          <div class="feature-sticky" aria-hidden="true">
-            <For each={features}>
-              {(feature, index) => (
-                <div classList={{ "feature-frame": true, "is-current": current() === index() }}>
-                  <Show when={Math.abs(current() - index()) <= 1}>
-                    <FeatureProof view={feature.view} />
-                  </Show>
+        <section class="container feature-grid" aria-label={t("features")}>
+          <For each={features}>
+            {(feature, index) => (
+              <article
+                id={feature.id}
+                classList={{ "feature-tile": true, "feature-wide": wide(index()), [`feature-${feature.view}`]: true }}
+                data-rise
+              >
+                <span class="feature-icon" aria-hidden="true"><Icon name={feature.icon} /></span>
+                <h2>{l(feature.title)}</h2>
+                <p>{l(feature.body)}</p>
+                <span class="feature-tags">{l(feature.detail)}</span>
+                <div class="feature-proof">
+                  <FeatureProof view={feature.view} />
                 </div>
-              )}
-            </For>
-          </div>
+              </article>
+            )}
+          </For>
         </section>
         <CTA />
       </>
@@ -726,25 +793,35 @@ export default function App() {
           <Mission />
         </section>
         <section class="container license-section" id="source">
-          <h2 data-rise>{t("licensesTitle")}</h2>
           <div data-rise>
+            <h2>{t("licensesTitle")}</h2>
             <p>{t("licensesBody")}</p>
             <p class="fine-print">{t("storyNote")}</p>
-            <a class="text-link" href={SOURCE_URL} target="_blank" rel="noopener noreferrer">
+          </div>
+          <nav class="license-links" aria-label={t("licences")} data-rise>
+            <a href={SOURCE_URL} target="_blank" rel="noopener noreferrer">
               {t("source")}
+              <Icon name="arrowDiagonal" />
+            </a>
+            <a href={href("/legal")}>
+              {t("licences")}
               <Icon name="arrow" class="directional" />
             </a>
-          </div>
+            <a href={`${import.meta.env.BASE_URL}${THIRD_PARTY_NOTICES_PATH}`} target="_blank" rel="noopener noreferrer">
+              {t("thirdParty")}
+              <Icon name="arrowDiagonal" />
+            </a>
+          </nav>
         </section>
         <section class="container feedback-section">
-          <h2 data-rise>{t("projectFeedbackTitle")}</h2>
           <div data-rise>
+            <h2>{t("projectFeedbackTitle")}</h2>
             <p>{t("projectFeedbackBody")}</p>
-            <a class="text-link" href={SUPPORT_MAIL}>
-              {t("feedback")}
-              <Icon name="arrow" class="directional" />
-            </a>
           </div>
+          <a class="button button-primary" href={SUPPORT_MAIL}>
+            {t("feedback")}
+            <Icon name="arrow" class="directional" />
+          </a>
         </section>
         <CTA />
       </>
@@ -892,9 +969,6 @@ export default function App() {
             </a>
           </div>
         </div>
-        <Show when={page === "home"}>
-          <div class="flock-stage footer-stage" data-flock="word" data-words={t("flockName")} aria-hidden="true" />
-        </Show>
       </footer>
     );
   }
@@ -936,7 +1010,7 @@ export default function App() {
           </nav>
           <div class="header-actions">
             <div class="header-cta">
-              <AppAction arrow={false} />
+              <AppAction arrow={false} class="button-outline" />
             </div>
             <button
               type="button"
