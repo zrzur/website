@@ -628,8 +628,8 @@
     },
     {
       "path": "src/content.ts",
-      "sha256": "1449ad15602add5fa28586065aa0849543c489be8759cdc9d600068a70f653bb",
-      "bytes": 42065,
+      "sha256": "a974bddf92f9fb1c1fb1e12cd386f1aed5a78e7ad730dc6941a1a74a8208473e",
+      "bytes": 42061,
       "category": "product-source-or-build-manifest"
     },
     {
