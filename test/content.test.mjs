@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFile, access } from "node:fs/promises";
 
 import { labels, features, faqs } from "../src/content.ts";
-import { validatePublicUrl, resolveAppUrl } from "../src/config.ts";
+import { validatePublicUrl, resolveAppUrl, resolvePreviewUrl } from "../src/config.ts";
 import { legalDocuments, legalDraftNotice } from "../src/legal.ts";
 
 test("English and Arabic cover the same complete content", () => {
@@ -60,7 +60,8 @@ test("local app shortcut is restricted to loopback previews", () => {
   assert.equal(resolveAppUrl("preview.example", undefined), null);
   assert.equal(resolveAppUrl("zrzur.com", "https://stoat.chat"), null);
 });
-// The site shows real screens of the app, no
+// Owner decisions 2026-11-01: the site shows real screens of the app (captured
+// from the running app with demo accounts), no
 // illustrations or stock pictures; every screen exists in each site language
 // and in the app's dark and light themes (no CSS filters faking a theme).
 test("product pictures are real app screens in every language and theme", async () => {
@@ -69,7 +70,9 @@ test("product pictures are real app screens in every language and theme", async 
   // the only <img> is the Shot component, fed by its file() helper
   assert.equal((app.match(/<img\b/g) ?? []).length, 1, "one <img>, inside Shot");
   assert.match(app, /src=\{file\(shade, !!props\.phone\)\}/);
-  assert.match(app, /`\/assets\/product\/\$\{code\(\)\}-\$\{props\.view\}/);
+  assert.match(app, /`\$\{code\(\)\}-\$\{props\.view\}/);
+  // a new capture gets a new address (content hash), so no cache keeps the old one
+  assert.match(app, /`\/assets\/product\/\$\{name\}\$\{version \? `\?v=\$\{version\}` : ""\}`/);
   assert(!/filter:\s*invert/.test(await readFile(new URL("../src/site.css", import.meta.url), "utf8")));
   const views = [...app.matchAll(/<Shot view="(\w+)"/g)].map((m) => m[1]);
   assert(views.length >= 5, "the homepage shows several real screens");
@@ -175,4 +178,12 @@ test("robots.txt and sitemap.xml list only zrzur.com pages", async () => {
   for (const loc of locs) assert.match(loc, /^https:\/\/zrzur\.com\//);
   for (const doc of legalDocuments)
     assert(locs.includes(`https://zrzur.com/legal/${doc.slug}`), doc.slug);
+});
+
+
+test("explicit preview destinations stay restricted to loopback", () => {
+  assert.equal(resolvePreviewUrl("127.0.0.1", "http://127.0.0.1:31060/"), "http://127.0.0.1:31060/");
+  assert.equal(resolvePreviewUrl("zrzur.com", "http://127.0.0.1:31060/"), null);
+  assert.equal(resolvePreviewUrl("127.0.0.1", "http://example.com/"), null);
+  assert.equal(resolvePreviewUrl("127.0.0.1", "http://user:password@127.0.0.1/"), null);
 });

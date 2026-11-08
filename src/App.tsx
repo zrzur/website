@@ -22,7 +22,7 @@ import { VoiceChannels } from "./demo";
 import type { Flock } from "./flock";
 import { reportText } from "./report-text";
 import { SOURCE_URL, THIRD_PARTY_NOTICES_PATH } from "./buildInfo";
-import { canonicalUrl, resolveAppUrl, validatePublicUrl } from "./config";
+import { canonicalUrl, resolveAppUrl, resolvePreviewUrl } from "./config";
 import {
   LOCALES,
   detectLanguage,
@@ -35,6 +35,11 @@ import {
 } from "./i18n";
 import { legalFooterLinks, legalSlugs } from "./legal-nav";
 import { Icon } from "./icon";
+
+/** Content hash per product picture, from vite.config.ts (missing in tests) */
+declare const __PRODUCT_VERSIONS__: Record<string, string> | undefined;
+const PRODUCT_VERSIONS: Record<string, string> =
+  typeof __PRODUCT_VERSIONS__ !== "undefined" ? __PRODUCT_VERSIONS__ : {};
 
 type Page =
   | "home"
@@ -68,7 +73,7 @@ const pageForPath = (path: string): Page => {
   );
 };
 
-/** Views captured from the running app */
+/** Views captured from the running app from the running app with demo accounts */
 type View = "chat" | "lobby" | "discover" | "settings" | "roles";
 const PHONE_VIEWS: readonly View[] = ["chat", "lobby"];
 
@@ -111,7 +116,7 @@ export default function App() {
   const href = (target: string) => localizedPath(target, language());
   const appUrl = resolveAppUrl(location.hostname, import.meta.env.VITE_PUBLIC_APP_URL);
   const discoverUrl =
-    validatePublicUrl(import.meta.env.VITE_PUBLIC_DISCOVER_URL) ??
+    resolvePreviewUrl(location.hostname, import.meta.env.VITE_PUBLIC_DISCOVER_URL) ??
     (appUrl ? new URL("discover", appUrl).href : null);
   const SUPPORT_MAIL = "mailto:support@zrzur.com";
 
@@ -227,7 +232,7 @@ export default function App() {
     document.documentElement.classList.add("rise-ready");
   });
   onMount(() => {
-    const update = () => setScrolled(window.scrollY > 15);
+    const update = () => setScrolled(window.scrollY > 100);
     window.addEventListener("scroll", update, { passive: true });
     const escape = (event: KeyboardEvent) => {
       if (event.key === "Escape") setMenuOpen(false);
@@ -421,8 +426,11 @@ export default function App() {
    */
   function Shot(props: { view: View; alt: Label; eager?: boolean; phone?: boolean; theme?: "dark" | "light"; in?: Language }) {
     const code = () => props.in ?? language();
-    const file = (shade: "dark" | "light", phone = false) =>
-      `/assets/product/${code()}-${props.view}${phone ? "-phone" : ""}-${shade}.jpg`;
+    const file = (shade: "dark" | "light", phone = false) => {
+      const name = `${code()}-${props.view}${phone ? "-phone" : ""}-${shade}.jpg`;
+      const version = PRODUCT_VERSIONS[name];
+      return `/assets/product/${name}${version ? `?v=${version}` : ""}`;
+    };
     const hasPhone = () => PHONE_VIEWS.includes(props.view);
     const shades = () => (props.theme ? [props.theme] : (["dark", "light"] as const));
     return (
@@ -444,8 +452,8 @@ export default function App() {
               <img
                 src={file(shade, !!props.phone)}
                 alt={t(props.alt)}
-                width={props.phone ? 780 : 2160}
-                height={props.phone ? 1688 : 1350}
+                width={props.phone ? 780 : 2304}
+                height={props.phone ? 1688 : 1440}
                 loading={props.eager ? "eager" : "lazy"}
                 fetchpriority={props.eager && shade === theme() ? "high" : undefined}
                 decoding="async"
@@ -458,84 +466,51 @@ export default function App() {
   }
   /** Tabs built like the app's own channel list: pick a place, see that screen */
   function Tour() {
-    const [current, setCurrent] = createSignal(0);
-    const buttons: HTMLButtonElement[] = [];
-    function keys(event: KeyboardEvent) {
-      const rtl = document.documentElement.dir === "rtl";
-      const next = { ArrowDown: 1, ArrowUp: -1, ArrowRight: rtl ? -1 : 1, ArrowLeft: rtl ? 1 : -1 }[event.key];
-      if (!next) return;
-      event.preventDefault();
-      const to = (current() + next + TOUR.length) % TOUR.length;
-      setCurrent(to);
-      buttons[to]?.focus();
-    }
+    const scenes = features.filter((feature): feature is Extract<(typeof features)[number], { view: View }> =>
+      ["channels", "sharing", "roles", "interests", "discover"].includes(feature.id),
+    );
+    const alt = { lobby: "lobbyAlt", chat: "chatAlt", settings: "commAlt", roles: "rolesAlt", discover: "discoverAlt" } as const;
     return (
-      <section class="tour" id="tour" aria-labelledby="tour-title">
-        <div class="container tour-head" data-rise>
-          <h2 id="tour-title">{t("tourTitle")}</h2>
-          <p>{t("tourBody")}</p>
-        </div>
-        <div class="container tour-body">
-          <div class="tour-side" data-rise>
-            <div class="tour-tabs" role="tablist" aria-label={t("tourLabel")} aria-orientation="vertical" onKeyDown={keys}>
-              <For each={TOUR}>
-                {(item, index) => (
-                  <button
-                    ref={(el) => (buttons[index()] = el)}
-                    type="button"
-                    role="tab"
-                    id={`tour-tab-${item.id}`}
-                    aria-selected={current() === index()}
-                    aria-controls="tour-panel"
-                    tabindex={current() === index() ? 0 : -1}
-                    onClick={() => setCurrent(index())}
-                  >
-                    <Icon name={index() === 0 ? "community" : index() === 1 ? "hash" : index() === 2 ? "shield" : index() === 3 ? "users" : "compass"} />
-                    {t(item.label)}
-                  </button>
-                )}
-              </For>
-            </div>
-            <p class="tour-line" aria-live="polite">
-              {t(TOUR[current()].body)}
-            </p>
-          </div>
-          <div class="tour-stage" id="tour-panel" role="tabpanel" aria-labelledby={`tour-tab-${TOUR[current()].id}`} tabindex="0" data-rise>
-            <Switch>
-              <Match when={current() === 0}>
-                <Shot view="lobby" alt="lobbyAlt" />
-              </Match>
-              <Match when={current() === 1}>
-                <Shot view="chat" alt="chatAlt" />
-              </Match>
-              <Match when={current() === 2}>
-                <Shot view="settings" alt="commAlt" />
-              </Match>
-              <Match when={current() === 3}>
-                <Shot view="roles" alt="rolesAlt" />
-              </Match>
-              <Match when={current() === 4}>
-                <Shot view="discover" alt="discoverAlt" />
-              </Match>
-            </Switch>
-          </div>
-        </div>
-      </section>
+      <div class="product-stories" id="tour">
+        <For each={scenes}>
+          {(feature, index) => (
+            <>
+              <section class={`story-card ${index() % 2 ? "story-reverse" : ""}`} aria-labelledby={`story-${feature.id}`}>
+                <div class="story-copy" data-rise>
+                  <span class="story-number" aria-hidden="true">0{index() + 1}</span>
+                  <h2 id={`story-${feature.id}`}>{l(feature.title)}</h2>
+                  <p>{l(feature.body)}</p>
+                </div>
+                <div class={`story-media story-media-${feature.view}`} data-rise>
+                  <Shot view={feature.view} alt={alt[feature.view]} />
+                </div>
+              </section>
+              <Show when={index() === 1}><Voice /></Show>
+            </>
+          )}
+        </For>
+      </div>
     );
   }
   function Voice() {
     return (
       <section class="voice" id="voice" aria-labelledby="voice-title">
+        <div class="voice-content">
         <div class="container voice-head" data-rise>
           <h2 id="voice-title">{t("voiceTitle")}</h2>
           <p>{t("voiceBody")}</p>
         </div>
-        <div class="flock-stage voice-stage" data-flock="wave" data-tone="voice" aria-hidden="true" />
+
         <ul class="container voice-points" data-rise>
           <For each={["voiceP1", "voiceP2", "voiceP3"] as const}>
             {(point) => <li>{t(point)}</li>}
           </For>
         </ul>
+        </div>
+        <div class="voice-visual" data-rise>
+          <div class="flock-stage voice-stage" data-flock="wave" data-tone="voice" aria-hidden="true" />
+          <VoiceChannels t={t} />
+        </div>
       </section>
     );
   }
@@ -549,7 +524,7 @@ export default function App() {
           <div class="languages-copy" data-rise>
             <h2 id="languages-title">{t("langTitle")}</h2>
             <p>{t("langBody")}</p>
-            <div class="flock-stage languages-stage" data-flock="word" data-words={t("langGreeting")} aria-hidden="true" />
+            <div class="flock-stage languages-stage" data-flock="word" data-words="مرحبًا|Hello|Hallo" aria-hidden="true" />
           </div>
           <div class="languages-phones" data-rise>
             <For each={phones()}>
@@ -608,13 +583,13 @@ export default function App() {
               <p class="hero-lead">{t("heroBody")}</p>
               <div class="hero-action">
                 <AppAction />
+                <a class="hero-explore text-link" href="#tour">{t("explore")}<Icon name="arrow" class="directional" /></a>
                 <p>{t("heroFacts")}</p>
               </div>
             </div>
           </div>
         </section>
         <Tour />
-        <Voice />
         <Languages />
         <Open />
         <section class="questions container" id="faq" aria-labelledby="faq-title">
@@ -877,6 +852,7 @@ export default function App() {
             <div class="footer-identity">
               <Brand footer />
               <p>{t("footerTag")}</p>
+              <span class="footer-language-label" id="footer-language-label">{t("language")}</span>
               <div class="footer-controls">
                 <LanguageMenu id="footer-language" up />
                 <ThemeToggle />
@@ -955,28 +931,10 @@ export default function App() {
               </a>
             </Show>
             <div class="nav-mobile-extra">
-              <div class="language-chips" role="group" aria-label={t("language")}>
-                <For each={LOCALES}>
-                  {(locale) => (
-                    <button
-                      type="button"
-                      lang={locale.code}
-                      aria-pressed={locale.code === language()}
-                      onClick={() => setLanguage(locale.code)}
-                    >
-                      {locale.name}
-                    </button>
-                  )}
-                </For>
-              </div>
               <AppAction />
             </div>
           </nav>
           <div class="header-actions">
-            <div class="header-language">
-              <LanguageMenu id="header-language" />
-            </div>
-            <ThemeToggle />
             <div class="header-cta">
               <AppAction arrow={false} />
             </div>

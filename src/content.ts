@@ -101,12 +101,12 @@ export const features = [
     body: {
       en: "On a first visit, members answer a few questions and get the matching roles right away. They can skip it and change it later.",
       de: "Beim ersten Besuch beantworten Mitglieder ein paar Fragen und bekommen sofort die passenden Rollen. Sie können das überspringen und später ändern.",
-      ar: "في الزيارة الأولى يجيب العضو عن بضعة أسئلة ويحصل على الرتب المناسبة فورًا. ويمكنه تخطّي ذلك وتغييره لاحقًا.",
+      ar: "في الزيارة الأولى يجيب العضو عن بضعة أسئلة ويحصل على الأدوار المناسبة فورًا. ويمكنه تخطّي ذلك وتغييره لاحقًا.",
     },
     detail: {
       en: "Interests · Roles · Lobby",
       de: "Interessen · Rollen · Lobby",
-      ar: "اهتمامات · رتب · ردهة",
+      ar: "اهتمامات · أدوار · ردهة",
     },
   },
   {
@@ -181,7 +181,7 @@ export const faqs = [
     answer: {
       en: "A place for friends and communities to talk: servers with text and voice channels, screen sharing, files, roles and member management. It runs in your browser, in Arabic, German and English.",
       de: "Ein Ort, an dem Freunde und Communitys miteinander reden: Server mit Text- und Sprachkanälen, Bildschirmfreigabe, Dateien, Rollen und Mitgliederverwaltung. Es läuft im Browser, auf Arabisch, Deutsch und Englisch.",
-      ar: "مكان يتحدث فيه الأصدقاء والمجتمعات: سيرفرات بقنوات نصية وصوتية، ومشاركة الشاشة والملفات، ورتب وإدارة للأعضاء. يعمل من المتصفح، بالعربية والألمانية والإنجليزية.",
+      ar: "مكان يتحدث فيه الأصدقاء والمجتمعات: سيرفرات بقنوات نصية وصوتية، ومشاركة الشاشة والملفات، وأدوار وإدارة للأعضاء. يعمل من المتصفح، بالعربية والألمانية والإنجليزية.",
     },
   },
   {
@@ -251,9 +251,9 @@ const en = {
   themeDark: "Switch to dark theme",
   top: "Back to top",
 
-  heroTitle: "Where voices gather",
+  heroTitle: "Your people. Your place.",
   heroBody:
-    "An open-source group chat platform for friends and communities. Create your server and invite your friends in a minute.",
+    "A place for the conversations that bring you together. Chat, jump into voice and share the moment — in a community that feels like yours.",
   heroFacts: "Free. In your browser. Nothing to install.",
   flockName: "Zrzur",
 
@@ -446,9 +446,9 @@ const de: Labels = {
   themeDark: "Zum dunklen Design wechseln",
   top: "Nach oben",
 
-  heroTitle: "Wo Stimmen zusammenkommen",
+  heroTitle: "Deine Leute. Dein Ort.",
   heroBody:
-    "Eine Open-Source-Gruppenchat-Plattform für Freunde und Communities. Erstelle deinen Server und lade deine Freunde in einer Minute ein.",
+    "Ein Ort für alles, was euch verbindet. Schreiben, im Sprachkanal zusammenkommen und den Moment teilen — in einer Community, die sich nach euch anfühlt.",
   heroFacts: "Kostenlos. Im Browser. Nichts zu installieren.",
   flockName: "Zrzur",
 
@@ -639,10 +639,10 @@ const ar: Labels = {
   themeDark: "تفعيل المظهر الداكن",
   top: "العودة إلى الأعلى",
 
-  heroTitle: "حيث تجتمع الأصوات",
+  heroTitle: "رفاقك. مكانك.",
   heroBody:
-    "منصة دردشة جماعية مفتوحة المصدر للأصدقاء والمجتمعات. أنشئ سيرفرك وادعُ أصدقاءك خلال دقيقة.",
-  heroFacts: "مجاني. يعمل في المتصفح. لا شيء لتثبيته.",
+    "مكان للأحاديث التي تجمعكم. تحادثوا، وانضموا إلى قناة صوتية، وشاركوا اللحظة، في مجتمع تشعرون أنه لكم.",
+  heroFacts: "مجاني. يعمل في المتصفح. لا حاجة إلى التثبيت.",
   flockName: "زرزور",
 
   demoAlt: "معاينة حيّة لقناة الدردشة في سيرفر على زرزور",
@@ -677,7 +677,7 @@ const ar: Labels = {
   tourLabel: "شاشات من زرزور",
   tabLobby: "الردهة",
   tabChat: "الرسائل",
-  tabRoles: "الرتب",
+  tabRoles: "الأدوار",
   tabInterests: "الاهتمامات",
   tabDiscover: "اكتشف",
   lobbyBody:
@@ -687,10 +687,10 @@ const ar: Labels = {
     "تصل الرسائل لحظة إرسالها. ردّ وتفاعل وشارك الصور والملفات، واذكر من يجب أن يراها.",
   chatAlt: "رسائل في قناة نصية في زرزور",
   commBody:
-    "قنوات وفئات لكل موضوع، ورتب تحدّد من يرى ماذا، وأدوات إشراف حين يكبر المجتمع.",
-  commAlt: "إعدادات السيرفر في زرزور مع قائمة رتبه",
+    "قنوات وفئات لكل موضوع، وأدوار تحدّد من يرى ماذا، وأدوات إشراف حين يكبر المجتمع.",
+  commAlt: "إعدادات السيرفر في زرزور مع قائمة أدواره",
   rolesBody:
-    "عند الزيارة الأولى يختار العضو اهتماماته ويحصل على رتبها فورًا. ويمكنه تخطّي ذلك وتغييره لاحقًا من قائمة السيرفر.",
+    "عند الزيارة الأولى يختار العضو اهتماماته ويحصل على أدوارها فورًا. ويمكنه تخطّي ذلك وتغييره لاحقًا من قائمة السيرفر.",
   rolesAlt: "نافذة اختيار الاهتمامات عند الانضمام إلى سيرفر",
   discoverBody:
     "تصفّح السيرفرات العامة حسب الموضوع أو ابحث بالاسم والوسم، واطّلع على ما يدور في كلٍّ منها ولغته، وانضم بنقرة.",
@@ -743,7 +743,7 @@ const ar: Labels = {
 
   featuresTitle: "كل ما يجمع\nأصدقاءك ومجتمعك.",
   featuresBody:
-    "محادثات منظّمة، وقنوات صوتية ومشاركة للشاشة، وملفات مشتركة، ورتب وصلاحيات واضحة، في تطبيق واحد.",
+    "محادثات منظّمة، وقنوات صوتية ومشاركة للشاشة، وملفات مشتركة، وأدوار وصلاحيات واضحة، في تطبيق واحد.",
 
   projectTitle: "طائر لا يعيش وحده.",
   projectBody:
@@ -771,7 +771,7 @@ const ar: Labels = {
     "تبقى رخصة AGPL وتراخيص المكوّنات الأخرى سارية، وكذلك إشعارات حقوق النشر وحقوق المساهمين والتزامات إتاحة المصدر. لا ننسب إلى زرزور تأليف الشيفرة الأصلية للمشروع.",
   storyNote: "نحافظ على تاريخ المشروع وتراخيصه وحقوق المساهمين فيه.",
 
-  downloadTitle: "لا شيء لتنزيله.",
+  downloadTitle: "لا حاجة إلى التنزيل.",
   downloadBody:
     "يعمل زرزور في أي متصفح حديث، على الكمبيوتر والهاتف. افتحه وابدأ، بأحدث إصدار دائمًا.",
   trustTitle: "ابقَ آمنًا",
@@ -789,7 +789,7 @@ const ar: Labels = {
     "انضم إلى سيرفر برابط دعوة، أو ابحث عن سيرفر عام في «اكتشف»، أو أنشئ سيرفرًا لأصدقائك.",
   step3: "لكل موضوع مكانه",
   step3Body:
-    "أنشئ قنوات نصية وصوتية، واجمعها في فئات، ثم حدّد رتب الأعضاء وصلاحياتهم.",
+    "أنشئ قنوات نصية وصوتية، واجمعها في فئات، ثم حدّد أدوار الأعضاء وصلاحياتهم.",
   step4: "اجعله مكانك",
   step4Body:
     "أكمل ملفك الشخصي، واختر المظهر واللغة، واضبط الإشعارات من الإعدادات.",

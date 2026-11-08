@@ -25,6 +25,18 @@ export function validatePublicUrl(value: string | undefined): string | null {
   }
 }
 
+/** Explicit loopback destinations are allowed only in a local preview. */
+export function resolvePreviewUrl(host: string, configured: string | undefined): string | null {
+  const publicUrl = validatePublicUrl(configured);
+  if (publicUrl) return publicUrl;
+  if (!["localhost", "127.0.0.1", "[::1]"].includes(host) || !configured) return null;
+  try {
+    const url = new URL(configured);
+    return url.protocol === "http:" && !url.username && !url.password &&
+      ["localhost", "127.0.0.1", "[::1]"].includes(url.hostname) ? url.href : null;
+  } catch { return null; }
+}
+
 export function resolveAppUrl(
   host: string,
   configured: string | undefined,
@@ -32,7 +44,7 @@ export function resolveAppUrl(
   // Local previews may open the already-verified local web client. Production
   // has no loopback or upstream fallback and requires an approved Zrzur URL.
   return (
-    validatePublicUrl(configured) ||
+    resolvePreviewUrl(host, configured) ||
     (["localhost", "127.0.0.1", "[::1]"].includes(host)
       ? "http://127.0.0.1:14707/"
       : null)

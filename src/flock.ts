@@ -13,7 +13,7 @@
  */
 
 const STEP_MS = 1000 / 60;
-const HOLD_MS = 4200;
+const HOLD_MS = 6200;
 const TAU = Math.PI * 2;
 
 type Stage = { el: HTMLElement; box: DOMRect };
@@ -132,6 +132,7 @@ export function startFlock(canvas: HTMLCanvasElement): Flock {
   let idle = 0;
   let sweep = -1;
   let nextSweep = 300;
+  let sweepRtl = false;
   let measured = 0;
   let scale = 3;
   let seen = false;
@@ -264,8 +265,18 @@ export function startFlock(canvas: HTMLCanvasElement): Flock {
     if (!active) return;
     const kind = active.el.dataset.flock;
     shape = kind === "word" ? wordOf(active) : null;
-    // birds nearest the start leave first, so the flock pours in as one stream
-    for (let i = 0; i < count; i++) wait[i] = still ? 0 : seed[i] * (kind === "word" ? 16 : 8);
+    if (shape) sortForShape(shape);
+    // the word is written the way the page reads: birds bound for the start
+    // of the line (the right in Arabic) leave first
+    const rtl = readsRtl();
+    const w = active.box.width || 1;
+    for (let i = 0; i < count; i++) {
+      if (still) wait[i] = 0;
+      else if (shape) {
+        const u = Math.min(1, Math.max(0, shape.xs[order[i]] / w));
+        wait[i] = (rtl ? 1 - u : u) * 22 + seed[i] * 6;
+      } else wait[i] = seed[i] * 8;
+    }
     if (travelled && !still) {
       // anyone far off screen comes back in from the nearest edge in one go
       for (let i = 0; i < count; i++) {
@@ -273,8 +284,12 @@ export function startFlock(canvas: HTMLCanvasElement): Flock {
         else if (py[i] > height * 1.6) py[i] = height + 30 + seed[i] * 160;
       }
     }
-    if (shape) sortForShape(shape);
     if (still) settle();
+  }
+
+  /** The page's reading direction, read each time: the language can change */
+  function readsRtl() {
+    return getComputedStyle(document.documentElement).direction === "rtl";
   }
 
   /** Pairs birds and points by position so the streams do not cross */
@@ -322,7 +337,9 @@ export function startFlock(canvas: HTMLCanvasElement): Flock {
       x += Math.sin(clock * 0.05 + seed[i] * 40) * 1.3;
       y += Math.cos(clock * 0.043 + seed[i] * 30) * 1.3;
       if (sweep >= 0) {
-        const off = (x - box.left - sweep * box.width) / (box.width * 0.09);
+        // the wave runs with the reading direction: right to left in Arabic
+        const along = sweepRtl ? 1 - sweep : sweep;
+        const off = (x - box.left - along * box.width) / (box.width * 0.09);
         y -= Math.exp(-off * off) * box.height * 0.1;
       }
     }
@@ -351,7 +368,10 @@ export function startFlock(canvas: HTMLCanvasElement): Flock {
           }
         }
         nextSweep -= dt;
-        if (nextSweep <= 0 && sweep < 0) sweep = 0;
+        if (nextSweep <= 0 && sweep < 0) {
+          sweep = 0;
+          sweepRtl = readsRtl();
+        }
         if (sweep >= 0) {
           sweep += 0.0075 * dt;
           if (sweep > 1) {
@@ -411,6 +431,8 @@ export function startFlock(canvas: HTMLCanvasElement): Flock {
 
   function draw() {
     ctx.clearRect(0, 0, width, height);
+    if (!active) return;
+    // Stages guide the formation, but never clip birds travelling across the page.
     // birds shrink when the flock has a small box to fill
     const wanted = active ? birdSize(active) : 3;
     scale += (wanted - scale) * 0.05;

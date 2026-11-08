@@ -1,3 +1,5 @@
+import { createHash } from 'node:crypto';
+import { readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import solid from 'vite-plugin-solid';
@@ -17,8 +19,23 @@ export const noticeExtras = [
   { name: 'IBM Plex Sans (font)', dir: assets, files: ['Plex-Latin-LICENSE.txt'], license: 'OFL-1.1', source: 'https://github.com/IBM/plex' },
 ];
 
+/**
+ * A short content hash per product picture. The pictures keep fixed names in
+ * public/, so their addresses carry ?v=<hash>: a new capture is a new address,
+ * and no browser or CDN cache can keep showing the old one.
+ */
+const productDir = `${assets}/product`;
+export const productVersions = Object.fromEntries(
+  readdirSync(productDir)
+    .filter((name) => name.endsWith('.jpg'))
+    .map((name) => [name, createHash('sha256').update(readFileSync(`${productDir}/${name}`)).digest('hex').slice(0, 10)]),
+);
+
 export default defineConfig({
-  define: { __ZRZUR_BUILD__: buildDefine(releaseInfo, 'website') },
+  define: {
+    __ZRZUR_BUILD__: buildDefine(releaseInfo, 'website'),
+    __PRODUCT_VERSIONS__: JSON.stringify(productVersions),
+  },
   plugins: [solid(), thirdPartyNotices({ productName: 'Zrzur website', extras: noticeExtras })],
   server: { host: '127.0.0.1', port: 14826, strictPort: true },
   preview: { host: '127.0.0.1', port: 14826, strictPort: true },
