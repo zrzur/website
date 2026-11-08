@@ -21,6 +21,11 @@ SIGNATURES = [
 # (path, kind) pairs reviewed as synthetic test inputs, e.g. a fake key a test proves is refused
 REVIEWED_SIGNATURE_EXCEPTIONS = set()
 REVIEWED_LICENSE_LINKS = {'crates/bonfire/LICENSE', 'crates/delta/LICENSE'}
+# Content folders (one prefix per line in scripts/publication_content.txt, optional):
+# files there are still checked for forbidden names, size and secret signatures,
+# but are not pinned in the manifest, so writers can add posts without a code review.
+CONTENT_LIST = ROOT / 'scripts' / 'publication_content.txt'
+CONTENT_PREFIXES = tuple(line.strip() for line in CONTENT_LIST.read_text(encoding='utf-8').splitlines() if line.strip() and not line.startswith('#')) if CONTENT_LIST.exists() else ()
 
 def category(name):
     if name.startswith(('.github/', 'scripts/', '.mise/')): return 'reviewed-build-and-ci'
@@ -71,6 +76,7 @@ def collect():
         if len(data) > 10 * 1024 * 1024: errors.append((name, 'oversized-file-needs-review')); continue
         for kind, pattern in SIGNATURES:
             if pattern.search(data) and (name, kind) not in REVIEWED_SIGNATURE_EXCEPTIONS: errors.append((name, kind))
+        if CONTENT_PREFIXES and name.startswith(CONTENT_PREFIXES) and name.endswith(('.md', '.jpg', '.jpeg', '.png', '.webp')): continue
         files.append({'path': name, 'sha256': hashlib.sha256(data).hexdigest(), 'bytes': len(data), 'category': category(name)})
     pins = [{'path': name, 'commit': oid} for name, mode, oid in entries if mode == '160000']
     if subprocess.call(['git', 'diff', '--quiet', '--ignore-submodules=all', '--', '.', ':!PUBLIC_SOURCE_MANIFEST.json'], cwd=ROOT):

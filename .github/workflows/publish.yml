@@ -1,0 +1,76 @@
+name: Publish the website
+# Every change on beta (a new blog post, a text, a page) is checked, built and
+# put on zrzur.com. Nothing reaches the site unless the guard, the tests and
+# the build pass; the live site stays as it is until then.
+#
+# The server key (secret ZRZUR_SITE_DEPLOY_KEY) can do one thing only: hand
+# the server a built site. The server side keeps the old site beside the new
+# one (/opt/zrzur/website.prev-<time>), so a bad publish is undone by moving
+# it back.
+on:
+  push:
+    branches: [beta]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: publish-website
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Check, build and publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Reviewed source files (blog posts are content, still scanned)
+        run: python3 scripts/publication_guard.py
+      - name: Secrets in the new commits
+        env:
+          BASE: ${{ github.event.before }}
+        run: |
+          range="HEAD~1..HEAD"
+          if ! git rev-parse -q --verify "HEAD~1" >/dev/null; then range="HEAD"; fi
+          if [ -n "$BASE" ] && git cat-file -e "$BASE^{commit}" 2>/dev/null; then range="$BASE..HEAD"; fi
+          docker run --rm -v "$PWD:/repo" ghcr.io/gitleaks/gitleaks:v8.21.2 \
+            git /repo --log-opts="$range" --redact --no-banner
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Build
+        env:
+          VITE_PUBLIC_APP_URL: https://app.zrzur.com
+          VITE_PUBLIC_API_URL: https://api.zrzur.com
+          VITE_PUBLIC_DISCOVER_URL: https://discover.zrzur.com
+        run: npm run build
+      - name: The build has every page and language
+        run: |
+          for page in index.html ar.html de.html blog.html ar/blog.html de/blog.html download.html blog/feed.xml ar/blog/feed.xml sitemap.xml; do
+            test -s "dist/$page" || { echo "missing dist/$page"; exit 1; }
+          done
+      - name: Hand the site to the server
+        env:
+          KEY: ${{ secrets.ZRZUR_SITE_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "$KEY" ]; then echo "The secret ZRZUR_SITE_DEPLOY_KEY is not set; nothing published."; exit 1; fi
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$KEY" > ~/.ssh/site_key
+          chmod 600 ~/.ssh/site_key
+          # the server's own public host key: anything else is refused
+          echo "176.100.37.233 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM4vx8U2EtWyJZIK0o8yPW0WKCr7H0fesHWgBodVcRbk" > ~/.ssh/known_hosts
+          tar -C dist -czf - . | ssh -i ~/.ssh/site_key -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes zrzur@176.100.37.233 publish
+      - name: The live site answers with this build
+        run: |
+          sleep 5
+          for path in / /ar /de /blog /ar/blog/feed.xml; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "https://zrzur.com$path")
+            echo "$path $code"
+            [ "$code" = "200" ] || exit 1
+          done

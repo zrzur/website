@@ -33,6 +33,12 @@
       "category": "reviewed-build-and-ci"
     },
     {
+      "path": ".github/workflows/publish.yml",
+      "sha256": "4a39568e26dfea16301fd5d137f1c383d8a44605d725bd81b22f1b67cb4081c0",
+      "bytes": 3168,
+      "category": "reviewed-build-and-ci"
+    },
+    {
       "path": ".gitignore",
       "sha256": "553fac3cb2caaa9c3a6894f13022cc3da9127fcc41638bba64cccd86f5479b0e",
       "bytes": 538,
@@ -124,8 +130,8 @@
     },
     {
       "path": "index.html",
-      "sha256": "c401111b4bc43ae2049fc5091308bc060d6edf297d3a93ad7bd34143fa6ced9e",
-      "bytes": 3581,
+      "sha256": "5811087ccc6664b63927f7a885f6de0fc4bdf3851ab044bde5f4519d5235b47d",
+      "bytes": 3802,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -136,14 +142,14 @@
     },
     {
       "path": "package.json",
-      "sha256": "f3c1f8ec7b22c1f152ac573da9d8c9d8e71f5f13e19994e90c76162ee3e55a17",
-      "bytes": 786,
+      "sha256": "9a4d014f185c2a3ad332765f5971f6f2d87570251776b143f0f6c29bdca6dce2",
+      "bytes": 926,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "public/apple-touch-icon.png",
-      "sha256": "7f13978417d5f26b10af2aef42cc02cfe02d603fbbd67a31a8824ed14cd8c095",
-      "bytes": 3681,
+      "sha256": "ce0a3dec6e024557fea94c112fe0699ef02bc2353458349f6feeeca61b45e42e",
+      "bytes": 2194,
       "category": "reviewed-product-asset"
     },
     {
@@ -280,14 +286,14 @@
     },
     {
       "path": "public/assets/product/ar-settings-dark.jpg",
-      "sha256": "d562ac8bde269a61ec52a4d8f0e25de702da4a7cde0403ffee910b0498ff0ec2",
-      "bytes": 57793,
+      "sha256": "786d3abc083ddf9e0042b3c4ede8c8f01c23adc94bac1aebeadf2c257dfbb1c7",
+      "bytes": 107667,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/ar-settings-light.jpg",
-      "sha256": "9575a639d3481b0453ffd02398d8561028593392292c535e3b17f8cdfe35bb22",
-      "bytes": 59241,
+      "sha256": "0196854748501d1928c59ac0f8434e6575c9e2d034c963bca038c41ab909e8fc",
+      "bytes": 108209,
       "category": "reviewed-product-asset"
     },
     {
@@ -364,14 +370,14 @@
     },
     {
       "path": "public/assets/product/de-settings-dark.jpg",
-      "sha256": "83c9ac8816d78377097fd166abdf4f21229468cfc0b534dd0cd33a8e74bca551",
-      "bytes": 66342,
+      "sha256": "653ae99608dc9cdafb99e49042386d7544a760a56b9af1b2a491d1a449a64bf0",
+      "bytes": 121428,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/de-settings-light.jpg",
-      "sha256": "1b8f567113e2fc0c86d704c620d351c413dd3f3807b08b0b7999c201fbe6361c",
-      "bytes": 68129,
+      "sha256": "136bcffbb01d91db4bcb6323a14c18438eed151b914690a94b627a8fb182f682",
+      "bytes": 122853,
       "category": "reviewed-product-asset"
     },
     {
@@ -448,14 +454,14 @@
     },
     {
       "path": "public/assets/product/en-settings-dark.jpg",
-      "sha256": "e0d83fad620c85054a88d5f28672a6b3d49e5c6be8aea0331f07d788b51aa5b3",
-      "bytes": 61535,
+      "sha256": "07e9f4c51f84ab0cd22bd41a19244bf39a93b2f301a1b2b8fe3c7fea814fcce8",
+      "bytes": 116130,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/product/en-settings-light.jpg",
-      "sha256": "3cf47849644e2731feb655b789432bb018d15ebbbc6ae211029cb791051a8df4",
-      "bytes": 62749,
+      "sha256": "7b4f841a07f1147dd7a33536d151072204e24a219a168dfc45f14106f71e3a4a",
+      "bytes": 116413,
       "category": "reviewed-product-asset"
     },
     {
@@ -466,56 +472,56 @@
     },
     {
       "path": "public/brand/favicon-16.png",
-      "sha256": "1f27250bac777ec573c557e0974748467aab0bc9c8b8bf9c5dc78e0cf3a8a2e6",
-      "bytes": 417,
+      "sha256": "f611e45817ef337ddc924bddcd0a16fa2831f78de3bddbeef473becd83fb0009",
+      "bytes": 269,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/brand/favicon-32.png",
-      "sha256": "330163f6feba7e69b5e6ae8dcea9ece57a82dcb662adb28f6e814378099dadbb",
-      "bytes": 737,
+      "sha256": "b10c6d16e46a27a40335fae8ab892e20ed142d0043c0646e111842e8d7e918ee",
+      "bytes": 461,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/brand/favicon.ico",
-      "sha256": "ce1cee670fe33e67010b32a1ceac95f0beda4668eb948650a17fbd2c2d49292b",
-      "bytes": 2367,
+      "sha256": "701fe23ed1b54e8f69dc4ab08580b03f0f98999fa4afeb62ea88ad1e953f80d2",
+      "bytes": 768,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/brand/favicon.svg",
-      "sha256": "8761242135b6e1906a96b16747ac536a141533f4ce33d52a33b4f3bae1c5792f",
-      "bytes": 811,
+      "sha256": "a43e826d75888c57aea042a1fa623bd44249dbf880f0d935700dd5be11dcaf60",
+      "bytes": 716,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/brand/icon-180.png",
-      "sha256": "7f13978417d5f26b10af2aef42cc02cfe02d603fbbd67a31a8824ed14cd8c095",
-      "bytes": 3681,
+      "sha256": "ce0a3dec6e024557fea94c112fe0699ef02bc2353458349f6feeeca61b45e42e",
+      "bytes": 2194,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/brand/icon-192.png",
-      "sha256": "c878eb25de23c589fc156a890617dd6b91b64e21afe6ca0a3fd00dbdbe501800",
-      "bytes": 3882,
+      "sha256": "11300ef845b45d6cff0a6ba659ab1ac206ec47a6f750d7f8e5041dbfb94565c8",
+      "bytes": 2317,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/brand/icon-512.png",
-      "sha256": "501570b9f2882c3fb4e94d414242a5815c3981e574053f3d4c5db1666d789bf2",
-      "bytes": 10352,
+      "sha256": "a6e0e2a160241589f6edcbe08e574052e47d22bc654cf6cf87d23080be97b27c",
+      "bytes": 11147,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/brand/maskable-192.png",
-      "sha256": "3366b6e2d0c758196dbd7b76d0e2d1bb471835a6d59b6e85404a7cd2c6d41342",
-      "bytes": 3129,
+      "sha256": "11300ef845b45d6cff0a6ba659ab1ac206ec47a6f750d7f8e5041dbfb94565c8",
+      "bytes": 2317,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/brand/maskable-512.png",
-      "sha256": "cef4fe62beae213855d3966229abd41654d37401569698abaea5cf1151617aa9",
-      "bytes": 8660,
+      "sha256": "a6e0e2a160241589f6edcbe08e574052e47d22bc654cf6cf87d23080be97b27c",
+      "bytes": 11147,
       "category": "reviewed-product-asset"
     },
     {
@@ -526,14 +532,14 @@
     },
     {
       "path": "public/favicon.ico",
-      "sha256": "ce1cee670fe33e67010b32a1ceac95f0beda4668eb948650a17fbd2c2d49292b",
-      "bytes": 2367,
+      "sha256": "701fe23ed1b54e8f69dc4ab08580b03f0f98999fa4afeb62ea88ad1e953f80d2",
+      "bytes": 768,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/icon-32.png",
-      "sha256": "330163f6feba7e69b5e6ae8dcea9ece57a82dcb662adb28f6e814378099dadbb",
-      "bytes": 737,
+      "sha256": "b10c6d16e46a27a40335fae8ab892e20ed142d0043c0646e111842e8d7e918ee",
+      "bytes": 461,
       "category": "reviewed-product-asset"
     },
     {
@@ -550,9 +556,15 @@
     },
     {
       "path": "public/sitemap.xml",
-      "sha256": "8e84e81e71dd17c41c803be6b49ddec2c62a0b73e1612c8dbedd545c850fa937",
-      "bytes": 24784,
+      "sha256": "2f3687324a0b722eb244c97c0b08dd12df0a79e26ca4c593164b6bde59325387",
+      "bytes": 27226,
       "category": "reviewed-product-asset"
+    },
+    {
+      "path": "scripts/blog-files.mjs",
+      "sha256": "0a34e2134ad79e5aa8595b53c26032f2f760ec5e2f97fdffd80250d399597222",
+      "bytes": 637,
+      "category": "reviewed-build-and-ci"
     },
     {
       "path": "scripts/generate-hugeicons.mjs",
@@ -562,8 +574,8 @@
     },
     {
       "path": "scripts/generate-sitemap.mjs",
-      "sha256": "d644cf7fb984a0ff4f344f63d76a3b66fc3a0dad67daa957c77ff908f8c1abff",
-      "bytes": 1470,
+      "sha256": "0cf10fe74553fb7b081659638b64ab6d7dc7983ac83a17e7a557e66b3bc6178c",
+      "bytes": 1603,
       "category": "reviewed-build-and-ci"
     },
     {
@@ -573,9 +585,27 @@
       "category": "reviewed-build-and-ci"
     },
     {
+      "path": "scripts/make-favicons.mjs",
+      "sha256": "029cd8949c2d8a3c28c6ad24f2192bcd23d6cf9569904d3a27c2bb97f0e13a3f",
+      "bytes": 3167,
+      "category": "reviewed-build-and-ci"
+    },
+    {
+      "path": "scripts/prerender.mjs",
+      "sha256": "bebd990ae197fb002884157e0bbf10f2adfee9d97d17d9cfaa7621e1f188c078",
+      "bytes": 11911,
+      "category": "reviewed-build-and-ci"
+    },
+    {
+      "path": "scripts/publication_content.txt",
+      "sha256": "f7751fec7d547169d2750f2b618ea35d7eaf5889e307fbef0412e38fd80b3e46",
+      "bytes": 195,
+      "category": "reviewed-build-and-ci"
+    },
+    {
       "path": "scripts/publication_guard.py",
-      "sha256": "013233534001c5179b26e7cad6b389d3badcddf9cd8fa5ce4d1f79d9cddb9a3e",
-      "bytes": 6663,
+      "sha256": "12590020ee41a31829aa3aabbb6239bda766cb618b2fc2b3e8132cf49a7dd70e",
+      "bytes": 7296,
       "category": "reviewed-build-and-ci"
     },
     {
@@ -610,8 +640,26 @@
     },
     {
       "path": "src/App.tsx",
-      "sha256": "59ad3cd0ff2b49e0a1362fb146a372f889fe40d2d0bb0a9617f6e0366609c7f3",
-      "bytes": 39050,
+      "sha256": "f0a279b23451a7af7dc5bc4cc0aa3f782914e2948d7c3ce0c258dc417eeb35ca",
+      "bytes": 51440,
+      "category": "product-source-or-build-manifest"
+    },
+    {
+      "path": "src/blog-md.ts",
+      "sha256": "cd224ae94cb3240485068c2fcf59656175c72964b8116d24de63b46d376e8fb0",
+      "bytes": 6275,
+      "category": "product-source-or-build-manifest"
+    },
+    {
+      "path": "src/blog-posts.ts",
+      "sha256": "09dfb93c57dcaf8867a88972435581028a015a7e78279543534fc41315160d99",
+      "bytes": 2500,
+      "category": "product-source-or-build-manifest"
+    },
+    {
+      "path": "src/blog.ts",
+      "sha256": "9882038728dc7a5dfb05c84223cbfaf3f992f0d4589833a78b6dd8587d93e524",
+      "bytes": 502,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -628,8 +676,8 @@
     },
     {
       "path": "src/content.ts",
-      "sha256": "89098d2bc1ee2e0c2cadc29dc6b6c22b6d869b63f0ffc2ca070d0529107a1fe4",
-      "bytes": 45207,
+      "sha256": "9f116f7ccf220e15379688ef1f418986d129d6b8404b59b28ab42aad5b9b0c85",
+      "bytes": 61485,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -640,8 +688,8 @@
     },
     {
       "path": "src/flock.ts",
-      "sha256": "206d6b2032acc8d9a38c9cb38266eca961f560527b7f79f4ed012e74e76c7115",
-      "bytes": 19526,
+      "sha256": "0e0356bb5394351c9c631f5c179d27868cecc0a055c9bf4c5d0592c99bb0ba51",
+      "bytes": 19678,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -682,8 +730,8 @@
     },
     {
       "path": "src/main.tsx",
-      "sha256": "1026555f918095706b1d3a98960b6f571a8c89545a77c1c05388066f5a2ee5c0",
-      "bytes": 166,
+      "sha256": "49e10550400e7b9d0e9b8992bb6b0bcfa52d177f51a8a18a32ff5a877e2d4bc6",
+      "bytes": 439,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -790,14 +838,20 @@
     },
     {
       "path": "src/site.css",
-      "sha256": "8008782d28f9fb2604a1bc62bf06ea7c7c2a440a922242f274405450879e1b69",
-      "bytes": 75498,
+      "sha256": "68f47485c54defb599b7edb286567796ad2dc068eba32f2465ed3a800dbf39d9",
+      "bytes": 111706,
       "category": "product-source-or-build-manifest"
     },
     {
+      "path": "test/blog.test.mjs",
+      "sha256": "ea68fb7b66b0badc79828e11758924aa6d6bffd65f4bbc14b9e90742a2222857",
+      "bytes": 2475,
+      "category": "synthetic-test-source-or-fixture"
+    },
+    {
       "path": "test/content.test.mjs",
-      "sha256": "b371797c02ac33d071b01f6a4ccf84644f587190e8cf1f4273c33353b228ab8a",
-      "bytes": 8864,
+      "sha256": "df4b62537ffee90510f5a5d3703eeaacc6533f8a9c483d44e72aa52ee999574d",
+      "bytes": 9882,
       "category": "synthetic-test-source-or-fixture"
     },
     {

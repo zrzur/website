@@ -9,6 +9,7 @@ import {
   lazy,
   onCleanup,
   onMount,
+  type JSX,
 } from "solid-js";
 import {
   faqs,
@@ -35,6 +36,35 @@ import {
 } from "./i18n";
 import { legalFooterLinks, legalSlugs } from "./legal-nav";
 import { Icon } from "./icon";
+import { posts, type Post } from "./blog";
+import type { Block, Inline } from "./blog-md";
+
+/**
+ * The desktop app on zrzur.com, for each system. The files are not in this
+ * repository: they are put on the server beside the site (`downloads/`), and
+ * each checksum is shown so people can check what they got. Sizes in MB (MiB).
+ */
+const DESKTOP_VERSION = "26.0.0-dev";
+const DESKTOP_DOWNLOADS = {
+  windows: [
+    { url: "/downloads/Zrzur-win32-x64-26.0.0-dev.zip", sha256: "c96edb891bb3f118394ad969f24c0133d769571535f3130075b206b28ca2a6dd", size: 151, label: "dlWindowsZip" },
+  ],
+  mac: [
+    { url: "/downloads/Zrzur-darwin-arm64-26.0.0-dev.zip", sha256: "cefd382bd5c96675012237382412f85e33786ba2242107f9920ffadc1c92b3be", size: 121, label: "dlMacArm" },
+    { url: "/downloads/Zrzur-darwin-x64-26.0.0-dev.zip", sha256: "1bd59d7ff0582aad14ca674647464f5f3ed256a0a3381b5e4c2ad4a29777c1e9", size: 126, label: "dlMacIntel" },
+  ],
+  linux: [
+    { url: "/downloads/Zrzur-linux-x64-26.0.0-dev.zip", sha256: "8225370e7b2e8465352cd53977538d9cc8c250202b127e06b9e8a8ccf518c6a1", size: 118, label: "dlLinuxZip" },
+  ],
+} as const;
+type DesktopSystem = keyof typeof DESKTOP_DOWNLOADS;
+/** The visitor's own system, read once from the browser (Windows when unsure) */
+function visitorSystem(): DesktopSystem {
+  const agent = typeof navigator === "undefined" ? "" : navigator.userAgent;
+  if (/Mac OS X|Macintosh/.test(agent) && !/iPhone|iPad/.test(agent)) return "mac";
+  if (/Linux|X11/.test(agent) && !/Android/.test(agent)) return "linux";
+  return "windows";
+}
 
 /** Content hash per product picture, from vite.config.ts (missing in tests) */
 declare const __PRODUCT_VERSIONS__: Record<string, string> | undefined;
@@ -47,15 +77,23 @@ type Page =
   | "project"
   | "download"
   | "guide"
+  | "blog"
   | "legal"
   | "report"
   | "404";
+/** The post a /blog/<slug> path names, undefined for the list, null for no such post */
+const postForPath = (path: string) => {
+  const slug = path.replace(/\/$/, "").split("/")[2];
+  if (!slug) return undefined;
+  return posts.find((entry) => entry.slug === slug) ?? null;
+};
 const pageForPath = (path: string): Page => {
   if (
     path === "/legal" ||
     legalSlugs.some((slug) => path === `/legal/${slug}`)
   )
     return "legal";
+  if (/^\/blog(\/[a-z0-9-]+)?\/?$/.test(path) && postForPath(path) !== null) return "blog";
   const clean = path.replace(/\.html$/, "").replace(/\/$/, "") || "/";
   return (
     (
@@ -82,7 +120,7 @@ const LegalPage = lazy(() => import("./legal-page"));
 const ReportPage = lazy(() => import("./report"));
 
 /** The pages where the flock flies; legal and report pages stay quiet */
-const FLOCK_PAGES: readonly Page[] = ["home", "features", "project", "guide", "download", "404"];
+const FLOCK_PAGES: readonly Page[] = ["home", "features", "project", "guide", "download", "blog", "404"];
 
 const TOUR = [
   { id: "lobby", label: "tabLobby", body: "lobbyBody" },
@@ -95,6 +133,7 @@ const TOUR = [
 export default function App() {
   const { language: urlLanguage, path } = splitLocale(location.pathname);
   const page = pageForPath(path);
+  const post = page === "blog" ? postForPath(path) : null;
   const [language, setLanguageSignal] = createSignal<Language>(
     detectLanguage(location.pathname, readSavedLanguage(), navigator.languages ?? []),
   );
@@ -131,6 +170,8 @@ export default function App() {
     { page: "features", href: "/features", label: "features" },
     { page: "project", href: "/project", label: "project" },
     { page: "guide", href: "/guide", label: "help" },
+    { page: "download", href: "/download", label: "navDownload" },
+    { page: "blog", href: "/blog", label: "blog" },
   ] as const;
 
   // language, direction, titles, canonical and alternates for every page
@@ -145,13 +186,16 @@ export default function App() {
         ? t("legalTitle")
         : page === "report"
           ? reportText[code].title
-        : page === "home"
-          ? t("heroTitle")
-          : t(({ features: "features", project: "project", download: "downloadTitle", guide: "help", "404": "notFound" } as const)[page]);
-    document.title = `${title} — ${t("brand")}`;
-    const description = page === "report" ? reportText[code].intro : t(
-      ({ home: "heroBody", features: "featuresBody", project: "projectBody", download: "downloadBody", guide: "helpBody", "404": "notFoundBody", legal: "legalIntro" } as const)[page],
-    );
+        : page === "blog"
+          ? (post ? post.text[code].title : t("blog"))
+          : t(({ features: "features", project: "project", download: "downloadTitle", guide: "help", "404": "notFound" } as const)[page as "features"]);
+    document.title = page === "home" ? t("seoHomeTitle") : `${title} — ${t("brand")}`;
+    const description =
+      page === "report"
+        ? reportText[code].intro
+        : page === "blog"
+          ? (post ? post.text[code].summary : t("blogBody"))
+          : t(({ home: "seoHomeBody", features: "featuresBody", project: "projectBody", download: "downloadBody", guide: "helpBody", "404": "notFoundBody", legal: "legalIntro" } as const)[page as "home"]);
     const meta = (selector: string, value: string) =>
       document.querySelector(selector)?.setAttribute("content", value);
     meta('meta[name="description"]', description);
@@ -467,59 +511,102 @@ export default function App() {
       </figure>
     );
   }
-  /** Tabs built like the app's own channel list: pick a place, see that screen */
-  function Tour() {
-    const scenes = features.filter((feature): feature is Extract<(typeof features)[number], { view: View }> =>
-      ["channels", "sharing", "roles", "interests", "discover"].includes(feature.id),
-    );
-    const alt = { lobby: "lobbyAlt", chat: "chatAlt", settings: "commAlt", roles: "rolesAlt", discover: "discoverAlt" } as const;
-    // the tour's own words: a tab name, a short title and the screen's line
-    const tab = { lobby: "tabLobby", chat: "tabChat", settings: "tabRoles", roles: "tabInterests", discover: "tabDiscover" } as const;
-    const line = { lobby: "lobbyBody", chat: "chatBody", settings: "commBody", roles: "rolesBody", discover: "discoverBody" } as const;
-    const title = { lobby: "tourLobbyTitle", chat: "tourChatTitle", settings: "tourRolesTitle" } as const;
+  function Languages() {
+    const phones = () =>
+      [...LOCALES].sort((a, b) => Number(b.code === language()) - Number(a.code === language()));
+    const altOf = { ar: "langAltAr", en: "langAltEn", de: "langAltDe" } as const;
     return (
-      <div class="product-stories" id="tour">
-        <header class="container tour-intro" data-rise>
-          <p class="eyebrow">{t("tourEyebrow")}</p>
-          <h2>{t("tourTitle")}</h2>
-          <p>{t("tourBody")}</p>
-        </header>
-        <For each={scenes}>
-          {(feature, index) => (
-            <section class={`story-card ${index() % 2 ? "story-reverse" : ""}`} aria-labelledby={`story-${feature.id}`}>
-              <div class="story-copy" data-rise>
-                <span class="eyebrow story-number">0{index() + 1} · {t(tab[feature.view])}</span>
-                <h3 id={`story-${feature.id}`}>
-                  {feature.view in title ? t(title[feature.view as keyof typeof title]) : l(feature.title)}
-                </h3>
-                <p>{t(line[feature.view])}</p>
-              </div>
-              <div class={`story-media story-media-${feature.view}`} data-rise>
-                <Shot view={feature.view} alt={alt[feature.view]} />
-              </div>
-            </section>
-          )}
-        </For>
-      </div>
+      <section class="languages home-screen" id="languages" aria-labelledby="languages-title">
+        <div class="container languages-grid">
+          <div class="languages-copy" data-rise>
+            <h2 id="languages-title">{t("langTitle")}</h2>
+            <p>{t("langBody")}</p>
+          </div>
+          {/* the flock greets in each language, one after another */}
+          <div class="flock-stage home-greet" data-flock="word" data-words="أهلًا|Hello|Hallo" aria-hidden="true" />
+          <div class="languages-phones" data-rise>
+            <For each={phones()}>
+              {(locale) => <Shot view="chat" alt={altOf[locale.code]} phone in={locale.code} />}
+            </For>
+          </div>
+        </div>
+      </section>
     );
   }
-  function Voice() {
+  function CTA() {
     return (
-      <section class="voice" id="voice" aria-labelledby="voice-title">
-        <div class="voice-content">
-          <div class="voice-head" data-rise>
-            <p class="eyebrow">{t("voiceEyebrow")}</p>
-            <h2 id="voice-title">{t("voiceTitle")}</h2>
-            <p>{t("voiceBody")}</p>
+      <section class="home-screen home-start" aria-labelledby="closing-title">
+        <div class="container">
+          <div class="home-end" data-rise>
+            <div class="home-light home-light-end" aria-hidden="true" />
+            <span class="home-end-mark brand-symbol" aria-hidden="true" />
+            <h2 id="closing-title">{t("endTitle")}</h2>
+            <p>{t("startBody")}</p>
+            <div class="home-actions">
+              <AppAction arrow={false} />
+              <a class="button button-soft" href={href("/download")}>
+                <Icon name="download" />
+                {t("downloadApp")}
+              </a>
+            </div>
           </div>
-          <ul class="voice-points" data-rise>
-            <For each={["voiceP1", "voiceP2", "voiceP3"] as const}>
-              {(point) => <li>{t(point)}</li>}
-            </For>
-          </ul>
         </div>
-        <VoiceCall />
       </section>
+    );
+  }
+  /** A short list of what a service does: a name and one line each */
+  function Points(props: { items: Label[]; class: string; body?: (key: Label) => Label }) {
+    const body = (key: Label) => (props.body ? props.body(key) : (`${key}Body` as Label));
+    return (
+      <dl class={props.class}>
+        <For each={props.items}>
+          {(key) => (
+            <div>
+              <dt>{t(key)}</dt>
+              <dd>{t(body(key))}</dd>
+            </div>
+          )}
+        </For>
+      </dl>
+    );
+  }
+  /** One service in its own large panel: the words on one side, the real screen on the other */
+  function Chapter(props: { id: string; title: string; body: string; points?: Label[]; flip?: boolean; phone?: boolean; children: JSX.Element }) {
+    return (
+      <section class="home-screen" id={props.id} aria-labelledby={`${props.id}-title`}>
+        {/* the words in their box at the start side, the picture large and free beside it:
+            in Arabic the box is on the right and the picture on the left, in English the reverse */}
+        <div classList={{ "home-row": true, "home-with-phone": !!props.phone }} data-rise>
+          <div class="home-copy home-card">
+            <h2 id={`${props.id}-title`}>{props.title}</h2>
+            <p>{props.body}</p>
+            <Show when={props.points}>{(points) => <Points class="home-points" items={points()} />}</Show>
+          </div>
+          <div classList={{ "home-media": true, "home-phone-frame": !!props.phone }}>{props.children}</div>
+        </div>
+      </section>
+    );
+  }
+  /** The four things you do on Zrzur, moving across the page; still when motion is reduced */
+  function Band() {
+    const words = ["band1", "band2", "band3", "band4"] as const;
+    const run = () => (
+      <For each={[...words, ...words]}>
+        {(word) => (
+          <>
+            <span>{t(word)}</span>
+            <span class="band-mark brand-symbol" aria-hidden="true" />
+          </>
+        )}
+      </For>
+    );
+    return (
+      <div class="home-band" aria-hidden="true">
+        <div class="home-band-track">
+          <div class="home-band-run">{run()}</div>
+          <div class="home-band-run">{run()}</div>
+        </div>
+      </div>
     );
   }
   /**
@@ -536,19 +623,18 @@ export default function App() {
     return (
       <figure
         class="voice-call"
-        data-rise
         role="img"
-        aria-label={`${t("demoLounge")} · ${t("voiceConnected")} · ${t("demoPeople1")} ${t("voiceSharing")}`}
+        aria-label={`${t("demoLounge")}, ${t("voiceConnected")}, ${t("demoPeople1")} ${t("voiceSharing")}`}
       >
         <div class="call-bar" aria-hidden="true">
           <Icon name="headphones" />
           <strong>{t("demoLounge")}</strong>
-          <span>· {t("voiceConnected")}</span>
+          <span>{t("voiceConnected")}</span>
           <span class="call-live"><span class="live-dot" />{t("voiceLive")}</span>
         </div>
         <div class="call-screen" aria-hidden="true">
           <Shot view="lobby" alt="lobbyAlt" />
-          <span class="hero-chip call-sharing">{t("demoPeople1")} · {t("voiceSharing")}</span>
+          <span class="hero-chip call-sharing">{t("demoPeople1")}: {t("voiceSharing")}</span>
         </div>
         <div class="call-people" aria-hidden="true">
           <For each={people}>
@@ -570,118 +656,99 @@ export default function App() {
       </figure>
     );
   }
-  function Languages() {
-    const phones = () =>
-      [...LOCALES].sort((a, b) => Number(b.code === language()) - Number(a.code === language()));
-    const altOf = { ar: "langAltAr", en: "langAltEn", de: "langAltDe" } as const;
-    return (
-      <section class="languages" id="languages" aria-labelledby="languages-title">
-        <div class="container languages-grid">
-          <div class="languages-copy" data-rise>
-            <p class="eyebrow">{t("langEyebrow")}</p>
-            <h2 id="languages-title">{t("langTitle")}</h2>
-            <p>{t("langBody")}</p>
-          </div>
-          <div class="languages-phones" data-rise>
-            <For each={phones()}>
-              {(locale) => <Shot view="chat" alt={altOf[locale.code]} phone in={locale.code} />}
-            </For>
-          </div>
-        </div>
-      </section>
-    );
-  }
-  function Open() {
-    return (
-      <section class="open" id="open-source" aria-labelledby="open-title">
-        <div class="container open-grid">
-          <div class="open-head" data-rise>
-            <p class="eyebrow">{t("openEyebrow")}</p>
-            <h2 id="open-title">{t("openTitle")}</h2>
-            <p>{t("openBody")}</p>
-          </div>
-          <ol class="open-cards" data-rise>
-            <For each={["openP1", "openP2", "openP3"] as const}>
-              {(point, index) => (
-                <li>
-                  <span class="eyebrow">0{index() + 1}</span>
-                  <strong>{t(point)}</strong>
-                </li>
-              )}
-            </For>
-          </ol>
-          <a class="text-link" href={SOURCE_URL} target="_blank" rel="noopener noreferrer">
-            {t("source")}
-            <Icon name="arrow" class="directional" />
-          </a>
-        </div>
-      </section>
-    );
-  }
-  function CTA() {
-    return (
-      <section class="closing container" aria-labelledby="closing-title">
-        <div class="closing-flock" aria-hidden="true">{t("flockName")}</div>
-        <div class="closing-copy" data-rise>
-          <h2 id="closing-title">{t("ctaTitle")}</h2>
-          <p>{t("ctaBody")}</p>
-        </div>
-        <AppAction />
-      </section>
-    );
-  }
   function Home() {
     return (
       <>
-        <section class="hero" aria-labelledby="hero-title">
-          <div class="container hero-grid">
-            <div class="hero-copy">
-              <p class="eyebrow">{t("heroEyebrow")}</p>
+        {/* the first screen: the headline, its line and the two buttons on the
+            start side, the flock writing the name beside them on the end side,
+            and the real window under both */}
+        <section class="home-hero" aria-labelledby="hero-title">
+          <div class="home-light" aria-hidden="true" />
+          <div class="container home-hero-top">
+            <div class="home-hero-words">
               <h1 id="hero-title">{t("heroTitle")}</h1>
-              <p class="hero-lead">{t("heroBody")}</p>
-              <div class="hero-action">
-                <AppAction />
-                <a class="button button-outline" href="#tour">{t("explore")}</a>
-                <p>{t("heroFacts")}</p>
+              <p>{t("heroBody")}</p>
+              <div class="home-actions">
+                <AppAction arrow={false} />
+                <a class="button button-soft" href={href("/download")}>
+                  <Icon name="download" />
+                  {t("downloadApp")}
+                </a>
               </div>
             </div>
-            <div class="hero-media">
-              <div class="flock-stage hero-stage" data-flock="word" data-words={t("flockName")} aria-hidden="true" />
-              <div class="hero-frame">
-                <Shot view="chat" alt="chatAlt" eager />
-                <span class="hero-chip hero-chip-share">
-                  <Icon name="monitor" />
-                  {t("demoPeople1")} · {t("voiceSharing")}
-                </span>
-                <span class="hero-chip hero-chip-room">
-                  <span class="live-dot" aria-hidden="true" />
-                  {t("demoLounge")} · {t("voiceConnected")}
-                </span>
+            <div class="flock-stage hero-stage" data-flock="word" data-words={t("flockName")} aria-hidden="true" />
+          </div>
+          <div class="container home-window" id="tour">
+            <div class="home-window-frame">
+              <Shot view="chat" alt="chatAlt" eager />
+            </div>
+          </div>
+        </section>
+        <Band />
+        {/* three main services only, with room between them */}
+        <Chapter id="servers" title={t("serversTitle")} body={t("serversBody")} points={["serversP1", "serversP2", "serversP3"]}>
+          <Shot view="lobby" alt="lobbyAlt" />
+        </Chapter>
+        <section class="home-screen home-voice" id="voice" aria-labelledby="voice-title">
+          {/* the flock leaves the name and becomes the sound of the call */}
+          <div class="flock-stage voice-stage home-wave" data-flock="wave" data-tone="voice" aria-hidden="true" />
+          <div class="home-row" data-rise>
+            <div class="home-copy home-card">
+              <h2 id="voice-title">{t("voiceTitle")}</h2>
+              <p>{t("voiceBody")}</p>
+              <Points class="home-points" items={["voiceP1", "voiceP2", "voiceP3"]} />
+            </div>
+            <div class="home-media"><VoiceCall /></div>
+          </div>
+        </section>
+        <Chapter id="roles" title={l(features[3].title)} body={l(features[3].body)} points={["rolesP1", "rolesP2", "rolesP3"]}>
+          <Shot view="settings" alt="commAlt" />
+        </Chapter>
+        <Languages />
+        {/* the reasons, each a title and one line */}
+        <section class="home-screen home-why" id="why" aria-labelledby="why-title">
+          <div class="container">
+            <h2 id="why-title" data-rise>{t("whyTitle")}</h2>
+            <div class="home-why-grid" data-rise>
+              <For each={["why1", "why2", "why3", "why4"] as const}>
+                {(key) => (
+                  <article>
+                    <h3>{t(key)}</h3>
+                    <p>{t(`${key}Body` as Label)}</p>
+                  </article>
+                )}
+              </For>
+            </div>
+            <a class="text-link home-why-link" href={SOURCE_URL} target="_blank" rel="noopener noreferrer">
+              {t("homeOpenSource")}
+              <Icon name="arrow" class="directional" />
+            </a>
+          </div>
+        </section>
+        <section class="home-screen home-faq" id="faq" aria-labelledby="faq-title">
+          <div class="container home-faq-grid">
+            <h2 id="faq-title" data-rise>{t("faqTitle")}</h2>
+            <FAQ />
+          </div>
+        </section>
+        {/* the invitation: the logo, one line, the two ways to start */}
+        <section class="home-screen home-start" aria-labelledby="start-title">
+          <div class="container">
+            <div class="home-end" data-rise>
+              <div class="home-light home-light-end" aria-hidden="true" />
+              <span class="home-end-mark brand-symbol" aria-hidden="true" />
+              <h2 id="start-title">{t("endTitle")}</h2>
+              <p>{t("startBody")}</p>
+              <div class="home-actions">
+                <AppAction arrow={false} />
+                <a class="button button-soft" href={href("/download")}>
+                  <Icon name="download" />
+                  {t("downloadApp")}
+                </a>
               </div>
             </div>
           </div>
         </section>
-        <section class="facts" aria-label={t("factsLabel")}>
-          <ul class="container facts-list">
-            <For each={[1, 2, 3, 4] as const}>
-              {(n) => (
-                <li>
-                  <strong>{t(`fact${n}Title`)}</strong>
-                  <span>{t(`fact${n}Body`)}</span>
-                </li>
-              )}
-            </For>
-          </ul>
-        </section>
-        <Tour />
-        <Voice />
-        <Languages />
-        <Open />
-        <section class="questions container" id="faq" aria-labelledby="faq-title">
-          <h2 id="faq-title">{t("faqTitle")}</h2>
-          <FAQ />
-        </section>
-        <CTA />
       </>
     );
   }
@@ -701,9 +768,8 @@ export default function App() {
     return (
       <div class="mission-grid">
         <For each={["Communication", "Language", "Development"] as const}>
-          {(part, index) => (
+          {(part) => (
             <article data-rise>
-              <span class="eyebrow">0{index() + 1}</span>
               <h3>{t(`pillar${part}` as Label)}</h3>
               <p>{t(`pillar${part}Body` as Label)}</p>
             </article>
@@ -739,7 +805,7 @@ export default function App() {
         </Match>
         <Match when={props.view === "code"}>
           <pre class="source-card" dir="ltr">
-            <code>{`git clone ${SOURCE_URL.replace(/\/tree\/.*$/, "")}\n\n# AGPL-3.0`}</code>
+            <code>{"github.com/zrzur\n\nAGPL-3.0"}</code>
           </pre>
         </Match>
       </Switch>
@@ -765,7 +831,6 @@ export default function App() {
                 <span class="feature-icon" aria-hidden="true"><Icon name={feature.icon} /></span>
                 <h2>{l(feature.title)}</h2>
                 <p>{l(feature.body)}</p>
-                <span class="feature-tags">{l(feature.detail)}</span>
                 <div class="feature-proof">
                   <FeatureProof view={feature.view} />
                 </div>
@@ -827,18 +892,204 @@ export default function App() {
       </>
     );
   }
+  /** The desktop app for Windows, macOS and Linux, and the browser beside it */
   function Download() {
+    const yours = visitorSystem();
+    const systems = [
+      { id: "windows", name: "Windows", meta: "dlWindowsMeta", how: "dlWindowsHow" },
+      { id: "mac", name: "macOS", meta: "dlMacMeta", how: "dlMacHow" },
+      { id: "linux", name: "Linux", meta: "dlLinuxMeta", how: "dlLinuxHow" },
+    ] as const;
+    const size = (mb: number) => t("dlSize").replace("{size}", String(mb));
     return (
       <>
         <PageHeading title="downloadTitle" body="downloadBody" words={t("flockName")} />
+        <section class="container download-systems" aria-label={t("navDownload")}>
+          <For each={systems}>
+            {(system) => (
+              <article classList={{ "download-card": true, "is-yours": system.id === yours }} id={system.id} data-rise>
+                <Show when={system.id === yours}>
+                  <p class="download-yours">{t("dlYours")}</p>
+                </Show>
+                <h2 dir="ltr">{system.name}</h2>
+                <p class="download-meta">{t(system.meta)}</p>
+                <div class="download-buttons">
+                  <For each={DESKTOP_DOWNLOADS[system.id]}>
+                    {(file, index) => (
+                      <a
+                        classList={{ button: true, "button-primary": system.id === yours && index() === 0, "button-soft": !(system.id === yours && index() === 0) }}
+                        href={file.url}
+                        download=""
+                      >
+                        <Icon name="download" />
+                        <span>{t(file.label)}</span>
+                        <span class="download-size">{size(file.size)}</span>
+                      </a>
+                    )}
+                  </For>
+                </div>
+                <p class="download-how">{t(system.how)}</p>
+                <details class="download-check">
+                  <summary>{t("downloadCheck")}</summary>
+                  <For each={DESKTOP_DOWNLOADS[system.id]}>
+                    {(file) => (
+                      <p>
+                        <span dir="ltr">{file.url.split("/").pop()}</span>
+                        <code dir="ltr">{file.sha256}</code>
+                      </p>
+                    )}
+                  </For>
+                </details>
+              </article>
+            )}
+          </For>
+        </section>
+        <section class="container download-web">
+          <div class="download-card download-browser" data-rise>
+            <div>
+              <h2 dir="ltr">app.zrzur.com</h2>
+              <p>{t("heroFacts")}</p>
+            </div>
+            <AppAction class="button-soft" label="downloadOpenWeb" arrow={false} />
+          </div>
+          <p class="download-version">
+            {t("dlVersion").split("{version}")[0]}
+            <span dir="ltr">{DESKTOP_VERSION}</span>
+            {t("dlVersion").split("{version}")[1]}
+          </p>
+        </section>
         <section class="container web-only">
-          <AppAction />
           <div>
             <h2>{t("trustTitle")}</h2>
             <p>{t("trustBody")}</p>
           </div>
         </section>
       </>
+    );
+  }
+  /** The blog: the list of posts, or one post with its own heading */
+  function Blog() {
+    const date = (iso: string) =>
+      new Intl.DateTimeFormat(language(), { year: "numeric", month: "long", day: "numeric" }).format(new Date(`${iso}T12:00:00Z`));
+    const minutes = (n: number) => t("blogMinutes").replace("{n}", new Intl.NumberFormat(language()).format(n));
+    const feed = () => `${import.meta.env.BASE_URL}${language() === "en" ? "" : `${language()}/`}blog/feed.xml`;
+    const Parts = (props: { parts: Inline[] }) => (
+      <For each={props.parts}>
+        {(part) => (
+          <Switch fallback={part.text}>
+            <Match when={part.kind === "strong"}><strong>{part.text}</strong></Match>
+            <Match when={part.kind === "em"}><em>{part.text}</em></Match>
+            <Match when={part.kind === "code"}><code>{part.text}</code></Match>
+            <Match when={part.kind === "link" && part}>
+              {(link) => (
+                <a href={link().href} {...(link().href.startsWith("https://") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
+                  {link().text}
+                </a>
+              )}
+            </Match>
+          </Switch>
+        )}
+      </For>
+    );
+    /** One block of a post, as the reader sees it */
+    const BlockView = (props: { block: Block }): JSX.Element => {
+      const block = props.block;
+      switch (block.kind) {
+        case "h2":
+          return <h2 id={block.id}>{block.text}</h2>;
+        case "h3":
+          return <h3 id={block.id}>{block.text}</h3>;
+        case "p":
+          return <p><Parts parts={block.parts} /></p>;
+        case "quote":
+          return <blockquote><Parts parts={block.parts} /></blockquote>;
+        case "ul":
+          return <ul><For each={block.items}>{(item) => <li><Parts parts={item} /></li>}</For></ul>;
+        case "ol":
+          return <ol><For each={block.items}>{(item) => <li><Parts parts={item} /></li>}</For></ol>;
+        case "code":
+          return <pre dir="ltr"><code>{block.text}</code></pre>;
+        case "image":
+          return <img class="blog-image" src={block.src} alt={block.alt} loading="lazy" decoding="async" />;
+      }
+    };
+    const Card = (props: { entry: Post }) => (
+      <article class="blog-card" data-rise>
+        <p class="blog-meta">
+          <time dateTime={props.entry.date}>{date(props.entry.date)}</time>
+          <span>{minutes(props.entry.minutes[language()])}</span>
+        </p>
+        <h2>
+          <a href={href(`/blog/${props.entry.slug}`)}>{props.entry.text[language()].title}</a>
+        </h2>
+        <p>{props.entry.text[language()].summary}</p>
+        <a class="text-link" href={href(`/blog/${props.entry.slug}`)}>
+          {t("blogRead")}
+          <Icon name="arrow" class="directional" />
+        </a>
+      </article>
+    );
+    return (
+      <Show
+        when={post}
+        fallback={
+          <>
+            <PageHeading title="blogTitle" body="blogBody" words={t("flockName")} />
+            <section class="container blog-list" aria-label={t("blog")}>
+              <Show when={posts.length} fallback={<p>{t("blogEmpty")}</p>}>
+                <For each={posts}>{(entry) => <Card entry={entry} />}</For>
+              </Show>
+              <a class="text-link blog-feed" href={feed()}>{t("blogFeed")}</a>
+            </section>
+          </>
+        }
+      >
+        {(entry) => {
+          const text = () => entry().text[language()];
+          const sections = () => text().blocks.flatMap((block) => (block.kind === "h2" ? [block] : []));
+          const others = () => posts.filter((other) => other.slug !== entry().slug).slice(0, 2);
+          return (
+            <>
+              <article class="container blog-post">
+                <a class="text-link blog-back" href={href("/blog")}>
+                  <Icon name="arrow" class="directional blog-back-icon" />
+                  {t("blogBack")}
+                </a>
+                <p class="blog-meta">
+                  <time dateTime={entry().date}>{date(entry().date)}</time>
+                  <span>{minutes(entry().minutes[language()])}</span>
+                  <span>{t("blogBy")}</span>
+                </p>
+                <h1>{text().title}</h1>
+                <p class="blog-lead">{text().summary}</p>
+                <Show when={entry().cover}>
+                  {(cover) => <img class="blog-cover" src={cover()} alt="" width="1200" height="630" />}
+                </Show>
+                <Show when={sections().length > 2}>
+                  <nav class="blog-contents" aria-label={t("blogContents")}>
+                    <p>{t("blogContents")}</p>
+                    <ol>
+                      <For each={sections()}>{(section) => <li><a href={`#${section.id}`}>{section.text}</a></li>}</For>
+                    </ol>
+                  </nav>
+                </Show>
+                <For each={text().blocks}>{(block) => <BlockView block={block} />}</For>
+                <Show when={text().tags.length}>
+                  <p class="blog-tags">
+                    <For each={text().tags}>{(tag) => <span>{tag}</span>}</For>
+                  </p>
+                </Show>
+              </article>
+              <Show when={others().length}>
+                <section class="container blog-list blog-more" aria-labelledby="blog-more-title">
+                  <h2 id="blog-more-title">{t("blogMore")}</h2>
+                  <For each={others()}>{(other) => <Card entry={other} />}</For>
+                </section>
+              </Show>
+            </>
+          );
+        }}
+      </Show>
     );
   }
   function Guide() {
@@ -858,14 +1109,14 @@ export default function App() {
           </ol>
           <aside class="guide-aside">
             <p>{t("footerTag")}</p>
-            <AppAction />
+            <AppAction arrow={false} />
             <a class="text-link" href={href("/legal/community-guidelines")}>
               {t("safety")}
               <Icon name="arrow" class="directional" />
             </a>
           </aside>
         </section>
-        <section class="questions container" id="faq" aria-labelledby="faq-title">
+        <section class="questions container home-faq" id="faq" aria-labelledby="faq-title">
           <h2 id="faq-title">{t("faqTitle")}</h2>
           <FAQ />
         </section>
@@ -948,6 +1199,7 @@ export default function App() {
                 { href: `${import.meta.env.BASE_URL}${THIRD_PARTY_NOTICES_PATH}`, label: t("thirdParty"), external: true },
               ])}
               {column("footerResources", [
+                { href: href("/blog"), label: t("blog") },
                 { href: href("/guide"), label: t("gettingStarted") },
                 { href: href("/guide#faq"), label: t("questions") },
                 { href: href("/legal/community-guidelines"), label: t("safety") },
@@ -969,6 +1221,8 @@ export default function App() {
             </a>
           </div>
         </div>
+        {/* the name, very large, cut by the bottom of the page */}
+        <div class="footer-word" aria-hidden="true">{t("brand")}</div>
       </footer>
     );
   }
@@ -1010,7 +1264,7 @@ export default function App() {
           </nav>
           <div class="header-actions">
             <div class="header-cta">
-              <AppAction arrow={false} class="button-outline" />
+              <AppAction arrow={false} class="button-soft" />
             </div>
             <button
               type="button"
@@ -1037,6 +1291,9 @@ export default function App() {
         </Show>
         <Show when={page === "download"}>
           <Download />
+        </Show>
+        <Show when={page === "blog"}>
+          <Blog />
         </Show>
         <Show when={page === "guide"}>
           <Guide />

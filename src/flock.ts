@@ -319,7 +319,8 @@ export function startFlock(canvas: HTMLCanvasElement): Flock {
     if (stage.el.dataset.flock === "wave") {
       const u = (i + 0.5) / count;
       const ribbon = i % 3;
-      const t = clock * 0.012;
+      // slow and calm, whatever the width of the stage (owner, 2026-11-08)
+      const t = clock * 0.0045;
       const talk = 0.22 + 0.78 * Math.abs(Math.sin(u * 3.1 + t * 0.6) * Math.sin(u * 7.3 - t * 0.43));
       const line = Math.sin(u * TAU * (2.4 + ribbon * 0.5) + t * (1.3 + ribbon * 0.3) + ribbon * 2);
       const fade = Math.min(1, Math.min(u, 1 - u) * 9);
@@ -390,7 +391,8 @@ export function startFlock(canvas: HTMLCanvasElement): Flock {
           const ox = tx - px[i];
           const oy = ty - py[i];
           const dist = Math.hypot(ox, oy);
-          const pace = Math.min(7 + dist * 0.02, dist * 0.14);
+          // an unhurried flight between shapes, even across a long page
+          const pace = Math.min(4.2 + dist * 0.01, dist * 0.09);
           const wantX = dist > 0.01 ? (ox / dist) * pace : 0;
           const wantY = dist > 0.01 ? (oy / dist) * pace : 0;
           const turn = dist > 60 ? 0.07 : 0.24;

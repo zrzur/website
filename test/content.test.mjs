@@ -67,8 +67,9 @@ test("local app shortcut is restricted to loopback previews", () => {
 test("product pictures are real app screens in every language and theme", async () => {
   const app = await readFile(new URL("../src/App.tsx", import.meta.url), "utf8");
   assert(!app.includes("ScreenshotGallery"), "Image gallery must not return");
-  // the only <img> is the Shot component, fed by its file() helper
-  assert.equal((app.match(/<img\b/g) ?? []).length, 1, "one <img>, inside Shot");
+  // the only product <img> is the Shot component, fed by its file() helper;
+  // blog posts show their own pictures (class blog-cover / blog-image)
+  assert.equal((app.match(/<img\b(?![^>]*class="blog-)/g) ?? []).length, 1, "one product <img>, inside Shot");
   assert.match(app, /src=\{file\(shade, !!props\.phone\)\}/);
   assert.match(app, /`\$\{code\(\)\}-\$\{props\.view\}/);
   // a new capture gets a new address (content hash), so no cache keeps the old one
@@ -95,11 +96,22 @@ test("the site has no native select and dark is the default theme", async () => 
   assert.doesNotMatch(html, /prefers-color-scheme/);
 });
 
-test("soft launch: no download promises, no prices, no paid extras in the marketing copy", () => {
+// Owner, 2026-11-08: the Windows desktop app is offered for download. The copy
+// promises nothing that does not exist yet (no other platforms or stores) and
+// shows no prices or paid extras.
+test("launch copy: only what exists, no prices, no paid extras", async () => {
   const copy = JSON.stringify([labels, features, faqs]);
-  assert.doesNotMatch(copy, /macOS|Linux|App Store|Feather|ريشة|Download the app|نزّل التطبيق/);
+  // the desktop app exists for Windows, macOS and Linux; there are no phone stores
+  assert.doesNotMatch(copy, /App Store|Play Store|Feather|ريشة/);
+  assert.doesNotMatch(copy, /Nothing to install|Nichts zu installieren|لا حاجة إلى التثبيت|لا تثبيت/);
   for (const language of ["ar", "en", "de"])
     assert.doesNotMatch(labels[language].heroBody, /Download|تنزيل/);
+  // every system the copy names has a real file, each with its own checksum
+  const app = await readFile(new URL("../src/App.tsx", import.meta.url), "utf8");
+  for (const file of [/Zrzur-win32-x64-[\w.-]+\.zip/, /Zrzur-darwin-arm64-[\w.-]+\.zip/, /Zrzur-darwin-x64-[\w.-]+\.zip/, /Zrzur-linux-x64-[\w.-]+\.zip/])
+    assert.match(app, new RegExp(`url: "/downloads/${file.source}", sha256: "[0-9a-f]{64}"`), file.source);
+  const sums = app.match(/sha256: "([0-9a-f]{64})"/g) ?? [];
+  assert.equal(new Set(sums).size, sums.length, "each file has its own checksum");
 });
 
 test("the flock fills a shape with exactly as many birds as it has", async () => {

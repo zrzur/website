@@ -1,0 +1,4 @@
+# Blog posts and their pictures: written on GitHub, checked by the tests and the
+# secret scan, published by .github/workflows/publish.yml (see content/blog/README.md)
+content/blog/
+public/blog/

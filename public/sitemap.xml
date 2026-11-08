@@ -106,6 +106,48 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/guide"/>
   </url>
   <url>
+    <loc>https://zrzur.com/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/de/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/ar/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/blog/why-zrzur</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/why-zrzur"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/de/blog/why-zrzur</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/why-zrzur"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/ar/blog/why-zrzur</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/why-zrzur"/>
+  </url>
+  <url>
     <loc>https://zrzur.com/legal</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal"/>

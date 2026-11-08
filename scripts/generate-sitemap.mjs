@@ -8,6 +8,9 @@ import { writeFileSync } from "node:fs";
 import { LOCALES, localizedPath } from "../src/i18n.ts";
 import { legalDocuments } from "../src/legal.ts";
 import { canonicalUrl } from "../src/config.ts";
+import { readPosts } from "./blog-files.mjs";
+
+const posts = readPosts();
 
 const pages = [
   "/",
@@ -15,6 +18,8 @@ const pages = [
   "/project",
   "/download",
   "/guide",
+  "/blog",
+  ...posts.map((post) => `/blog/${post.slug}`),
   "/legal",
   "/report",
   ...legalDocuments.map((doc) => `/legal/${doc.slug}`),
