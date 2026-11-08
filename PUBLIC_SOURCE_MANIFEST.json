@@ -640,7 +640,7 @@
     },
     {
       "path": "src/App.tsx",
-      "sha256": "b4170e7c3cbb0401d5ed7c4bf8a0f9888ee19c010688538c91fde0671cf85a07",
+      "sha256": "243273252c3a862ef7a519ff0d61ed2bbbbe0fd1e1311f08f9e5b28d2dec0df1",
       "bytes": 51751,
       "category": "product-source-or-build-manifest"
     },
