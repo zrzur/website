@@ -44,17 +44,19 @@ import type { Block, Inline } from "./blog-md";
  * repository: they are put on the server beside the site (`downloads/`), and
  * each checksum is shown so people can check what they got. Sizes in MB (MiB).
  */
-const DESKTOP_VERSION = "26.0.0-dev";
+const DESKTOP_VERSION = "26.0.0";
 const DESKTOP_DOWNLOADS = {
   windows: [
-    { url: "/downloads/Zrzur-win32-x64-26.0.0-dev.zip", sha256: "c96edb891bb3f118394ad969f24c0133d769571535f3130075b206b28ca2a6dd", size: 151, label: "dlWindowsZip" },
+    { url: "/downloads/Zrzur-Setup-26.0.0-x64.exe", sha256: "dfe0d7d26d893cb08a311444910854c85ddcd71d2e3fb2f132d627b266d4f3f2", size: 147, label: "dlWindowsSetup" },
+    { url: "/downloads/Zrzur-win32-x64-26.0.0.zip", sha256: "a417255924d008353d30291313e571773f649bbfc2ed7db0d2d86572dbdba3f4", size: 151, label: "dlWindowsZip" },
   ],
   mac: [
-    { url: "/downloads/Zrzur-darwin-arm64-26.0.0-dev.zip", sha256: "cefd382bd5c96675012237382412f85e33786ba2242107f9920ffadc1c92b3be", size: 121, label: "dlMacArm" },
-    { url: "/downloads/Zrzur-darwin-x64-26.0.0-dev.zip", sha256: "1bd59d7ff0582aad14ca674647464f5f3ed256a0a3381b5e4c2ad4a29777c1e9", size: 126, label: "dlMacIntel" },
+    { url: "/downloads/Zrzur-darwin-arm64-26.0.0.zip", sha256: "0ea9be252178f5b4ce0d411b832b876adfa129bc2447ef42605f8bdd9b0c4b11", size: 121, label: "dlMacArm" },
+    { url: "/downloads/Zrzur-darwin-x64-26.0.0.zip", sha256: "a25420418cbb881694c13cd9110a92b24db8885a2925dad4e338a39b7bc06b2b", size: 126, label: "dlMacIntel" },
   ],
   linux: [
-    { url: "/downloads/Zrzur-linux-x64-26.0.0-dev.zip", sha256: "8225370e7b2e8465352cd53977538d9cc8c250202b127e06b9e8a8ccf518c6a1", size: 118, label: "dlLinuxZip" },
+    { url: "/downloads/zrzur-desktop_26.0.0_amd64.deb", sha256: "62a4b3c0078645beb8e0d154e55521834a421d85467800ebe5dd4768d3161d44", size: 92, label: "dlLinuxDeb" },
+    { url: "/downloads/Zrzur-linux-x64-26.0.0.zip", sha256: "b17e72c2b11b77874cfe8928f5c3a9bbe6008db42a0fa071a3284d0513b42944", size: 118, label: "dlLinuxZip" },
   ],
 } as const;
 type DesktopSystem = keyof typeof DESKTOP_DOWNLOADS;

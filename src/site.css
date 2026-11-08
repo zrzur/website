@@ -3318,9 +3318,10 @@ main { overflow-x: clip; }
 .download-yours { margin: 0; font-size: 14px; font-weight: 600; color: var(--z-action-text); }
 .download-systems h2 { margin: 0; font-size: clamp(26px, 2.4vw, 34px); }
 .download-meta { margin: 0; color: var(--z-text-2); font-size: 15px; }
-.download-buttons { display: grid; gap: 10px; margin-block: 8px 4px; }
+.download-buttons { display: grid; gap: 10px; margin-block: 8px 4px; align-self: stretch; min-width: 0; }
 .download-buttons .button { min-height: 52px; border-radius: 14px; justify-content: flex-start; gap: 10px; padding-inline: 18px; font-size: 16px; }
-.download-size { margin-inline-start: auto; font-size: 13px; font-weight: 500; opacity: .75; }
+.download-buttons .button { white-space: normal; min-width: 0; text-align: start; }
+.download-size { margin-inline-start: auto; font-size: 13px; font-weight: 500; opacity: .75; white-space: nowrap; }
 .download-how { margin: 0; font-size: 14.5px; line-height: 1.7; color: var(--z-text-2); }
 .download-check { margin-block-start: auto; font-size: 14px; color: var(--z-text-2); }
 .download-check summary { cursor: pointer; padding-block: 6px; }
