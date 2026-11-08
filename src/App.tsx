@@ -47,16 +47,16 @@ import type { Block, Inline } from "./blog-md";
 const DESKTOP_VERSION = "26.0.0";
 const DESKTOP_DOWNLOADS = {
   windows: [
-    { url: "/downloads/Zrzur-Setup-26.0.0-x64.exe", sha256: "dfe0d7d26d893cb08a311444910854c85ddcd71d2e3fb2f132d627b266d4f3f2", size: 147, label: "dlWindowsSetup" },
-    { url: "/downloads/Zrzur-win32-x64-26.0.0.zip", sha256: "a417255924d008353d30291313e571773f649bbfc2ed7db0d2d86572dbdba3f4", size: 151, label: "dlWindowsZip" },
+    { url: "/downloads/Zrzur-Setup-26.0.0-x64.exe", sha256: "2acba0c60486411679edd20d642563e9ff0e04e36c94bc55bcab9568329e08aa", size: 147, label: "dlWindowsSetup" },
+    { url: "/downloads/Zrzur-win32-x64-26.0.0.zip", sha256: "d31cb008bd00afa4f7b473b6824a7aa391f63cc21085301ba00468039d7204d5", size: 151, label: "dlWindowsZip" },
   ],
   mac: [
-    { url: "/downloads/Zrzur-darwin-arm64-26.0.0.zip", sha256: "0ea9be252178f5b4ce0d411b832b876adfa129bc2447ef42605f8bdd9b0c4b11", size: 121, label: "dlMacArm" },
-    { url: "/downloads/Zrzur-darwin-x64-26.0.0.zip", sha256: "a25420418cbb881694c13cd9110a92b24db8885a2925dad4e338a39b7bc06b2b", size: 126, label: "dlMacIntel" },
+    { url: "/downloads/Zrzur-darwin-arm64-26.0.0.zip", sha256: "e470c5f2d820e17a84712ed8e441e6af5a950a6f659dbb7c23f8f937215384c1", size: 121, label: "dlMacArm" },
+    { url: "/downloads/Zrzur-darwin-x64-26.0.0.zip", sha256: "f67f358bdc0a3e5f45aced6b2901b1aa32d08de9994dba24223f5e00db8f580b", size: 126, label: "dlMacIntel" },
   ],
   linux: [
-    { url: "/downloads/zrzur-desktop_26.0.0_amd64.deb", sha256: "62a4b3c0078645beb8e0d154e55521834a421d85467800ebe5dd4768d3161d44", size: 92, label: "dlLinuxDeb" },
-    { url: "/downloads/Zrzur-linux-x64-26.0.0.zip", sha256: "b17e72c2b11b77874cfe8928f5c3a9bbe6008db42a0fa071a3284d0513b42944", size: 118, label: "dlLinuxZip" },
+    { url: "/downloads/zrzur-desktop_26.0.0_amd64.deb", sha256: "d86744974219e17883ecfa51457d885e52026ad072f16a16c6da2ea33ff06757", size: 92, label: "dlLinuxDeb" },
+    { url: "/downloads/Zrzur-linux-x64-26.0.0.zip", sha256: "b2b57ec96e2d9a310895af84c4113975c023c1cc9af5d4f7fa6f2a828c7364d6", size: 118, label: "dlLinuxZip" },
   ],
 } as const;
 type DesktopSystem = keyof typeof DESKTOP_DOWNLOADS;
