@@ -15,11 +15,11 @@ export const developerTerms = doc({
       { en: "Scope", ar: "النطاق" },
       {
         en: para(
-          "These terms apply when you create a bot or app, use the Zrzur API or WebSocket at api.zrzur.com and ws.zrzur.com, or ask users to sign in with Zrzur (OAuth). They add to the Terms of Service and the Community Guidelines.",
+          "These terms apply when you create a bot or app, use the Zrzur API or WebSocket at api.zrzur.com and events.zrzur.com, or ask users to sign in with Zrzur (OAuth). They add to the Terms of Service and the Community Guidelines.",
           "The open-source code of Zrzur is licensed under AGPL-3.0, and these terms do not limit that licence. They govern access to the Zrzur service that we run.",
         ),
         ar: para(
-          "تسري هذه الشروط عندما تنشئ بوتًا أو تطبيقًا، أو تستخدم واجهة زرزور البرمجية أو اتصال WebSocket على api.zrzur.com وws.zrzur.com، أو تطلب من المستخدمين تسجيل الدخول بحساب زرزور (OAuth). وهي إضافة إلى شروط الخدمة وإرشادات المجتمع.",
+          "تسري هذه الشروط عندما تنشئ بوتًا أو تطبيقًا، أو تستخدم واجهة زرزور البرمجية أو اتصال WebSocket على api.zrzur.com وevents.zrzur.com، أو تطلب من المستخدمين تسجيل الدخول بحساب زرزور (OAuth). وهي إضافة إلى شروط الخدمة وإرشادات المجتمع.",
           "شيفرة زرزور المفتوحة مرخّصة بموجب AGPL-3.0، ولا تُقيّد هذه الشروط تلك الرخصة، وإنما تنظّم الوصول إلى خدمة زرزور التي نشغّلها.",
         ),
       },
