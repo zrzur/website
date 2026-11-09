@@ -754,8 +754,8 @@
     },
     {
       "path": "src/policies/developer-terms.ts",
-      "sha256": "967890c2ddac55deb569f965ef1994a4efcbdba6baa18d14a4442797a53fb8a1",
-      "bytes": 15333,
+      "sha256": "79fed1bc9a5ec3502afeb1a4bd77332699f80c660140b5f9e5603260d0a0bcb2",
+      "bytes": 15341,
       "category": "product-source-or-build-manifest"
     },
     {
