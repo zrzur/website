@@ -73,7 +73,7 @@ const tooClose = (min) => {
       if (Object.values(gaps).some((gap) => gap < -1)) return;
       // a box that scrolls lets its text pass its edge on the way (its padding
       // is at the end of the scroll); only the other sides are held to the rule
-      const scrolls = box.scrollHeight > box.clientHeight + 1;
+      const scrolls = /^(auto|scroll)$/.test(getComputedStyle(box).overflowY) && box.scrollHeight > box.clientHeight + 1;
       const close = Object.entries(gaps).filter(([side, gap]) => gap < min - 0.5 && !(scrolls && (side === "top" || side === "bottom")));
       if (close.length) found.push(`${box.className || box.tagName} › ${name.slice(0, 32)} ${close.map(([side, gap]) => `${side} ${gap.toFixed(1)}`).join(" ")}`);
     };
@@ -392,6 +392,12 @@ for (const width of [1280, 375])
   // English page never runs, the German page is taken over as built, nothing moves
   const context = await browser.newContext({ viewport: { width: 375, height: 812 }, locale: "de-DE" });
   await context.addInitScript(() => {
+    // every document's paints, kept across the trip (same tab, same site)
+    new PerformanceObserver((list) => {
+      const seen = JSON.parse(sessionStorage.getItem("paints") ?? "[]");
+      for (const entry of list.getEntries()) seen.push(`${location.pathname} ${entry.name}`);
+      sessionStorage.setItem("paints", JSON.stringify(seen));
+    }).observe({ type: "paint", buffered: true });
     window.__cls = 0;
     new PerformanceObserver((list) => {
       for (const entry of list.getEntries()) window.__cls += entry.value;
@@ -412,6 +418,8 @@ for (const width of [1280, 375])
   check("de-DE on /: one trip", documents.filter((p) => p === "/de/").length === 1 && documents.length <= 2, documents.join(" > "));
   check("de-DE on /: English page never ran", !asked.includes(english),asked.filter((p) => p.endsWith(".js")).join(", "));
   check("de-DE on /: taken over, not redrawn", (await page.getAttribute("html", "data-takeover")) === "hydrate");
+  const paints = await page.evaluate(() => JSON.parse(sessionStorage.getItem("paints") ?? "[]"));
+  check("de-DE on /: the English page never painted", !paints.some((p) => p.startsWith("/ ")) && paints.includes("/de/ first-contentful-paint"), paints.join(", "));
   check("de-DE on /: nothing moved", (await page.evaluate(() => window.__cls)) === 0, String(await page.evaluate(() => window.__cls)));
   await context.close();
 }
@@ -478,6 +486,32 @@ for (const language of ["en", "fr"]) {
   await page.waitForTimeout(300);
   check("early tap: made before the takeover", early);
   check("early tap: the menu opened", (await page.locator(".menu-button").getAttribute("aria-expanded")) === "true");
+  await context.close();
+}
+
+for (const language of ["en", "fr"]) {
+  // typing before the app has taken over: the text stays, and the form knows it
+  const context = await browser.newContext({ viewport: { width: 375, height: 812 }, locale: tag(language) });
+  await context.addInitScript((code) => localStorage.setItem("zrzur-site-language", code), language);
+  const page = await context.newPage();
+  const cdp = await context.newCDPSession(page);
+  await cdp.send("Emulation.setCPUThrottlingRate", { rate: 6 });
+  await cdp.send("Network.emulateNetworkConditions", { offline: false, latency: 300, downloadThroughput: (0.8 * 1024 * 1024) / 8, uploadThroughput: (400 * 1024) / 8 });
+  await page.goto(site + pathOf(language, "/report"), { waitUntil: "commit" });
+  const field = page.locator("#report-description");
+  await field.waitFor();
+  const words = "Illegal material is shared in this channel.";
+  await field.click();
+  await page.keyboard.type(words);
+  const early = (await page.getAttribute("html", "data-takeover")) === null;
+  await page.waitForFunction(() => document.documentElement.dataset.takeover, null, { timeout: 30000 });
+  await page.waitForTimeout(300);
+  check(`${language} typed before the takeover`, early);
+  check(`${language} the typed text stays`, (await field.inputValue()) === words, await field.inputValue());
+  // the form's own check: sending marks the empty link field, not the description
+  await page.locator(".report-form button[type=submit], form button[type=submit]").first().click();
+  await page.waitForTimeout(300);
+  check(`${language} the form knows the typed text`, (await field.getAttribute("aria-invalid")) !== "true" && (await page.locator("#report-location").getAttribute("aria-invalid")) === "true");
   await context.close();
 }
 

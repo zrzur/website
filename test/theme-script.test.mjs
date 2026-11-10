@@ -16,7 +16,7 @@ function run({ pathname = "/", search = "", hash = "", saved = {}, languages = [
   const replaced = [];
   const element = (tag) => ({ tagName: tag, setAttribute(name, value) { this[name] = value; } });
   const document = {
-    documentElement: { dataset: {}, lang: "", dir: "" },
+    documentElement: { dataset: {}, lang: "", dir: "", style: {} },
     head: { appendChild: (node) => appended.push(node) },
     createElement: element,
     querySelector: (selector) => {
@@ -30,7 +30,8 @@ function run({ pathname = "/", search = "", hash = "", saved = {}, languages = [
     requestAnimationFrame: (callback) => frames.push(callback),
     setTimeout: (callback) => callback(),
     document,
-    location: { pathname, search, hash, replace: (url) => replaced.push(url) },
+    URL,
+    location: { pathname, search, hash, origin: "https://zrzur.com", replace: (url) => replaced.push(url) },
     navigator: { languages },
     localStorage: { getItem: (key) => saved[key] ?? null },
   };
@@ -95,4 +96,43 @@ test("the shown shade of the first picture is preloaded, the other never", () =>
   assert.deepEqual(light.map((n) => n.href), ["/l-phone.avif"]);
   // a visitor being sent to their own address preloads nothing here
   assert.equal(images(run({ pathname: "/", languages: ["de"], meta: { "zrzur-hero": hero } })).length, 0);
+});
+
+test("the page being left is hidden, so the English page never shows", () => {
+  const leaving = run({ pathname: "/features", languages: ["de-DE"] });
+  assert.equal(leaving.document.documentElement.style.visibility, "hidden");
+  assert.equal(run({ pathname: "/features", languages: ["en-US"] }).document.documentElement.style.visibility, undefined);
+});
+
+test("/en/ and upper-case prefixes go to the one address of the page", () => {
+  // English has no prefix: /en/x is /x, and a German browser goes straight to /de/x (never /de/en/x)
+  assert.deepEqual(run({ pathname: "/en/features", languages: ["en-US"] }).replaced, ["/features"]);
+  assert.deepEqual(run({ pathname: "/en", languages: ["en-US"] }).replaced, ["/"]);
+  assert.deepEqual(run({ pathname: "/en/features", languages: ["de-DE"] }).replaced, ["/de/features"]);
+  // prefixes are lower case
+  assert.deepEqual(run({ pathname: "/DE/features", languages: ["en-US"] }).replaced, ["/de/features"]);
+  assert.deepEqual(run({ pathname: "/Fr/", search: "?a=1", languages: ["de"] }).replaced, ["/fr/?a=1"]);
+  assert.deepEqual(run({ pathname: "/EN/legal", languages: ["en-US"] }).replaced, ["/legal"]);
+});
+
+test("the first picture's larger shade is preloaded only above phone width", () => {
+  const source = readFileSync(new URL("../src/shots.ts", import.meta.url), "utf8");
+  assert(source.includes('"not all and (max-width: 600px)"'));
+});
+
+test("a crafted address never sends the visitor to another site", () => {
+  // /en//evil.com must not become location.replace("//evil.com") (protocol-relative)
+  for (const pathname of ["/en//evil.com", "/en/\\evil.com", "/en/\\/evil.com", "/EN//evil.com", "/en/%5Cevil.com"])
+    for (const languages of [["en-US"], ["de-DE"]]) {
+      const { replaced } = run({ pathname, languages });
+      for (const target of replaced) {
+        assert(!/^[\/\\]{2}/.test(target), `${pathname} ${languages}: ${target}`);
+        assert.equal(new URL(target, "https://zrzur.com").origin, "https://zrzur.com", `${pathname}: ${target}`);
+      }
+      assert.equal(replaced.length, 1, pathname);
+    }
+  assert.deepEqual(run({ pathname: "/en//evil.com" }).replaced, ["/evil.com"]);
+  assert.deepEqual(run({ pathname: "/en/\\evil.com", languages: ["de-DE"] }).replaced, ["/de/evil.com"]);
+  // a doubled slash on an English address with a German browser stays on the site too
+  assert.deepEqual(run({ pathname: "//evil.com", languages: ["de-DE"] }).replaced, ["/de/evil.com"]);
 });

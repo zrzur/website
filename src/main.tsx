@@ -75,6 +75,9 @@ else {
     runHydrationEvents();
   }
   else {
+    // nothing to take over: theme.js stops keeping taps for a replay
+    const kept = (globalThis as { _$HY?: { events: unknown } })._$HY;
+    if (kept) kept.events = null;
     root.textContent = "";
     render(app, root);
   }

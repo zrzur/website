@@ -52,7 +52,7 @@ export function heroPreload(versions: Record<string, string>, code: string, view
     const [phone, , larger] = files.sources;
     return [
       { media: PHONE_MEDIA, type: phone.type, href: phone.srcset },
-      { media: "(min-width: 601px)", type: larger.type, srcset: larger.srcset, sizes: larger.sizes },
+      { media: "not all and (max-width: 600px)", type: larger.type, srcset: larger.srcset, sizes: larger.sizes },
     ];
   };
   return { dark: entry("dark"), light: entry("light") };

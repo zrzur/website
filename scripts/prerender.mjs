@@ -202,7 +202,8 @@ async function page(path, code) {
     .replace(/(<meta\s+name="description"\s+content=")[^"]*(")/, `$1${esc(words.description)}$2`)
     .replace(/(<meta\s+property="og:title"\s+content=")[^"]*(")/, `$1${esc(words.title)}$2`)
     .replace(/(<meta\s+property="og:description"\s+content=")[^"]*(")/, `$1${esc(words.description)}$2`)
-    .replace(/(<meta\s+property="og:url"\s+content=")[^"]*(")/, `$1${esc(url(path, canonicalLanguage(path, code)))}$2`)
+    // a 404 page has no address of its own to share
+    .replace(/\s*<meta\s+property="og:url"\s+content="[^"]*"\s*\/>/, (tag) => (notFound ? "" : tag.replace(/content="[^"]*"/, `content="${esc(url(path, canonicalLanguage(path, code)))}"`)))
     .replace(/(<meta\s+property="og:type"\s+content=")[^"]*(")/, `$1${words.post ? "article" : "website"}$2`)
     .replace(/(<meta\s+(?:property="og:image"|name="twitter:image")\s+content=")[^"]*(")/g, `$1${SITE}${words.post?.cover ?? "/brand/og-image.png"}$2`)
     .replace("</head>", `    ${head}\n  </head>`)
@@ -228,8 +229,10 @@ for (const path of paths)
     }
     written++;
   }
-// the page for an unknown address, per language; the server answers with it
-// and status 404 (self-hosted Caddyfile)
+// the page for an unknown address, per language: the server (self-hosted
+// Caddyfile, handle_errors) answers an unknown /<code>/... with <code>/404.html
+// and anything else with 404.html, with status 404; there is no /index.html
+// fallback any more
 for (const { code } of LOCALES) {
   const out = fileURLToPath(new URL(code === "en" ? "404.html" : `${code}/404.html`, dist));
   mkdirSync(dirname(out), { recursive: true });

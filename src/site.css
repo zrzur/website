@@ -794,11 +794,15 @@ main,
   display: flex;
   flex-direction: column;
   gap: 12px;
-  justify-content: flex-end;
   min-height: 0;
   padding: 16px;
   overflow-y: auto;
   scrollbar-width: none;
+}
+/* the newest message sits at the bottom; justify-content: flex-end would make
+   the oldest ones unreachable once the list scrolls */
+.app-messages > :first-child {
+  margin-block-start: auto;
 }
 .app-messages:focus {
   outline: none;

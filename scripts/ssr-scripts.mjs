@@ -6,16 +6,25 @@
  * them would be lost and the browser would draw something else than the page
  * shows. So each script runs here in a sandbox first, and anything that is
  * not a finished boundary stops the build.
+ *
+ * A finished boundary: its key is a hydration key (digits and small letters)
+ * that no other key in the hand-over contains as its beginning, and it
+ * settles to true. Solid gives a resource inside a boundary a key that
+ * extends the boundary's, so a resource that settles to true is still
+ * refused; the site renders no resources at build time (src/report.tsx).
  */
 import { runInNewContext } from "node:vm";
 
 const SCRIPT = /<script\b[^>]*>([\s\S]*?)<\/script>/gi;
+const KEY = /^[0-9a-z]+$/;
 
 /** What one inline script hands over: { key: value } for every _$HY.r entry */
 function handOver(source) {
   const sandbox = { _$HY: { r: {} } };
   sandbox.self = sandbox;
-  runInNewContext(source, sandbox, { timeout: 1000 });
+  // microtasks run before the script counts as done, so a boundary settled
+  // in a promise callback is read settled
+  runInNewContext(source, sandbox, { timeout: 1000, microtaskMode: "afterEvaluate" });
   return Object.fromEntries(
     Object.entries(sandbox._$HY.r).map(([key, value]) => [
       key,
@@ -25,7 +34,7 @@ function handOver(source) {
   );
 }
 
-/** The HTML without its inline scripts; throws if one carries more than a finished boundary */
+/** The HTML without its inline scripts; throws if one carries more than finished boundaries */
 export function stripSsrScripts(html, where = "page") {
   return html.replace(SCRIPT, (_, source) => {
     let entries;
@@ -34,9 +43,14 @@ export function stripSsrScripts(html, where = "page") {
     } catch (error) {
       throw new Error(`${where}: an inline script in the rendered page could not be read (${error.message})`);
     }
-    for (const [key, value] of Object.entries(entries))
+    const keys = Object.keys(entries);
+    for (const [key, value] of Object.entries(entries)) {
+      if (!KEY.test(key)) throw new Error(`${where}: the rendered page hands over "${key}", which is no hydration key`);
+      if (keys.some((other) => other !== key && key.startsWith(other)))
+        throw new Error(`${where}: the rendered page hands over ${key} inside a boundary: a resource, not a boundary`);
       if (value !== true)
         throw new Error(`${where}: the rendered page hands data to the browser (${key}); render it from loaded data instead`);
+    }
     return "";
   });
 }

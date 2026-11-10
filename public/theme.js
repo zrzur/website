@@ -16,7 +16,38 @@
   // dark is the default; light only when the visitor chose it here
   root.dataset.theme = read("zrzur-site-theme") === "light" ? "light" : "dark";
 
-  var match = location.pathname.match(/^\/(ar|de|fr|es|ru|zh)(\/|$)/);
+  // "/" + the rest of a path with no leading slashes or backslashes: a
+  // target such as "//evil.com" or "/\evil.com" would leave the site
+  var local = function (rest) {
+    return "/" + String(rest).replace(/^[\/\\]+/, "");
+  };
+  // leaves this page for another address on this site; hidden first, so the
+  // browser never paints a page the visitor is leaving
+  var leave = function (path) {
+    var target = path + location.search + location.hash;
+    try {
+      if (new URL(target, location.origin).origin !== location.origin) return false;
+    } catch (e) {
+      return false;
+    }
+    root.style.visibility = "hidden";
+    location.replace(target);
+    return true;
+  };
+  // the same page in a language: "/de/x"; the home page keeps its slash
+  var inLanguage = function (code, path) {
+    var clean = local(path);
+    return code === "en" ? clean : "/" + code + clean;
+  };
+  // one address per page: prefixes in lower case, English without one
+  // (/DE/x → /de/x, /en/x → /x)
+  var prefix = location.pathname.match(/^\/([a-zA-Z]{2})(\/|$)/);
+  var given = prefix && prefix[1].toLowerCase();
+  var rest = prefix ? location.pathname.slice(3) || "/" : location.pathname;
+  if (given && given !== "en" && CODES.test(given) && prefix[1] !== given && leave(inLanguage(given, rest))) return;
+  var english = given === "en" && CODES.test(given);
+  var path = local(english ? rest : location.pathname);
+  var match = english ? null : location.pathname.match(/^\/(ar|de|fr|es|ru|zh)(\/|$)/);
   if (!match) {
     // an English address: a visitor of another language goes to their own
     // address now, before this page is drawn (src/i18n.ts detectLanguage:
@@ -34,11 +65,8 @@
         } else if (CODES.test(parts[0])) wanted = parts[0];
       }
     }
-    if (wanted && wanted !== "en") {
-      var path = location.pathname === "/" ? "/" : location.pathname;
-      location.replace("/" + wanted + (path === "/" ? "/" : path) + location.search + location.hash);
-      return;
-    }
+    if (wanted && wanted !== "en" && leave(inLanguage(wanted, path))) return;
+    if (english && leave(path)) return;
   }
   var language = match ? match[1] : "en";
   root.lang = language === "zh" ? "zh-Hans" : language;
