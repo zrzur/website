@@ -9,16 +9,22 @@
     if (localStorage.getItem("zrzur-site-theme") === "light") theme = "light";
   } catch (e) {}
   root.dataset.theme = theme;
-  var match = location.pathname.match(/^\/(ar|de)(\/|$)/);
+  var match = location.pathname.match(/^\/(ar|de|fr|es|ru|zh)(\/|$)/);
   var language = match ? match[1] : "en";
-  root.lang = language;
+  root.lang = language === "zh" ? "zh-Hans" : language;
   root.dir = language === "ar" ? "rtl" : "ltr";
-  // the headline's font, before the first paint
+  // the headline's font, before the first paint: Arabic and Russian
+  // headlines need their own letters; Chinese uses the system's font
   var font = document.createElement("link");
   font.rel = "preload";
   font.as = "font";
   font.type = "font/woff2";
   font.crossOrigin = "";
-  font.href = language === "ar" ? "/assets/plex-arabic-700.woff2" : "/assets/plex-latin-wght.woff2";
+  font.href =
+    language === "ar"
+      ? "/assets/plex-arabic-700.woff2"
+      : language === "ru"
+        ? "/assets/plex-cyrillic-wght.woff2"
+        : "/assets/plex-latin-wght.woff2";
   document.head.appendChild(font);
 })();

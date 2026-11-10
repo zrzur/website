@@ -2,9 +2,15 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile, access } from "node:fs/promises";
 
-import { labels, features, faqs } from "../src/content.ts";
+import { features } from "../src/content.ts";
+import { LOCALES } from "../src/i18n.ts";
 import { validatePublicUrl, resolveAppUrl, resolvePreviewUrl } from "../src/config.ts";
 import { legalDocuments, legalDraftNotice } from "../src/legal.ts";
+
+const packs = Object.fromEntries(
+  await Promise.all(LOCALES.map(async ({ code }) => [code, (await import(`../src/locales/${code}.ts`)).default])),
+);
+const labels = Object.fromEntries(LOCALES.map(({ code }) => [code, packs[code].labels]));
 
 test("English and Arabic cover the same complete content", () => {
   assert.deepEqual(
@@ -15,11 +21,11 @@ test("English and Arabic cover the same complete content", () => {
     for (const value of Object.values(labels[lang]))
       assert(value.trim().length > 0);
     for (const feature of features)
-      for (const field of ["title", "body", "detail"])
-        assert(feature[field][lang].trim());
-    for (const faq of faqs) {
-      assert(faq.question[lang].trim());
-      assert(faq.answer[lang].trim());
+      for (const field of ["title", "body"])
+        assert(packs[lang].features[feature.id][field].trim());
+    for (const faq of packs[lang].faqs) {
+      assert(faq.question.trim());
+      assert(faq.answer.trim());
     }
   }
 });
@@ -120,12 +126,14 @@ test("no page has an inline script; the theme script is a file in the head", asy
 // promises nothing that does not exist yet (no other platforms or stores) and
 // shows no prices or paid extras.
 test("launch copy: only what exists, no prices, no paid extras", async () => {
-  const copy = JSON.stringify([labels, features, faqs]);
+  const copy = JSON.stringify(packs);
   // the desktop app exists for Windows, macOS and Linux; there are no phone stores
   assert.doesNotMatch(copy, /App Store|Play Store|Feather|ريشة/);
   assert.doesNotMatch(copy, /Nothing to install|Nichts zu installieren|لا حاجة إلى التثبيت|لا تثبيت/);
   for (const language of ["ar", "en", "de"])
     assert.doesNotMatch(labels[language].heroBody, /Download|تنزيل/);
+  for (const [language, word] of [["fr", /Télécharg/], ["es", /Descarg/], ["ru", /Скача/], ["zh", /下载/]])
+    assert.doesNotMatch(labels[language].heroBody, word, language);
   // every system the copy names has a real file, each with its own checksum
   const app = await readFile(new URL("../src/App.tsx", import.meta.url), "utf8");
   for (const file of [/Zrzur-win32-x64-[\w.-]+\.zip/, /Zrzur-darwin-arm64-[\w.-]+\.zip/, /Zrzur-darwin-x64-[\w.-]+\.zip/, /Zrzur-linux-x64-[\w.-]+\.zip/])
@@ -172,6 +180,7 @@ test("all bundled fonts and approved marks exist", async () => {
     "plex-arabic-600.woff2",
     "plex-arabic-700.woff2",
     "plex-latin-wght.woff2",
+    "plex-cyrillic-wght.woff2",
     "Plex-Arabic-LICENSE.txt",
     "Plex-Latin-LICENSE.txt",
     "Upstream-AGPL-LICENSE.txt",
@@ -199,6 +208,10 @@ test("canonical URLs always point at the zrzur.com homepage domain", async () =>
   // old aliases resolve inside a language prefix too
   assert.equal(canonicalUrl("/de/about"), "https://zrzur.com/de/project");
   assert.equal(canonicalUrl("/ar/index.html"), "https://zrzur.com/ar");
+  // every listed language, not only the first three
+  assert.equal(canonicalUrl("/fr/about"), "https://zrzur.com/fr/project");
+  assert.equal(canonicalUrl("/zh/index.html"), "https://zrzur.com/zh");
+  assert.equal(canonicalUrl("/ru/legal/privacy/"), "https://zrzur.com/ru/legal/privacy");
 });
 
 test("robots.txt and sitemap.xml list only zrzur.com pages", async () => {

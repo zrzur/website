@@ -9,6 +9,9 @@ import {
   policyVersions,
 } from "../src/legal.ts";
 import { CREATOR_TERMS_VERSION } from "../src/policies/creator-terms.ts";
+import { bindingLanguages, bindingNotice, hasLanguage, shownLanguage } from "../src/legal-binding.ts";
+import { LOCALES } from "../src/i18n.ts";
+import en from "../src/locales/en.ts";
 
 const EXPECTED_SLUGS = [
   "terms",
@@ -210,9 +213,10 @@ test("hub groups and footer links point at real policies", () => {
   const groups = new Set(legalGroups.map((group) => group.id));
   for (const doc of legalDocuments) assert(groups.has(doc.group), doc.slug);
   assert.deepEqual(
-    legalFooterLinks.map((link) => link.label.en),
+    legalFooterLinks.map((link) => en.labels[link.label]),
     ["Terms", "Privacy", "Community guidelines", "Developer terms", "Imprint", "Contact", "Paid services"],
   );
+  for (const group of legalGroups) assert(en.labels[group.title], group.id);
   for (const link of legalFooterLinks) assert(slugs.has(link.slug));
 });
 
@@ -254,4 +258,53 @@ test("enforcement page makes no claim the code does not keep", () => {
   assert(!/did not make the original decision/.test(text));
   assert(!/removed automatically/.test(text));
   assert(/at least 6 months/.test(text));
+});
+
+// Owner brief 2026-11-10: translations may be shown, but each translated
+// policy says the English (and, where complete, German) version is binding
+// and links to it.
+test("only English and complete German texts are binding", () => {
+  for (const doc of legalDocuments) {
+    const binding = bindingLanguages(doc);
+    assert.equal(binding[0], "en", doc.slug);
+    assert.equal(binding.includes("de"), hasLanguage(doc, "de"), doc.slug);
+    assert(!binding.includes("ar"), doc.slug);
+  }
+  const privacy = legalDocuments.find((doc) => doc.slug === "privacy");
+  assert.deepEqual(bindingLanguages(privacy), ["en", "de"]);
+});
+
+test("every page that is not a binding version says so and names the binding versions", () => {
+  for (const doc of legalDocuments)
+    for (const { code } of LOCALES) {
+      const notice = bindingNotice(doc, code);
+      if (bindingLanguages(doc).includes(code)) {
+        assert.equal(notice, null, `${doc.slug} ${code}`);
+        continue;
+      }
+      assert(notice, `${doc.slug} ${code} needs a notice`);
+      assert.deepEqual(notice.binding, bindingLanguages(doc));
+      // a page in its own language is a translation; otherwise the English text is shown
+      assert.equal(notice.kind, hasLanguage(doc, code) ? "translation" : "english", `${doc.slug} ${code}`);
+      assert.equal(shownLanguage(doc, code), hasLanguage(doc, code) ? code : "en");
+    }
+  // the Arabic privacy policy is a translation; the French one shows the English text
+  const privacy = legalDocuments.find((doc) => doc.slug === "privacy");
+  assert.deepEqual(bindingNotice(privacy, "ar"), { kind: "translation", binding: ["en", "de"] });
+  assert.deepEqual(bindingNotice(privacy, "fr"), { kind: "english", binding: ["en", "de"] });
+  // a German page of a policy without a German text shows the English one
+  const terms = legalDocuments.find((doc) => doc.slug === "terms");
+  assert.deepEqual(bindingNotice(terms, "de"), { kind: "english", binding: ["en"] });
+});
+
+test("the binding notice has its words in every language", async () => {
+  const keys = ["legalTranslationNote", "legalEnglishNote", "legalBindingEn", "legalBindingEnDe", "legalReadEnglish", "legalReadGerman", "legalHubNote"];
+  for (const { code } of LOCALES) {
+    const { labels } = (await import(`../src/locales/${code}.ts`)).default;
+    for (const key of keys) assert(labels[key]?.trim(), `${code} ${key}`);
+  }
+  const page = await readFile(new URL("../src/legal-page.tsx", import.meta.url), "utf8");
+  // the notice links to each binding version, in its own language
+  assert(page.includes("localizedPath(props.path, code)"));
+  assert(page.includes("hreflang={tagOf(code)}"));
 });

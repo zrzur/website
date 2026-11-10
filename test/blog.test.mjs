@@ -5,7 +5,7 @@ import assert from "node:assert/strict";
 
 import { readPosts } from "../scripts/blog-files.mjs";
 import { parsePost, inline, anchor } from "../src/blog-md.ts";
-import { collectPosts } from "../src/blog-posts.ts";
+import { collectPosts, postText } from "../src/blog-posts.ts";
 
 const post = (body, head = "title: T\nsummary: S\ndate: 2026-11-08") => `---\n${head}\n---\n${body}\n`;
 
@@ -39,4 +39,30 @@ test("the reader passes no HTML and no unsafe link", () => {
   assert.throws(() => parsePost(post("![x](javascript:alert(1))")), /picture address/);
   assert.deepEqual(inline("**a** *b* `c`").map((p) => p.kind), ["strong", "text", "em", "text", "code"]);
   assert.equal(anchor("من أين بدأنا"), "من-أين-بدأنا");
+});
+
+test("French, Spanish, Russian and Chinese posts are optional and complete when present", () => {
+  for (const entry of readPosts())
+    for (const lang of ["fr", "es", "ru", "zh"]) {
+      const text = entry.text[lang];
+      if (!text) {
+        // no file in that language: the page shows the English text
+        assert.equal(postText(entry, lang).language, "en");
+        continue;
+      }
+      assert.equal(postText(entry, lang).language, lang);
+      assert.ok(text.title && text.summary, `${entry.slug}/${lang}: title and summary`);
+      assert.ok(text.summary.length <= 200, `${entry.slug}/${lang}: summary fits a search result`);
+      assert.ok(text.words >= 80, `${entry.slug}/${lang}: a real post, not a stub`);
+    }
+  const files = { "content/blog/a/en.md": post("Hello"), "content/blog/a/ar.md": post("Hi"), "content/blog/a/de.md": post("Hallo") };
+  assert.equal(collectPosts(files)[0].text.fr, undefined);
+  assert.throws(() => collectPosts({ ...files, "content/blog/a/it.md": post("Ciao") }), /file name must be/);
+  assert.throws(() => collectPosts({ ...files, "content/blog/a/fr.md": post("Salut", "title: T\nsummary: S\ndate: 2026-11-09") }), /same date/);
+});
+
+test("reading time counts Chinese by characters, not by spaces", () => {
+  const han = "我们每天都在改进应用".repeat(40); // 400 characters, no spaces
+  assert.equal(parsePost(post(han)).words, 200);
+  assert.equal(parsePost(post("one two three")).words, 3);
 });

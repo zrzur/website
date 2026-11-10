@@ -11,32 +11,24 @@ import {
   onMount,
   type JSX,
 } from "solid-js";
-import {
-  faqs,
-  features,
-  labels,
-  localize,
-  type Label,
-  type Partial,
-} from "./content";
+import { features, type Label, type Pack } from "./content";
 import { VoiceChannels } from "./demo";
 import type { Flock } from "./flock";
-import { reportText } from "./report-text";
+import { loadPack } from "./strings";
 import { SOURCE_URL, THIRD_PARTY_NOTICES_PATH } from "./buildInfo";
 import { canonicalUrl, resolveAppUrl, resolvePreviewUrl } from "./config";
 import {
   LOCALES,
-  detectLanguage,
   directionOf,
   localizedPath,
-  readSavedLanguage,
   saveLanguage,
   splitLocale,
+  tagOf,
   type Language,
 } from "./i18n";
 import { legalFooterLinks, legalSlugs } from "./legal-nav";
 import { Icon } from "./icon";
-import { posts, type Post } from "./blog";
+import { hasPost, loadPosts, type Post } from "./blog";
 import type { Block, Inline } from "./blog-md";
 
 /**
@@ -83,19 +75,19 @@ type Page =
   | "legal"
   | "report"
   | "404";
-/** The post a /blog/<slug> path names, undefined for the list, null for no such post */
-const postForPath = (path: string) => {
+/** The post slug a /blog/<slug> path names, undefined for the list, null for no such post */
+const slugForPath = (path: string) => {
   const slug = path.replace(/\/$/, "").split("/")[2];
   if (!slug) return undefined;
-  return posts.find((entry) => entry.slug === slug) ?? null;
+  return hasPost(slug) ? slug : null;
 };
-const pageForPath = (path: string): Page => {
+export const pageForPath = (path: string): Page => {
   if (
     path === "/legal" ||
     legalSlugs.some((slug) => path === `/legal/${slug}`)
   )
     return "legal";
-  if (/^\/blog(\/[a-z0-9-]+)?\/?$/.test(path) && postForPath(path) !== null) return "blog";
+  if (/^\/blog(\/[a-z0-9-]+)?\/?$/.test(path) && slugForPath(path) !== null) return "blog";
   const clean = path.replace(/\.html$/, "").replace(/\/$/, "") || "/";
   return (
     (
@@ -124,22 +116,30 @@ const ReportPage = lazy(() => import("./report"));
 /** The pages where the flock flies; legal and report pages stay quiet */
 const FLOCK_PAGES: readonly Page[] = ["home", "features", "project", "guide", "download", "blog", "404"];
 
-const TOUR = [
-  { id: "lobby", label: "tabLobby", body: "lobbyBody" },
-  { id: "chat", label: "tabChat", body: "chatBody" },
-  { id: "settings", label: "tabRoles", body: "commBody" },
-  { id: "roles", label: "tabInterests", body: "rolesBody" },
-  { id: "discover", label: "tabDiscover", body: "discoverBody" },
-] as const;
+/** The languages the app screens were captured in; the others show the English screens */
+const SHOT_LANGUAGES: readonly Language[] = ["ar", "en", "de"];
 
-export default function App() {
+/**
+ * The site. main.tsx hands it the words of the first language (already
+ * loaded); another language's words load when the visitor picks it.
+ */
+export default function App(props: { language: Language; pack: Pack; posts: Post[] }) {
   const { language: urlLanguage, path } = splitLocale(location.pathname);
   const page = pageForPath(path);
-  const post = page === "blog" ? postForPath(path) : null;
-  const [language, setLanguageSignal] = createSignal<Language>(
-    detectLanguage(location.pathname, readSavedLanguage(), navigator.languages ?? []),
-  );
-  // a visitor who prefers German or Arabic gets that page's own address
+  const slug = page === "blog" ? slugForPath(path) : undefined;
+  // the first values only: later ones come through the setters below
+  const [language, setLanguageSignal] = createSignal<Language>(props.language);
+  const [pack, setPack] = createSignal<Pack>(props.pack);
+  const [posts, setPosts] = createSignal<Post[]>(props.posts);
+  const post = () => (slug ? posts().find((entry) => entry.slug === slug) : undefined);
+  /** Words and posts of a language, then the page switches to it in one step */
+  async function switchTo(next: Language) {
+    const [words, list] = await Promise.all([loadPack(next), page === "blog" ? loadPosts(next) : Promise.resolve(posts())]);
+    setPack(words);
+    setPosts(list);
+    setLanguageSignal(next);
+  }
+  // a visitor whose browser prefers another language gets that page's own address
   if (!urlLanguage && language() !== "en" && page !== "404")
     history.replaceState(null, "", localizedPath(path, language()) + location.search + location.hash);
 
@@ -151,8 +151,7 @@ export default function App() {
   let dialog!: HTMLDialogElement;
   let flockCanvas: HTMLCanvasElement | undefined;
   let flock: Flock | undefined;
-  const t = (key: Label) => labels[language()][key];
-  const l = (value: Partial) => localize(value, language());
+  const t = (key: Label) => pack().labels[key];
   /** A site path in the current language */
   const href = (target: string) => localizedPath(target, language());
   const appUrl = resolveAppUrl(location.hostname, import.meta.env.VITE_PUBLIC_APP_URL);
@@ -161,11 +160,11 @@ export default function App() {
     (appUrl ? new URL("discover", appUrl).href : null);
   const SUPPORT_MAIL = "mailto:support@zrzur.com";
 
-  function setLanguage(next: Language) {
+  async function setLanguage(next: Language) {
     if (next === language()) return;
     saveLanguage(next);
-    setLanguageSignal(next);
     history.pushState(null, "", localizedPath(path, next) + location.search + location.hash);
+    await switchTo(next);
   }
 
   const nav = [
@@ -181,22 +180,22 @@ export default function App() {
     const code = language();
     saveLanguage(code);
     const root = document.documentElement;
-    root.lang = code;
+    root.lang = tagOf(code);
     root.dir = directionOf(code);
     const title =
       page === "legal"
         ? t("legalTitle")
         : page === "report"
-          ? reportText[code].title
+          ? t("reportTitle")
         : page === "blog"
-          ? (post ? post.text[code].title : t("blog"))
+          ? (post()?.text.title ?? t("blog"))
           : t(({ features: "features", project: "project", download: "downloadTitle", guide: "help", "404": "notFound" } as const)[page as "features"]);
     document.title = page === "home" ? t("seoHomeTitle") : `${title} — ${t("brand")}`;
     const description =
       page === "report"
-        ? reportText[code].intro
+        ? t("reportIntro")
         : page === "blog"
-          ? (post ? post.text[code].summary : t("blogBody"))
+          ? (post()?.text.summary ?? t("blogBody"))
           : t(({ home: "seoHomeBody", features: "featuresBody", project: "projectBody", download: "downloadBody", guide: "helpBody", "404": "notFoundBody", legal: "legalIntro" } as const)[page as "home"]);
     const meta = (selector: string, value: string) =>
       document.querySelector(selector)?.setAttribute("content", value);
@@ -217,7 +216,7 @@ export default function App() {
       };
       add("canonical", canonicalUrl(localizedPath(path, code)));
       for (const locale of LOCALES)
-        add("alternate", canonicalUrl(localizedPath(path, locale.code)), locale.code);
+        add("alternate", canonicalUrl(localizedPath(path, locale.code)), locale.tag);
       add("alternate", canonicalUrl(path), "x-default");
     }
   });
@@ -231,10 +230,7 @@ export default function App() {
   });
   // back and forward between languages
   onMount(() => {
-    const popped = () => {
-      const next = splitLocale(location.pathname).language ?? "en";
-      setLanguageSignal(next);
-    };
+    const popped = () => void switchTo(splitLocale(location.pathname).language ?? "en");
     window.addEventListener("popstate", popped);
     onCleanup(() => window.removeEventListener("popstate", popped));
   });
@@ -415,7 +411,7 @@ export default function App() {
           }}
         >
           <Icon name="globe" />
-          <span lang={current().code}>{current().name}</span>
+          <span lang={current().tag}>{current().name}</span>
         </button>
         <Show when={open()}>
           <div
@@ -435,9 +431,13 @@ export default function App() {
                   role="option"
                   aria-selected={locale.code === language()}
                   classList={{ "language-option": true, "is-focus": focus() === index() }}
-                  lang={locale.code}
+                  lang={locale.tag}
                   dir={locale.dir}
-                  onPointerEnter={() => setFocus(index())}
+                  onPointerEnter={() => {
+                    setFocus(index());
+                    // the words start loading before the click lands
+                    void loadPack(locale.code);
+                  }}
                   onClick={() => choose(locale.code)}
                 >
                   {locale.name}
@@ -455,14 +455,14 @@ export default function App() {
   function FAQ() {
     return (
       <div class="faq-list">
-        <For each={faqs}>
+        <For each={pack().faqs}>
           {(item, index) => (
             <details open={index() === 0} data-rise>
               <summary>
-                <span>{l(item.question)}</span>
+                <span>{item.question}</span>
                 <Icon name="plus" class="faq-sign" />
               </summary>
-              <p>{l(item.answer)}</p>
+              <p>{item.answer}</p>
             </details>
           )}
         </For>
@@ -474,7 +474,10 @@ export default function App() {
    * the one matching the site theme. `in` shows it in another language.
    */
   function Shot(props: { view: View; alt: Label; eager?: boolean; phone?: boolean; theme?: "dark" | "light"; in?: Language }) {
-    const code = () => props.in ?? language();
+    const code = () => {
+      const wanted = props.in ?? language();
+      return SHOT_LANGUAGES.includes(wanted) ? wanted : "en";
+    };
     const file = (shade: "dark" | "light", phone = false) => {
       const name = `${code()}-${props.view}${phone ? "-phone" : ""}-${shade}.jpg`;
       const version = PRODUCT_VERSIONS[name];
@@ -514,9 +517,10 @@ export default function App() {
     );
   }
   function Languages() {
-    const phones = () =>
-      [...LOCALES].sort((a, b) => Number(b.code === language()) - Number(a.code === language()));
     const altOf = { ar: "langAltAr", en: "langAltEn", de: "langAltDe" } as const;
+    // the phones show the three languages the app screens exist in, the page's own first
+    const phones = () =>
+      [...SHOT_LANGUAGES].sort((a, b) => Number(b === language()) - Number(a === language()));
     return (
       <section class="languages home-screen" id="languages" aria-labelledby="languages-title">
         <div class="container languages-grid">
@@ -528,7 +532,7 @@ export default function App() {
           <div class="flock-stage home-greet" data-flock="word" data-words="أهلًا|Hello|Hallo" aria-hidden="true" />
           <div class="languages-phones" data-rise>
             <For each={phones()}>
-              {(locale) => <Shot view="chat" alt={altOf[locale.code]} phone in={locale.code} />}
+              {(code) => <Shot view="chat" alt={altOf[code as keyof typeof altOf]} phone in={code} />}
             </For>
           </div>
         </div>
@@ -703,7 +707,7 @@ export default function App() {
             <div class="home-media"><VoiceCall /></div>
           </div>
         </section>
-        <Chapter id="roles" title={l(features[3].title)} body={l(features[3].body)} points={["rolesP1", "rolesP2", "rolesP3"]}>
+        <Chapter id="roles" title={pack().features.roles.title} body={pack().features.roles.body} points={["rolesP1", "rolesP2", "rolesP3"]}>
           <Shot view="settings" alt="commAlt" />
         </Chapter>
         <Languages />
@@ -831,8 +835,8 @@ export default function App() {
                 data-rise
               >
                 <span class="feature-icon" aria-hidden="true"><Icon name={feature.icon} /></span>
-                <h2>{l(feature.title)}</h2>
-                <p>{l(feature.body)}</p>
+                <h2>{pack().features[feature.id].title}</h2>
+                <p>{pack().features[feature.id].body}</p>
                 <div class="feature-proof">
                   <FeatureProof view={feature.view} />
                 </div>
@@ -972,8 +976,8 @@ export default function App() {
   /** The blog: the list of posts, or one post with its own heading */
   function Blog() {
     const date = (iso: string) =>
-      new Intl.DateTimeFormat(language(), { year: "numeric", month: "long", day: "numeric" }).format(new Date(`${iso}T12:00:00Z`));
-    const minutes = (n: number) => t("blogMinutes").replace("{n}", new Intl.NumberFormat(language()).format(n));
+      new Intl.DateTimeFormat(tagOf(language()), { year: "numeric", month: "long", day: "numeric" }).format(new Date(`${iso}T12:00:00Z`));
+    const minutes = (n: number) => t("blogMinutes").replace("{n}", new Intl.NumberFormat(tagOf(language())).format(n));
     const feed = () => `${import.meta.env.BASE_URL}${language() === "en" ? "" : `${language()}/`}blog/feed.xml`;
     const Parts = (props: { parts: Inline[] }) => (
       <For each={props.parts}>
@@ -1016,15 +1020,15 @@ export default function App() {
       }
     };
     const Card = (props: { entry: Post }) => (
-      <article class="blog-card" data-rise>
+      <article class="blog-card" data-rise lang={props.entry.language !== language() ? tagOf(props.entry.language) : undefined}>
         <p class="blog-meta">
           <time dateTime={props.entry.date}>{date(props.entry.date)}</time>
-          <span>{minutes(props.entry.minutes[language()])}</span>
+          <span>{minutes(props.entry.minutes)}</span>
         </p>
         <h2>
-          <a href={href(`/blog/${props.entry.slug}`)}>{props.entry.text[language()].title}</a>
+          <a href={href(`/blog/${props.entry.slug}`)}>{props.entry.text.title}</a>
         </h2>
-        <p>{props.entry.text[language()].summary}</p>
+        <p>{props.entry.text.summary}</p>
         <a class="text-link" href={href(`/blog/${props.entry.slug}`)}>
           {t("blogRead")}
           <Icon name="arrow" class="directional" />
@@ -1033,13 +1037,13 @@ export default function App() {
     );
     return (
       <Show
-        when={post}
+        when={post()}
         fallback={
           <>
             <PageHeading title="blogTitle" body="blogBody" words={t("flockName")} />
             <section class="container blog-list" aria-label={t("blog")}>
-              <Show when={posts.length} fallback={<p>{t("blogEmpty")}</p>}>
-                <For each={posts}>{(entry) => <Card entry={entry} />}</For>
+              <Show when={posts().length} fallback={<p>{t("blogEmpty")}</p>}>
+                <For each={posts()}>{(entry) => <Card entry={entry} />}</For>
               </Show>
               <a class="text-link blog-feed" href={feed()}>{t("blogFeed")}</a>
             </section>
@@ -1047,19 +1051,19 @@ export default function App() {
         }
       >
         {(entry) => {
-          const text = () => entry().text[language()];
+          const text = () => entry().text;
           const sections = () => text().blocks.flatMap((block) => (block.kind === "h2" ? [block] : []));
-          const others = () => posts.filter((other) => other.slug !== entry().slug).slice(0, 2);
+          const others = () => posts().filter((other) => other.slug !== entry().slug).slice(0, 2);
           return (
             <>
-              <article class="container blog-post">
+              <article class="container blog-post" lang={entry().language !== language() ? tagOf(entry().language) : undefined}>
                 <a class="text-link blog-back" href={href("/blog")}>
                   <Icon name="arrow" class="directional blog-back-icon" />
                   {t("blogBack")}
                 </a>
                 <p class="blog-meta">
                   <time dateTime={entry().date}>{date(entry().date)}</time>
-                  <span>{minutes(entry().minutes[language()])}</span>
+                  <span>{minutes(entry().minutes)}</span>
                   <span>{t("blogBy")}</span>
                 </p>
                 <h1>{text().title}</h1>
@@ -1208,9 +1212,9 @@ export default function App() {
                 { href: SUPPORT_MAIL, label: t("feedback") },
               ])}
               {column("footerLegal", [
-                ...legalFooterLinks.filter((link) => link.slug !== "paid-services").map((link) => ({ href: href(`/legal/${link.slug}`), label: l(link.label) })),
+                ...legalFooterLinks.filter((link) => link.slug !== "paid-services").map((link) => ({ href: href(`/legal/${link.slug}`), label: t(link.label) })),
                 { href: href("/legal"), label: t("allPolicies") },
-                { href: href("/report"), label: reportText[language()].title },
+                { href: href("/report"), label: t("reportTitle") },
               ])}
             </div>
           </div>
@@ -1302,10 +1306,10 @@ export default function App() {
         </Show>
         <Suspense>
           <Show when={page === "legal"}>
-            <LegalPage language={language()} path={path} />
+            <LegalPage language={language()} path={path} t={t} />
           </Show>
           <Show when={page === "report"}>
-            <ReportPage language={language()} />
+            <ReportPage language={language()} title={t("reportTitle")} intro={t("reportIntro")} />
           </Show>
         </Suspense>
         <Show when={page === "404"}>

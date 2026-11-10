@@ -10,6 +10,8 @@ content/blog/<اسم-المقال>/de.md
 
 اسم المجلد هو عنوان المقال في الموقع: `content/blog/why-zrzur/` يصبح `zrzur.com/ar/blog/why-zrzur`. استخدم حروفًا لاتينية صغيرة وأرقامًا وشَرطات فقط.
 
+يمكن أن يضم المجلد أيضًا ترجمات اختيارية: `fr.md` و`es.md` و`ru.md` و`zh.md` (الصينية المبسّطة). إذا غاب أحدها تعرض صفحة تلك اللغة النص الإنجليزي.
+
 ## خطوات النشر من GitHub
 
 1. افتح المستودع `zrzur/website` على GitHub واختر الفرع `beta`.
@@ -62,6 +64,8 @@ cover: /blog/my-first-post/cover.jpg
 # The Zrzur blog: how to publish a post
 
 Each post is one folder with three files, one per language: `content/blog/<post-name>/ar.md`, `en.md` and `de.md`. The folder name is the address: `content/blog/why-zrzur/` becomes `zrzur.com/blog/why-zrzur`. Small Latin letters, digits and dashes only.
+
+Optional translations may sit beside them: `fr.md`, `es.md`, `ru.md` and `zh.md` (Simplified Chinese). Without one, that language shows the English text.
 
 **Publishing from GitHub:** open `zrzur/website`, switch to the `beta` branch, go to `content/blog/`, choose **Add file → Create new file**, name it `my-first-post/en.md`, paste the post and **Commit changes**; do the same for `ar.md` and `de.md`. GitHub then tests, builds and publishes the site on zrzur.com within minutes (Actions → "Publish the website"). If anything is missing, publishing stops with a message that says what to fix, and the live site stays as it is.
 

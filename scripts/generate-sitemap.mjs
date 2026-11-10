@@ -31,7 +31,7 @@ const entries = [];
 for (const page of pages)
   for (const { code } of LOCALES) {
     const alternates = LOCALES.map(
-      (locale) => `    <xhtml:link rel="alternate" hreflang="${locale.code}" href="${url(page, locale.code)}"/>`,
+      (locale) => `    <xhtml:link rel="alternate" hreflang="${locale.tag}" href="${url(page, locale.code)}"/>`,
     );
     alternates.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${url(page, "en")}"/>`);
     entries.push(`  <url>\n    <loc>${url(page, code)}</loc>\n${alternates.join("\n")}\n  </url>`);

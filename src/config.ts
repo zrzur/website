@@ -1,3 +1,8 @@
+import { LOCALES, DEFAULT_LANGUAGE } from "./i18n.ts";
+
+/** The language prefixes of the site (/de, /fr, …); English has none */
+const PREFIX = new RegExp(`^/(${LOCALES.map((l) => l.code).filter((c) => c !== DEFAULT_LANGUAGE).join("|")})(?=/|$)`);
+
 /** True for zrzur.com / zrzur.cc and their real subdomains (not suffix spoofs). */
 function isZrzurPublicHost(hostname: string): boolean {
   const host = hostname.replace(/\.$/, "").toLowerCase();
@@ -60,7 +65,7 @@ const PATH_ALIASES: Record<string, string> = { "/index": "/", "/about": "/projec
 /** Canonical zrzur.com URL for a site path (drops `.html` and trailing slashes). */
 export function canonicalUrl(path: string): string {
   // aliases apply after the language prefix (/de/about → /de/project)
-  const match = path.match(/^\/(ar|de)(?=\/|$)/);
+  const match = path.match(PREFIX);
   const prefix = match ? match[0] : "";
   const rest = path.slice(prefix.length).replace(/\.html$/, "").replace(/\/+$/, "") || "/";
   const page = PATH_ALIASES[rest] ?? rest;

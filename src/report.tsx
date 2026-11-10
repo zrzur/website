@@ -1,6 +1,6 @@
-import { For, Show, createSignal, onMount } from "solid-js";
+import { For, Show, createResource, createSignal, onMount } from "solid-js";
 
-import { reportText } from "./report-text.ts";
+import { reportTextLoaders, type ReportText } from "./report-text.ts";
 import {
   CATEGORIES,
   CATEGORY_IDS,
@@ -28,9 +28,23 @@ declare global {
   }
 }
 
-/** Public form to report illegal content without an account (DSA Art. 16) */
-export default function ReportPage(props: { language: Language }) {
-  const text = () => reportText[props.language];
+type Props = { language: Language; title: string; intro: string };
+
+/**
+ * Public form to report illegal content without an account (DSA Art. 16).
+ * The form words load per language; while another language loads, the form
+ * keeps the words it has, so nothing typed is lost.
+ */
+export default function ReportPage(props: Props) {
+  const [text] = createResource(
+    () => props.language,
+    (language) => reportTextLoaders[language]().then((module) => module.default),
+  );
+  return <Show when={text.latest}>{(words) => <ReportForm {...props} text={words} />}</Show>;
+}
+
+function ReportForm(props: Props & { text: () => ReportText }) {
+  const text = props.text;
   const api = resolveReportApi(location.hostname, import.meta.env.VITE_PUBLIC_API_URL);
 
   const prefill = readPrefill(location.search);
@@ -166,8 +180,8 @@ export default function ReportPage(props: { language: Language }) {
     <>
       <header class="page-heading page-heading-quiet container">
         <div>
-          <h1>{text().title}</h1>
-          <p>{text().intro}</p>
+          <h1>{props.title}</h1>
+          <p>{props.intro}</p>
         </div>
       </header>
       <section class="container report-section">

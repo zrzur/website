@@ -16,7 +16,7 @@ export const releaseInfo = readReleaseInfo({ dir: here, releaseFile: `${here}pac
 export const noticeExtras = [
   { name: 'Hugeicons (free, stroke rounded)', dir: assets, files: ['Hugeicons-LICENSE.md'], license: 'MIT', source: 'https://hugeicons.com' },
   { name: 'IBM Plex Sans Arabic (font)', dir: assets, files: ['Plex-Arabic-LICENSE.txt'], license: 'OFL-1.1', source: 'https://github.com/IBM/plex' },
-  { name: 'IBM Plex Sans (font)', dir: assets, files: ['Plex-Latin-LICENSE.txt'], license: 'OFL-1.1', source: 'https://github.com/IBM/plex' },
+  { name: 'IBM Plex Sans (font, Latin and Cyrillic)', dir: assets, files: ['Plex-Latin-LICENSE.txt'], license: 'OFL-1.1', source: 'https://github.com/IBM/plex' },
 ];
 
 /**
@@ -39,5 +39,6 @@ export default defineConfig({
   plugins: [solid(), thirdPartyNotices({ productName: 'Zrzur website', extras: noticeExtras })],
   server: { host: '127.0.0.1', port: 14826, strictPort: true },
   preview: { host: '127.0.0.1', port: 14826, strictPort: true },
-  build: { target: 'es2022' },
+  // the manifest tells scripts/prerender.mjs which chunk holds each language's words
+  build: { target: 'es2022', manifest: true },
 });
