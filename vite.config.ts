@@ -4,6 +4,15 @@ import solid from 'vite-plugin-solid';
 import { buildDefine, readReleaseInfo } from './scripts/release-info.mjs';
 import { readProductVersions } from './scripts/product-versions.mjs';
 import { thirdPartyNotices } from './scripts/third-party-notices.mjs';
+import { noticesPages, noticesPagesPlugin } from './scripts/notices-page.mjs';
+import { LOCALES } from './src/i18n';
+import en from './src/locales/en';
+import de from './src/locales/de';
+import ar from './src/locales/ar';
+import fr from './src/locales/fr';
+import es from './src/locales/es';
+import ru from './src/locales/ru';
+import zh from './src/locales/zh';
 
 const here = fileURLToPath(new URL('.', import.meta.url));
 const assets = fileURLToPath(new URL('./public/assets', import.meta.url));
@@ -18,6 +27,10 @@ export const noticeExtras = [
   { name: 'IBM Plex Sans (font, Latin and Cyrillic)', dir: assets, files: ['Plex-Latin-LICENSE.txt'], license: 'OFL-1.1', source: 'https://github.com/IBM/plex' },
 ];
 
+/** The notices as a page in every site language (scripts/notices-page.mjs) */
+const packs = { en, de, ar, fr, es, ru, zh } as const;
+const noticePages = noticesPages(LOCALES, (code) => packs[code as keyof typeof packs].labels);
+
 /** Content hash per product picture (scripts/product-versions.mjs) */
 export const productVersions = readProductVersions(`${assets}/product`);
 
@@ -31,7 +44,11 @@ export default defineConfig(({ isSsrBuild }) => ({
   plugins: isSsrBuild
     ? [solid({ ssr: true })]
     : // hydratable: the browser takes the prerendered nodes over (src/main.tsx)
-      [solid({ ssr: true }), thirdPartyNotices({ productName: 'Zrzur website', extras: noticeExtras })],
+      [
+        solid({ ssr: true }),
+        thirdPartyNotices({ productName: 'Zrzur website', extras: noticeExtras }),
+        noticesPagesPlugin(noticePages),
+      ],
   server: { host: '127.0.0.1', port: 14826, strictPort: true },
   preview: { host: '127.0.0.1', port: 14826, strictPort: true },
   // the manifest tells scripts/prerender.mjs which chunk holds each language's words

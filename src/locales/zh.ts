@@ -79,6 +79,8 @@ const labels: Labels = {
   source: "源代码",
   licences: "许可证与署名",
   thirdParty: "第三方声明",
+  thirdPartyIntro: "以下许可文本按作者原文以英文发布。",
+  thirdPartyPlain: "纯文本",
   questions: "常见问题",
   gettingStarted: "入门",
   safety: "安全与规则",

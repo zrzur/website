@@ -16,7 +16,7 @@ import { features, type Label, type Pack } from "./content";
 import { VoiceChannels } from "./demo";
 import type { Flock } from "./flock";
 import { loadPack } from "./strings";
-import { SOURCE_URL, THIRD_PARTY_NOTICES_PATH } from "./buildInfo";
+import { SOURCE_URL } from "./buildInfo";
 import { canonicalUrl, resolveAppUrl, resolvePreviewUrl } from "./config";
 import {
   LOCALES,
@@ -579,7 +579,8 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
           </div>
           {/* the flock greets in each language, one after another */}
           <div class="flock-stage home-greet" data-flock="word" data-words="أهلًا|Hello|Hallo" aria-hidden="true" />
-          <div class="languages-phones" data-rise>
+          {/* scrolls sideways on phones: reachable and named for the keyboard */}
+          <div class="languages-phones" data-rise tabindex="0" role="group" aria-labelledby="languages-title">
             <For each={phones()}>
               {(code) => <Shot view="chat" alt={altOf[code as keyof typeof altOf]} phone in={code} />}
             </For>
@@ -927,9 +928,9 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
               {t("licences")}
               <Icon name="arrow" class="directional" />
             </a>
-            <a href={`${import.meta.env.BASE_URL}${THIRD_PARTY_NOTICES_PATH}`} target="_blank" rel="noopener noreferrer">
+            <a href={href("/third-party-notices")}>
               {t("thirdParty")}
-              <Icon name="arrowDiagonal" />
+              <Icon name="arrow" class="directional" />
             </a>
           </nav>
         </section>
@@ -1253,7 +1254,7 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
                 { href: href("/project"), label: t("project") },
                 { href: SOURCE_URL, label: t("source"), external: true },
                 { href: href("/project#source"), label: t("licences") },
-                { href: `${import.meta.env.BASE_URL}${THIRD_PARTY_NOTICES_PATH}`, label: t("thirdParty"), external: true },
+                { href: href("/third-party-notices"), label: t("thirdParty") },
               ])}
               {column("footerResources", [
                 { href: href("/blog"), label: t("blog") },
