@@ -568,8 +568,8 @@
     },
     {
       "path": "public/theme.js",
-      "sha256": "f83e5af6dbc143dd6e01cdfdfb3aeb3040ef94b97d800aefa421c5e8f5c95c1c",
-      "bytes": 1889,
+      "sha256": "f2122fb9f3e59ecace22b9488b93eb52a28fcb2ec32e6121e4395095588daf6f",
+      "bytes": 2010,
       "category": "reviewed-product-asset"
     },
     {
@@ -604,8 +604,8 @@
     },
     {
       "path": "scripts/prerender.mjs",
-      "sha256": "faf3267fb9f3b75163b8252fd19445b5723a8d11c33e44649d9c783953250bc1",
-      "bytes": 13904,
+      "sha256": "7817c3f9980adcafa330852042a3f3a3d0bc82c2ad096d798d9b94d7a39a02dd",
+      "bytes": 14950,
       "category": "reviewed-build-and-ci"
     },
     {
@@ -652,8 +652,8 @@
     },
     {
       "path": "src/App.tsx",
-      "sha256": "f92e38c35f4c26cd5f1a748e2b13b088b440ff4a517bb0ea9f7ec007152383a7",
-      "bytes": 54662,
+      "sha256": "bd1a5f476a674dad338c11f9749ad02a30b9f62ad1198a2c02f87c14af605ec9",
+      "bytes": 54936,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -958,8 +958,8 @@
     },
     {
       "path": "src/site.css",
-      "sha256": "fe7fdf74f37bca1343af08be24fa9bfbf9d804aadc1f7787e0de47fce6e306b3",
-      "bytes": 113966,
+      "sha256": "8f30a95a89574a8931cd09e08442488a49f06e85b1fa8fc3533cba1f44092d04",
+      "bytes": 115383,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -976,8 +976,8 @@
     },
     {
       "path": "test/content.test.mjs",
-      "sha256": "7c59f10ce45b09f1d29f058c5664854404afa4698dad6eb6630b61b621e4e28a",
-      "bytes": 11888,
+      "sha256": "c9a3aa02da63c2ce35134efe7f1915f322fb4c737c958cd07de552c0625a8b52",
+      "bytes": 12208,
       "category": "synthetic-test-source-or-fixture"
     },
     {
@@ -994,8 +994,8 @@
     },
     {
       "path": "test/e2e/site-languages.e2e.mjs",
-      "sha256": "3a940182e64c55b58fa95370f5b113be8d803fd7531a90d8374a2977cf67465a",
-      "bytes": 22179,
+      "sha256": "849fcdd09fd0a37cfa97db21b74d960a04a59e60056ae70ea37ed28c5a233f1e",
+      "bytes": 22695,
       "category": "synthetic-test-source-or-fixture"
     },
     {
