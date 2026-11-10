@@ -1,6 +1,6 @@
-import { ErrorBoundary, For, Show, createResource, createSignal, onMount } from "solid-js";
+import { For, Show, createEffect, createSignal, on, onMount } from "solid-js";
 
-import { reportTextLoaders, type ReportText } from "./report-text.ts";
+import { loadReportText, readyReportText, type ReportText } from "./report-text.ts";
 import {
   CATEGORIES,
   CATEGORY_IDS,
@@ -39,17 +39,30 @@ type Props = {
 
 /**
  * Public form to report illegal content without an account (DSA Art. 16).
- * The form words load per language; while another language loads, the form
- * keeps the words it has, so nothing typed is lost.
+ * The form's words load per language. The page loads them before it draws
+ * (src/main.tsx, scripts/prerender.mjs), so the form is there at once and the
+ * page takes the prerendered form over; while another language loads, the
+ * form keeps the words it has, so nothing typed is lost. No resource: its
+ * data would have to be handed to the browser in an inline script.
  */
 export default function ReportPage(props: Props) {
-  const [text, { refetch }] = createResource(
-    () => props.language,
-    (language) => reportTextLoaders[language]().then((module) => module.default),
-  );
+  const [text, setText] = createSignal<ReportText | undefined>(readyReportText(props.language));
+  const [failed, setFailed] = createSignal(false);
+  let latest = 0;
+  function load(language: Language) {
+    const ready = readyReportText(language);
+    if (ready) return void setText(ready);
+    const ticket = ++latest;
+    loadReportText(language).then(
+      (words) => ticket === latest && (setFailed(false), setText(words)),
+      () => ticket === latest && setFailed(true),
+    );
+  }
+  createEffect(on(() => props.language, load));
   return (
-    <ErrorBoundary
-      fallback={(_, reset) => (
+    <Show
+      when={!failed()}
+      fallback={
         <>
           <header class="page-heading page-heading-quiet container">
             <div>
@@ -60,23 +73,16 @@ export default function ReportPage(props: Props) {
           <section class="container">
             <div class="report-failed" role="alert">
               <p>{props.failed}</p>
-              <button
-                type="button"
-                class="button button-primary"
-                onClick={() => {
-                  void refetch();
-                  reset();
-                }}
-              >
+              <button type="button" class="button button-primary" onClick={() => load(props.language)}>
                 {props.retry}
               </button>
             </div>
           </section>
         </>
-      )}
+      }
     >
-      <Show when={text.latest}>{(words) => <ReportForm {...props} text={words} />}</Show>
-    </ErrorBoundary>
+      <Show when={text()}>{(words) => <ReportForm {...props} text={words} />}</Show>
+    </Show>
   );
 }
 

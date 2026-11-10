@@ -20,6 +20,13 @@ import { canonicalUrl } from "../src/config.ts";
 import { legalDocuments } from "../src/legal.ts";
 import { localize } from "../src/content.ts";
 import { canonicalLanguage, pageLanguages } from "../src/seo.ts";
+import { heroPreload } from "../src/shots.ts";
+import { readProductVersions } from "./product-versions.mjs";
+import { stripSsrScripts } from "./ssr-scripts.mjs";
+
+const productVersions = readProductVersions(fileURLToPath(new URL("../public/assets/product", import.meta.url)));
+/** the languages the app screens were captured in (src/App.tsx SHOT_LANGUAGES) */
+const shotLanguage = (code) => (["ar", "en", "de"].includes(code) ? code : "en");
 
 /**
  * The app renders each page here exactly as the browser will draw it
@@ -57,13 +64,13 @@ const THEME = '<script src="/theme.js"></script>';
 if (!stylesheet || !built.includes(THEME)) throw new Error("index.html: stylesheet or theme script not found");
 /**
  * The page shows itself without script; the app only takes it over. So its
- * scripts must not compete with the stylesheet: the entry is fetched at low
- * priority and its own imports load when it runs (no modulepreload links).
+ * scripts must not compete with the stylesheet: the entry and its imports
+ * are fetched at low priority, all at once (no waterfall after the entry).
  */
 const shell = built
   .replace(stylesheet, "")
   .replace(THEME, `${THEME}${stylesheet}`)
-  .replace(/\s*<link rel="modulepreload"[^>]*>/g, "")
+  .replace(/<link rel="modulepreload"/g, '<link rel="modulepreload" fetchpriority="low"')
   .replace('<script type="module" crossorigin', '<script type="module" fetchpriority="low" crossorigin');
 if (!shell.includes('fetchpriority="low"')) throw new Error("index.html: the app's script tag changed");
 const SITE = "https://zrzur.com";
@@ -109,6 +116,7 @@ function pageWords(path, code) {
   if (path === "/report") return of(t.reportTitle, t.reportIntro);
   if (path === "/legal") return of(t.legalTitle, t.legalIntro);
   if (doc) return of(localize(doc.title, code), localize(doc.intro, code));
+  if (path === "/404") return of(t.notFound, t.notFoundBody);
   throw new Error(`no words for ${path}`);
 }
 
@@ -160,15 +168,21 @@ async function page(path, code) {
   const languages = LOCALES.filter((l) => pageLanguages(path).includes(l.code));
   serverPage(localizedPath(path, code));
   // the hydration keys stay: the app takes these very nodes over (src/main.tsx).
-  // Solid adds its resource data as an inline script element; the page policy
-  // allows no inline script, and the one page with a resource (the report
-  // form) is drawn afresh instead of taken over
-  const app = (await renderPage(localizedPath(path, code), code)).replace(/<(script)>[\s\S]*?<\/\1>/g, "");
+  // Solid's inline hand-over scripts go (the page policy allows none); the
+  // build stops if one carries anything but finished boundaries
+  const notFound = path === "/404";
+  const app = stripSsrScripts(await renderPage(localizedPath(path, code), code), `${path} ${code}`);
   if (/<(script)\b/.test(app)) throw new Error(`${path} ${code}: the rendered page carries a script`);
+  // the first picture of the home page, in both shades, for theme.js
+  const hero = path === "/" ? `<meta name="zrzur-hero" content="${esc(JSON.stringify(heroPreload(productVersions, shotLanguage(code), "chat")))}" />` : "";
   const head = [
-    `<link rel="canonical" href="${esc(url(path, canonicalLanguage(path, code)))}" />`,
-    ...languages.map((l) => `<link rel="alternate" hreflang="${l.tag}" href="${esc(url(path, l.code))}" />`),
-    `<link rel="alternate" hreflang="x-default" href="${esc(url(path, "en"))}" />`,
+    ...(notFound
+      ? ['<meta name="robots" content="noindex" />']
+      : [
+          `<link rel="canonical" href="${esc(url(path, canonicalLanguage(path, code)))}" />`,
+          ...languages.map((l) => `<link rel="alternate" hreflang="${l.tag}" href="${esc(url(path, l.code))}" />`),
+          `<link rel="alternate" hreflang="x-default" href="${esc(url(path, "en"))}" />`,
+        ]),
     `<meta property="og:locale" content="${OG_LOCALE[code]}" />`,
     ...languages.filter((l) => l.code !== code).map((l) => `<meta property="og:locale:alternate" content="${OG_LOCALE[l.code]}" />`),
     `<meta name="twitter:title" content="${esc(words.title)}" />`,
@@ -178,7 +192,7 @@ async function page(path, code) {
     `<script type="application/ld+json">${structured(path, code, words)}</script>`,
   ].join("\n    ");
   let html = shell
-    .replace('<meta charset="utf-8" />', `<meta charset="utf-8" />\n    ${wordsMeta}`)
+    .replace('<meta charset="utf-8" />', `<meta charset="utf-8" />\n    ${wordsMeta}${hero ? `\n    ${hero}` : ""}`)
     .replace(/<html lang="[^"]*" dir="[^"]*">/, `<html lang="${tagOf(code)}" dir="${dir}">`)
     .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(words.title)}</title>`)
     .replace(/(<meta\s+name="description"\s+content=")[^"]*(")/, `$1${esc(words.description)}$2`)
@@ -188,8 +202,8 @@ async function page(path, code) {
     .replace(/(<meta\s+property="og:type"\s+content=")[^"]*(")/, `$1${words.post ? "article" : "website"}$2`)
     .replace(/(<meta\s+(?:property="og:image"|name="twitter:image")\s+content=")[^"]*(")/g, `$1${SITE}${words.post?.cover ?? "/brand/og-image.png"}$2`)
     .replace("</head>", `    ${head}\n  </head>`)
-    .replace('<div id="root"></div>', `<div id="root" data-prerendered="${esc(localizedPath(path, code))}">${app}</div>`);
-  for (const needed of [`<html lang="${tagOf(code)}"`, wordsMeta, "<title>", 'rel="canonical"', "application/ld+json", "data-prerendered"])
+    .replace('<div id="root"></div>', `<div id="root" data-prerendered="${notFound ? "404" : esc(localizedPath(path, code))}">${app}</div>`);
+  for (const needed of [`<html lang="${tagOf(code)}"`, wordsMeta, "<title>", notFound ? 'name="robots"' : 'rel="canonical"', "application/ld+json", "data-prerendered"])
     if (!html.includes(needed)) throw new Error(`${path} ${code}: ${needed} missing`);
   return html;
 }
@@ -210,6 +224,13 @@ for (const path of paths)
     }
     written++;
   }
+// the page for an unknown address, per language; the server answers with it
+// and status 404 (self-hosted Caddyfile)
+for (const { code } of LOCALES) {
+  const out = fileURLToPath(new URL(code === "en" ? "404.html" : `${code}/404.html`, dist));
+  mkdirSync(dirname(out), { recursive: true });
+  writeFileSync(out, await page("/404", code));
+}
 // an RSS feed per language: /blog/feed.xml, /ar/blog/feed.xml, /de/blog/feed.xml
 for (const { code } of LOCALES) {
   const t = labels[code];

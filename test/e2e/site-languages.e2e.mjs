@@ -330,7 +330,7 @@ const wordsChunk = async (page, code) =>
   check("no words: marked on the page", (await page.getAttribute("html", "data-words-failed")) === "");
   await context.close();
 }
-for (const language of NEW) {
+for (const language of languages) {
   // the report form's words fail: a plain message in the page language, and a working retry
   const context = await browser.newContext({ viewport: { width: 375, height: 812 }, locale: tag(language) });
   const page = await context.newPage();
@@ -352,6 +352,120 @@ for (const language of NEW) {
   await page.locator("#report-description").waitFor({ timeout: 5000 }).catch(() => {});
   check(`${language} report: retry shows the form`, await page.locator("#report-description").isVisible());
   check(`${language} report: no page errors`, errors.length === 0, errors.join(" | "));
+  await context.close();
+}
+
+// 7. review 2026-11-10 (second round)
+const hugeicons = (await import("../../src/hugeicons.ts")).hugeicons;
+const shotRequests = (page) => {
+  const seen = [];
+  page.on("request", (request) => {
+    const name = new URL(request.url()).pathname.split("/").pop();
+    if (/^(ar|en|de)-chat-(crop-)?(dark|light)/.test(name)) seen.push(name);
+  });
+  return seen;
+};
+for (const width of [1280, 375])
+  for (const language of ["en", "ar", "fr"]) {
+    // a visitor who chose the light theme: the button offers dark, shows the
+    // moon, and the dark first picture never loads
+    const context = await browser.newContext({ viewport: { width, height: width < 700 ? 812 : 800 }, locale: tag(language) });
+    await context.addInitScript(() => localStorage.setItem("zrzur-site-theme", "light"));
+    const page = await context.newPage();
+    const seen = shotRequests(page);
+    await page.goto(site + pathOf(language, "/"), { waitUntil: "networkidle" });
+    await page.waitForTimeout(400);
+    const where = `light ${language} ${width}`;
+    check(`${where} theme`, (await page.getAttribute("html", "data-theme")) === "light");
+    const button = page.locator(".theme-button");
+    check(`${where} button offers dark`, (await button.getAttribute("aria-label")) === packs[language].labels.themeDark, await button.getAttribute("aria-label"));
+    const icon = await button.locator("svg").innerHTML();
+    check(`${where} moon icon`, icon === hugeicons.moon.replace(/\/>/g, "></path>") || icon.includes(hugeicons.moon.slice(9, 60)), icon.slice(0, 60));
+    check(`${where} dark first picture never requested`, seen.length > 0 && seen.every((name) => name.includes("light")), seen.join(", "));
+    await context.close();
+  }
+{
+  // a German browser opening the English address: one trip to /de/, the
+  // English page never runs, the German page is taken over as built, nothing moves
+  const context = await browser.newContext({ viewport: { width: 375, height: 812 }, locale: "de-DE" });
+  await context.addInitScript(() => {
+    window.__cls = 0;
+    new PerformanceObserver((list) => {
+      for (const entry of list.getEntries()) window.__cls += entry.value;
+    }).observe({ type: "layout-shift", buffered: true });
+  });
+  const page = await context.newPage();
+  const documents = [];
+  page.on("framenavigated", (frame) => frame === page.mainFrame() && documents.push(new URL(frame.url()).pathname));
+  const probe = await browser.newPage();
+  await probe.goto(site + "/legal", { waitUntil: "load" });
+  const english = await wordsChunk(probe, "en");
+  await probe.close();
+  const asked = [];
+  page.on("request", (request) => asked.push(new URL(request.url()).pathname));
+  await page.goto(site + "/", { waitUntil: "networkidle" });
+  await page.waitForTimeout(600);
+  check("de-DE on /: ends on /de/", new URL(page.url()).pathname === "/de/", page.url());
+  check("de-DE on /: one trip", documents.filter((p) => p === "/de/").length === 1 && documents.length <= 2, documents.join(" > "));
+  check("de-DE on /: English page never ran", !asked.includes(english),asked.filter((p) => p.endsWith(".js")).join(", "));
+  check("de-DE on /: taken over, not redrawn", (await page.getAttribute("html", "data-takeover")) === "hydrate");
+  check("de-DE on /: nothing moved", (await page.evaluate(() => window.__cls)) === 0, String(await page.evaluate(() => window.__cls)));
+  await context.close();
+}
+{
+  // a French address whose words never come: the French page stays, never English
+  const context = await browser.newContext({ viewport: { width: 375, height: 812 }, locale: "fr-FR" });
+  const page = await context.newPage();
+  const errors = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  const probe = await browser.newPage();
+  await probe.goto(site + "/fr/features", { waitUntil: "load" });
+  const fr = await wordsChunk(probe, "fr");
+  const en = await wordsChunk(probe, "en");
+  await probe.close();
+  let tries = 0;
+  const asked = [];
+  page.on("request", (request) => asked.push(new URL(request.url()).pathname));
+  await page.route(`**${fr}`, (route) => (tries++, route.abort()));
+  await page.goto(site + "/fr/features", { waitUntil: "networkidle" });
+  await page.waitForTimeout(800);
+  check("French words fail: built French page stays", (await page.locator("#root[data-prerendered] h1").count()) === 1 && (await page.getAttribute("html", "data-words-failed")) === "");
+  check("French words fail: still French", (await page.getAttribute("html", "lang")) === "fr" && (await page.locator(".footer-column h2").first().textContent())?.trim() === packs.fr.labels.footerProduct);
+  check("French words fail: never English", !asked.includes(en), asked.filter((p) => p.endsWith(".js")).join(", "));
+  check("French words fail: tried twice", tries >= 2, String(tries));
+  check("French words fail: no page errors", errors.length === 0, errors.join(" | "));
+  await context.close();
+}
+for (const language of ["en", "fr"]) {
+  // a link to a policy section lands on that section
+  const context = await browser.newContext({ viewport: { width: 375, height: 812 } });
+  const page = await context.newPage();
+  await page.goto(site + pathOf(language, "/legal/privacy") + "#retention", { waitUntil: "networkidle" });
+  await page.waitForTimeout(800);
+  // right below the header, with the page's 24 px of air (scroll-padding-top)
+  const { top, header } = await page.evaluate(() => ({
+    top: document.getElementById("retention")?.getBoundingClientRect().top ?? null,
+    header: document.querySelector(".site-header").getBoundingClientRect().height,
+  }));
+  check(`${language} #retention lands on its section`, top !== null && Math.abs(top - (header + 24)) <= 30, `${top} (header ${header})`);
+  await context.close();
+}
+{
+  // a tap before the app has taken over is kept and replayed
+  const context = await browser.newContext({ viewport: { width: 375, height: 812 }, locale: "en-US" });
+  const page = await context.newPage();
+  const cdp = await context.newCDPSession(page);
+  await cdp.send("Emulation.setCPUThrottlingRate", { rate: 6 });
+  // a slow line: the page is there long before its scripts
+  await cdp.send("Network.emulateNetworkConditions", { offline: false, latency: 300, downloadThroughput: (0.8 * 1024 * 1024) / 8, uploadThroughput: (400 * 1024) / 8 });
+  await page.goto(site + "/features", { waitUntil: "commit" });
+  await page.locator(".menu-button").waitFor();
+  const early = (await page.getAttribute("html", "data-takeover")) === null;
+  await page.locator(".menu-button").dispatchEvent("click");
+  await page.waitForFunction(() => document.documentElement.dataset.takeover, null, { timeout: 20000 });
+  await page.waitForTimeout(300);
+  check("early tap: made before the takeover", early);
+  check("early tap: the menu opened", (await page.locator(".menu-button").getAttribute("aria-expanded")) === "true");
   await context.close();
 }
 

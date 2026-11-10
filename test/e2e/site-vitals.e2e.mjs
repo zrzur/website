@@ -4,7 +4,10 @@
 // Cyrillic font, or any page fetches a font it has no letters for.
 // Needs the built site: npm run build && npx vite preview --port 14931
 // Usage: E2E_SITE=http://127.0.0.1:14931 E2E_PLAYWRIGHT_FROM=<package.json> \
-//   [E2E_PAGES=/,/features] [E2E_LANGUAGES=en,ar] node test/e2e/site-vitals.e2e.mjs
+//   [E2E_PAGES=/,/features,/report] [E2E_LANGUAGES=en,ar] [E2E_PROFILES=desktop,phone] \
+//   node test/e2e/site-vitals.e2e.mjs
+// Per page: LCP and its element, CLS while loading and while scrolling to
+// the end, the moment the app has taken the page over, JS gzip, fonts.
 import { createRequire } from "node:module";
 import { pathToFileURL } from "node:url";
 import { gzipSync } from "node:zlib";
@@ -17,17 +20,27 @@ if (!from) {
 const mod = await import(pathToFileURL(createRequire(from).resolve("@playwright/test")).href);
 const { chromium } = mod.default ?? mod;
 const site = process.env.E2E_SITE ?? "http://127.0.0.1:14931";
-const pages = (process.env.E2E_PAGES ?? "/,/features").split(",");
+const pages = (process.env.E2E_PAGES ?? "/,/features,/report").split(",");
 const languages = (process.env.E2E_LANGUAGES ?? "en").split(",");
 const pathOf = (language, path) => (language === "en" ? path : `/${language}${path === "/" ? "/" : path}`);
 
 const observe = () => {
-  window.__vitals = { lcp: 0, cls: 0, lcpElement: "", shifts: [] };
+  window.__vitals = { lcp: 0, cls: 0, lcpElement: "", shifts: [], interactive: 0 };
+  // interactive: the end of the task in which the app takes the page over
+  // (the built page's data-prerendered goes, then the app hydrates or draws)
+  const takeover = new MutationObserver(() => {
+    const root = document.getElementById("root");
+    if (root && !root.hasAttribute("data-prerendered")) {
+      takeover.disconnect();
+      setTimeout(() => (window.__vitals.interactive = performance.now()), 0);
+    }
+  });
+  takeover.observe(document, { subtree: true, attributes: true, attributeFilter: ["data-prerendered"] });
   /** what an element is, short: tag.class [width x height] */
   const describe = (el) => {
     if (!el) return "(removed)";
     const box = el.getBoundingClientRect();
-    const cls = typeof el.className === "string" && el.className ? "." + el.className.trim().split(/s+/).slice(0, 2).join(".") : "";
+    const cls = typeof el.className === "string" && el.className ? "." + el.className.trim().split(/\s+/).slice(0, 2).join(".") : "";
     return `${el.tagName.toLowerCase()}${cls} [${Math.round(box.width)}x${Math.round(box.height)}]`;
   };
   new PerformanceObserver((list) => {
@@ -84,12 +97,24 @@ for (const phone of (process.env.E2E_PROFILES ?? "desktop,phone").split(",").map
       await page.waitForTimeout(1500);
       // a click ends LCP recording, as a real visitor's first input does
       const vitals = await page.evaluate(() => window.__vitals);
+      // then the visitor scrolls to the end: parts laid out on demand must not move the page
+      const before = vitals.cls;
+      await page.evaluate(async () => {
+        for (let y = 0; y < document.documentElement.scrollHeight; y += 500) {
+          scrollTo(0, y);
+          await new Promise((resolve) => setTimeout(resolve, 120));
+        }
+      });
+      await page.waitForTimeout(500);
+      const scrolled = await page.evaluate(() => window.__vitals.cls);
       const js = scripts.reduce((sum, s) => sum + s.gzip, 0);
       const row = {
         profile: phone ? "phone" : "desktop",
         page: pathOf(language, path),
         lcp: Math.round(vitals.lcp),
         lcpElement: vitals.lcpElement,
+        clsScroll: Number((scrolled - before).toFixed(3)),
+        interactive: Math.round(vitals.interactive),
         shifts: vitals.shifts.slice(0, 4).join(" | "),
         cls: Number(vitals.cls.toFixed(3)),
         jsGzipKB: Number((js / 1024).toFixed(1)),

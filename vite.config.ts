@@ -1,9 +1,8 @@
-import { createHash } from 'node:crypto';
-import { readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import solid from 'vite-plugin-solid';
 import { buildDefine, readReleaseInfo } from './scripts/release-info.mjs';
+import { readProductVersions } from './scripts/product-versions.mjs';
 import { thirdPartyNotices } from './scripts/third-party-notices.mjs';
 
 const here = fileURLToPath(new URL('.', import.meta.url));
@@ -19,17 +18,8 @@ export const noticeExtras = [
   { name: 'IBM Plex Sans (font, Latin and Cyrillic)', dir: assets, files: ['Plex-Latin-LICENSE.txt'], license: 'OFL-1.1', source: 'https://github.com/IBM/plex' },
 ];
 
-/**
- * A short content hash per product picture. The pictures keep fixed names in
- * public/, so their addresses carry ?v=<hash>: a new capture is a new address,
- * and no browser or CDN cache can keep showing the old one.
- */
-const productDir = `${assets}/product`;
-export const productVersions = Object.fromEntries(
-  readdirSync(productDir)
-    .filter((name) => name.endsWith('.jpg'))
-    .map((name) => [name, createHash('sha256').update(readFileSync(`${productDir}/${name}`)).digest('hex').slice(0, 10)]),
-);
+/** Content hash per product picture (scripts/product-versions.mjs) */
+export const productVersions = readProductVersions(`${assets}/product`);
 
 export default defineConfig(({ isSsrBuild }) => ({
   define: {

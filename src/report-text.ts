@@ -2,6 +2,7 @@ import type { Language } from "./i18n.ts";
 import type { CategoryId, FieldError, Kind } from "./report-logic.ts";
 
 export { CONTACT_EMAIL } from "./report-contact.ts";
+import { cachedLoad } from "./strings.ts";
 
 /** The words of the report form; title and intro are in the site words (reportTitle, reportIntro) */
 export type ReportText = {
@@ -50,3 +51,16 @@ export const reportTextLoaders: Record<Language, () => Promise<{ default: Report
   ru: () => import("./report-text/ru.ts"),
   zh: () => import("./report-text/zh.ts"),
 };
+
+const loaded = new Map<Language, Promise<ReportText>>();
+const ready = new Map<Language, ReportText>();
+/** The form's words in a language; a failed fetch is tried again next time */
+export const loadReportText = (language: Language): Promise<ReportText> =>
+  cachedLoad(loaded, language, () =>
+    reportTextLoaders[language]().then((module) => {
+      ready.set(language, module.default);
+      return module.default;
+    }),
+  );
+/** The words when they are already here (the page loads them before it draws) */
+export const readyReportText = (language: Language): ReportText | undefined => ready.get(language);

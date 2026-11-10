@@ -31,6 +31,8 @@ import { legalFooterLinks, legalSlugs } from "./legal-nav";
 import { Icon } from "./icon";
 import { hasPost, loadPosts, type Post } from "./blog";
 import { canonicalLanguage, pageLanguages } from "./seo";
+import { HERO_SIZES, shotFiles } from "./shots";
+import { loadReportText } from "./report-text";
 import type { Block, Inline } from "./blog-md";
 
 /**
@@ -67,7 +69,7 @@ declare const __PRODUCT_VERSIONS__: Record<string, string> | undefined;
 const PRODUCT_VERSIONS: Record<string, string> =
   typeof __PRODUCT_VERSIONS__ !== "undefined" ? __PRODUCT_VERSIONS__ : {};
 
-type Page =
+export type Page =
   | "home"
   | "features"
   | "project"
@@ -114,6 +116,17 @@ const PHONE_VIEWS: readonly View[] = ["chat", "lobby"];
 // the long legal texts and the report form load only on their own pages
 const LegalPage = lazy(() => import("./legal-page"));
 const ReportPage = lazy(() => import("./report"));
+/**
+ * The code (and for the report form, the words) of a page that loads apart
+ * from the first bundle: fetched before the page is drawn, so the page can
+ * take the prerendered HTML over as it is, with no blank moment.
+ */
+export const preparePage = (page: Page, language: Language): Promise<unknown> =>
+  page === "legal"
+    ? LegalPage.preload()
+    : page === "report"
+      ? Promise.all([ReportPage.preload(), loadReportText(language)])
+      : Promise.resolve();
 
 /** The pages where the flock flies; legal and report pages stay quiet */
 const FLOCK_PAGES: readonly Page[] = ["home", "features", "project", "guide", "download", "blog", "404"];
@@ -158,9 +171,10 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
   if (!urlLanguage && language() !== "en" && page !== "404")
     history.replaceState(null, "", localizedPath(path, language()) + location.search + location.hash);
 
-  const [theme, setTheme] = createSignal<"dark" | "light">(
-    document.documentElement.dataset.theme === "light" ? "light" : "dark",
-  );
+  // dark as at build time, so the page takes the prerendered nodes over as
+  // they are; the visitor's theme (set by theme.js) right after
+  const [theme, setTheme] = createSignal<"dark" | "light">("dark");
+  onMount(() => setTheme(document.documentElement.dataset.theme === "light" ? "light" : "dark"));
   const [menuOpen, setMenuOpen] = createSignal(false);
   const [scrolled, setScrolled] = createSignal(false);
   let dialog!: HTMLDialogElement;
@@ -507,17 +521,14 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
    * A real screen of the app. Both theme captures are in the page and CSS shows
    * the one matching the site theme. `in` shows it in another language.
    */
-  function Shot(props: { view: View; alt: Label; eager?: boolean; phone?: boolean; theme?: "dark" | "light"; in?: Language }) {
+  function Shot(props: { view: View; alt: Label; hero?: boolean; phone?: boolean; theme?: "dark" | "light"; in?: Language }) {
     const code = () => {
       const wanted = props.in ?? language();
       return SHOT_LANGUAGES.includes(wanted) ? wanted : "en";
     };
-    const file = (shade: "dark" | "light", phone = false) => {
-      const name = `${code()}-${props.view}${phone ? "-phone" : ""}-${shade}.jpg`;
-      const version = PRODUCT_VERSIONS[name];
-      return `/assets/product/${name}${version ? `?v=${version}` : ""}`;
-    };
     const hasPhone = () => PHONE_VIEWS.includes(props.view);
+    const files = (shade: "dark" | "light") =>
+      shotFiles(PRODUCT_VERSIONS, { code: code(), view: props.view, shade, phone: props.phone, hasPhone: hasPhone(), sizes: props.hero ? HERO_SIZES : undefined });
     const shades = () => (props.theme ? [props.theme] : (["dark", "light"] as const));
     return (
       <figure
@@ -532,18 +543,20 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
         <For each={shades()}>
           {(shade) => (
             <picture class={`shot-${shade}`}>
-              {!props.phone && hasPhone() && (
-                // the phone capture has its own shape: its size here keeps the box from jumping when it loads
-                <source media="(max-width: 600px)" srcset={file(shade, true)} width={780} height={1688} />
-              )}
+              {/* AVIF first; each source has its own size, so no box jumps when it loads */}
+              <For each={files(shade).sources}>
+                {(source) => <source media={source.media} type={source.type} srcset={source.srcset} sizes={source.sizes} width={source.width} height={source.height} />}
+              </For>
+              {/* always lazy: the build cannot know the visitor's theme, so the
+                  first picture is preloaded in the shown shade by theme.js */}
               <img
-                src={file(shade, !!props.phone)}
+                src={files(shade).src}
+                srcset={files(shade).srcset}
+                sizes={files(shade).sizes}
                 alt={t(props.alt)}
-                width={props.phone ? 780 : 2304}
-                height={props.phone ? 1688 : 1440}
-                // the shade the site shows loads at once; the hidden one waits (a hidden lazy picture never loads)
-                loading={props.eager && shade === theme() ? "eager" : "lazy"}
-                fetchpriority={props.eager && shade === theme() ? "high" : undefined}
+                width={files(shade).width}
+                height={files(shade).height}
+                loading="lazy"
                 decoding="async"
               />
             </picture>
@@ -722,7 +735,7 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
           </div>
           <div class="container home-window" id="tour">
             <div class="home-window-frame">
-              <Shot view="chat" alt="chatAlt" eager />
+              <Shot view="chat" alt="chatAlt" hero />
             </div>
           </div>
         </section>

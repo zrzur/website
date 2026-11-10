@@ -7,14 +7,19 @@
  */
 import { renderToStringAsync } from "solid-js/web";
 
-import App, { pageForPath } from "./App";
+import App, { pageForPath, preparePage } from "./App";
 import { loadPosts } from "./blog";
 import { splitLocale, type Language } from "./i18n";
 import { loadPack } from "./strings";
 
 /** The page at `pathname` (e.g. "/fr/features") in `language`, as the HTML inside #root */
 export async function renderPage(pathname: string, language: Language): Promise<string> {
-  const blog = pageForPath(splitLocale(pathname).path) === "blog";
-  const [pack, posts] = await Promise.all([loadPack(language), blog ? loadPosts(language) : Promise.resolve([])]);
+  const page = pageForPath(splitLocale(pathname).path);
+  const [pack, posts] = await Promise.all([
+    loadPack(language),
+    page === "blog" ? loadPosts(language) : Promise.resolve([]),
+    // the report form renders from its loaded words: nothing to hand over
+    preparePage(page, language),
+  ]);
   return renderToStringAsync(() => <App language={language} pack={pack} posts={posts} />);
 }

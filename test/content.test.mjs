@@ -73,22 +73,31 @@ test("local app shortcut is restricted to loopback previews", () => {
 test("product pictures are real app screens in every language and theme", async () => {
   const app = await readFile(new URL("../src/App.tsx", import.meta.url), "utf8");
   assert(!app.includes("ScreenshotGallery"), "Image gallery must not return");
-  // the only product <img> is the Shot component, fed by its file() helper;
+  // the only product <img> is the Shot component, fed by shotFiles (src/shots.ts);
   // blog posts show their own pictures (class blog-cover / blog-image)
   assert.equal((app.match(/<img\b(?![^>]*class="blog-)/g) ?? []).length, 1, "one product <img>, inside Shot");
-  assert.match(app, /src=\{file\(shade, !!props\.phone\)\}/);
-  assert.match(app, /`\$\{code\(\)\}-\$\{props\.view\}/);
+  assert(app.includes("shotFiles(PRODUCT_VERSIONS, { code: code(), view: props.view"));
   // a new capture gets a new address (content hash), so no cache keeps the old one
-  assert.match(app, /`\/assets\/product\/\$\{name\}\$\{version \? `\?v=\$\{version\}` : ""\}`/);
+  const { shotFiles } = await import("../src/shots.ts");
+  const files = shotFiles({ "de-chat-dark.jpg": "abc", "de-chat-crop-dark.avif": "def" }, { code: "de", view: "chat", shade: "dark", hasPhone: true });
+  assert.equal(files.src, "/assets/product/de-chat-dark.jpg?v=abc");
+  assert.equal(files.sources[0].srcset, "/assets/product/de-chat-crop-dark.avif?v=def");
+  // AVIF first, a JPEG behind it, on phones the 780 x 488 crop
+  assert.deepEqual(files.sources.map((source) => source.type ?? "jpeg"), ["image/avif", "jpeg", "image/avif"]);
+  assert.deepEqual([files.sources[0].width, files.sources[0].height], [780, 488]);
+  assert.match(files.srcset, /-1152\.jpg 1152w, .*de-chat-dark\.jpg\?v=abc 2304w$/);
   assert(!/filter:\s*invert/.test(await readFile(new URL("../src/site.css", import.meta.url), "utf8")));
   const views = [...app.matchAll(/<Shot view="(\w+)"/g)].map((m) => m[1]);
   assert(views.length >= 5, "the homepage shows several real screens");
   for (const language of ["ar", "en", "de"])
     for (const theme of ["dark", "light"]) {
+      // every capture with its smaller copies (scripts/product-images.py)
       for (const view of new Set(views))
-        await access(new URL(`../public/assets/product/${language}-${view}-${theme}.jpg`, import.meta.url));
+        for (const end of [".jpg", ".avif", "-1152.jpg", "-1152.avif"])
+          await access(new URL(`../public/assets/product/${language}-${view}-${theme}${end}`, import.meta.url));
       for (const view of ["chat", "lobby"])
-        await access(new URL(`../public/assets/product/${language}-${view}-phone-${theme}.jpg`, import.meta.url));
+        for (const name of [`phone-${theme}.jpg`, `crop-${theme}.jpg`, `crop-${theme}.avif`])
+          await access(new URL(`../public/assets/product/${language}-${view}-${name}`, import.meta.url));
     }
 });
 
@@ -98,7 +107,8 @@ test("the site has no native select and dark is the default theme", async () => 
     assert.doesNotMatch(source, /<select\b/, file);
   }
   const theme = await readFile(new URL("../public/theme.js", import.meta.url), "utf8");
-  assert.match(theme, /var theme = "dark"/);
+  // dark unless the visitor chose light here (behaviour: test/theme-script.test.mjs)
+  assert(theme.includes('=== "light" ? "light" : "dark"'));
   assert.doesNotMatch(theme, /prefers-color-scheme/);
 });
 
