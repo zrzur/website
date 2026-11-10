@@ -71,7 +71,10 @@ const tooClose = (min) => {
       const gaps = { left: rect.left - edge.left, right: edge.right - rect.right, top: rect.top - edge.top, bottom: edge.bottom - rect.bottom };
       // only what is inside the box: a picture that bleeds out on purpose is not text in a box
       if (Object.values(gaps).some((gap) => gap < -1)) return;
-      const close = Object.entries(gaps).filter(([, gap]) => gap < min - 0.5);
+      // a box that scrolls lets its text pass its edge on the way (its padding
+      // is at the end of the scroll); only the other sides are held to the rule
+      const scrolls = box.scrollHeight > box.clientHeight + 1;
+      const close = Object.entries(gaps).filter(([side, gap]) => gap < min - 0.5 && !(scrolls && (side === "top" || side === "bottom")));
       if (close.length) found.push(`${box.className || box.tagName} › ${name.slice(0, 32)} ${close.map(([side, gap]) => `${side} ${gap.toFixed(1)}`).join(" ")}`);
     };
     const walker = document.createTreeWalker(box, NodeFilter.SHOW_TEXT);
