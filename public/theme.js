@@ -81,11 +81,19 @@
           imagesizes: shown[j].sizes,
         });
     } catch (e) {}
-  // the words of the page's language, after the stylesheet: the page shows
-  // itself without them (the build writes where each language's chunk is)
+  // the words of the page's language and the app's own modules, right after
+  // the first paint: the page shows itself without them, and on a slow line
+  // they would only hold the stylesheet and the first picture back (the
+  // build writes where they are)
   var words = document.querySelector('meta[name="zrzur-words"]');
   var chunk = words && words.content.match(new RegExp("(?:^|,)" + language + "=([^,]+)"));
-  if (chunk) link({ rel: "modulepreload", crossorigin: "", fetchpriority: "low", href: chunk[1] });
+  var modules = document.querySelector('meta[name="zrzur-preload"]');
+  var later = (chunk ? [chunk[1]] : []).concat(modules && modules.content ? modules.content.split(",") : []);
+  requestAnimationFrame(function () {
+    setTimeout(function () {
+      for (var k = 0; k < later.length; k++) link({ rel: "modulepreload", crossorigin: "", href: later[k] });
+    }, 0);
+  });
 
   // taps before the app takes over: kept for it, it replays them (what
   // Solid's inline hydration script does, as a file)

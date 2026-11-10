@@ -64,13 +64,17 @@ const THEME = '<script src="/theme.js"></script>';
 if (!stylesheet || !built.includes(THEME)) throw new Error("index.html: stylesheet or theme script not found");
 /**
  * The page shows itself without script; the app only takes it over. So its
- * scripts must not compete with the stylesheet: the entry and its imports
- * are fetched at low priority, all at once (no waterfall after the entry).
+ * scripts must not compete with the stylesheet and the first picture: the
+ * entry is fetched at low priority, and its imports (Vite's modulepreload
+ * links) are fetched by theme.js right after the first paint, all at once,
+ * from the list in a meta tag (no waterfall after the entry either).
  */
+const modulePreloads = [...built.matchAll(/<link rel="modulepreload"[^>]*href="([^"]+)"[^>]*>/g)].map((m) => m[1]);
+const preloadMeta = `<meta name="zrzur-preload" content="${modulePreloads.join(",")}" />`;
 const shell = built
   .replace(stylesheet, "")
   .replace(THEME, `${THEME}${stylesheet}`)
-  .replace(/<link rel="modulepreload"/g, '<link rel="modulepreload" fetchpriority="low"')
+  .replace(/\s*<link rel="modulepreload"[^>]*>/g, "")
   .replace('<script type="module" crossorigin', '<script type="module" fetchpriority="low" crossorigin');
 if (!shell.includes('fetchpriority="low"')) throw new Error("index.html: the app's script tag changed");
 const SITE = "https://zrzur.com";
@@ -192,7 +196,7 @@ async function page(path, code) {
     `<script type="application/ld+json">${structured(path, code, words)}</script>`,
   ].join("\n    ");
   let html = shell
-    .replace('<meta charset="utf-8" />', `<meta charset="utf-8" />\n    ${wordsMeta}${hero ? `\n    ${hero}` : ""}`)
+    .replace('<meta charset="utf-8" />', `<meta charset="utf-8" />\n    ${wordsMeta}\n    ${preloadMeta}${hero ?`\n    ${hero}` : ""}`)
     .replace(/<html lang="[^"]*" dir="[^"]*">/, `<html lang="${tagOf(code)}" dir="${dir}">`)
     .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(words.title)}</title>`)
     .replace(/(<meta\s+name="description"\s+content=")[^"]*(")/, `$1${esc(words.description)}$2`)

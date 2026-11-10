@@ -441,13 +441,22 @@ for (const language of ["en", "fr"]) {
   const context = await browser.newContext({ viewport: { width: 375, height: 812 } });
   const page = await context.newPage();
   await page.goto(site + pathOf(language, "/legal/privacy") + "#retention", { waitUntil: "networkidle" });
-  await page.waitForTimeout(800);
-  // right below the header, with the page's 24 px of air (scroll-padding-top)
-  const { top, header } = await page.evaluate(() => ({
+  // the page scrolls there smoothly: wait until it rests
+  await page.evaluate(async () => {
+    let last = -1;
+    for (let still = 0; still < 6; ) {
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      still = scrollY === last ? still + 1 : 0;
+      last = scrollY;
+    }
+  });
+  // where the page keeps #links: its scroll-padding-top, clear of the header
+  const { top, padding, header } = await page.evaluate(() => ({
     top: document.getElementById("retention")?.getBoundingClientRect().top ?? null,
-    header: document.querySelector(".site-header").getBoundingClientRect().height,
+    padding: parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop),
+    header: document.querySelector(".site-header").getBoundingClientRect().bottom,
   }));
-  check(`${language} #retention lands on its section`, top !== null && Math.abs(top - (header + 24)) <= 30, `${top} (header ${header})`);
+  check(`${language} #retention lands on its section`, top !== null && Math.abs(top - padding) <= 8 && top >= header, `${top} (padding ${padding}, header ends ${header})`);
   await context.close();
 }
 {

@@ -25,7 +25,10 @@ function run({ pathname = "/", search = "", hash = "", saved = {}, languages = [
     },
     addEventListener: (type, listener, options) => listeners.push({ type, options }),
   };
+  const frames = [];
   const window = {
+    requestAnimationFrame: (callback) => frames.push(callback),
+    setTimeout: (callback) => callback(),
     document,
     location: { pathname, search, hash, replace: (url) => replaced.push(url) },
     navigator: { languages },
@@ -34,8 +37,18 @@ function run({ pathname = "/", search = "", hash = "", saved = {}, languages = [
   window.window = window;
   window.self = window;
   runInNewContext(source, window);
-  return { window, document, appended, listeners, replaced };
+  /** the browser paints, then runs what waited for the paint */
+  const paint = () => frames.splice(0).forEach((callback) => callback());
+  return { window, document, appended, listeners, replaced, paint };
 }
+
+test("the app's scripts and words are fetched after the first paint, not before", () => {
+  const page = run({ pathname: "/ar/features", meta: { "zrzur-words": "en=/assets/en-1.js,ar=/assets/ar-2.js", "zrzur-preload": "/assets/i18n-3.js,/assets/icon-4.js" } });
+  const scripts = () => page.appended.filter((node) => node.rel === "modulepreload").map((node) => node.href);
+  assert.deepEqual(scripts(), [], "nothing competes with the stylesheet and the first paint");
+  page.paint();
+  assert.deepEqual(scripts(), ["/assets/ar-2.js", "/assets/i18n-3.js", "/assets/icon-4.js"]);
+});
 
 test("an English address sends a visitor of another language to their own address before the paint", () => {
   assert.deepEqual(run({ pathname: "/features", languages: ["de-DE", "en"] }).replaced, ["/de/features"]);
