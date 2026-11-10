@@ -98,7 +98,7 @@ test("the sitemap lists every page in every language with its alternates", async
   const { readFile } = await import("node:fs/promises");
   const xml = await readFile(new URL("../public/sitemap.xml", import.meta.url), "utf8");
   const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-  for (const page of ["/", "/features", "/download", "/legal/privacy"]) {
+  for (const page of ["/", "/features", "/download", "/legal", "/report", "/blog"]) {
     assert(locs.includes(`https://zrzur.com${page}`), page);
     for (const code of ["de", "ar", "fr", "es", "ru", "zh"])
       assert(locs.includes(`https://zrzur.com/${code}${page === "/" ? "" : page}`), `${code} ${page}`);
@@ -154,4 +154,17 @@ test("Arabic text says سيرفر, never خادم or خوادم", () => {
   assert(files.length > 10);
   for (const file of files)
     assert.doesNotMatch(readFileSync(new URL(file, root), "utf8"), /خادم|خوادم/, file);
+});
+
+// Review 2026-11-10: a failed fetch of a language's words must not stay
+// cached; the next request tries again.
+test("a failed load is tried again, a good one is kept", async () => {
+  const { cachedLoad } = await import("../src/strings.ts");
+  const cache = new Map();
+  let calls = 0;
+  const flaky = () => (++calls === 1 ? Promise.reject(new Error("offline")) : Promise.resolve(`words ${calls}`));
+  await assert.rejects(cachedLoad(cache, "fr", flaky), /offline/);
+  assert.equal(await cachedLoad(cache, "fr", flaky), "words 2");
+  assert.equal(await cachedLoad(cache, "fr", flaky), "words 2", "kept after success");
+  assert.equal(calls, 2);
 });

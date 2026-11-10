@@ -4,6 +4,7 @@ import {
   Show,
   Suspense,
   Switch,
+  batch,
   createEffect,
   createSignal,
   lazy,
@@ -29,6 +30,7 @@ import {
 import { legalFooterLinks, legalSlugs } from "./legal-nav";
 import { Icon } from "./icon";
 import { hasPost, loadPosts, type Post } from "./blog";
+import { canonicalLanguage, pageLanguages } from "./seo";
 import type { Block, Inline } from "./blog-md";
 
 /**
@@ -133,11 +135,24 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
   const [posts, setPosts] = createSignal<Post[]>(props.posts);
   const post = () => (slug ? posts().find((entry) => entry.slug === slug) : undefined);
   /** Words and posts of a language, then the page switches to it in one step */
-  async function switchTo(next: Language) {
-    const [words, list] = await Promise.all([loadPack(next), page === "blog" ? loadPosts(next) : Promise.resolve(posts())]);
-    setPack(words);
-    setPosts(list);
-    setLanguageSignal(next);
+  // only the newest request may change the page: a slow language that
+  // arrives after the visitor picked another one is dropped
+  let latest = 0;
+  async function switchTo(next: Language): Promise<boolean> {
+    const ticket = ++latest;
+    try {
+      const [words, list] = await Promise.all([loadPack(next), page === "blog" ? loadPosts(next) : Promise.resolve(posts())]);
+      if (ticket !== latest) return false;
+      batch(() => {
+        setPack(words);
+        setPosts(list);
+        setLanguageSignal(next);
+      });
+      return true;
+    } catch {
+      // the words did not arrive: the page stays as it is, in its language
+      return false;
+    }
   }
   // a visitor whose browser prefers another language gets that page's own address
   if (!urlLanguage && language() !== "en" && page !== "404")
@@ -154,17 +169,24 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
   const t = (key: Label) => pack().labels[key];
   /** A site path in the current language */
   const href = (target: string) => localizedPath(target, language());
-  const appUrl = resolveAppUrl(location.hostname, import.meta.env.VITE_PUBLIC_APP_URL);
-  const discoverUrl =
-    resolvePreviewUrl(location.hostname, import.meta.env.VITE_PUBLIC_DISCOVER_URL) ??
-    (appUrl ? new URL("discover", appUrl).href : null);
+  /** Where the app and Discover open for a host */
+  const linksFor = (host: string) => {
+    const app = resolveAppUrl(host, import.meta.env.VITE_PUBLIC_APP_URL);
+    return { app, discover: resolvePreviewUrl(host, import.meta.env.VITE_PUBLIC_DISCOVER_URL) ?? (app ? new URL("discover", app).href : null) };
+  };
+  // first as on zrzur.com, the host the page was rendered for at build time,
+  // so the page takes over the prerendered HTML as it is; then for this host
+  const [links, setLinks] = createSignal(linksFor("zrzur.com"));
+  onMount(() => setLinks(linksFor(location.hostname)));
+  const appUrl = () => links().app;
+  const discoverUrl = () => links().discover;
   const SUPPORT_MAIL = "mailto:support@zrzur.com";
 
   async function setLanguage(next: Language) {
     if (next === language()) return;
+    if (!(await switchTo(next))) return;
     saveLanguage(next);
     history.pushState(null, "", localizedPath(path, next) + location.search + location.hash);
-    await switchTo(next);
   }
 
   const nav = [
@@ -202,7 +224,7 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
     meta('meta[name="description"]', description);
     meta('meta[property="og:title"]', document.title);
     meta('meta[property="og:description"]', description);
-    meta('meta[property="og:url"]', canonicalUrl(localizedPath(path, code)));
+    meta('meta[property="og:url"]', canonicalUrl(localizedPath(path, canonicalLanguage(path, code))));
     // one canonical URL per page and language, plus its alternates
     // the prerendered page brought its own canonical and alternates: after a
     // language switch they would name the old language, so they go too
@@ -218,8 +240,9 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
         link.dataset.seo = "";
         document.head.append(link);
       };
-      add("canonical", canonicalUrl(localizedPath(path, code)));
-      for (const locale of LOCALES)
+      // a policy shown in English here points at the English page (src/seo.ts)
+      add("canonical", canonicalUrl(localizedPath(path, canonicalLanguage(path, code))));
+      for (const locale of LOCALES.filter((entry) => pageLanguages(path).includes(entry.code)))
         add("alternate", canonicalUrl(localizedPath(path, locale.code)), locale.tag);
       add("alternate", canonicalUrl(path), "x-default");
     }
@@ -274,7 +297,12 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
       },
       { rootMargin: "0px 0px -8% 0px" },
     );
-    parts.forEach((part) => observer.observe(part));
+    // what is already on screen stays as the prerendered page showed it: only
+    // the parts below rise in as the visitor scrolls to them
+    parts.forEach((part) => {
+      if (part.getBoundingClientRect().top < innerHeight) part.classList.add("is-in");
+      else observer.observe(part);
+    });
     document.documentElement.classList.add("rise-ready");
   });
   onMount(() => {
@@ -309,7 +337,7 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
     const text = () => t(props.label ?? "open");
     return (
       <Show
-        when={appUrl}
+        when={appUrl()}
         fallback={
           <button type="button" class={cls()} onClick={openAvailability}>
             {text()}
@@ -317,7 +345,7 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
           </button>
         }
       >
-        <a class={cls()} href={appUrl!} target="_blank" rel="noopener noreferrer">
+        <a class={cls()} href={appUrl()!} target="_blank" rel="noopener noreferrer">
           {text()}
           {props.arrow !== false && <Icon name="arrow" class="directional" />}
         </a>
@@ -440,7 +468,9 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
                   onPointerEnter={() => {
                     setFocus(index());
                     // the words start loading before the click lands
-                    void loadPack(locale.code);
+                    loadPack(locale.code).catch(() => {
+                      /* the click tries again */
+                    });
                   }}
                   onClick={() => choose(locale.code)}
                 >
@@ -904,7 +934,9 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
   }
   /** The desktop app for Windows, macOS and Linux, and the browser beside it */
   function Download() {
-    const yours = visitorSystem();
+    // Windows as at build time, then the visitor's own system
+    const [yours, setYours] = createSignal<DesktopSystem>("windows");
+    onMount(() => setYours(visitorSystem()));
     const systems = [
       { id: "windows", name: "Windows", meta: "dlWindowsMeta", how: "dlWindowsHow" },
       { id: "mac", name: "macOS", meta: "dlMacMeta", how: "dlMacHow" },
@@ -917,8 +949,8 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
         <section class="container download-systems" aria-label={t("navDownload")}>
           <For each={systems}>
             {(system) => (
-              <article classList={{ "download-card": true, "is-yours": system.id === yours }} id={system.id} data-rise>
-                <Show when={system.id === yours}>
+              <article classList={{ "download-card": true, "is-yours": system.id === yours() }} id={system.id} data-rise>
+                <Show when={system.id === yours()}>
                   <p class="download-yours">{t("dlYours")}</p>
                 </Show>
                 <h2 dir="ltr">{system.name}</h2>
@@ -927,7 +959,7 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
                   <For each={DESKTOP_DOWNLOADS[system.id]}>
                     {(file, index) => (
                       <a
-                        classList={{ button: true, "button-primary": system.id === yours && index() === 0, "button-soft": !(system.id === yours && index() === 0) }}
+                        classList={{ button: true, "button-primary": system.id === yours() && index() === 0, "button-soft": !(system.id === yours() && index() === 0) }}
                         href={file.url}
                         download=""
                       >
@@ -1199,8 +1231,8 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
             <div class="footer-columns">
               {column("footerProduct", [
                 { href: href("/features"), label: t("features") },
-                { href: appUrl, label: t("open"), external: true, onClick: openAvailability },
-                ...(discoverUrl ? [{ href: discoverUrl, label: t("discover"), external: true }] : []),
+                { href: appUrl(), label: t("open"), external: true, onClick: openAvailability },
+                ...(discoverUrl() ? [{ href: discoverUrl()!, label: t("discover"), external: true }] : []),
               ])}
               {column("footerProject", [
                 { href: href("/project"), label: t("project") },
@@ -1263,8 +1295,8 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
                 </a>
               )}
             </For>
-            <Show when={discoverUrl}>
-              <a href={discoverUrl!} target="_blank" rel="noopener noreferrer">
+            <Show when={discoverUrl()}>
+              <a href={discoverUrl()!} target="_blank" rel="noopener noreferrer">
                 {t("discover")}
               </a>
             </Show>
@@ -1313,7 +1345,13 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
             <LegalPage language={language()} path={path} t={t} />
           </Show>
           <Show when={page === "report"}>
-            <ReportPage language={language()} title={t("reportTitle")} intro={t("reportIntro")} />
+            <ReportPage
+              language={language()}
+              title={t("reportTitle")}
+              intro={t("reportIntro")}
+              failed={t("reportLoadFailed")}
+              retry={t("reportRetry")}
+            />
           </Show>
         </Suspense>
         <Show when={page === "404"}>

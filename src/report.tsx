@@ -1,4 +1,4 @@
-import { For, Show, createResource, createSignal, onMount } from "solid-js";
+import { ErrorBoundary, For, Show, createResource, createSignal, onMount } from "solid-js";
 
 import { reportTextLoaders, type ReportText } from "./report-text.ts";
 import {
@@ -28,7 +28,14 @@ declare global {
   }
 }
 
-type Props = { language: Language; title: string; intro: string };
+type Props = {
+  language: Language;
+  title: string;
+  intro: string;
+  /** shown when the form's words could not be fetched, with a button to try again */
+  failed: string;
+  retry: string;
+};
 
 /**
  * Public form to report illegal content without an account (DSA Art. 16).
@@ -36,11 +43,41 @@ type Props = { language: Language; title: string; intro: string };
  * keeps the words it has, so nothing typed is lost.
  */
 export default function ReportPage(props: Props) {
-  const [text] = createResource(
+  const [text, { refetch }] = createResource(
     () => props.language,
     (language) => reportTextLoaders[language]().then((module) => module.default),
   );
-  return <Show when={text.latest}>{(words) => <ReportForm {...props} text={words} />}</Show>;
+  return (
+    <ErrorBoundary
+      fallback={(_, reset) => (
+        <>
+          <header class="page-heading page-heading-quiet container">
+            <div>
+              <h1>{props.title}</h1>
+              <p>{props.intro}</p>
+            </div>
+          </header>
+          <section class="container">
+            <div class="report-failed" role="alert">
+              <p>{props.failed}</p>
+              <button
+                type="button"
+                class="button button-primary"
+                onClick={() => {
+                  void refetch();
+                  reset();
+                }}
+              >
+                {props.retry}
+              </button>
+            </div>
+          </section>
+        </>
+      )}
+    >
+      <Show when={text.latest}>{(words) => <ReportForm {...props} text={words} />}</Show>
+    </ErrorBoundary>
+  );
 }
 
 function ReportForm(props: Props & { text: () => ReportText }) {

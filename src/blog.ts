@@ -8,6 +8,7 @@
 import { parsePost, readingMinutes, type PostFile } from "./blog-md.ts";
 import { postFileParts } from "./blog-posts.ts";
 import type { Language } from "./i18n";
+import { cachedLoad } from "./strings";
 
 const files = import.meta.glob("../content/blog/*/*.md", { query: "?raw", import: "default" }) as Record<string, (() => Promise<string>) | undefined>;
 
@@ -26,19 +27,16 @@ const slugs = [...new Set(Object.keys(files).map((file) => postFileParts(file)?.
 const loaded = new Map<Language, Promise<Post[]>>();
 /** The posts in one language, newest first */
 export function loadPosts(language: Language): Promise<Post[]> {
-  let posts = loaded.get(language);
-  if (!posts) {
-    posts = Promise.all(
+  return cachedLoad(loaded, language, () =>
+    Promise.all(
       slugs.map(async (slug) => {
         const own = files[`../content/blog/${slug}/${language}.md`];
         const used: Language = own ? language : "en";
         const text = parsePost(await (own ?? files[`../content/blog/${slug}/en.md`]!)(), `${slug}/${used}.md`);
         return { slug, date: text.date, cover: text.cover, minutes: readingMinutes(text.words), text, language: used };
       }),
-    ).then((list) => list.sort((a, b) => (a.date === b.date ? a.slug.localeCompare(b.slug) : b.date.localeCompare(a.date))));
-    loaded.set(language, posts);
-  }
-  return posts;
+    ).then((list) => list.sort((a, b) => (a.date === b.date ? a.slug.localeCompare(b.slug) : b.date.localeCompare(a.date)))),
+  );
 }
 
 /** Whether a path names a post that exists, without loading any post */

@@ -308,3 +308,32 @@ test("the binding notice has its words in every language", async () => {
   assert(page.includes("localizedPath(props.path, code)"));
   assert(page.includes("hreflang={tagOf(code)}"));
 });
+
+// Review 2026-11-10: a policy page that shows the English text under another
+// language prefix is not a page of its own: its canonical is the English
+// address, and it stays out of the hreflang sets and the sitemap.
+test("the language list per policy matches the texts", async () => {
+  const { legalLanguages } = await import("../src/legal-nav.ts");
+  for (const doc of legalDocuments) {
+    const real = LOCALES.map((l) => l.code).filter((code) => code === "en" || hasLanguage(doc, code));
+    assert.deepEqual([...legalLanguages[doc.slug]].sort(), real.sort(), doc.slug);
+  }
+});
+
+test("pages in English under another prefix point at the English page", async () => {
+  const { canonicalLanguage, pageLanguages } = await import("../src/seo.ts");
+  assert.deepEqual(pageLanguages("/legal/privacy").toSorted(), ["ar", "de", "en"]);
+  assert.equal(canonicalLanguage("/legal/privacy", "fr"), "en");
+  assert.equal(canonicalLanguage("/legal/privacy", "de"), "de");
+  assert.equal(canonicalLanguage("/legal/terms", "de"), "en");
+  assert.equal(canonicalLanguage("/legal/terms", "ar"), "ar");
+  // every other page exists in every language
+  assert.equal(pageLanguages("/features").length, LOCALES.length);
+  assert.equal(pageLanguages("/legal").length, LOCALES.length);
+  assert.equal(canonicalLanguage("/report", "zh"), "zh");
+  const sitemap = await readFile(new URL("../public/sitemap.xml", import.meta.url), "utf8");
+  assert(!sitemap.includes("https://zrzur.com/fr/legal/privacy"));
+  assert(!sitemap.includes('hreflang="fr" href="https://zrzur.com/fr/legal/privacy"'));
+  assert(sitemap.includes("<loc>https://zrzur.com/ar/legal/privacy</loc>"));
+  assert(sitemap.includes("<loc>https://zrzur.com/fr/legal</loc>"));
+});

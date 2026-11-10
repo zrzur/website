@@ -216,6 +216,8 @@ const labels = {
   legalReadEnglish: "Read the English version",
   legalReadGerman: "Read the German version",
   legalHubNote: "Our policies are legally binding only in English and, where a German version exists, in German. The other languages are there to help you read them.",
+  reportLoadFailed: "The report form could not load. Check your connection and try again.",
+  reportRetry: "Try again",
 };
 
 export type Labels = typeof labels;

@@ -8,6 +8,7 @@ import { writeFileSync } from "node:fs";
 import { LOCALES, localizedPath } from "../src/i18n.ts";
 import { legalDocuments } from "../src/legal.ts";
 import { canonicalUrl } from "../src/config.ts";
+import { pageLanguages } from "../src/seo.ts";
 import { readPosts } from "./blog-files.mjs";
 
 const posts = readPosts();
@@ -28,9 +29,10 @@ const pages = [
 const url = (path, code) => canonicalUrl(localizedPath(path, code));
 
 const entries = [];
+// a policy shown in English under another prefix is not listed there (src/seo.ts)
 for (const page of pages)
-  for (const { code } of LOCALES) {
-    const alternates = LOCALES.map(
+  for (const { code } of LOCALES.filter((locale) => pageLanguages(page).includes(locale.code))) {
+    const alternates = LOCALES.filter((locale) => pageLanguages(page).includes(locale.code)).map(
       (locale) => `    <xhtml:link rel="alternate" hreflang="${locale.tag}" href="${url(page, locale.code)}"/>`,
     );
     alternates.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${url(page, "en")}"/>`);

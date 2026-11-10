@@ -36,7 +36,7 @@ const labels: Labels = {
   demoQuiet: "Rincón tranquilo",
   demoPeople1: "Omar",
   demoPeople2: "Lucía",
-  demoMessage1: "Buenas noches a todos. Por fin terminé el diseño de la app de la cafetería que os conté.",
+  demoMessage1: "Buenas noches a todos. Por fin terminé el diseño de la app de la cafetería que les conté.",
   demoMessage2: "¡Genial! Enséñanoslo en la Sala de trabajo compartiendo pantalla.",
   demoMessage3: "Un minuto, estoy preparando el archivo.",
   demoMessage4: "La sala está abierta. Después de la sesión dejo las notas en anuncios.",
@@ -216,6 +216,8 @@ const labels: Labels = {
   legalReadEnglish: "Leer la versión en inglés",
   legalReadGerman: "Leer la versión en alemán",
   legalHubNote: "Nuestras políticas solo son jurídicamente vinculantes en inglés y, cuando existe una versión en alemán, en alemán. Los demás idiomas están para ayudarte a leerlas.",
+  reportLoadFailed: "No se pudo cargar el formulario de denuncia. Comprueba tu conexión e inténtalo de nuevo.",
+  reportRetry: "Intentar de nuevo",
 };
 
 const pack: Pack = {

@@ -9,18 +9,30 @@
  * so /ar/features is written as dist/ar/features.html and / stays index.html.
  * Usage: node --experimental-strip-types scripts/prerender.mjs
  */
-import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, readdirSync, renameSync, rmdirSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { readPosts } from "./blog-files.mjs";
-import { plain } from "../src/blog-md.ts";
 import { postText } from "../src/blog-posts.ts";
 import { LOCALES, localizedPath, tagOf } from "../src/i18n.ts";
 import { canonicalUrl } from "../src/config.ts";
 import { legalDocuments } from "../src/legal.ts";
-import { bindingNotice, shownLanguage } from "../src/legal-binding.ts";
 import { localize } from "../src/content.ts";
+import { canonicalLanguage, pageLanguages } from "../src/seo.ts";
+
+/**
+ * The app renders each page here exactly as the browser will draw it
+ * (`vite build --ssr src/entry-server.tsx` → build/ssr). It reads the
+ * address and a few page properties at render time; this is all it needs.
+ */
+const serverPage = (pathname) => {
+  globalThis.location = { pathname, hostname: "zrzur.com", search: "", hash: "", origin: SITE_ORIGIN_FOR_SSR };
+  globalThis.document = { documentElement: { dataset: {} } };
+  globalThis.history = { replaceState() {}, pushState() {} };
+};
+const SITE_ORIGIN_FOR_SSR = "https://zrzur.com";
+const { renderPage } = await import(new URL("../build/ssr/entry-server.js", import.meta.url).href);
 
 const posts = readPosts();
 /** every language's words, straight from src/locales/<code>.ts */
@@ -62,87 +74,22 @@ const esc = (text) =>
   String(text).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const url = (path, code) => canonicalUrl(localizedPath(path, code));
 const feedPath = (code) => `${code === "en" ? "" : `/${code}`}/blog/feed.xml`;
-/** a post's blocks as plain HTML for readers without the app */
-const inlineHtml = (parts) =>
-  parts
-    .map((part) =>
-      part.kind === "strong" ? `<strong>${esc(part.text)}</strong>`
-      : part.kind === "em" ? `<em>${esc(part.text)}</em>`
-      : part.kind === "code" ? `<code>${esc(part.text)}</code>`
-      : part.kind === "link" ? `<a href="${esc(part.href)}">${esc(part.text)}</a>`
-      : esc(part.text),
-    )
-    .join("");
-const blocksHtml = (blocks) =>
-  blocks
-    .map((b) =>
-      b.kind === "h2" || b.kind === "h3" ? `<${b.kind} id="${esc(b.id)}">${esc(b.text)}</${b.kind}>`
-      : b.kind === "p" ? `<p>${inlineHtml(b.parts)}</p>`
-      : b.kind === "quote" ? `<blockquote>${inlineHtml(b.parts)}</blockquote>`
-      : b.kind === "ul" || b.kind === "ol" ? `<${b.kind}>${b.items.map((i) => `<li>${inlineHtml(i)}</li>`).join("")}</${b.kind}>`
-      : b.kind === "code" ? `<pre><code>${esc(b.text)}</code></pre>`
-      : `<img src="${esc(b.src)}" alt="${esc(b.alt)}" />`,
-    )
-    .join("");
-void plain;
-const link = (path, code, text) => `<a href="${esc(localizedPath(path, code))}">${esc(text)}</a>`;
-
-/** what each page says first, in the language of the page */
+/** title, description and post of each page, in the language of the page */
 function pageWords(path, code) {
   const t = labels[code];
   const post = path.startsWith("/blog/") ? posts.find((entry) => `/blog/${entry.slug}` === path) : null;
-  if (path === "/")
-    return {
-      title: t.seoHomeTitle,
-      description: t.seoHomeBody,
-      body: [
-        `<h1>${esc(t.heroTitle)}</h1>`,
-        `<p>${esc(t.heroBody)}</p>`,
-        `<h2>${esc(t.serversTitle)}</h2><p>${esc(t.serversBody)}</p>`,
-        `<h2>${esc(t.voiceTitle)}</h2><p>${esc(t.voiceBody)}</p>`,
-        `<h2>${esc(t.whyTitle)}</h2><ul>${[1, 2, 3, 4].map((n) => `<li><strong>${esc(t[`why${n}`])}</strong> ${esc(t[`why${n}Body`])}</li>`).join("")}</ul>`,
-      ],
-    };
-  if (path === "/features") return { title: `${t.features} — ${t.brand}`, description: t.featuresBody, body: [`<h1>${esc(t.featuresTitle.replace("\n", " "))}</h1>`, `<p>${esc(t.featuresBody)}</p>`] };
-  if (path === "/project") return { title: `${t.project} — ${t.brand}`, description: t.projectBody, body: [`<h1>${esc(t.projectTitle)}</h1>`, `<p>${esc(t.projectBody)}</p>`, `<p>${esc(t.projectP1)}</p>`, `<p>${esc(t.projectP3)}</p>`] };
-  if (path === "/download") return { title: `${t.downloadTitle} — ${t.brand}`, description: t.downloadBody, body: [`<h1>${esc(t.downloadTitle)}</h1>`, `<p>${esc(t.downloadBody)}</p>`] };
-  if (path === "/guide")
-    return {
-      title: `${t.help} — ${t.brand}`,
-      description: t.helpBody,
-      body: [`<h1>${esc(t.helpTitle.replace("\n", " "))}</h1>`, `<p>${esc(t.helpBody)}</p>`, `<h2>${esc(t.faqTitle)}</h2>`, ...packs[code].faqs.map((f) => `<h3>${esc(f.question)}</h3><p>${esc(f.answer)}</p>`)],
-    };
-  if (path === "/blog")
-    return {
-      title: `${t.blog} — ${t.brand}`,
-      description: t.blogBody,
-      body: [`<h1>${esc(t.blogTitle)}</h1>`, `<p>${esc(t.blogBody)}</p>`, ...posts.map((p) => `<article><h2>${link(`/blog/${p.slug}`, code, textOf(p, code).title)}</h2><p>${esc(textOf(p, code).summary)}</p></article>`)],
-    };
-  if (post)
-    return {
-      title: `${textOf(post, code).title} — ${t.brand}`,
-      description: textOf(post, code).summary,
-      body: [`<article><h1>${esc(textOf(post, code).title)}</h1><time datetime="${post.date}">${post.date}</time><p>${esc(textOf(post, code).summary)}</p>${blocksHtml(textOf(post, code).blocks)}</article>`],
-      post,
-    };
-  if (path === "/report") return { title: `${t.reportTitle} — ${t.brand}`, description: t.reportIntro, body: [`<h1>${esc(t.reportTitle)}</h1>`, `<p>${esc(t.reportIntro)}</p>`] };
-  if (path === "/legal") return { title: `${t.legalTitle} — ${t.brand}`, description: t.legalIntro, body: [`<h1>${esc(t.legalTitle)}</h1>`, `<p>${esc(t.legalIntro)}</p>`, ...legalDocuments.map((doc) => `<p>${link(`/legal/${doc.slug}`, code, localize(doc.title, code))}</p>`)] };
   const doc = legalDocuments.find((entry) => path === `/legal/${entry.slug}`);
-  if (doc) {
-    // the policy in its own words where it has them, else the English text,
-    // with the same binding note the app shows
-    const notice = bindingNotice(doc, code);
-    const shown = shownLanguage(doc, code);
-    const note = notice
-      ? `<p>${esc(t[notice.kind === "translation" ? "legalTranslationNote" : "legalEnglishNote"])} ${esc(t[notice.binding.includes("de") ? "legalBindingEnDe" : "legalBindingEn"])} ${notice.binding.map((b) => `<a href="${esc(localizedPath(path, b))}" hreflang="${tagOf(b)}">${esc(t[b === "de" ? "legalReadGerman" : "legalReadEnglish"])}</a>`).join(" ")}</p>`
-      : "";
-    const sections = doc.sections.map((section) => `<h2>${esc(localize(section.title, shown))}</h2><p>${esc(localize(section.body, shown))}</p>`).join("");
-    return {
-      title: `${localize(doc.title, code)} — ${t.brand}`,
-      description: localize(doc.intro, code),
-      body: [`<h1>${esc(localize(doc.title, code))}</h1>`, `<p>${esc(localize(doc.intro, code))}</p>`, note, shown === code ? sections : `<div lang="${tagOf(shown)}">${sections}</div>`],
-    };
-  }
+  const of = (title, description) => ({ title: `${title} — ${t.brand}`, description });
+  if (path === "/") return { title: t.seoHomeTitle, description: t.seoHomeBody };
+  if (path === "/features") return of(t.features, t.featuresBody);
+  if (path === "/project") return of(t.project, t.projectBody);
+  if (path === "/download") return of(t.downloadTitle, t.downloadBody);
+  if (path === "/guide") return of(t.help, t.helpBody);
+  if (path === "/blog") return of(t.blog, t.blogBody);
+  if (post) return { ...of(textOf(post, code).title, textOf(post, code).summary), post };
+  if (path === "/report") return of(t.reportTitle, t.reportIntro);
+  if (path === "/legal") return of(t.legalTitle, t.legalIntro);
+  if (doc) return of(localize(doc.title, code), localize(doc.intro, code));
   throw new Error(`no words for ${path}`);
 }
 
@@ -188,25 +135,29 @@ function structured(path, code, words) {
   return JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replace(/</g, "\\u003c");
 }
 
-function page(path, code) {
+async function page(path, code) {
   const words = pageWords(path, code);
   const dir = LOCALES.find((l) => l.code === code).dir;
+  const languages = LOCALES.filter((l) => pageLanguages(path).includes(l.code));
+  serverPage(localizedPath(path, code));
+  // the hydration keys stay: the app takes these very nodes over (src/main.tsx).
+  // Solid adds its resource data as an inline script element; the page policy
+  // allows no inline script, and the one page with a resource (the report
+  // form) is drawn afresh instead of taken over
+  const app = (await renderPage(localizedPath(path, code), code)).replace(/<(script)>[\s\S]*?<\/\1>/g, "");
+  if (/<(script)\b/.test(app)) throw new Error(`${path} ${code}: the rendered page carries a script`);
   const head = [
-    `<link rel="canonical" href="${esc(url(path, code))}" />`,
-    ...LOCALES.map((l) => `<link rel="alternate" hreflang="${l.tag}" href="${esc(url(path, l.code))}" />`),
+    `<link rel="canonical" href="${esc(url(path, canonicalLanguage(path, code)))}" />`,
+    ...languages.map((l) => `<link rel="alternate" hreflang="${l.tag}" href="${esc(url(path, l.code))}" />`),
     `<link rel="alternate" hreflang="x-default" href="${esc(url(path, "en"))}" />`,
     `<meta property="og:locale" content="${OG_LOCALE[code]}" />`,
-    ...LOCALES.filter((l) => l.code !== code).map((l) => `<meta property="og:locale:alternate" content="${OG_LOCALE[l.code]}" />`),
+    ...languages.filter((l) => l.code !== code).map((l) => `<meta property="og:locale:alternate" content="${OG_LOCALE[l.code]}" />`),
     `<meta name="twitter:title" content="${esc(words.title)}" />`,
     `<link rel="alternate" type="application/rss+xml" title="${esc(`${labels[code].blog} — ${labels[code].brand}`)}" href="${esc(feedPath(code))}" />`,
     ...(words.post ? [`<meta property="article:published_time" content="${words.post.date}" />`, ...textOf(words.post, code).tags.map((tag) => `<meta property="article:tag" content="${esc(tag)}" />`)] : []),
     `<meta name="twitter:description" content="${esc(words.description)}" />`,
     `<script type="application/ld+json">${structured(path, code, words)}</script>`,
   ].join("\n    ");
-  const t = labels[code];
-  const nav = [["/", t.home], ["/features", t.features], ["/project", t.project], ["/guide", t.help], ["/download", t.navDownload], ["/blog", t.blog]]
-    .map(([p, text]) => link(p, code, text))
-    .join(" ");
   let html = shell
     .replace('<meta charset="utf-8" />', `<meta charset="utf-8" />\n    ${wordsMeta}`)
     .replace(/<html lang="[^"]*" dir="[^"]*">/, `<html lang="${tagOf(code)}" dir="${dir}">`)
@@ -214,11 +165,11 @@ function page(path, code) {
     .replace(/(<meta\s+name="description"\s+content=")[^"]*(")/, `$1${esc(words.description)}$2`)
     .replace(/(<meta\s+property="og:title"\s+content=")[^"]*(")/, `$1${esc(words.title)}$2`)
     .replace(/(<meta\s+property="og:description"\s+content=")[^"]*(")/, `$1${esc(words.description)}$2`)
-    .replace(/(<meta\s+property="og:url"\s+content=")[^"]*(")/, `$1${esc(url(path, code))}$2`)
+    .replace(/(<meta\s+property="og:url"\s+content=")[^"]*(")/, `$1${esc(url(path, canonicalLanguage(path, code)))}$2`)
     .replace(/(<meta\s+property="og:type"\s+content=")[^"]*(")/, `$1${words.post ? "article" : "website"}$2`)
     .replace(/(<meta\s+(?:property="og:image"|name="twitter:image")\s+content=")[^"]*(")/g, `$1${SITE}${words.post?.cover ?? "/brand/og-image.png"}$2`)
     .replace("</head>", `    ${head}\n  </head>`)
-    .replace('<div id="root"></div>', `<div id="root" data-prerendered=""><header><nav>${nav}</nav></header><main>${words.body.join("")}</main></div>`);
+    .replace('<div id="root"></div>', `<div id="root" data-prerendered="${esc(localizedPath(path, code))}">${app}</div>`);
   for (const needed of [`<html lang="${tagOf(code)}"`, wordsMeta, "<title>", 'rel="canonical"', "application/ld+json", "data-prerendered"])
     if (!html.includes(needed)) throw new Error(`${path} ${code}: ${needed} missing`);
   return html;
@@ -232,7 +183,7 @@ for (const path of paths)
     const name = target.replace(/^\//, "").replace(/\/$/, "");
     // both /ar/features (as ar/features.html) and /ar/features/ (as its index.html)
     const files = target === "/" ? ["index.html"] : [`${name}.html`, `${name}/index.html`];
-    const html = page(path, code);
+    const html = await page(path, code);
     for (const file of files) {
       const out = fileURLToPath(new URL(file, dist));
       mkdirSync(dirname(out), { recursive: true });
@@ -267,3 +218,9 @@ for (const { code } of LOCALES) {
     throw new Error(`the ${code} words must be only in ${packChunk[code]}, found in: ${holders.join(", ") || "no file"}`);
 }
 console.log(`words split: ${LOCALES.length} languages, one chunk each`);
+
+// the manifest served its purpose here; it is no page of the site, so it
+// leaves the deploy output (kept beside the server render in build/)
+mkdirSync(new URL("../build/", import.meta.url), { recursive: true });
+renameSync(new URL(".vite/manifest.json", dist), new URL("../build/vite-manifest.json", import.meta.url));
+rmdirSync(new URL(".vite/", dist));

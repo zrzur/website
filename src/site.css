@@ -9,7 +9,9 @@
   font-family: "IBM Plex Sans";
   src: url("/assets/plex-latin-wght.woff2") format("woff2-variations");
   font-weight: 100 700;
-  font-display: swap;
+  /* optional: a font that is not there at first paint waits for the next
+     page instead of swapping in and moving the text (CLS); preloaded by theme.js */
+  font-display: optional;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2010-206F, U+20AC, U+2122, U+2190-2199, U+FEFF, U+FFFD;
 }
 /* Cyrillic letters only: the browser fetches this file on a page that shows
@@ -18,7 +20,7 @@
   font-family: "IBM Plex Sans";
   src: url("/assets/plex-cyrillic-wght.woff2") format("woff2-variations");
   font-weight: 100 700;
-  font-display: swap;
+  font-display: optional;
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 @font-face {

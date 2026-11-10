@@ -152,7 +152,7 @@ const labels: Labels = {
   rolesP1Body: "为服务器中的每个群体设定名称和颜色。",
   rolesP2: "权限",
   rolesP2Body: "逐个频道决定谁能阅读、谁能发言、谁能管理。",
-  rolesP3: "管理",
+  rolesP3: "内容审核",
   rolesP3Body: "与你信任的人一起分担服务器的管理工作。",
   homeOpenSource: "阅读源代码",
   band1: "聊天",
@@ -217,6 +217,8 @@ const labels: Labels = {
   legalReadEnglish: "阅读英文版本",
   legalReadGerman: "阅读德文版本",
   legalHubNote: "我们的政策仅以英文版本具有法律约束力；如有德文版本，德文版本同样具有约束力。其他语言版本仅供阅读参考。",
+  reportLoadFailed: "举报表单未能加载。请检查网络连接后重试。",
+  reportRetry: "重试",
 };
 
 const pack: Pack = {

@@ -22,19 +22,33 @@ const languages = (process.env.E2E_LANGUAGES ?? "en").split(",");
 const pathOf = (language, path) => (language === "en" ? path : `/${language}${path === "/" ? "/" : path}`);
 
 const observe = () => {
-  window.__vitals = { lcp: 0, cls: 0 };
+  window.__vitals = { lcp: 0, cls: 0, lcpElement: "", shifts: [] };
+  /** what an element is, short: tag.class [width x height] */
+  const describe = (el) => {
+    if (!el) return "(removed)";
+    const box = el.getBoundingClientRect();
+    const cls = typeof el.className === "string" && el.className ? "." + el.className.trim().split(/s+/).slice(0, 2).join(".") : "";
+    return `${el.tagName.toLowerCase()}${cls} [${Math.round(box.width)}x${Math.round(box.height)}]`;
+  };
   new PerformanceObserver((list) => {
-    for (const e of list.getEntries()) window.__vitals.lcp = e.startTime;
+    for (const e of list.getEntries()) {
+      window.__vitals.lcp = e.startTime;
+      window.__vitals.lcpElement = `${describe(e.element)} size ${e.size}`;
+    }
   }).observe({ type: "largest-contentful-paint", buffered: true });
   new PerformanceObserver((list) => {
-    for (const e of list.getEntries()) if (!e.hadRecentInput) window.__vitals.cls += e.value;
+    for (const e of list.getEntries())
+      if (!e.hadRecentInput) {
+        window.__vitals.cls += e.value;
+        for (const source of e.sources ?? []) window.__vitals.shifts.push(`${e.value.toFixed(3)} ${describe(source.node?.nodeType === 1 ? source.node : source.node?.parentElement)}`);
+      }
   }).observe({ type: "layout-shift", buffered: true });
 };
 
 let failed = 0;
 const rows = [];
 const browser = await chromium.launch({ executablePath: process.env.E2E_CHROMIUM || undefined });
-for (const phone of [false, true])
+for (const phone of (process.env.E2E_PROFILES ?? "desktop,phone").split(",").map((p) => p === "phone"))
   for (const language of languages)
     for (const path of pages) {
       const context = await browser.newContext({
@@ -75,6 +89,8 @@ for (const phone of [false, true])
         profile: phone ? "phone" : "desktop",
         page: pathOf(language, path),
         lcp: Math.round(vitals.lcp),
+        lcpElement: vitals.lcpElement,
+        shifts: vitals.shifts.slice(0, 4).join(" | "),
         cls: Number(vitals.cls.toFixed(3)),
         jsGzipKB: Number((js / 1024).toFixed(1)),
         scripts: scripts.map((s) => `${s.name.split("/").pop()} ${(s.gzip / 1024).toFixed(1)}`).join(", "),

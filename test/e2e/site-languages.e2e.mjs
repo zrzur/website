@@ -26,7 +26,10 @@ const packs = Object.fromEntries(
   await Promise.all(LOCALES.map(async ({ code }) => [code, (await import(`../../src/locales/${code}.ts`)).default])),
 );
 const tag = (code) => LOCALES.find((l) => l.code === code).tag;
-const languages = (process.env.E2E_LANGUAGES ?? "fr,es,ru,zh").split(",");
+/** the pages of every site language go through the page checks */
+const languages = (process.env.E2E_LANGUAGES ?? "en,de,ar,fr,es,ru,zh").split(",");
+/** the four languages added on 2026-11-10: menu, browser and policy checks */
+const NEW = ["fr", "es", "ru", "zh"].filter((code) => languages.includes(code));
 const pathOf = (language, path = "/") => (language === "en" ? path : `/${language}${path === "/" ? "/" : path}`);
 const PAGES = ["/", "/features", "/project", "/download", "/guide", "/blog", "/blog/why-zrzur", "/legal", "/legal/privacy", "/legal/terms", "/report", "/no-such-page"];
 
@@ -86,7 +89,7 @@ const tooClose = (min) => {
 
 const browser = await chromium.launch({ executablePath: process.env.E2E_CHROMIUM || undefined });
 
-// 1. every page of every new language, on a desktop and on a 375 px phone
+// 1. every page of every language, on a desktop and on a 375 px phone
 for (const width of [1280, 375])
   for (const language of languages) {
     const context = await browser.newContext({ viewport: { width, height: width < 700 ? 812 : 800 }, locale: tag(language) });
@@ -119,6 +122,20 @@ for (const width of [1280, 375])
       check(`${where} 12 px inside every box`, close.length === 0, close.slice(0, 6).join(" | "));
       if (shots) await page.screenshot({ path: `${shots}/${language}-${width}${path.replace(/\//g, "_") || "_"}.png`, fullPage: true });
     }
+    // the prerendered page, before any script: the same layout rules hold
+    const bare = await browser.newContext({ viewport: { width, height: width < 700 ? 812 : 800 }, javaScriptEnabled: false });
+    const still = await bare.newPage();
+    for (const path of ["/", "/features", "/guide", "/legal/privacy", "/report", "/blog/why-zrzur"]) {
+      const where = `${language} ${width} ${path} prerendered`;
+      await still.goto(site + pathOf(language, path), { waitUntil: "load" });
+      check(`${where} has its page`, (await still.locator("#root[data-prerendered] h1").count()) === 1);
+      check(`${where} lang`, (await still.getAttribute("html", "lang")) === tag(language));
+      const over = await still.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+      check(`${where} no sideways scroll`, over <= 0, `${over}px`);
+      const close = await still.evaluate(tooClose, 12);
+      check(`${where} 12 px inside every box`, close.length === 0, close.slice(0, 6).join(" | "));
+    }
+    await bare.close();
     // the words of the other languages never came down
     const others = LOCALES.filter((l) => l.code !== language).map((l) => l.code);
     for (const other of others) {
@@ -154,7 +171,7 @@ for (const width of [1280, 375]) {
   const context = await browser.newContext({ viewport: { width, height: width < 700 ? 812 : 800 }, locale: "en-US" });
   const page = await context.newPage();
   await page.goto(site + "/features", { waitUntil: "networkidle" });
-  for (const language of languages) {
+  for (const language of NEW) {
     const button = page.locator(".footer-controls .language-button");
     await button.scrollIntoViewIfNeeded();
     await button.click();
@@ -180,7 +197,7 @@ for (const width of [1280, 375]) {
     console.log(`switch to ${language} at ${width}px: ${ms} ms (press to page in that language)`);
   }
   // remembered: the root address opens in the last choice
-  const last = languages.at(-1);
+  const last = NEW.at(-1);
   await page.goto(site + "/", { waitUntil: "networkidle" });
   check(`menu ${width} remembered`, new URL(page.url()).pathname === pathOf(last, "/"), page.url());
   await page.reload({ waitUntil: "networkidle" });
@@ -211,8 +228,11 @@ for (const [locale, expected] of [["fr-FR", "fr"], ["es-MX", "es"], ["ru-RU", "r
 {
   const context = await browser.newContext({ viewport: { width: 375, height: 812 }, locale: "fr-FR" });
   const page = await context.newPage();
-  for (const language of languages) {
+  for (const language of NEW) {
     await page.goto(site + pathOf(language, "/legal/privacy"), { waitUntil: "networkidle" });
+    // the English text under this prefix is not a page of its own (review 2026-11-10)
+    check(`${language} privacy canonical is English`, (await page.locator('link[rel="canonical"]').getAttribute("href")) === "https://zrzur.com/legal/privacy");
+    check(`${language} privacy is in no hreflang set`, (await page.locator(`link[rel=alternate][hreflang="${tag(language)}"]`).count()) === 0);
     const note = page.locator("#legal-binding");
     check(`${language} privacy binding note`, await note.isVisible());
     const text = await note.textContent();
@@ -240,6 +260,92 @@ for (const [locale, expected] of [["fr-FR", "fr"], ["es-MX", "es"], ["ru-RU", "r
   check("English privacy has no binding note", (await page.locator("#legal-binding").count()) === 0);
   await page.goto(site + "/zh/legal", { waitUntil: "networkidle" });
   check("Chinese policy list names the binding languages", (await page.locator("#legal-binding").textContent()).includes(packs.zh.labels.legalHubNote));
+  await context.close();
+}
+
+// 6. when the network fails: a late language never overrides a newer choice,
+// a failed first load is tried again, the report form offers a retry
+const wordsChunk = async (page, code) =>
+  (await page.locator('meta[name="zrzur-words"]').getAttribute("content")).match(new RegExp(`(?:^|,)${code}=([^,]+)`))[1];
+{
+  // a slow French then a quick Spanish: the page ends in Spanish
+  const context = await browser.newContext({ viewport: { width: 1280, height: 800 }, locale: "en-US" });
+  const page = await context.newPage();
+  const errors = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  await page.goto(site + "/features", { waitUntil: "networkidle" });
+  const fr = await wordsChunk(page, "fr");
+  await page.route(`**${fr}`, async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    await route.continue();
+  });
+  await page.locator(".footer-controls .language-button").click();
+  await page.locator("#footer-language-fr").click();
+  await page.locator(".footer-controls .language-button").click();
+  await page.locator("#footer-language-es").click();
+  await page.waitForFunction(() => document.documentElement.lang === "es");
+  await page.waitForTimeout(2500);
+  check("late French does not override Spanish", (await page.getAttribute("html", "lang")) === "es" && new URL(page.url()).pathname === "/es/features", page.url());
+  check("late French: heading in Spanish", (await page.locator("h1").textContent()).replace(/\s+/g, " ").trim() === packs.es.labels.featuresTitle.replace(/\s+/g, " "));
+  check("late French: no page errors", errors.length === 0, errors.join(" | "));
+  await context.close();
+}
+{
+  // the first fetch of the page's words fails once: the page still opens in its language
+  const context = await browser.newContext({ viewport: { width: 375, height: 812 }, locale: "fr-FR" });
+  const page = await context.newPage();
+  const errors = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  const probe = await browser.newPage();
+  await probe.goto(site + "/fr/features", { waitUntil: "load" });
+  const fr = await wordsChunk(probe, "fr");
+  await probe.close();
+  let dropped = 0;
+  await page.route(`**${fr}`, (route) => (dropped++ === 0 ? route.abort() : route.continue()));
+  await page.goto(site + "/fr/features", { waitUntil: "networkidle" });
+  await page.waitForTimeout(800);
+  check("failed first words: tried again", dropped >= 2 && (await page.locator("#root[data-prerendered]").count()) === 0, `requests ${dropped}`);
+  check("failed first words: page in French", (await page.locator(".footer-column h2").first().textContent())?.trim() === packs.fr.labels.footerProduct);
+  check("failed first words: no page errors", errors.length === 0, errors.join(" | "));
+  await context.close();
+}
+{
+  // no words at all: the prerendered page stays readable and nothing breaks
+  const context = await browser.newContext({ viewport: { width: 375, height: 812 }, locale: "ru-RU" });
+  const page = await context.newPage();
+  const errors = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  const chunks = (await (await fetch(site + "/ru/features")).text()).match(/name="zrzur-words" content="([^"]+)"/)[1].split(",").map((entry) => entry.split("=")[1]);
+  await page.route((url) => chunks.includes(url.pathname), (route) => route.abort());
+  await page.goto(site + "/ru/features", { waitUntil: "networkidle" });
+  await page.waitForTimeout(800);
+  check("no words: prerendered page stays", (await page.locator("#root[data-prerendered] h1").count()) === 1);
+  check("no words: no page errors", errors.length === 0, errors.join(" | "));
+  check("no words: marked on the page", (await page.getAttribute("html", "data-words-failed")) === "");
+  await context.close();
+}
+for (const language of NEW) {
+  // the report form's words fail: a plain message in the page language, and a working retry
+  const context = await browser.newContext({ viewport: { width: 375, height: 812 }, locale: tag(language) });
+  const page = await context.newPage();
+  const errors = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  let block = true;
+  await page.route(/\/assets\/[a-z]{2}-[^/]+\.js$/, async (route) => {
+    const response = await route.fetch();
+    const body = await response.text();
+    if (block && body.includes("kindLegend")) return route.abort();
+    return route.fulfill({ response, body });
+  });
+  await page.goto(site + pathOf(language, "/report"), { waitUntil: "networkidle" });
+  const failed = page.locator(".report-failed");
+  await failed.waitFor({ timeout: 5000 }).catch(() => {});
+  check(`${language} report: failure message`, Boolean((await failed.textContent().catch(() => ""))?.includes(packs[language].labels.reportLoadFailed)));
+  block = false;
+  await failed.locator("button").click().catch(() => {});
+  await page.locator("#report-description").waitFor({ timeout: 5000 }).catch(() => {});
+  check(`${language} report: retry shows the form`, await page.locator("#report-description").isVisible());
+  check(`${language} report: no page errors`, errors.length === 0, errors.join(" | "));
   await context.close();
 }
 

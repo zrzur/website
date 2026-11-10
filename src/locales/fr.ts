@@ -74,7 +74,7 @@ const labels: Labels = {
   footerProduct: "Produit",
   footerProject: "Projet",
   footerResources: "Ressources",
-  footerLegal: "Mentions légales",
+  footerLegal: "Informations juridiques",
   source: "Code source",
   licences: "Licences et attributions",
   thirdParty: "Mentions de tiers",
@@ -216,6 +216,8 @@ const labels: Labels = {
   legalReadEnglish: "Lire la version anglaise",
   legalReadGerman: "Lire la version allemande",
   legalHubNote: "Nos politiques n'ont de valeur juridique qu'en anglais et, lorsqu'une version allemande existe, en allemand. Les autres langues sont là pour t'aider à les lire.",
+  reportLoadFailed: "Le formulaire de signalement n'a pas pu se charger. Vérifie ta connexion et réessaie.",
+  reportRetry: "Réessayer",
 };
 
 const pack: Pack = {

@@ -146,7 +146,7 @@ export default function LegalPage(props: { language: Language; path: string; t: 
                 {t(info().binding.includes("de") ? "legalBindingEnDe" : "legalBindingEn")}
               </p>
               <p class="legal-binding-links">
-                <For each={info().binding.filter((code) => info().kind === "translation" || code !== "en")}>
+                <For each={info().binding}>
                   {(code) => (
                     <a href={localizedPath(props.path, code)} hreflang={tagOf(code)} data-binding={code}>
                       {t(code === "de" ? "legalReadGerman" : "legalReadEnglish")}

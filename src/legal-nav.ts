@@ -1,3 +1,4 @@
+import type { Language } from "./i18n";
 import type { Label } from "./strings";
 import type { LegalGroup, LegalSlug } from "./policies/shared.ts";
 
@@ -35,3 +36,25 @@ export const legalFooterLinks: { slug: LegalSlug; label: Label }[] = [
   { slug: "contact", label: "legalLinkContact" },
   { slug: "paid-services", label: "legalLinkPaid" },
 ];
+
+/**
+ * The languages each policy has a full text in (test/legal.test.mjs checks
+ * this against the texts). Under any other language prefix the page shows
+ * the English text: it is not a page of its own for search engines.
+ */
+const WITH_GERMAN: Language[] = ["en", "ar", "de"];
+const WITHOUT_GERMAN: Language[] = ["en", "ar"];
+export const legalLanguages: Record<LegalSlug, Language[]> = {
+  terms: WITHOUT_GERMAN,
+  privacy: WITH_GERMAN,
+  "community-guidelines": WITHOUT_GERMAN,
+  "enforcement-appeals": WITH_GERMAN,
+  "paid-services": WITHOUT_GERMAN,
+  "server-owner-rules": WITHOUT_GERMAN,
+  "discover-guidelines": WITHOUT_GERMAN,
+  "developer-terms": WITHOUT_GERMAN,
+  "plugin-policy": WITHOUT_GERMAN,
+  "creator-terms": WITH_GERMAN,
+  imprint: WITH_GERMAN,
+  contact: WITH_GERMAN,
+};

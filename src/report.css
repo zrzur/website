@@ -132,3 +132,17 @@
     min-height: 48px;
   }
 }
+/* the form's words did not arrive: what happened and a way to try again */
+.report-failed {
+  display: grid;
+  justify-items: start;
+  gap: 16px;
+  max-width: 640px;
+  padding: 20px;
+  border: 1px solid var(--z-border);
+  border-radius: 16px;
+  background: var(--z-nav);
+}
+.report-failed p {
+  margin: 0;
+}

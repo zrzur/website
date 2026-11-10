@@ -26,13 +26,23 @@ export const packLoaders: Record<Language, () => Promise<{ default: Pack }>> = {
   zh: () => import("./locales/zh"),
 };
 
+/**
+ * One fetch per key and visit: a success is kept, a failure is forgotten so
+ * the next call tries again (a dropped connection must not lose a language).
+ */
+export function cachedLoad<K, V>(cache: Map<K, Promise<V>>, key: K, load: () => Promise<V>): Promise<V> {
+  let value = cache.get(key);
+  if (!value) {
+    value = load();
+    cache.set(key, value);
+    value.catch(() => {
+      if (cache.get(key) === value) cache.delete(key);
+    });
+  }
+  return value;
+}
+
 const loaded = new Map<Language, Promise<Pack>>();
 /** The words of one language, fetched once per visit */
-export function loadPack(language: Language): Promise<Pack> {
-  let pack = loaded.get(language);
-  if (!pack) {
-    pack = packLoaders[language]().then((module) => module.default);
-    loaded.set(language, pack);
-  }
-  return pack;
-}
+export const loadPack = (language: Language): Promise<Pack> =>
+  cachedLoad(loaded, language, () => packLoaders[language]().then((module) => module.default));

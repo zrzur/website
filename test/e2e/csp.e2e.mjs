@@ -1,5 +1,5 @@
 // The built site under the production page policy: every page loads in
-// ar/en/de, at 1280 px and 375 px, with no Content-Security-Policy violation,
+// every site language (ar/en/de/fr/es/ru/zh), at 1280 px and 375 px, with no Content-Security-Policy violation,
 // the theme script runs (dark theme, right direction) and the report page
 // opens. First it proves the listener works: an inline script is refused.
 // Serves dist/ itself with the policy of the zrzur.com block in
@@ -107,15 +107,17 @@ async function open(path, viewport, locale = "en-US") {
   await context.close();
 }
 
-const pages = ["/", "/features", "/download", "/about", "/developers", "/report"];
+const pages = ["/", "/features", "/download", "/about", "/developers", "/report", "/legal/privacy", "/blog/why-zrzur"];
+const TAGS = { en: "en", ar: "ar", de: "de", fr: "fr", es: "es", ru: "ru", zh: "zh-Hans" };
+const BROWSER = { en: "en-US", ar: "ar", de: "de-DE", fr: "fr-FR", es: "es-ES", ru: "ru-RU", zh: "zh-CN" };
 for (const viewport of [
   { width: 1280, height: 800 },
   { width: 375, height: 812 },
 ]) {
-  for (const language of ["en", "ar", "de"]) {
+  for (const language of Object.keys(TAGS)) {
     for (const base of pages) {
       const path = language === "en" ? base : `/${language}${base === "/" ? "/" : base}`;
-      const { context, page, refused } = await open(path, viewport, { en: "en-US", ar: "ar", de: "de-DE" }[language]);
+      const { context, page, refused } = await open(path, viewport, BROWSER[language]);
       const found = [...(await page.evaluate(() => window.__csp)), ...refused];
       const root = await page.evaluate(() => ({
         theme: document.documentElement.dataset.theme,
@@ -125,7 +127,7 @@ for (const viewport of [
       const ok =
         found.length === 0 &&
         root.theme === "dark" &&
-        root.lang === language &&
+        root.lang === TAGS[language] &&
         root.dir === (language === "ar" ? "rtl" : "ltr");
       check(`${viewport.width}px ${path}`, ok, `${JSON.stringify(root)} ${found.slice(0, 3).join(" | ")}`);
       await context.close();

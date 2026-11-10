@@ -216,6 +216,8 @@ const labels: Labels = {
   legalReadEnglish: "Englische Fassung lesen",
   legalReadGerman: "Deutsche Fassung lesen",
   legalHubNote: "Unsere Richtlinien sind nur auf Englisch und, wo es eine deutsche Fassung gibt, auf Deutsch rechtlich verbindlich. Die anderen Sprachen sollen dir das Lesen erleichtern.",
+  reportLoadFailed: "Das Meldeformular konnte nicht geladen werden. Prüfe deine Verbindung und versuch es erneut.",
+  reportRetry: "Erneut versuchen",
 };
 
 const pack: Pack = {

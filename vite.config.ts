@@ -31,14 +31,19 @@ export const productVersions = Object.fromEntries(
     .map((name) => [name, createHash('sha256').update(readFileSync(`${productDir}/${name}`)).digest('hex').slice(0, 10)]),
 );
 
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
   define: {
     __ZRZUR_BUILD__: buildDefine(releaseInfo, 'website'),
     __PRODUCT_VERSIONS__: JSON.stringify(productVersions),
   },
-  plugins: [solid(), thirdPartyNotices({ productName: 'Zrzur website', extras: noticeExtras })],
+  // the --ssr build (src/entry-server.tsx) renders the pages to HTML for
+  // scripts/prerender.mjs; it stays in build/ssr and is never served
+  plugins: isSsrBuild
+    ? [solid({ ssr: true })]
+    : // hydratable: the browser takes the prerendered nodes over (src/main.tsx)
+      [solid({ ssr: true }), thirdPartyNotices({ productName: 'Zrzur website', extras: noticeExtras })],
   server: { host: '127.0.0.1', port: 14826, strictPort: true },
   preview: { host: '127.0.0.1', port: 14826, strictPort: true },
   // the manifest tells scripts/prerender.mjs which chunk holds each language's words
-  build: { target: 'es2022', manifest: true },
-});
+  build: isSsrBuild ? { target: 'node22', outDir: 'build/ssr', emptyOutDir: true, copyPublicDir: false } : { target: 'es2022', manifest: true },
+}));
