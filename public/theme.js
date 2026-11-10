@@ -27,4 +27,21 @@
         ? "/assets/plex-cyrillic-wght.woff2"
         : "/assets/plex-latin-wght.woff2";
   document.head.appendChild(font);
+  // the words of the page's language, fetched beside the app instead of
+  // after it (the build writes where each language's chunk is)
+  var words = document.querySelector('meta[name="zrzur-words"]');
+  var wanted = language;
+  if (!match)
+    try {
+      var saved = localStorage.getItem("zrzur-site-language");
+      if (saved && /^(en|ar|de|fr|es|ru|zh)$/.test(saved)) wanted = saved;
+    } catch (e) {}
+  var chunk = words && words.content.match(new RegExp("(?:^|,)" + wanted + "=([^,]+)"));
+  if (chunk) {
+    var preload = document.createElement("link");
+    preload.rel = "modulepreload";
+    preload.crossOrigin = "";
+    preload.href = chunk[1];
+    document.head.appendChild(preload);
+  }
 })();

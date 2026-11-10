@@ -2300,6 +2300,13 @@ p { text-wrap: pretty; }
 .legal-navigation a[aria-current="page"] { background: var(--z-action-soft); color: var(--z-action-text); }
 .legal-content { max-width: 800px; line-height: 1.85; overflow-wrap: anywhere; }
 .legal-draft { border: 1px solid var(--z-border); border-radius: 16px; padding: 20px; }
+/* on a page that is not a binding version: what it is and where the binding text is */
+.legal-binding { display: flex; gap: 12px; padding: 20px; border: 1px solid var(--z-border); border-radius: 16px; background: var(--z-nav); font-size: 15px; line-height: 1.7; }
+.legal-binding > svg { flex: none; margin-block-start: 4px; color: var(--z-text-2); }
+.legal-binding p { margin: 0; }
+.legal-binding p.legal-binding-links { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-block-start: 8px; }
+.legal-binding-links a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--z-action-text); font-weight: 600; }
+.legal-shelves > .legal-binding { margin-block-end: 24px; }
 .legal-toc { padding: 20px; background: var(--z-nav); border: 1px solid var(--z-border); border-radius: 16px; gap: 6px 20px; }
 .legal-toc a { min-height: 44px; line-height: 1.6; }
 .legal-section { padding-block: 24px; border-bottom: 1px solid var(--z-border); scroll-margin-top: calc(var(--header) + 24px); }
@@ -3161,7 +3168,8 @@ main { overflow-x: clip; }
 .home-faq .faq-list { display: grid; gap: 12px; border: 0; }
 .home-faq .faq-list details { padding: 4px 28px; border: 0; }
 .home-faq .faq-list details > p { margin: 0; padding-block: 0 24px; max-width: 64ch; }
-.home-faq .faq-list summary { min-height: 68px; gap: 20px; }
+/* a question on two lines keeps its space from the box edge too */
+.home-faq .faq-list summary { min-height: 68px; gap: 20px; padding-block: 16px; }
 @media (max-width: 600px) { .home-faq .faq-list details { padding-inline: 20px; } }
 
 /* ==== Home, round seven (owner, 2026-11-08) ====

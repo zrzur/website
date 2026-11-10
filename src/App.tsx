@@ -204,7 +204,11 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
     meta('meta[property="og:description"]', description);
     meta('meta[property="og:url"]', canonicalUrl(localizedPath(path, code)));
     // one canonical URL per page and language, plus its alternates
-    document.querySelectorAll("link[data-seo]").forEach((node) => node.remove());
+    // the prerendered page brought its own canonical and alternates: after a
+    // language switch they would name the old language, so they go too
+    document
+      .querySelectorAll('link[data-seo], link[rel="canonical"], link[rel="alternate"][hreflang]')
+      .forEach((node) => node.remove());
     if (page !== "404") {
       const add = (rel: string, url: string, hreflang?: string) => {
         const link = document.createElement("link");

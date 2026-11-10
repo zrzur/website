@@ -18,6 +18,9 @@ import { plain } from "../src/blog-md.ts";
 import { postText } from "../src/blog-posts.ts";
 import { LOCALES, localizedPath, tagOf } from "../src/i18n.ts";
 import { canonicalUrl } from "../src/config.ts";
+import { legalDocuments } from "../src/legal.ts";
+import { bindingNotice, shownLanguage } from "../src/legal-binding.ts";
+import { localize } from "../src/content.ts";
 
 const posts = readPosts();
 /** every language's words, straight from src/locales/<code>.ts */
@@ -46,6 +49,14 @@ const chunkOf = (source) => {
   return `/${entry.file}`;
 };
 const packChunk = Object.fromEntries(LOCALES.map(({ code }) => [code, chunkOf(`src/locales/${code}.ts`)]));
+/**
+ * Where each language's words are, for public/theme.js: it preloads the
+ * chunk of the address's language before the app asks for it. A meta tag,
+ * not a script: the page policy allows no inline script. Every page carries
+ * it, the /index.html fallback of unknown addresses too.
+ */
+const wordsMeta = `<meta name="zrzur-words" content="${LOCALES.map(({ code }) => `${code}=${packChunk[code]}`).join(",")}" />`;
+if (!shell.includes('<meta charset="utf-8" />')) throw new Error("index.html: the charset meta moved; the words map goes right after it");
 
 const esc = (text) =>
   String(text).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -114,6 +125,24 @@ function pageWords(path, code) {
       body: [`<article><h1>${esc(textOf(post, code).title)}</h1><time datetime="${post.date}">${post.date}</time><p>${esc(textOf(post, code).summary)}</p>${blocksHtml(textOf(post, code).blocks)}</article>`],
       post,
     };
+  if (path === "/report") return { title: `${t.reportTitle} — ${t.brand}`, description: t.reportIntro, body: [`<h1>${esc(t.reportTitle)}</h1>`, `<p>${esc(t.reportIntro)}</p>`] };
+  if (path === "/legal") return { title: `${t.legalTitle} — ${t.brand}`, description: t.legalIntro, body: [`<h1>${esc(t.legalTitle)}</h1>`, `<p>${esc(t.legalIntro)}</p>`, ...legalDocuments.map((doc) => `<p>${link(`/legal/${doc.slug}`, code, localize(doc.title, code))}</p>`)] };
+  const doc = legalDocuments.find((entry) => path === `/legal/${entry.slug}`);
+  if (doc) {
+    // the policy in its own words where it has them, else the English text,
+    // with the same binding note the app shows
+    const notice = bindingNotice(doc, code);
+    const shown = shownLanguage(doc, code);
+    const note = notice
+      ? `<p>${esc(t[notice.kind === "translation" ? "legalTranslationNote" : "legalEnglishNote"])} ${esc(t[notice.binding.includes("de") ? "legalBindingEnDe" : "legalBindingEn"])} ${notice.binding.map((b) => `<a href="${esc(localizedPath(path, b))}" hreflang="${tagOf(b)}">${esc(t[b === "de" ? "legalReadGerman" : "legalReadEnglish"])}</a>`).join(" ")}</p>`
+      : "";
+    const sections = doc.sections.map((section) => `<h2>${esc(localize(section.title, shown))}</h2><p>${esc(localize(section.body, shown))}</p>`).join("");
+    return {
+      title: `${localize(doc.title, code)} — ${t.brand}`,
+      description: localize(doc.intro, code),
+      body: [`<h1>${esc(localize(doc.title, code))}</h1>`, `<p>${esc(localize(doc.intro, code))}</p>`, note, shown === code ? sections : `<div lang="${tagOf(shown)}">${sections}</div>`],
+    };
+  }
   throw new Error(`no words for ${path}`);
 }
 
@@ -164,8 +193,6 @@ function page(path, code) {
   const dir = LOCALES.find((l) => l.code === code).dir;
   const head = [
     `<link rel="canonical" href="${esc(url(path, code))}" />`,
-    // the words of this language, fetched beside the app instead of after it
-    `<link rel="modulepreload" crossorigin href="${packChunk[code]}" />`,
     ...LOCALES.map((l) => `<link rel="alternate" hreflang="${l.tag}" href="${esc(url(path, l.code))}" />`),
     `<link rel="alternate" hreflang="x-default" href="${esc(url(path, "en"))}" />`,
     `<meta property="og:locale" content="${OG_LOCALE[code]}" />`,
@@ -181,6 +208,7 @@ function page(path, code) {
     .map(([p, text]) => link(p, code, text))
     .join(" ");
   let html = shell
+    .replace('<meta charset="utf-8" />', `<meta charset="utf-8" />\n    ${wordsMeta}`)
     .replace(/<html lang="[^"]*" dir="[^"]*">/, `<html lang="${tagOf(code)}" dir="${dir}">`)
     .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(words.title)}</title>`)
     .replace(/(<meta\s+name="description"\s+content=")[^"]*(")/, `$1${esc(words.description)}$2`)
@@ -191,12 +219,12 @@ function page(path, code) {
     .replace(/(<meta\s+(?:property="og:image"|name="twitter:image")\s+content=")[^"]*(")/g, `$1${SITE}${words.post?.cover ?? "/brand/og-image.png"}$2`)
     .replace("</head>", `    ${head}\n  </head>`)
     .replace('<div id="root"></div>', `<div id="root" data-prerendered=""><header><nav>${nav}</nav></header><main>${words.body.join("")}</main></div>`);
-  for (const needed of [`<html lang="${tagOf(code)}"`, packChunk[code], "<title>", 'rel="canonical"', "application/ld+json", "data-prerendered"])
+  for (const needed of [`<html lang="${tagOf(code)}"`, wordsMeta, "<title>", 'rel="canonical"', "application/ld+json", "data-prerendered"])
     if (!html.includes(needed)) throw new Error(`${path} ${code}: ${needed} missing`);
   return html;
 }
 
-const paths = ["/", "/features", "/project", "/download", "/guide", "/blog", ...posts.map((p) => `/blog/${p.slug}`)];
+const paths = ["/", "/features", "/project", "/download", "/guide", "/blog", ...posts.map((p) => `/blog/${p.slug}`), "/report", "/legal", ...legalDocuments.map((doc) => `/legal/${doc.slug}`)];
 let written = 0;
 for (const path of paths)
   for (const { code } of LOCALES) {

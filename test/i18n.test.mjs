@@ -135,6 +135,12 @@ test("the first-paint script knows every language prefix", () => {
   const prefixes = theme.match(/\^\\\/\(([a-z|]+)\)/)[1].split("|").toSorted();
   assert.deepEqual(prefixes, codes.filter((code) => code !== "en").toSorted());
   assert.match(theme, /"zh-Hans"/);
+  // it preloads the words of the address language from the map the build writes
+  assert(theme.includes('meta[name="zrzur-words"]'));
+  const savedCodes = theme.match(/\/\^\(([a-z|]+)\)\$\//)[1].split("|").toSorted();
+  assert.deepEqual(savedCodes, codes.toSorted());
+  const prerender = readFileSync(new URL("../scripts/prerender.mjs", import.meta.url), "utf8");
+  assert(prerender.includes('<meta name="zrzur-words"'));
 });
 
 test("Arabic text says سيرفر, never خادم or خوادم", () => {
