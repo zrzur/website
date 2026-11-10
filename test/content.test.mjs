@@ -91,9 +91,29 @@ test("the site has no native select and dark is the default theme", async () => 
     const source = await readFile(new URL(`../src/${file}`, import.meta.url), "utf8");
     assert.doesNotMatch(source, /<select\b/, file);
   }
-  const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
-  assert.match(html, /var theme = "dark"/);
-  assert.doesNotMatch(html, /prefers-color-scheme/);
+  const theme = await readFile(new URL("../public/theme.js", import.meta.url), "utf8");
+  assert.match(theme, /var theme = "dark"/);
+  assert.doesNotMatch(theme, /prefers-color-scheme/);
+});
+
+// The page policy (Content-Security-Policy in the zrzur.com Caddy block) has
+// script-src 'self' without 'unsafe-inline': every page loads its scripts as
+// files. Only JSON data blocks (application/ld+json) may be inline.
+test("no page has an inline script; the theme script is a file in the head", async () => {
+  for (const file of ["index.html", "about.html", "download.html", "features.html", "404.html"]) {
+    const html = await readFile(new URL(`../${file}`, import.meta.url), "utf8");
+    for (const [tag] of html.matchAll(/<script\b[^>]*>/g)) {
+      const data = /type="application\/(ld\+)?json"/.test(tag);
+      assert.ok(/\bsrc="/.test(tag) || data, `${file}: inline script ${tag}`);
+    }
+    assert.doesNotMatch(html, /\son[a-z]+="/, `${file}: inline event handler`);
+  }
+  const index = await readFile(new URL("../index.html", import.meta.url), "utf8");
+  const head = index.slice(0, index.indexOf("</head>"));
+  assert.match(head, /<script src="\/theme\.js"><\/script>/);
+  const prerender = await readFile(new URL("../scripts/prerender.mjs", import.meta.url), "utf8");
+  for (const [tag] of prerender.matchAll(/<script\b[^>]*>/g))
+    assert.match(tag, /application\/ld\+json/, `prerender adds ${tag}`);
 });
 
 // Owner, 2026-11-08: the Windows desktop app is offered for download. The copy
