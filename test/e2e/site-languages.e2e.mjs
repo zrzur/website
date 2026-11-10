@@ -497,6 +497,11 @@ for (const language of ["en", "fr"]) {
   const cdp = await context.newCDPSession(page);
   await cdp.send("Emulation.setCPUThrottlingRate", { rate: 6 });
   await cdp.send("Network.emulateNetworkConditions", { offline: false, latency: 300, downloadThroughput: (0.8 * 1024 * 1024) / 8, uploadThroughput: (400 * 1024) / 8 });
+  // the app's entry arrives late, as on a bad line: the typing is surely first
+  await page.route((url) => /^\/assets\/index-[^/]+\.js$/.test(url.pathname), async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 4000));
+    await route.continue();
+  });
   await page.goto(site + pathOf(language, "/report"), { waitUntil: "commit" });
   const field = page.locator("#report-description");
   await field.waitFor();
