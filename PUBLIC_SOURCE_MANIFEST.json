@@ -130,8 +130,8 @@
     },
     {
       "path": "index.html",
-      "sha256": "5811087ccc6664b63927f7a885f6de0fc4bdf3851ab044bde5f4519d5235b47d",
-      "bytes": 3802,
+      "sha256": "03e227d82b6dc12c49235083618ed666c7c1133f6aba327ab57dbc870d164281",
+      "bytes": 2903,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -561,6 +561,12 @@
       "category": "reviewed-product-asset"
     },
     {
+      "path": "public/theme.js",
+      "sha256": "eb33fc86ebf102bc09bde01d2f1654071261c62843b1a375576d2c6e252a66a9",
+      "bytes": 965,
+      "category": "reviewed-product-asset"
+    },
+    {
       "path": "scripts/blog-files.mjs",
       "sha256": "0a34e2134ad79e5aa8595b53c26032f2f760ec5e2f97fdffd80250d399597222",
       "bytes": 637,
@@ -850,8 +856,14 @@
     },
     {
       "path": "test/content.test.mjs",
-      "sha256": "df4b62537ffee90510f5a5d3703eeaacc6533f8a9c483d44e72aa52ee999574d",
-      "bytes": 9882,
+      "sha256": "881fd7e81e69e2e72acde6190d4e5de4a9028bd8606dc2598a28dbd027ceec6d",
+      "bytes": 11120,
+      "category": "synthetic-test-source-or-fixture"
+    },
+    {
+      "path": "test/e2e/csp.e2e.mjs",
+      "sha256": "e9df4ea05fd7a4b897a9bac5c19f6378bf8c5d50188ef9604d130e776876f34e",
+      "bytes": 5801,
       "category": "synthetic-test-source-or-fixture"
     },
     {
