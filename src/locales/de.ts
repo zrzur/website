@@ -78,6 +78,8 @@ const labels: Labels = {
   source: "Quellcode",
   licences: "Lizenzen und Namensnennung",
   thirdParty: "Hinweise zu Drittanbieter-Komponenten",
+  thirdPartyIntro: "Die Lizenztexte unten sind auf Englisch, so wie ihre Urheber sie veröffentlicht haben.",
+  thirdPartyPlain: "Als Textdatei",
   questions: "Häufige Fragen",
   gettingStarted: "Erste Schritte",
   safety: "Sicherheit und Richtlinien",

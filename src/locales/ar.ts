@@ -78,6 +78,8 @@ const labels: Labels = {
   source: "الشيفرة المصدرية",
   licences: "التراخيص وحقوق المساهمين",
   thirdParty: "إشعارات الجهات الخارجية",
+  thirdPartyIntro: "نصوص التراخيص أدناه منشورة بالإنجليزية كما كتبها أصحابها.",
+  thirdPartyPlain: "ملف نصي",
   questions: "الأسئلة الشائعة",
   gettingStarted: "دليل البداية",
   safety: "الأمان والإرشادات",

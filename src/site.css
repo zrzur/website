@@ -3112,7 +3112,8 @@ p { text-wrap: pretty; }
   .home-phone-frame .product-shot img { border-radius: 28px; }
   .home-wave { margin-block-end: 24px; }
   .home-open-list { font-size: 17px; }
-  .site-header.is-scrolled .brand, .site-header.is-scrolled .header-cta .button { min-height: 40px; }
+  /* 44 px: phone targets */
+  .site-header.is-scrolled .brand, .site-header.is-scrolled .header-cta .button { min-height: 44px; }
 }
 
 /* the call screen keeps to one screen with its points */
@@ -3451,7 +3452,8 @@ main { overflow-x: clip; }
 .download-buttons { display: grid; gap: 10px; margin-block: 8px 4px; align-self: stretch; min-width: 0; }
 .download-buttons .button { min-height: 52px; border-radius: 14px; justify-content: flex-start; gap: 10px; padding-inline: 18px; font-size: 16px; }
 .download-buttons .button { white-space: normal; min-width: 0; text-align: start; }
-.download-size { margin-inline-start: auto; font-size: 13px; font-weight: 500; opacity: .75; white-space: nowrap; }
+/* full colour: at 75 % the size fell under 4.5:1 on the filled button */
+.download-size { margin-inline-start: auto; font-size: 13px; font-weight: 500; white-space: nowrap; }
 .download-how { margin: 0; font-size: 14.5px; line-height: 1.7; color: var(--z-text-2); }
 .download-check { margin-block-start: auto; font-size: 14px; color: var(--z-text-2); }
 .download-check summary { cursor: pointer; padding-block: 6px; }
@@ -3575,4 +3577,13 @@ html { scrollbar-width: none; }
   .home-screen { contain-intrinsic-size: auto 810px; }
   .guide-steps { contain-intrinsic-size: auto 1029px; }
   .home-faq { contain-intrinsic-size: auto 820px; }
+}
+
+/* 44 px targets on phones: the header buttons and the footer links (they were
+   36 px buttons and 31 px lines; brand rule, phone rules) */
+@media (max-width: 900px) {
+  .header-actions > .icon-button { width: 44px; height: 44px; }
+  .footer-column ul { gap: 0; }
+  .site-footer .footer-column a, .site-footer .footer-column button { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
+  .blog-card h2 a { display: inline-flex; align-items: center; min-height: 44px; }
 }
