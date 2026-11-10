@@ -541,7 +541,8 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
                 alt={t(props.alt)}
                 width={props.phone ? 780 : 2304}
                 height={props.phone ? 1688 : 1440}
-                loading={props.eager ? "eager" : "lazy"}
+                // the shade the site shows loads at once; the hidden one waits (a hidden lazy picture never loads)
+                loading={props.eager && shade === theme() ? "eager" : "lazy"}
                 fetchpriority={props.eager && shade === theme() ? "high" : undefined}
                 decoding="async"
               />
