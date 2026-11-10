@@ -533,7 +533,8 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
           {(shade) => (
             <picture class={`shot-${shade}`}>
               {!props.phone && hasPhone() && (
-                <source media="(max-width: 600px)" srcset={file(shade, true)} />
+                // the phone capture has its own shape: its size here keeps the box from jumping when it loads
+                <source media="(max-width: 600px)" srcset={file(shade, true)} width={780} height={1688} />
               )}
               <img
                 src={file(shade, !!props.phone)}

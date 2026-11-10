@@ -41,6 +41,8 @@
     var preload = document.createElement("link");
     preload.rel = "modulepreload";
     preload.crossOrigin = "";
+    // after the stylesheet: the page shows itself without these words
+    preload.setAttribute("fetchpriority", "low");
     preload.href = chunk[1];
     document.head.appendChild(preload);
   }

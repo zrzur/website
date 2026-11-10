@@ -87,6 +87,9 @@ const tooClose = (min) => {
   return [...new Set(found)];
 };
 
+/** the measuring sees every box: content-visibility parts are laid out too */
+const LAY_OUT_ALL = "* { content-visibility: visible !important; }";
+
 const browser = await chromium.launch({ executablePath: process.env.E2E_CHROMIUM || undefined });
 
 // 1. every page of every language, on a desktop and on a 375 px phone
@@ -118,6 +121,8 @@ for (const width of [1280, 375])
       // the boxes as a visitor scrolls past them (the entrance motion is done)
       await page.evaluate(() => document.querySelectorAll("[data-rise]").forEach((el) => el.classList.add("is-in")));
       await page.waitForTimeout(700);
+      // every part laid out, also those the page lays out only when they come near
+      await page.addStyleTag({ content: LAY_OUT_ALL });
       const close = await page.evaluate(tooClose, 12);
       check(`${where} 12 px inside every box`, close.length === 0, close.slice(0, 6).join(" | "));
       if (shots) await page.screenshot({ path: `${shots}/${language}-${width}${path.replace(/\//g, "_") || "_"}.png`, fullPage: true });
@@ -132,6 +137,7 @@ for (const width of [1280, 375])
       check(`${where} lang`, (await still.getAttribute("html", "lang")) === tag(language));
       const over = await still.evaluate(() => document.documentElement.scrollWidth - innerWidth);
       check(`${where} no sideways scroll`, over <= 0, `${over}px`);
+      await still.addStyleTag({ content: LAY_OUT_ALL });
       const close = await still.evaluate(tooClose, 12);
       check(`${where} 12 px inside every box`, close.length === 0, close.slice(0, 6).join(" | "));
     }

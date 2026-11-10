@@ -118,8 +118,12 @@ test("no page has an inline script; the theme script is a file in the head", asy
   const head = index.slice(0, index.indexOf("</head>"));
   assert.match(head, /<script src="\/theme\.js"><\/script>/);
   const prerender = await readFile(new URL("../scripts/prerender.mjs", import.meta.url), "utf8");
-  for (const [tag] of prerender.matchAll(/<script\b[^>]*>/g))
-    assert.match(tag, /application\/ld\+json/, `prerender adds ${tag}`);
+  // it writes data blocks only; the other tags it names are the page's own
+  // script files (it moves the stylesheet after theme.js, lowers the entry's priority)
+  for (const [tag] of prerender.matchAll(/<script\b[^>\n]*/g))
+    assert.match(tag, /application\/ld\+json|src="\/theme\.js"|type="module"/, `prerender adds ${tag}`);
+  // and it refuses a rendered page that carries a script
+  assert.match(prerender, /the rendered page carries a script/);
 });
 
 // Owner, 2026-11-08: the Windows desktop app is offered for download. The copy

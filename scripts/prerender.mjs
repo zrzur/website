@@ -44,9 +44,28 @@ const labels = Object.fromEntries(LOCALES.map(({ code }) => [code, packs[code].l
 const textOf = (post, code) => postText(post, code).text;
 
 const dist = new URL("../dist/", import.meta.url);
-const shell = readFileSync(new URL("index.html", dist), "utf8");
+const built = readFileSync(new URL("index.html", dist), "utf8");
 // a second run would read its own English page as the shell: build first
-if (shell.includes("data-prerendered")) throw new Error("dist/index.html is already prerendered: run vite build first");
+if (built.includes("data-prerendered")) throw new Error("dist/index.html is already prerendered: run vite build first");
+/**
+ * The stylesheet is the one thing the first paint waits for: it is asked for
+ * right after the theme script, before the app's scripts, which the page does
+ * not need to show itself (Vite puts it after them).
+ */
+const stylesheet = built.match(/\s*<link rel="stylesheet"[^>]*>/)?.[0];
+const THEME = '<script src="/theme.js"></script>';
+if (!stylesheet || !built.includes(THEME)) throw new Error("index.html: stylesheet or theme script not found");
+/**
+ * The page shows itself without script; the app only takes it over. So its
+ * scripts must not compete with the stylesheet: the entry is fetched at low
+ * priority and its own imports load when it runs (no modulepreload links).
+ */
+const shell = built
+  .replace(stylesheet, "")
+  .replace(THEME, `${THEME}${stylesheet}`)
+  .replace(/\s*<link rel="modulepreload"[^>]*>/g, "")
+  .replace('<script type="module" crossorigin', '<script type="module" fetchpriority="low" crossorigin');
+if (!shell.includes('fetchpriority="low"')) throw new Error("index.html: the app's script tag changed");
 const SITE = "https://zrzur.com";
 const OG_LOCALE = { en: "en_US", de: "de_DE", ar: "ar_AR", fr: "fr_FR", es: "es_ES", ru: "ru_RU", zh: "zh_CN" };
 
