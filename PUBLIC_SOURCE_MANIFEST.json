@@ -1252,8 +1252,8 @@
     },
     {
       "path": "public/theme.js",
-      "sha256": "c4a3e51456acc6cf6b7c4a85eb93ea10effb72a4f53033c7c8a8d46a2c3d5c85",
-      "bytes": 5027,
+      "sha256": "9606354afd74b2c500f7cd266faf9956ff983b01e8a083af5843d80bfbb34ed6",
+      "bytes": 6349,
       "category": "reviewed-product-asset"
     },
     {
@@ -1281,6 +1281,12 @@
       "category": "reviewed-build-and-ci"
     },
     {
+      "path": "scripts/image-metadata.py",
+      "sha256": "a0609987f623378aa4c6719a2103044f05184e14fbcb6a2391fe2e799b4df5d5",
+      "bytes": 2498,
+      "category": "reviewed-build-and-ci"
+    },
+    {
       "path": "scripts/make-favicons.mjs",
       "sha256": "029cd8949c2d8a3c28c6ad24f2192bcd23d6cf9569904d3a27c2bb97f0e13a3f",
       "bytes": 3167,
@@ -1288,8 +1294,8 @@
     },
     {
       "path": "scripts/prerender.mjs",
-      "sha256": "51155af07219dba45ab2de2561be1838cd14202f33bc4dd6ad992d0481594630",
-      "bytes": 16548,
+      "sha256": "b4afd8b4018e9fc96f2fcf0b40a7f7d8900e02ede3593b07be34b6b2fc2ac7e1",
+      "bytes": 16805,
       "category": "reviewed-build-and-ci"
     },
     {
@@ -1342,8 +1348,8 @@
     },
     {
       "path": "scripts/ssr-scripts.mjs",
-      "sha256": "a5ab31579f0edaaa778caa66589bb4977bfc77d593e9c2a99a2df2f98850b4c0",
-      "bytes": 1744,
+      "sha256": "691c653300210ff2851fd289d831cecba19208bcba0e62d901cd2be2788fc7d9",
+      "bytes": 2652,
       "category": "reviewed-build-and-ci"
     },
     {
@@ -1504,8 +1510,8 @@
     },
     {
       "path": "src/main.tsx",
-      "sha256": "ae967004ce3a6ef4332b32ab1fa8376e07605f613778867d9376e034b8984441",
-      "bytes": 3638,
+      "sha256": "967a225dbc52d71370581d809d7d85eebdb9aeb29bfb5d0b892fd82ebf479754",
+      "bytes": 3812,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1666,14 +1672,14 @@
     },
     {
       "path": "src/shots.ts",
-      "sha256": "914d893626e9b0053e5a9e42895bafc7cc24801d167249956c8a52578333f4ea",
-      "bytes": 2845,
+      "sha256": "328838e4f018cbe2fc2edae09405fa6ca9a10f20c5169470e2ec3f0e4f5e4606",
+      "bytes": 2857,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/site.css",
-      "sha256": "815f8fc32ca599742e6e56e4380de23bbcd6a5467e4de3436c6df9b8142be0cc",
-      "bytes": 118632,
+      "sha256": "f388b17dcf148de66db183dbc78c2684e176123f6a5a8a5df4aff986428dadb5",
+      "bytes": 118799,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1696,8 +1702,14 @@
     },
     {
       "path": "test/e2e/csp.e2e.mjs",
-      "sha256": "b78485813ab1b012bd2d5748ef874a442c5f79d94e94f98be86b0667dd2af5a7",
-      "bytes": 6046,
+      "sha256": "967ab25dcceda7e56fc85bbbcf1f1c08d7f35c0964b5dab21cf5d0ed975350ab",
+      "bytes": 4886,
+      "category": "synthetic-test-source-or-fixture"
+    },
+    {
+      "path": "test/e2e/not-found.e2e.mjs",
+      "sha256": "27891efa217202dc8a0d9fd3c822e85a0d2761ab3d33dbc06f49f495b2063186",
+      "bytes": 4988,
       "category": "synthetic-test-source-or-fixture"
     },
     {
@@ -1708,8 +1720,8 @@
     },
     {
       "path": "test/e2e/site-languages.e2e.mjs",
-      "sha256": "c9832cadb2aafa4c22dc0fa14f8a20202df96f24d93b28e7966675248cb14095",
-      "bytes": 30258,
+      "sha256": "9a4018a55781d73a492eb2762bbe51d84ecf9b03ec2001da8d4084d3db374a0f",
+      "bytes": 33003,
       "category": "synthetic-test-source-or-fixture"
     },
     {
@@ -1722,6 +1734,12 @@
       "path": "test/e2e/site-vitals.e2e.mjs",
       "sha256": "3883bd8fc11335aa4fc97beaee79cfed48258c1db1b6d26078463e30a04b7c5d",
       "bytes": 6479,
+      "category": "synthetic-test-source-or-fixture"
+    },
+    {
+      "path": "test/e2e/static-server.mjs",
+      "sha256": "bffb3ccd7e90f1227bebea4d6ff440e6d8334a74afa20ad3b29d0e40d5a74e12",
+      "bytes": 2158,
       "category": "synthetic-test-source-or-fixture"
     },
     {
@@ -1750,14 +1768,14 @@
     },
     {
       "path": "test/ssr-scripts.test.mjs",
-      "sha256": "3945708329219beff6bd272c0b90bca86cf060ffc9536a7615584fff213ea1e7",
-      "bytes": 2061,
+      "sha256": "44d77aa48289065212b2f6ad8272c0903c2693c2fa895fdf2b9dd897b3aee4c1",
+      "bytes": 3086,
       "category": "synthetic-test-source-or-fixture"
     },
     {
       "path": "test/theme-script.test.mjs",
-      "sha256": "0244d5e2417ae66ef8666d2b3c045d4c0f4e0807588c286d6b13ab9733f4d5db",
-      "bytes": 5912,
+      "sha256": "8d7bfa6d75330729aea20659038e38340bf0a6c4a4a0d3cbfa3af2c9def07cb7",
+      "bytes": 8430,
       "category": "synthetic-test-source-or-fixture"
     },
     {
