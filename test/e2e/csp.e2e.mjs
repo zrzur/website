@@ -1,17 +1,16 @@
 // The built site under the production page policy: every page loads in
-// ar/en/de, at 1280 px and 375 px, with no Content-Security-Policy violation,
+// every site language (ar/en/de/fr/es/ru/zh), at 1280 px and 375 px, with no Content-Security-Policy violation,
 // the theme script runs (dark theme, right direction) and the report page
 // opens. First it proves the listener works: an inline script is refused.
-// Serves dist/ itself with the policy of the zrzur.com block in
+// Serves dist/ itself (static-server.mjs: Caddy's try_files and 404 pages) with the policy of the zrzur.com block in
 // self-hosted/production/Caddyfile (POLICY below; keep the two the same).
 // Needs the built site: npm run build
 // Usage: E2E_PLAYWRIGHT_FROM=<package.json> E2E_CHROMIUM=<chrome path> \
 //   node test/e2e/csp.e2e.mjs
-import { existsSync, readFileSync, statSync } from "node:fs";
-import { createServer } from "node:http";
 import { createRequire } from "node:module";
-import { extname, join, normalize } from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { pathToFileURL } from "node:url";
+
+import { serveDist } from "./static-server.mjs";
 
 export const POLICY =
   "default-src 'self'; script-src 'self' https://hcaptcha.com https://*.hcaptcha.com; style-src 'self' 'unsafe-inline' https://hcaptcha.com https://*.hcaptcha.com; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.zrzur.com https://hcaptcha.com https://*.hcaptcha.com; frame-src https://hcaptcha.com https://*.hcaptcha.com; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'";
@@ -24,42 +23,12 @@ if (!from) {
 const mod = await import(pathToFileURL(createRequire(from).resolve("@playwright/test")).href);
 const { chromium } = mod.default ?? mod;
 
-const dist = fileURLToPath(new URL("../../dist/", import.meta.url));
-const TYPES = {
-  ".html": "text/html; charset=utf-8",
-  ".js": "text/javascript",
-  ".css": "text/css",
-  ".svg": "image/svg+xml",
-  ".png": "image/png",
-  ".jpg": "image/jpeg",
-  ".woff2": "font/woff2",
-  ".json": "application/json",
-  ".webmanifest": "application/manifest+json",
-  ".xml": "application/xml",
-  ".ico": "image/x-icon",
-};
-
-/** Caddy's try_files {path} {path}.html {path}/index.html /index.html */
-function fileFor(path) {
-  const clean = normalize(decodeURIComponent(path)).replace(/^([\\/])+/, "");
-  for (const candidate of [clean, `${clean}.html`, join(clean, "index.html"), "index.html"]) {
-    const file = join(dist, candidate);
-    if (file.startsWith(dist) && existsSync(file) && statSync(file).isFile()) return file;
-  }
-  return join(dist, "index.html");
-}
-
-const server = createServer((req, res) => {
-  const file = fileFor(new URL(req.url, "http://x").pathname);
-  res.writeHead(200, {
-    "content-type": TYPES[extname(file)] ?? "application/octet-stream",
-    // a local build's report form talks to the local API instead
-    "content-security-policy": POLICY.replace("connect-src 'self'", "connect-src 'self' http://127.0.0.1:14702"),
-  });
-  res.end(readFileSync(file));
-});
-await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
-const site = `http://127.0.0.1:${server.address().port}`;
+// served as zrzur.com serves it, 404 pages included (static-server.mjs)
+const server = await serveDist(() => ({
+  // a local build's report form talks to the local API instead
+  "content-security-policy": POLICY.replace("connect-src 'self'", "connect-src 'self' http://127.0.0.1:14702"),
+}));
+const site = server.url;
 
 let failed = 0;
 let passed = 0;
@@ -107,15 +76,17 @@ async function open(path, viewport, locale = "en-US") {
   await context.close();
 }
 
-const pages = ["/", "/features", "/download", "/about", "/developers", "/report"];
+const pages = ["/", "/features", "/download", "/about", "/developers", "/report", "/legal/privacy", "/blog/why-zrzur"];
+const TAGS = { en: "en", ar: "ar", de: "de", fr: "fr", es: "es", ru: "ru", zh: "zh-Hans" };
+const BROWSER = { en: "en-US", ar: "ar", de: "de-DE", fr: "fr-FR", es: "es-ES", ru: "ru-RU", zh: "zh-CN" };
 for (const viewport of [
   { width: 1280, height: 800 },
   { width: 375, height: 812 },
 ]) {
-  for (const language of ["en", "ar", "de"]) {
+  for (const language of Object.keys(TAGS)) {
     for (const base of pages) {
       const path = language === "en" ? base : `/${language}${base === "/" ? "/" : base}`;
-      const { context, page, refused } = await open(path, viewport, { en: "en-US", ar: "ar", de: "de-DE" }[language]);
+      const { context, page, refused } = await open(path, viewport, BROWSER[language]);
       const found = [...(await page.evaluate(() => window.__csp)), ...refused];
       const root = await page.evaluate(() => ({
         theme: document.documentElement.dataset.theme,
@@ -125,7 +96,7 @@ for (const viewport of [
       const ok =
         found.length === 0 &&
         root.theme === "dark" &&
-        root.lang === language &&
+        root.lang === TAGS[language] &&
         root.dir === (language === "ar" ? "rtl" : "ltr");
       check(`${viewport.width}px ${path}`, ok, `${JSON.stringify(root)} ${found.slice(0, 3).join(" | ")}`);
       await context.close();

@@ -9,8 +9,105 @@
   font-family: "IBM Plex Sans";
   src: url("/assets/plex-latin-wght.woff2") format("woff2-variations");
   font-weight: 100 700;
-  font-display: swap;
+  /* optional: a font that is not there at first paint waits for the next
+     page instead of swapping in and moving the text (CLS); preloaded by theme.js */
+  font-display: optional;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2010-206F, U+20AC, U+2122, U+2190-2199, U+FEFF, U+FFFD;
+}
+/* While Plex is on its way, local faces sized to Plex's widths, so lines
+   break where they will break in Plex and nothing moves when it arrives.
+   Plex width / local width, measured on the site's own words (Latin: en, fr,
+   de, es; Cyrillic: ru): Arial and Roboto, regular and bold separately.
+   Arial (desktop systems) first; Roboto where there is no Arial (Android).
+   Vertical metrics are Plex's (ascent 1025, descent 275, no gap). */
+@font-face {
+  font-family: "IBM Plex Sans Fallback";
+  src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Helvetica");
+  font-weight: 100 549;
+  size-adjust: 90.3%;
+  ascent-override: 102.5%;
+  descent-override: 27.5%;
+  line-gap-override: 0%;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2010-206F, U+20AC, U+2122, U+2190-2199, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "IBM Plex Sans Fallback";
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Helvetica Bold");
+  font-weight: 550 900;
+  size-adjust: 89.6%;
+  ascent-override: 102.5%;
+  descent-override: 27.5%;
+  line-gap-override: 0%;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2010-206F, U+20AC, U+2122, U+2190-2199, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "IBM Plex Sans Fallback";
+  src: local("Arial"), local("ArialMT"), local("Liberation Sans");
+  font-weight: 100 549;
+  size-adjust: 100.7%;
+  ascent-override: 102.5%;
+  descent-override: 27.5%;
+  line-gap-override: 0%;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "IBM Plex Sans Fallback";
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold");
+  font-weight: 550 900;
+  size-adjust: 98.2%;
+  ascent-override: 102.5%;
+  descent-override: 27.5%;
+  line-gap-override: 0%;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "IBM Plex Sans Fallback Roboto";
+  src: local("Roboto"), local("Roboto-Regular");
+  font-weight: 100 549;
+  size-adjust: 91.2%;
+  ascent-override: 102.5%;
+  descent-override: 27.5%;
+  line-gap-override: 0%;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2010-206F, U+20AC, U+2122, U+2190-2199, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "IBM Plex Sans Fallback Roboto";
+  src: local("Roboto Bold"), local("Roboto-Bold");
+  font-weight: 550 900;
+  size-adjust: 95.7%;
+  ascent-override: 102.5%;
+  descent-override: 27.5%;
+  line-gap-override: 0%;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2010-206F, U+20AC, U+2122, U+2190-2199, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "IBM Plex Sans Fallback Roboto";
+  src: local("Roboto"), local("Roboto-Regular");
+  font-weight: 100 549;
+  size-adjust: 99.4%;
+  ascent-override: 102.5%;
+  descent-override: 27.5%;
+  line-gap-override: 0%;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "IBM Plex Sans Fallback Roboto";
+  src: local("Roboto Bold"), local("Roboto-Bold");
+  font-weight: 550 900;
+  size-adjust: 102.9%;
+  ascent-override: 102.5%;
+  descent-override: 27.5%;
+  line-gap-override: 0%;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* Cyrillic letters only: the browser fetches this file on a page that shows
+   Russian text, never on the Latin or Arabic pages */
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("/assets/plex-cyrillic-wght.woff2") format("woff2-variations");
+  font-weight: 100 700;
+  font-display: optional;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 @font-face {
   font-family: "IBM Plex Sans Arabic";
@@ -72,7 +169,7 @@
   --edge: calc((100vw - var(--page)) / 2);
   --header: 64px;
   --gap: 120px;
-  --font: "IBM Plex Sans", "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --font: "IBM Plex Sans", "IBM Plex Sans Fallback", "IBM Plex Sans Fallback Roboto", "IBM Plex Sans Arabic", system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
@@ -141,6 +238,26 @@ body {
   line-height: 1.55;
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
+}
+/* Simplified Chinese: Plex has no Han letters, so they come from the
+   system's own Chinese font; no Chinese font file is downloaded at all */
+html:lang(zh) {
+  --font: "IBM Plex Sans", "IBM Plex Sans Fallback", "IBM Plex Sans Fallback Roboto", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", "Source Han Sans SC", system-ui, sans-serif;
+}
+html:lang(zh) body {
+  line-height: 1.7;
+}
+html:lang(zh) :is(h1, h2, h3, .brand, .home-band-run > span) {
+  letter-spacing: 0;
+}
+html:lang(zh) :is(h1, h2) {
+  line-height: 1.3;
+}
+/* the names of Russian and Chinese in the language menu use the system font
+   on the other pages, so opening the menu downloads no extra font file */
+html:not(:lang(ru)) .language-option:lang(ru),
+html:not(:lang(zh)) .language-option:lang(zh) {
+  font-family: system-ui, sans-serif;
 }
 [dir="rtl"] body {
   line-height: 1.7;
@@ -677,11 +794,15 @@ main,
   display: flex;
   flex-direction: column;
   gap: 12px;
-  justify-content: flex-end;
   min-height: 0;
   padding: 16px;
   overflow-y: auto;
   scrollbar-width: none;
+}
+/* the newest message sits at the bottom; justify-content: flex-end would make
+   the oldest ones unreachable once the list scrolls */
+.app-messages > :first-child {
+  margin-block-start: auto;
 }
 .app-messages:focus {
   outline: none;
@@ -2271,9 +2392,17 @@ p { text-wrap: pretty; }
 .legal-navigation a[aria-current="page"] { background: var(--z-action-soft); color: var(--z-action-text); }
 .legal-content { max-width: 800px; line-height: 1.85; overflow-wrap: anywhere; }
 .legal-draft { border: 1px solid var(--z-border); border-radius: 16px; padding: 20px; }
+/* on a page that is not a binding version: what it is and where the binding text is */
+.legal-binding { display: flex; gap: 12px; padding: 20px; border: 1px solid var(--z-border); border-radius: 16px; background: var(--z-nav); font-size: 15px; line-height: 1.7; }
+.legal-binding > svg { flex: none; margin-block-start: 4px; color: var(--z-text-2); }
+.legal-binding p { margin: 0; }
+.legal-binding p.legal-binding-links { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-block-start: 8px; }
+.legal-binding-links a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--z-action-text); font-weight: 600; }
+.legal-shelves > .legal-binding { margin-block-end: 24px; }
 .legal-toc { padding: 20px; background: var(--z-nav); border: 1px solid var(--z-border); border-radius: 16px; gap: 6px 20px; }
 .legal-toc a { min-height: 44px; line-height: 1.6; }
-.legal-section { padding-block: 24px; border-bottom: 1px solid var(--z-border); scroll-margin-top: calc(var(--header) + 24px); }
+/* the root's scroll-padding-top keeps the header clear for every #link */
+.legal-section { padding-block: 24px; border-bottom: 1px solid var(--z-border); }
 .legal-section h2 { font-size: 24px; line-height: 1.5; }
 .legal-section a { text-decoration: underline; text-underline-offset: 4px; }
 .legal-sources a { min-height: 44px; }
@@ -3132,7 +3261,8 @@ main { overflow-x: clip; }
 .home-faq .faq-list { display: grid; gap: 12px; border: 0; }
 .home-faq .faq-list details { padding: 4px 28px; border: 0; }
 .home-faq .faq-list details > p { margin: 0; padding-block: 0 24px; max-width: 64ch; }
-.home-faq .faq-list summary { min-height: 68px; gap: 20px; }
+/* a question on two lines keeps its space from the box edge too */
+.home-faq .faq-list summary { min-height: 68px; gap: 20px; padding-block: 16px; }
 @media (max-width: 600px) { .home-faq .faq-list details { padding-inline: 20px; } }
 
 /* ==== Home, round seven (owner, 2026-11-08) ====
@@ -3409,7 +3539,7 @@ html { scrollbar-width: none; }
 .blog-contents ol { margin: 0; padding-inline-start: 22px; display: grid; gap: 6px; }
 .blog-contents a { color: var(--z-text); text-decoration: none; }
 .blog-contents a:hover { color: var(--z-action-text); }
-.blog-post h2[id], .blog-post h3[id] { scroll-margin-top: calc(var(--header) + 24px); }
+/* (headings: the root's scroll-padding-top keeps the header clear for #links) */
 .blog-post h3 { margin: 16px 0 0; font-size: 21px; }
 .blog-post ul, .blog-post ol { margin: 0; padding-inline-start: 24px; display: grid; gap: 8px; font-size: 18px; line-height: 1.8; }
 .blog-post blockquote { margin: 8px 0; padding: 18px 24px; border-radius: 18px; background: var(--z-nav); font-size: 19px; line-height: 1.8; color: var(--z-title); }
@@ -3421,4 +3551,28 @@ html { scrollbar-width: none; }
 .blog-tags span::before { content: "#"; margin-inline-end: 2px; opacity: .7; }
 .blog-feed { justify-self: start; font-size: 15px; }
 .blog-more { padding-block-start: 0; }
-.blog-more h2 { margin: 0 0 4px; font-size: 26px; }
+.blog-more h2 { margin: 0 0 4px; font-size: 26px; }/* Parts below the first screen are laid out when the visitor nears them, not
+   before the first paint (a slow phone spends its first second on layout).
+   Their stand-in height is the median real height over the seven languages
+   (measured at 375 and 1280 px); "auto" keeps each part at its real size once
+   it has been seen. The policy sections are not among them: a link to one
+   (#section) must land on it. */
+.feature-tile:nth-child(n + 3),
+.site-footer,
+.home-screen,
+.guide-steps,
+.home-faq {
+  content-visibility: auto;
+}
+.feature-tile:nth-child(n + 3) { contain-intrinsic-size: auto 644px; }
+.site-footer { contain-intrinsic-size: auto 701px; }
+.home-screen { contain-intrinsic-size: auto 684px; }
+.guide-steps { contain-intrinsic-size: auto 670px; }
+.home-faq { contain-intrinsic-size: auto 740px; }
+@media (max-width: 600px) {
+  .feature-tile:nth-child(n + 3) { contain-intrinsic-size: auto 458px; }
+  .site-footer { contain-intrinsic-size: auto 1149px; }
+  .home-screen { contain-intrinsic-size: auto 810px; }
+  .guide-steps { contain-intrinsic-size: auto 1029px; }
+  .home-faq { contain-intrinsic-size: auto 820px; }
+}

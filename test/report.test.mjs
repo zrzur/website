@@ -9,8 +9,13 @@ import {
   resolveReportApi,
   validateForm,
 } from "../src/report-logic.ts";
-import { CONTACT_EMAIL, reportText } from "../src/report-text.ts";
+import { CONTACT_EMAIL } from "../src/report-text.ts";
 import { LOCALES } from "../src/i18n.ts";
+
+/** the form words of every language, one file each as the page loads them */
+const reportText = Object.fromEntries(
+  await Promise.all(LOCALES.map(async ({ code }) => [code, (await import(`../src/report-text/${code}.ts`)).default])),
+);
 
 const form = {
   kind: "Message",
@@ -90,7 +95,7 @@ test("a flashing effect goes to the server as Other, flashing, and is named in e
 });
 
 test("a profile effect can be named as what is reported", () => {
-  const words = { en: "profile effect", de: "Profileffekt", ar: "مؤثر" };
+  const words = { en: "profile effect", de: "Profileffekt", ar: "مؤثر", fr: "effet de profil", es: "efecto de perfil", ru: "эффект профиля", zh: "个人资料特效" };
   for (const { code } of LOCALES) {
     assert(reportText[code].kinds.CommunityItem.includes(words[code]), code);
     assert(reportText[code].locationHint.includes(words[code]), code);
@@ -108,6 +113,10 @@ test("the location hint names every kind that can be reported", () => {
     en: ["message", "server", "profile", "Discover listing", "design", "file"],
     de: ["Nachricht", "Server", "Profil", "„Entdecken“", "Design", "Datei"],
     ar: ["الرسالة", "السيرفر", "الملف الشخصي", "«اكتشف»", "التصميم", "الملف"],
+    fr: ["message", "serveur", "profil", "Découvrir", "design", "fichier"],
+    es: ["mensaje", "servidor", "perfil", "Descubrir", "diseño", "archivo"],
+    ru: ["сообщение", "сервер", "профиль", "Обзоре", "дизайн", "файл"],
+    zh: ["消息", "服务器", "个人资料", "“发现”", "设计", "文件"],
   };
   for (const { code } of LOCALES) {
     for (const word of words[code]) assert(reportText[code].locationHint.includes(word), `${code} ${word}`);

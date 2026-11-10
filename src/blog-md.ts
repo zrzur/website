@@ -1,5 +1,5 @@
 /**
- * Blog posts are Markdown files: content/blog/<slug>/<ar|en|de>.md, each with a
+ * Blog posts are Markdown files: content/blog/<slug>/<language>.md, each with a
  * short header between two "---" lines:
  *
  *   ---
@@ -84,7 +84,12 @@ export function parsePost(source: string, where = "post"): PostFile {
   const blocks: Block[] = [];
   const lines = text.slice(head[0].length).split("\n");
   let words = 0;
-  const count = (value: string) => (words += value.split(/\s+/).filter(Boolean).length);
+  // Chinese has no spaces between words: about two characters read like one word
+  const count = (value: string) => {
+    const han = value.match(/[㐀-鿿豈-﫿]/g)?.length ?? 0;
+    const rest = value.replace(/[㐀-鿿豈-﫿　-〿＀-￯]/g, " ");
+    words += rest.split(/\s+/).filter(Boolean).length + Math.round(han / 2);
+  };
   for (let i = 0; i < lines.length; ) {
     const line = lines[i];
     if (!line.trim()) {

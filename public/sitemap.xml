@@ -5,6 +5,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/"/>
   </url>
   <url>
@@ -12,6 +16,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/"/>
   </url>
   <url>
@@ -19,6 +27,54 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/fr</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/ru</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/zh</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/"/>
   </url>
   <url>
@@ -26,6 +82,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/features"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/features"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/features"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/features"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/features"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/features"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/features"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/features"/>
   </url>
   <url>
@@ -33,6 +93,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/features"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/features"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/features"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/features"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/features"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/features"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/features"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/features"/>
   </url>
   <url>
@@ -40,6 +104,54 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/features"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/features"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/features"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/features"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/features"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/features"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/features"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/features"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/fr/features</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/features"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/features"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/features"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/features"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/features"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/features"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/features"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/features"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/es/features</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/features"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/features"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/features"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/features"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/features"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/features"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/features"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/features"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/ru/features</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/features"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/features"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/features"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/features"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/features"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/features"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/features"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/features"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/zh/features</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/features"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/features"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/features"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/features"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/features"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/features"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/features"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/features"/>
   </url>
   <url>
@@ -47,6 +159,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/project"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/project"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/project"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/project"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/project"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/project"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/project"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/project"/>
   </url>
   <url>
@@ -54,6 +170,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/project"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/project"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/project"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/project"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/project"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/project"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/project"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/project"/>
   </url>
   <url>
@@ -61,6 +181,54 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/project"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/project"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/project"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/project"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/project"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/project"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/project"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/project"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/fr/project</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/project"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/project"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/project"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/project"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/project"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/project"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/project"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/project"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/es/project</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/project"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/project"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/project"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/project"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/project"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/project"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/project"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/project"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/ru/project</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/project"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/project"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/project"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/project"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/project"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/project"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/project"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/project"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/zh/project</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/project"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/project"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/project"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/project"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/project"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/project"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/project"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/project"/>
   </url>
   <url>
@@ -68,6 +236,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/download"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/download"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/download"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/download"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/download"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/download"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/download"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/download"/>
   </url>
   <url>
@@ -75,6 +247,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/download"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/download"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/download"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/download"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/download"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/download"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/download"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/download"/>
   </url>
   <url>
@@ -82,6 +258,54 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/download"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/download"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/download"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/download"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/download"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/download"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/download"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/download"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/fr/download</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/download"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/download"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/download"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/download"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/download"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/download"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/download"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/download"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/es/download</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/download"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/download"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/download"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/download"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/download"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/download"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/download"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/download"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/ru/download</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/download"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/download"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/download"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/download"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/download"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/download"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/download"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/download"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/zh/download</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/download"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/download"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/download"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/download"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/download"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/download"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/download"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/download"/>
   </url>
   <url>
@@ -89,6 +313,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/guide"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/guide"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/guide"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/guide"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/guide"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/guide"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/guide"/>
   </url>
   <url>
@@ -96,6 +324,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/guide"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/guide"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/guide"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/guide"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/guide"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/guide"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/guide"/>
   </url>
   <url>
@@ -103,6 +335,54 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/guide"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/guide"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/guide"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/guide"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/guide"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/guide"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/fr/guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/guide"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/guide"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/guide"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/guide"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/guide"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/guide"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/es/guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/guide"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/guide"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/guide"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/guide"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/guide"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/guide"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/ru/guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/guide"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/guide"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/guide"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/guide"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/guide"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/guide"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/zh/guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/guide"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/guide"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/guide"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/guide"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/guide"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/guide"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/guide"/>
   </url>
   <url>
@@ -110,6 +390,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/blog"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/blog"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/blog"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/blog"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog"/>
   </url>
   <url>
@@ -117,6 +401,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/blog"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/blog"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/blog"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/blog"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog"/>
   </url>
   <url>
@@ -124,6 +412,54 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/blog"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/blog"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/blog"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/fr/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/blog"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/blog"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/blog"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/es/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/blog"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/blog"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/blog"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/ru/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/blog"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/blog"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/blog"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/zh/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/blog"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/blog"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/blog"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/blog"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog"/>
   </url>
   <url>
@@ -131,6 +467,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/why-zrzur"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/why-zrzur"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/blog/why-zrzur"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/why-zrzur"/>
   </url>
   <url>
@@ -138,6 +478,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/why-zrzur"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/why-zrzur"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/blog/why-zrzur"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/why-zrzur"/>
   </url>
   <url>
@@ -145,6 +489,54 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/why-zrzur"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/why-zrzur"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/why-zrzur"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/fr/blog/why-zrzur</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/why-zrzur"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/es/blog/why-zrzur</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/why-zrzur"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/ru/blog/why-zrzur</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/why-zrzur"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/zh/blog/why-zrzur</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/blog/why-zrzur"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/blog/why-zrzur"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/why-zrzur"/>
   </url>
   <url>
@@ -152,6 +544,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/legal"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/legal"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/legal"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/legal"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal"/>
   </url>
   <url>
@@ -159,6 +555,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/legal"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/legal"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/legal"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/legal"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal"/>
   </url>
   <url>
@@ -166,6 +566,54 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/legal"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/legal"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/legal"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/legal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/fr/legal</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/legal"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/legal"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/legal"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/legal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/es/legal</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/legal"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/legal"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/legal"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/legal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/ru/legal</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/legal"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/legal"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/legal"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/legal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/zh/legal</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/legal"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/legal"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/legal"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/legal"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal"/>
   </url>
   <url>
@@ -173,6 +621,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/report"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/report"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/report"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/report"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/report"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/report"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/report"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/report"/>
   </url>
   <url>
@@ -180,6 +632,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/report"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/report"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/report"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/report"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/report"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/report"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/report"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/report"/>
   </url>
   <url>
@@ -187,26 +643,65 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/report"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/report"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/report"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/report"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/report"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/report"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/report"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/report"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/fr/report</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/report"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/report"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/report"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/report"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/report"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/report"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/report"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/report"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/es/report</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/report"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/report"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/report"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/report"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/report"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/report"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/report"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/report"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/ru/report</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/report"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/report"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/report"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/report"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/report"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/report"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/report"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/report"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/zh/report</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/report"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/report"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/report"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zrzur.com/fr/report"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://zrzur.com/es/report"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/report"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/report"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/report"/>
   </url>
   <url>
     <loc>https://zrzur.com/legal/terms</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/terms"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/terms"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/terms"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/terms"/>
-  </url>
-  <url>
-    <loc>https://zrzur.com/de/legal/terms</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/terms"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/terms"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/terms"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/terms"/>
   </url>
   <url>
     <loc>https://zrzur.com/ar/legal/terms</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/terms"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/terms"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/terms"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/terms"/>
   </url>
@@ -234,21 +729,12 @@
   <url>
     <loc>https://zrzur.com/legal/community-guidelines</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/community-guidelines"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/community-guidelines"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/community-guidelines"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/community-guidelines"/>
-  </url>
-  <url>
-    <loc>https://zrzur.com/de/legal/community-guidelines</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/community-guidelines"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/community-guidelines"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/community-guidelines"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/community-guidelines"/>
   </url>
   <url>
     <loc>https://zrzur.com/ar/legal/community-guidelines</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/community-guidelines"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/community-guidelines"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/community-guidelines"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/community-guidelines"/>
   </url>
@@ -276,105 +762,60 @@
   <url>
     <loc>https://zrzur.com/legal/paid-services</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/paid-services"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/paid-services"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/paid-services"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/paid-services"/>
-  </url>
-  <url>
-    <loc>https://zrzur.com/de/legal/paid-services</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/paid-services"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/paid-services"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/paid-services"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/paid-services"/>
   </url>
   <url>
     <loc>https://zrzur.com/ar/legal/paid-services</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/paid-services"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/paid-services"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/paid-services"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/paid-services"/>
   </url>
   <url>
     <loc>https://zrzur.com/legal/server-owner-rules</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/server-owner-rules"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/server-owner-rules"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/server-owner-rules"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/server-owner-rules"/>
-  </url>
-  <url>
-    <loc>https://zrzur.com/de/legal/server-owner-rules</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/server-owner-rules"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/server-owner-rules"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/server-owner-rules"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/server-owner-rules"/>
   </url>
   <url>
     <loc>https://zrzur.com/ar/legal/server-owner-rules</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/server-owner-rules"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/server-owner-rules"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/server-owner-rules"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/server-owner-rules"/>
   </url>
   <url>
     <loc>https://zrzur.com/legal/discover-guidelines</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/discover-guidelines"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/discover-guidelines"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/discover-guidelines"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/discover-guidelines"/>
-  </url>
-  <url>
-    <loc>https://zrzur.com/de/legal/discover-guidelines</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/discover-guidelines"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/discover-guidelines"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/discover-guidelines"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/discover-guidelines"/>
   </url>
   <url>
     <loc>https://zrzur.com/ar/legal/discover-guidelines</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/discover-guidelines"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/discover-guidelines"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/discover-guidelines"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/discover-guidelines"/>
   </url>
   <url>
     <loc>https://zrzur.com/legal/developer-terms</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/developer-terms"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/developer-terms"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/developer-terms"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/developer-terms"/>
-  </url>
-  <url>
-    <loc>https://zrzur.com/de/legal/developer-terms</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/developer-terms"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/developer-terms"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/developer-terms"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/developer-terms"/>
   </url>
   <url>
     <loc>https://zrzur.com/ar/legal/developer-terms</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/developer-terms"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/developer-terms"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/developer-terms"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/developer-terms"/>
   </url>
   <url>
     <loc>https://zrzur.com/legal/plugin-policy</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/plugin-policy"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/plugin-policy"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/plugin-policy"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/plugin-policy"/>
-  </url>
-  <url>
-    <loc>https://zrzur.com/de/legal/plugin-policy</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/plugin-policy"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/plugin-policy"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/plugin-policy"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/plugin-policy"/>
   </url>
   <url>
     <loc>https://zrzur.com/ar/legal/plugin-policy</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/legal/plugin-policy"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/legal/plugin-policy"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/legal/plugin-policy"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/legal/plugin-policy"/>
   </url>

@@ -1,11 +1,43 @@
 /**
- * The blog on the site: every post under content/blog/<slug>/<lang>.md, read at
- * build time (the files ship inside the page bundle, no request at run time).
+ * The blog on the site: every post under content/blog/<slug>/<lang>.md.
+ * Each file is its own small chunk, fetched only on the blog pages and only
+ * in the visitor's language (English when a post has no file in it).
+ * The build checks every post (scripts/blog-files.mjs → collectPosts).
  * How to write a post: content/blog/README.md.
  */
-import { collectPosts } from "./blog-posts.ts";
+import { parsePost, readingMinutes, type PostFile } from "./blog-md.ts";
+import { postFileParts } from "./blog-posts.ts";
+import type { Language } from "./i18n";
+import { cachedLoad } from "./strings";
 
-const files = import.meta.glob("../content/blog/*/*.md", { query: "?raw", import: "default", eager: true }) as Record<string, string>;
+const files = import.meta.glob("../content/blog/*/*.md", { query: "?raw", import: "default" }) as Record<string, (() => Promise<string>) | undefined>;
 
-export const posts = collectPosts(files);
-export type { Post, PostLanguage } from "./blog-posts.ts";
+export type Post = {
+  slug: string;
+  date: string;
+  cover?: string;
+  minutes: number;
+  text: PostFile;
+  /** The language the text is in: the page's, or English */
+  language: Language;
+};
+
+const slugs = [...new Set(Object.keys(files).map((file) => postFileParts(file)?.[0]).filter((slug): slug is string => !!slug))];
+
+const loaded = new Map<Language, Promise<Post[]>>();
+/** The posts in one language, newest first */
+export function loadPosts(language: Language): Promise<Post[]> {
+  return cachedLoad(loaded, language, () =>
+    Promise.all(
+      slugs.map(async (slug) => {
+        const own = files[`../content/blog/${slug}/${language}.md`];
+        const used: Language = own ? language : "en";
+        const text = parsePost(await (own ?? files[`../content/blog/${slug}/en.md`]!)(), `${slug}/${used}.md`);
+        return { slug, date: text.date, cover: text.cover, minutes: readingMinutes(text.words), text, language: used };
+      }),
+    ).then((list) => list.sort((a, b) => (a.date === b.date ? a.slug.localeCompare(b.slug) : b.date.localeCompare(a.date)))),
+  );
+}
+
+/** Whether a path names a post that exists, without loading any post */
+export const hasPost = (slug: string) => slugs.includes(slug);

@@ -2,9 +2,15 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile, access } from "node:fs/promises";
 
-import { labels, features, faqs } from "../src/content.ts";
+import { features } from "../src/content.ts";
+import { LOCALES } from "../src/i18n.ts";
 import { validatePublicUrl, resolveAppUrl, resolvePreviewUrl } from "../src/config.ts";
 import { legalDocuments, legalDraftNotice } from "../src/legal.ts";
+
+const packs = Object.fromEntries(
+  await Promise.all(LOCALES.map(async ({ code }) => [code, (await import(`../src/locales/${code}.ts`)).default])),
+);
+const labels = Object.fromEntries(LOCALES.map(({ code }) => [code, packs[code].labels]));
 
 test("English and Arabic cover the same complete content", () => {
   assert.deepEqual(
@@ -15,11 +21,11 @@ test("English and Arabic cover the same complete content", () => {
     for (const value of Object.values(labels[lang]))
       assert(value.trim().length > 0);
     for (const feature of features)
-      for (const field of ["title", "body", "detail"])
-        assert(feature[field][lang].trim());
-    for (const faq of faqs) {
-      assert(faq.question[lang].trim());
-      assert(faq.answer[lang].trim());
+      for (const field of ["title", "body"])
+        assert(packs[lang].features[feature.id][field].trim());
+    for (const faq of packs[lang].faqs) {
+      assert(faq.question.trim());
+      assert(faq.answer.trim());
     }
   }
 });
@@ -67,22 +73,31 @@ test("local app shortcut is restricted to loopback previews", () => {
 test("product pictures are real app screens in every language and theme", async () => {
   const app = await readFile(new URL("../src/App.tsx", import.meta.url), "utf8");
   assert(!app.includes("ScreenshotGallery"), "Image gallery must not return");
-  // the only product <img> is the Shot component, fed by its file() helper;
+  // the only product <img> is the Shot component, fed by shotFiles (src/shots.ts);
   // blog posts show their own pictures (class blog-cover / blog-image)
   assert.equal((app.match(/<img\b(?![^>]*class="blog-)/g) ?? []).length, 1, "one product <img>, inside Shot");
-  assert.match(app, /src=\{file\(shade, !!props\.phone\)\}/);
-  assert.match(app, /`\$\{code\(\)\}-\$\{props\.view\}/);
+  assert(app.includes("shotFiles(PRODUCT_VERSIONS, { code: code(), view: props.view"));
   // a new capture gets a new address (content hash), so no cache keeps the old one
-  assert.match(app, /`\/assets\/product\/\$\{name\}\$\{version \? `\?v=\$\{version\}` : ""\}`/);
+  const { shotFiles } = await import("../src/shots.ts");
+  const files = shotFiles({ "de-chat-dark.jpg": "abc", "de-chat-crop-dark.avif": "def" }, { code: "de", view: "chat", shade: "dark", hasPhone: true });
+  assert.equal(files.src, "/assets/product/de-chat-dark.jpg?v=abc");
+  assert.equal(files.sources[0].srcset, "/assets/product/de-chat-crop-dark.avif?v=def");
+  // AVIF first, a JPEG behind it, on phones the 780 x 488 crop
+  assert.deepEqual(files.sources.map((source) => source.type ?? "jpeg"), ["image/avif", "jpeg", "image/avif"]);
+  assert.deepEqual([files.sources[0].width, files.sources[0].height], [780, 488]);
+  assert.match(files.srcset, /-1152\.jpg 1152w, .*de-chat-dark\.jpg\?v=abc 2304w$/);
   assert(!/filter:\s*invert/.test(await readFile(new URL("../src/site.css", import.meta.url), "utf8")));
   const views = [...app.matchAll(/<Shot view="(\w+)"/g)].map((m) => m[1]);
   assert(views.length >= 5, "the homepage shows several real screens");
   for (const language of ["ar", "en", "de"])
     for (const theme of ["dark", "light"]) {
+      // every capture with its smaller copies (scripts/product-images.py)
       for (const view of new Set(views))
-        await access(new URL(`../public/assets/product/${language}-${view}-${theme}.jpg`, import.meta.url));
+        for (const end of [".jpg", ".avif", "-1152.jpg", "-1152.avif"])
+          await access(new URL(`../public/assets/product/${language}-${view}-${theme}${end}`, import.meta.url));
       for (const view of ["chat", "lobby"])
-        await access(new URL(`../public/assets/product/${language}-${view}-phone-${theme}.jpg`, import.meta.url));
+        for (const name of [`phone-${theme}.jpg`, `crop-${theme}.jpg`, `crop-${theme}.avif`])
+          await access(new URL(`../public/assets/product/${language}-${view}-${name}`, import.meta.url));
     }
 });
 
@@ -92,7 +107,8 @@ test("the site has no native select and dark is the default theme", async () => 
     assert.doesNotMatch(source, /<select\b/, file);
   }
   const theme = await readFile(new URL("../public/theme.js", import.meta.url), "utf8");
-  assert.match(theme, /var theme = "dark"/);
+  // dark unless the visitor chose light here (behaviour: test/theme-script.test.mjs)
+  assert(theme.includes('=== "light" ? "light" : "dark"'));
   assert.doesNotMatch(theme, /prefers-color-scheme/);
 });
 
@@ -112,20 +128,26 @@ test("no page has an inline script; the theme script is a file in the head", asy
   const head = index.slice(0, index.indexOf("</head>"));
   assert.match(head, /<script src="\/theme\.js"><\/script>/);
   const prerender = await readFile(new URL("../scripts/prerender.mjs", import.meta.url), "utf8");
-  for (const [tag] of prerender.matchAll(/<script\b[^>]*>/g))
-    assert.match(tag, /application\/ld\+json/, `prerender adds ${tag}`);
+  // it writes data blocks only; the other tags it names are the page's own
+  // script files (it moves the stylesheet after theme.js, lowers the entry's priority)
+  for (const [tag] of prerender.matchAll(/<script\b[^>\n]*/g))
+    assert.match(tag, /application\/ld\+json|src="\/theme\.js"|type="module"/, `prerender adds ${tag}`);
+  // and it refuses a rendered page that carries a script
+  assert.match(prerender, /the rendered page carries a script/);
 });
 
 // Owner, 2026-11-08: the Windows desktop app is offered for download. The copy
 // promises nothing that does not exist yet (no other platforms or stores) and
 // shows no prices or paid extras.
 test("launch copy: only what exists, no prices, no paid extras", async () => {
-  const copy = JSON.stringify([labels, features, faqs]);
+  const copy = JSON.stringify(packs);
   // the desktop app exists for Windows, macOS and Linux; there are no phone stores
   assert.doesNotMatch(copy, /App Store|Play Store|Feather|ريشة/);
   assert.doesNotMatch(copy, /Nothing to install|Nichts zu installieren|لا حاجة إلى التثبيت|لا تثبيت/);
   for (const language of ["ar", "en", "de"])
     assert.doesNotMatch(labels[language].heroBody, /Download|تنزيل/);
+  for (const [language, word] of [["fr", /Télécharg/], ["es", /Descarg/], ["ru", /Скача/], ["zh", /下载/]])
+    assert.doesNotMatch(labels[language].heroBody, word, language);
   // every system the copy names has a real file, each with its own checksum
   const app = await readFile(new URL("../src/App.tsx", import.meta.url), "utf8");
   for (const file of [/Zrzur-win32-x64-[\w.-]+\.zip/, /Zrzur-darwin-arm64-[\w.-]+\.zip/, /Zrzur-darwin-x64-[\w.-]+\.zip/, /Zrzur-linux-x64-[\w.-]+\.zip/])
@@ -172,6 +194,7 @@ test("all bundled fonts and approved marks exist", async () => {
     "plex-arabic-600.woff2",
     "plex-arabic-700.woff2",
     "plex-latin-wght.woff2",
+    "plex-cyrillic-wght.woff2",
     "Plex-Arabic-LICENSE.txt",
     "Plex-Latin-LICENSE.txt",
     "Upstream-AGPL-LICENSE.txt",
@@ -199,6 +222,10 @@ test("canonical URLs always point at the zrzur.com homepage domain", async () =>
   // old aliases resolve inside a language prefix too
   assert.equal(canonicalUrl("/de/about"), "https://zrzur.com/de/project");
   assert.equal(canonicalUrl("/ar/index.html"), "https://zrzur.com/ar");
+  // every listed language, not only the first three
+  assert.equal(canonicalUrl("/fr/about"), "https://zrzur.com/fr/project");
+  assert.equal(canonicalUrl("/zh/index.html"), "https://zrzur.com/zh");
+  assert.equal(canonicalUrl("/ru/legal/privacy/"), "https://zrzur.com/ru/legal/privacy");
 });
 
 test("robots.txt and sitemap.xml list only zrzur.com pages", async () => {
