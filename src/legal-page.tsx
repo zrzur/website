@@ -4,7 +4,7 @@ import { localize, type Label, type Partial } from "./content";
 import { Icon } from "./icon";
 import { BINDING_LANGUAGES, localizedPath, tagOf, type Language } from "./i18n";
 import { bindingNotice, shownLanguage } from "./legal-binding";
-import { legalDocuments, legalDraftNotice, legalGroups } from "./legal";
+import { legalDocuments, legalGroups } from "./legal";
 
 const MAIL = /([a-z]+@zrzur.com|zrzur@proton.me)/g;
 
@@ -88,7 +88,7 @@ export default function LegalPage(props: { language: Language; path: string; t: 
             </aside>
             <div class="legal-content">
               <Binding />
-              <Banner />
+              <Updated />
               <Show when={legalDoc}>
                 {(doc) => (
                   <div lang={shown() !== language() ? tagOf(shown()) : undefined}>
@@ -161,19 +161,12 @@ export default function LegalPage(props: { language: Language; path: string; t: 
       </Show>
     );
   }
-  function Banner() {
+  /** The date of the version shown, on a policy page */
+  function Updated() {
     return (
-      <div class="legal-draft" role="note">
-        <Icon name="shield" />
-        <p>
-          <strong lang={legalDoc && shown() !== language() ? tagOf(shown()) : undefined}>
-            {legalDoc ? body(legalDoc.banner) : l(legalDraftNotice)}
-          </strong>
-          <Show when={legalDoc}>
-            {(doc) => <span class="legal-updated" lang={shown() !== language() ? tagOf(shown()) : undefined}>{body(doc().lastUpdated)}</span>}
-          </Show>
-        </p>
-      </div>
+      <Show when={legalDoc}>
+        {(doc) => <p class="legal-updated" lang={shown() !== language() ? tagOf(shown()) : undefined}>{body(doc().lastUpdated)}</p>}
+      </Show>
     );
   }
   /** The index of policies: each group is a shelf, each document one line */
@@ -198,7 +191,6 @@ export default function LegalPage(props: { language: Language; path: string; t: 
             </div>
           </div>
         </Show>
-        <Banner />
         <For each={legalGroups}>
           {(group) => (
             <section class="legal-shelf">

@@ -1273,7 +1273,6 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
           <div class="footer-bottom">
             <span class="footer-copy">{t("copyright")}</span>
             <span>{t("footerAttribution")}</span>
-            <span class="footer-draft">{t("draftNote")}</span>
             <a class="footer-top-link" href="#main">
               {t("top")}
             </a>

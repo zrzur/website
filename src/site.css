@@ -1812,20 +1812,9 @@ main,
   min-width: 0;
   max-width: 760px;
 }
-.legal-draft {
-  display: flex;
-  gap: 12px;
-  padding: 16px;
-  border-radius: 10px;
-  background: var(--z-nav);
-  font-size: 15px;
-}
-.legal-draft svg {
-  color: var(--z-text-2);
-}
 .legal-updated {
-  display: block;
-  margin-block-start: 4px;
+  margin: 0;
+  font-size: 15px;
   color: var(--z-text-2);
 }
 .legal-toc {
@@ -2391,7 +2380,6 @@ p { text-wrap: pretty; }
 .legal-navigation a { min-height: 44px; padding: 8px 10px; line-height: 1.5; }
 .legal-navigation a[aria-current="page"] { background: var(--z-action-soft); color: var(--z-action-text); }
 .legal-content { max-width: 800px; line-height: 1.85; overflow-wrap: anywhere; }
-.legal-draft { border: 1px solid var(--z-border); border-radius: 16px; padding: 20px; }
 /* on a page that is not a binding version: what it is and where the binding text is */
 .legal-binding { display: flex; gap: 12px; padding: 20px; border: 1px solid var(--z-border); border-radius: 16px; background: var(--z-nav); font-size: 15px; line-height: 1.7; }
 .legal-binding > svg { flex: none; margin-block-start: 4px; color: var(--z-text-2); }

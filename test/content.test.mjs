@@ -5,7 +5,7 @@ import { readFile, access } from "node:fs/promises";
 import { features } from "../src/content.ts";
 import { LOCALES } from "../src/i18n.ts";
 import { validatePublicUrl, resolveAppUrl, resolvePreviewUrl } from "../src/config.ts";
-import { legalDocuments, legalDraftNotice } from "../src/legal.ts";
+import { legalDocuments } from "../src/legal.ts";
 
 const packs = Object.fromEntries(
   await Promise.all(LOCALES.map(async ({ code }) => [code, (await import(`../src/locales/${code}.ts`)).default])),
@@ -201,9 +201,8 @@ test("all bundled fonts and approved marks exist", async () => {
   ])
     await access(new URL(`../public/assets/${file}`, import.meta.url));
 });
-test("legal documents remain explicit bilingual drafts without invented operator details", () => {
+test("legal documents are bilingual, without invented operator details", () => {
   assert.equal(legalDocuments.length, 12);
-  assert(legalDraftNotice.en.includes("reviewed by a lawyer"));
   for (const doc of legalDocuments) {
     assert(doc.title.ar && doc.title.en);
     for (const section of doc.sections)

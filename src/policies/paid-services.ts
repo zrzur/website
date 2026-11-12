@@ -121,7 +121,7 @@ export const paidServices = revised(doc({
       { en: "EU right of withdrawal (14 days)", ar: "حق الانسحاب في الاتحاد الأوروبي (١٤ يومًا)", de: "EU-Widerrufsrecht (14 Tage)" },
       {
         en: para(
-          "If you are a consumer in the EU, you may withdraw from a purchase within 14 days of the contract, without giving a reason. To withdraw, use the withdrawal option in the app or send a clear statement to support@zrzur.com. [A model withdrawal form will be added.]",
+          "If you are a consumer in the EU, you may withdraw from a purchase within 14 days of the contract, without giving a reason. To withdraw, use the withdrawal option in the app or send a clear statement to support@zrzur.com.",
           "Paid services start right away. At checkout we ask you to confirm that you want the service to begin during the 14-day period. If you then withdraw:",
           list(
             "Feather and Wings: we refund what you paid, minus a fair amount for the days you already used.",
@@ -131,7 +131,7 @@ export const paidServices = revised(doc({
           "We refund within 14 days using the same payment method you used, at no cost to you.",
         ),
         ar: para(
-          "إذا كنت مستهلكًا في الاتحاد الأوروبي، فيحق لك الانسحاب من الشراء خلال ١٤ يومًا من إبرام العقد، دون ذكر سبب. وللانسحاب، استخدم خيار الانسحاب في التطبيق أو أرسل بيانًا واضحًا إلى support@zrzur.com. [A model withdrawal form will be added.]",
+          "إذا كنت مستهلكًا في الاتحاد الأوروبي، فيحق لك الانسحاب من الشراء خلال ١٤ يومًا من إبرام العقد، دون ذكر سبب. وللانسحاب، استخدم خيار الانسحاب في التطبيق أو أرسل بيانًا واضحًا إلى support@zrzur.com.",
           "تبدأ الخدمات المدفوعة فورًا. وعند الدفع نطلب منك تأكيد رغبتك في بدء الخدمة خلال مدة الأيام الأربعة عشر. فإذا انسحبت بعد ذلك:",
           list(
             "«ريشة» و«أجنحة»: نردّ ما دفعته مخصومًا منه مبلغ منصف عن الأيام التي استخدمتها.",
@@ -141,7 +141,7 @@ export const paidServices = revised(doc({
           "نردّ المبلغ خلال ١٤ يومًا بوسيلة الدفع نفسها التي استخدمتها، ودون أي تكلفة عليك.",
         ),
         de: para(
-          "Wenn du Verbraucher in der EU bist, kannst du einen Kauf innerhalb von 14 Tagen ab Vertragsschluss ohne Angabe von Gründen widerrufen. Für den Widerruf nutzt du die Widerrufsoption in der App oder sendest eine eindeutige Erklärung an support@zrzur.com. [A model withdrawal form will be added.]",
+          "Wenn du Verbraucher in der EU bist, kannst du einen Kauf innerhalb von 14 Tagen ab Vertragsschluss ohne Angabe von Gründen widerrufen. Für den Widerruf nutzt du die Widerrufsoption in der App oder sendest eine eindeutige Erklärung an support@zrzur.com.",
           "Kostenpflichtige Dienste beginnen sofort. Beim Bezahlvorgang bitten wir dich zu bestätigen, dass der Dienst bereits während der 14-tägigen Frist beginnen soll. Wenn du dann widerrufst:",
           list(
             "Feather und Flügel: Wir erstatten den gezahlten Betrag abzüglich eines angemessenen Betrags für die bereits genutzten Tage.",

@@ -5,7 +5,7 @@ import { doc, list, para, section } from "./shared.ts";
  * value, so backend and web carry the same one; it changes when these terms
  * change in substance.
  */
-export const CREATOR_TERMS_VERSION = "2026-11-07";
+export const CREATOR_TERMS_VERSION = "2026-11-12";
 
 const terms = doc({
   slug: "creator-terms",
@@ -288,9 +288,4 @@ const terms = doc({
 export const creatorTerms = {
   ...terms,
   version: CREATOR_TERMS_VERSION,
-  lastUpdated: {
-    en: "Last updated: 7 November 2026",
-    ar: "آخر تحديث: ٧ نوفمبر ٢٠٢٦",
-    de: "Stand: 7. November 2026",
-  },
 };

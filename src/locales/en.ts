@@ -85,7 +85,6 @@ const labels = {
   safety: "Safety and guidelines",
   feedback: "Contact support",
   allPolicies: "All policies",
-  draftNote: "Policies are drafts pending legal review.",
   copyright: "© 2026 Zrzur",
   footerAttribution: "Independent Zrzur releases. Open-source licences and attribution preserved.",
   featuresTitle: "For your conversations.\nFor your community.",

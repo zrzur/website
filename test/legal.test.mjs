@@ -27,11 +27,6 @@ const EXPECTED_SLUGS = [
   "imprint",
   "contact",
 ];
-const BANNER = {
-  en: "Draft — to be reviewed by a lawyer before it takes effect.",
-  de: "Entwurf – wird vor Inkrafttreten anwaltlich geprüft.",
-  ar: "مسودة — تحتاج مراجعة محامٍ قبل اعتمادها.",
-};
 
 test("every expected policy exists exactly once", () => {
   const slugs = legalDocuments.map((doc) => doc.slug);
@@ -57,12 +52,16 @@ test("every policy has Arabic and English title, intro and sections", () => {
   }
 });
 
-test("every policy carries the draft banner and the current date", () => {
+test("no policy shows a draft banner, a lawyer note or a placeholder (owner, 2026-11-12)", () => {
   for (const doc of legalDocuments) {
-    assert.deepEqual(doc.banner, BANNER, doc.slug);
-    const date = doc.slug === "creator-terms" || REVISED.includes(doc.slug) ? "7" : "4";
-    assert.equal(doc.lastUpdated.en, `Last updated: ${date} November 2026`);
+    assert.equal("banner" in doc, false, doc.slug);
+    assert.equal(doc.lastUpdated.en, "Last updated: 12 November 2026", doc.slug);
+    assert.equal(doc.lastUpdated.ar, "آخر تحديث: ١٢ نوفمبر ٢٠٢٦", doc.slug);
+    assert.equal(doc.lastUpdated.de, "Stand: 12. November 2026", doc.slug);
     assert.deepEqual(doc.sources, []);
+    const text = JSON.stringify(doc);
+    for (const word of ["lawyer", "محامٍ", "محام", "anwaltlich", "Entwurf", "مسودة", "Owner to confirm", "<date>"])
+      assert(!text.includes(word), `${doc.slug}: ${word}`);
   }
 });
 
@@ -87,7 +86,8 @@ test("no links to Stoat, Revolt or Discord legal pages or hosts", () => {
   ])
     assert(!text.includes(host), host);
   for (const url of text.match(/https?:\/\/[^\s"\\)]+/g) ?? [])
-    assert(/^https:\/\/(github\.com\/zrzur|([a-z0-9-]+\.)?zrzur\.(com|cc))/.test(url), url);
+    // our own hosts, and the European Commission's list of dispute settlement bodies (DSA Art. 21)
+    assert(/^https:\/\/(github\.com\/zrzur|([a-z0-9-]+\.)?zrzur\.(com|cc)|digital-strategy\.ec\.europa\.eu\/)/.test(url), url);
 });
 
 test("product names are used exactly", () => {
@@ -100,26 +100,19 @@ test("product names are used exactly", () => {
     assert(text.includes(name), name);
 });
 
-const REVISED = ["privacy", "enforcement-appeals", "paid-services"];
-
 test("policyVersions covers every slug with the policy date", () => {
   assert.deepEqual(Object.keys(policyVersions).sort(), [...EXPECTED_SLUGS].sort());
-  for (const slug of EXPECTED_SLUGS) {
-    const version = slug === "creator-terms" ? CREATOR_TERMS_VERSION
-      : REVISED.includes(slug) ? "2026-11-07" : "2026-11-04";
-    assert.equal(policyVersions[slug], version);
-  }
+  assert.equal(CREATOR_TERMS_VERSION, "2026-11-12");
+  for (const slug of EXPECTED_SLUGS) assert.equal(policyVersions[slug], "2026-11-12", slug);
 });
 
-test("changed policies show the date of their version", () => {
-  for (const slug of REVISED) {
-    const doc = legalDocuments.find((item) => item.slug === slug);
-    assert(doc.lastUpdated.en.includes("7 November 2026"), slug);
-    assert(doc.lastUpdated.ar.includes("٧ نوفمبر"), slug);
-    assert(doc.lastUpdated.de.includes("7. November 2026"), slug);
+test("the site footer says nothing about drafts or legal review", async () => {
+  const app = await readFile(new URL("../src/App.tsx", import.meta.url), "utf8");
+  assert(!app.includes("draftNote"));
+  for (const code of ["ar", "en", "de"]) {
+    const locale = await readFile(new URL(`../src/locales/${code}.ts`, import.meta.url), "utf8");
+    assert(!locale.includes("draftNote"), code);
   }
-  const terms = legalDocuments.find((item) => item.slug === "terms");
-  assert(terms.lastUpdated.en.includes("4 November 2026"));
 });
 
 const policy = (slug) => legalDocuments.find((doc) => doc.slug === slug);
@@ -127,7 +120,7 @@ const body = (slug, id, lang) => policy(slug).sections.find((s) => s.id === id).
 const all = (slug, lang) => policy(slug).sections.map((s) => s.body[lang]).join("\n");
 
 test("the Creator Terms say what the code does", () => {
-  assert.equal(CREATOR_TERMS_VERSION, "2026-11-07");
+  assert.equal(CREATOR_TERMS_VERSION, "2026-11-12");
   for (const lang of ["en", "ar"]) {
     assert(!all("creator-terms", lang).includes(lang === "en" ? "aged 13" : "١٣"), lang);
     assert(!all("creator-terms", lang).includes("[7]"), lang);

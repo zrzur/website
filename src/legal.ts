@@ -1,6 +1,4 @@
-import type { Partial as Localized } from "./content";
 import {
-  draftBanner,
   type LegalDocument,
   type LegalGroup,
   type LegalSlug,
@@ -19,7 +17,6 @@ import { imprint } from "./policies/imprint.ts";
 import { contact } from "./policies/contact.ts";
 
 export type { LegalDocument, LegalGroup, LegalSlug };
-export { draftBanner };
 export { legalFooterLinks, legalGroups, legalSlugs } from "./legal-nav.ts";
 
 export const legalDocuments: LegalDocument[] = [
@@ -45,5 +42,3 @@ export const policyVersions: Record<LegalSlug, string> = Object.fromEntries(
   legalDocuments.map((document) => [document.slug, document.version]),
 ) as Record<LegalSlug, string>;
 
-/** Shown on the legal hub; each document also shows its own banner. */
-export const legalDraftNotice: Localized = draftBanner;

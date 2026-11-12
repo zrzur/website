@@ -85,7 +85,6 @@ const labels: Labels = {
   safety: "Sicherheit und Richtlinien",
   feedback: "Support kontaktieren",
   allPolicies: "Alle Richtlinien",
-  draftNote: "Die Richtlinien sind Entwürfe und werden rechtlich geprüft.",
   copyright: "© 2026 Zrzur",
   footerAttribution: "Unabhängige Zrzur-Versionen. Open-Source-Lizenzen und Namensnennung bleiben erhalten.",
   featuresTitle: "Für deine Gespräche.\nFür deine Community.",

@@ -26,8 +26,6 @@ export type LegalDocument = {
   group: LegalGroup;
   title: Localized;
   intro: Localized;
-  /** Visible draft banner. Every document carries it until a lawyer approves it. */
-  banner: Localized;
   lastUpdated: Localized;
   /** Version string; the app re-asks acceptance when it changes. */
   version: string;
@@ -35,33 +33,20 @@ export type LegalDocument = {
   sources: string[];
 };
 
-export const POLICY_DATE = "2026-11-04";
-
-export const draftBanner: Localized = {
-  en: "Draft — to be reviewed by a lawyer before it takes effect.",
-  de: "Entwurf – wird vor Inkrafttreten anwaltlich geprüft.",
-  ar: "مسودة — تحتاج مراجعة محامٍ قبل اعتمادها.",
-};
+/** Date and version of every policy: all were revised on 12 November 2026. */
+export const POLICY_DATE = "2026-11-12";
 
 export const lastUpdated: Localized = {
-  en: "Last updated: 4 November 2026",
-  ar: "آخر تحديث: ٤ نوفمبر ٢٠٢٦",
-  de: "Stand: 4. November 2026",
+  en: "Last updated: 12 November 2026",
+  ar: "آخر تحديث: ١٢ نوفمبر ٢٠٢٦",
+  de: "Stand: 12. November 2026",
 };
 
-/** Date of the policies changed since {@link POLICY_DATE} */
-export const REVISED_DATE = "2026-11-07";
-
-/** A policy changed since the others: its own date and a new version. */
-export const revised = (document: LegalDocument): LegalDocument => ({
-  ...document,
-  lastUpdated: {
-    en: "Last updated: 7 November 2026",
-    ar: "آخر تحديث: ٧ نوفمبر ٢٠٢٦",
-    de: "Stand: 7. November 2026",
-  },
-  version: REVISED_DATE,
-});
+/**
+ * Marks a policy that changed after the first version. Every policy now
+ * carries {@link POLICY_DATE}; a later change gives its own date here.
+ */
+export const revised = (document: LegalDocument): LegalDocument => document;
 
 /**
  * Section bodies are plain text. Blocks are separated by a blank line.
@@ -78,10 +63,9 @@ export const section = (
 ): LegalSection => ({ id, title, body });
 
 export const doc = (
-  value: Omit<LegalDocument, "banner" | "lastUpdated" | "version" | "sources">,
+  value: Omit<LegalDocument, "lastUpdated" | "version" | "sources">,
 ): LegalDocument => ({
   ...value,
-  banner: draftBanner,
   lastUpdated,
   version: POLICY_DATE,
   sources: [],
