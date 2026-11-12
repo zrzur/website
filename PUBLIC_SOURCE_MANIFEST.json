@@ -1624,44 +1624,44 @@
     },
     {
       "path": "src/report-text/ar.ts",
-      "sha256": "68c22f27452240a174652c7c2a180bf29f4bfe529b66d2aaae16840c576227cc",
-      "bytes": 4159,
+      "sha256": "219db03249fc2b0d3bca9fc03c09d993e06efa9bc1893a1d14350f2f12912778",
+      "bytes": 4171,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/report-text/de.ts",
-      "sha256": "9425779470d8dcbcd580c8d129bc3c5fd3e3bacfd12ab9727190a5f6bf435787",
-      "bytes": 3476,
+      "sha256": "d9006b74d86f1e72c74b349f7f30b1a465b0f0030a3c464aec47ef16c3b33688",
+      "bytes": 3488,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/report-text/en.ts",
-      "sha256": "cfe62aefa518cba03e7772d80a494955278b41c05e7bea300697ba14e96baa1a",
-      "bytes": 3065,
+      "sha256": "d7a848a04d6c75ba52ba049e8836d61db6e3855604c528ae07f055187ecd2190",
+      "bytes": 3077,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/report-text/es.ts",
-      "sha256": "f01a2ed5f17b9c8c1dcfd3854dff0e38c94a04d7dfe4d149f4fd1caa2c2f8287",
-      "bytes": 3350,
+      "sha256": "de638a95ac8c70e885ee600ef7dd45edd6b2b02796b38ce2251b6365afa554d0",
+      "bytes": 3362,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/report-text/fr.ts",
-      "sha256": "d48929d4a73bef93dd57e9ec8df9e8a41b418810b0d61133f880b232e2f7d0bf",
-      "bytes": 3514,
+      "sha256": "d483deead64adc2502f694150c795a324a1898cb21cfa8931b2a1c4730a23608",
+      "bytes": 3526,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/report-text/ru.ts",
-      "sha256": "664e8d4d358b2f727949db188851562475004271a37f495fc6e5bf7da1d07dae",
-      "bytes": 4959,
+      "sha256": "61e73398e5cbbfead03eab16bb872fc99f28805a5e2232f62a32e934b75c6268",
+      "bytes": 4971,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/report-text/zh.ts",
-      "sha256": "bb9f97e5f18675931f41c893edd8355d5693543ead8e6bc602863ebae2f7b4e6",
-      "bytes": 3140,
+      "sha256": "ed0776a47c3552d46186182ddaa24c7f1639a69e86fe3c1156e295097ec36b26",
+      "bytes": 3164,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1726,8 +1726,8 @@
     },
     {
       "path": "test/e2e/report-public.e2e.mjs",
-      "sha256": "beac58f582b4221bf950488e9a8e403a431a91adeeeb1c5780faee7e4d71b25c",
-      "bytes": 10805,
+      "sha256": "fc4b4935311249d1aab9784d3b2368eb0f298d06788e5510e60bffa3ea1ba87c",
+      "bytes": 10807,
       "category": "synthetic-test-source-or-fixture"
     },
     {
@@ -1780,8 +1780,8 @@
     },
     {
       "path": "test/report.test.mjs",
-      "sha256": "6bdd0c0c49b16908b1abf7dbb2011f6fd4040630cc87d563ad17716c468270dc",
-      "bytes": 5831,
+      "sha256": "1c1981e32300b72ab3ea0e928d502181fdf73167d1ba532b62993ebc9540d91d",
+      "bytes": 6118,
       "category": "synthetic-test-source-or-fixture"
     },
     {
