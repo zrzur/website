@@ -8,11 +8,12 @@ export const developerTerms = doc({
   intro: {
     en: "The rules for building bots, apps and OAuth integrations on the Zrzur API: keep tokens secret, respect limits, use as little data as possible, and keep people safe.",
     ar: "قواعد بناء البوتات والتطبيقات وعمليات التكامل عبر OAuth باستخدام واجهة زرزور البرمجية: احفظ الرموز سرًّا، واحترم الحدود، واستخدم أقل قدر ممكن من البيانات، وحافظ على سلامة الناس.",
+    de: "Die Regeln für die Entwicklung von Bots, Apps und OAuth-Integrationen mit der Zrzur-API: Tokens geheim halten, Grenzen einhalten, so wenig Daten wie möglich verwenden und Menschen schützen.",
   },
   sections: [
     section(
       "scope",
-      { en: "Scope", ar: "النطاق" },
+      { en: "Scope", ar: "النطاق", de: "Geltungsbereich" },
       {
         en: para(
           "These terms apply when you create a bot or app, use the Zrzur API or WebSocket at api.zrzur.com and events.zrzur.com, or ask users to sign in with Zrzur (OAuth). They add to the Terms of Service and the Community Guidelines.",
@@ -22,11 +23,15 @@ export const developerTerms = doc({
           "تسري هذه الشروط عندما تنشئ بوتًا أو تطبيقًا، أو تستخدم واجهة زرزور البرمجية أو اتصال WebSocket على api.zrzur.com وevents.zrzur.com، أو تطلب من المستخدمين تسجيل الدخول بحساب زرزور (OAuth). وهي إضافة إلى شروط الخدمة وإرشادات المجتمع.",
           "شيفرة زرزور المفتوحة مرخّصة بموجب AGPL-3.0، ولا تُقيّد هذه الشروط تلك الرخصة، وإنما تنظّم الوصول إلى خدمة زرزور التي نشغّلها.",
         ),
+        de: para(
+          "Diese Bedingungen gelten, wenn Sie einen Bot oder eine App erstellen, die Zrzur-API oder den WebSocket unter api.zrzur.com und events.zrzur.com nutzen oder Nutzer bitten, sich mit Zrzur anzumelden (OAuth). Sie ergänzen die Nutzungsbedingungen und die Community-Richtlinien.",
+          "Der Open-Source-Code von Zrzur steht unter der AGPL-3.0, und diese Bedingungen schränken diese Lizenz nicht ein. Sie regeln den Zugang zu dem Zrzur-Dienst, den wir betreiben.",
+        ),
       },
     ),
     section(
       "tokens",
-      { en: "Keep tokens secret", ar: "احفظ الرموز سرًّا" },
+      { en: "Keep tokens secret", ar: "احفظ الرموز سرًّا", de: "Tokens geheim halten" },
       {
         en: list(
           "Bot tokens, client secrets and user access tokens are like passwords. Never put them in public code, screenshots, client apps or messages.",
@@ -42,11 +47,18 @@ export const developerTerms = doc({
           "قد نعيد تعيين الرموز التي نجدها في أماكن عامة لحماية المستخدمين.",
           "لا تطلب من المستخدمين رمز دخولهم أو كلمة مرورهم، ولا تشغّل بوتًا على حساب مستخدم عادي أبدًا (ما يُعرف بالبوتات الذاتية).",
         ),
+        de: list(
+          "Bot-Tokens, Client-Secrets und Zugriffstokens von Nutzern sind wie Passwörter. Veröffentlichen Sie sie niemals in öffentlichem Code, Screenshots, Client-Apps oder Nachrichten.",
+          "Speichern Sie sie verschlüsselt und gewähren Sie nur Personen Zugriff, die ihn brauchen.",
+          "Wird ein Token bekannt, setzen Sie es sofort in den Entwicklereinstellungen zurück und informieren Sie uns unter security@zrzur.com, wenn Nutzer betroffen sein könnten.",
+          "Wir können Tokens, die wir an öffentlichen Orten finden, zum Schutz der Nutzer zurücksetzen.",
+          "Fragen Sie Nutzer nicht nach ihrem eigenen Anmeldetoken oder Passwort und betreiben Sie niemals einen Bot über ein normales Nutzerkonto („Self-Bots“).",
+        ),
       },
     ),
     section(
       "limits",
-      { en: "Rate limits and fair use", ar: "حدود الاستخدام والاستخدام العادل" },
+      { en: "Rate limits and fair use", ar: "حدود الاستخدام والاستخدام العادل", de: "Ratenbegrenzungen und faire Nutzung" },
       {
         en: list(
           "Respect the rate limits returned by the API and wait when you are told to.",
@@ -62,11 +74,18 @@ export const developerTerms = doc({
           "خزّن البيانات مؤقتًا بمسؤولية، وتجنّب الطلبات غير الضرورية.",
           "قد نخفّض الحدود أو نحجب أي حركة مرور تضرّ بالخدمة.",
         ),
+        de: list(
+          "Halten Sie die von der API zurückgegebenen Ratenbegrenzungen ein und warten Sie, wenn Sie dazu aufgefordert werden.",
+          "Versuchen Sie nicht, Begrenzungen mit vielen Tokens, Konten oder IP-Adressen zu umgehen.",
+          "Senden Sie nicht dieselbe Nachricht an viele Nutzer oder Kanäle und senden Sie keine unerwünschten Direktnachrichten.",
+          "Speichern Sie Daten verantwortungsvoll im Cache und vermeiden Sie unnötige Anfragen.",
+          "Wir können Begrenzungen senken oder Datenverkehr sperren, der dem Dienst schadet.",
+        ),
       },
     ),
     section(
       "data",
-      { en: "Use as little data as possible", ar: "استخدم أقل قدر ممكن من البيانات" },
+      { en: "Use as little data as possible", ar: "استخدم أقل قدر ممكن من البيانات", de: "So wenig Daten wie möglich verwenden" },
       {
         en: para(
           list(
@@ -88,11 +107,21 @@ export const developerTerms = doc({
           ),
           "أنت مسؤول عن الالتزام بقوانين حماية البيانات فيما يخص البيانات التي يعالجها تطبيقك، وتكون في الغالب متحكّمًا مستقلًا فيها، لا زرزور.",
         ),
+        de: para(
+          list(
+            "Fordern Sie nur die Berechtigungen und OAuth-Scopes an, die Ihre App wirklich braucht, und erklären Sie, warum.",
+            "Verwenden Sie Daten nur für den Zweck, über den Sie die Nutzer informiert haben, und nur, solange sie Ihre App nutzen.",
+            "Löschen Sie Daten, wenn sie nicht mehr benötigt werden, wenn ein Nutzer darum bittet, wenn Ihr Bot von einem Server entfernt wird oder wenn wir darum bitten.",
+            "Veröffentlichen Sie eine Datenschutzerklärung, die erläutert, was Ihre App erhebt, warum, wie lange Sie es aufbewahren und wie man die Löschung verlangen kann. Verlinken Sie sie in Ihrem App-Profil.",
+            "Halten Sie die Daten sicher und informieren Sie betroffene Nutzer und uns umgehend über jede Datenschutzverletzung.",
+          ),
+          "Sie sind dafür verantwortlich, das Datenschutzrecht für die Daten einzuhalten, die Ihre App verarbeitet. Für diese Daten sind in der Regel Sie selbst eigenständiger Verantwortlicher, nicht Zrzur.",
+        ),
       },
     ),
     section(
       "no-scraping",
-      { en: "No scraping or selling data", ar: "لا للجمع الآلي للبيانات ولا لبيعها" },
+      { en: "No scraping or selling data", ar: "لا للجمع الآلي للبيانات ولا لبيعها", de: "Kein Scraping und kein Verkauf von Daten" },
       {
         en: list(
           "Do not scrape, crawl or bulk-download messages, profiles, Servers or Discover.",
@@ -106,11 +135,17 @@ export const developerTerms = doc({
           "لا تبنِ ملفات تعريفية للمستخدمين عبر السيرفرات، ولا تتعقّب الأشخاص، ولا تستخدم البيانات للحكم على أهلية أحد للعمل أو السكن أو الائتمان أو التأمين.",
           "لا تستخدم محتوى الرسائل لتدريب نماذج الذكاء الاصطناعي إلا إذا وافق كل مستخدم معني على ذلك بوضوح.",
         ),
+        de: list(
+          "Scrapen, crawlen oder laden Sie keine Nachrichten, Profile, Server oder Discover in großen Mengen herunter.",
+          "Verkaufen, vermieten, lizenzieren oder verschenken Sie keine Daten, die Sie von Zrzur erhalten, auch nicht an Datenhändler oder Werbetreibende.",
+          "Erstellen Sie keine serverübergreifenden Nutzerprofile, verfolgen Sie keine Personen und verwenden Sie keine Daten, um über die Eignung einer Person für Arbeitsstellen, Wohnraum, Kredite oder Versicherungen zu entscheiden.",
+          "Verwenden Sie Nachrichteninhalte nicht zum Training von KI-Modellen, es sei denn, jeder betroffene Nutzer hat eindeutig zugestimmt.",
+        ),
       },
     ),
     section(
       "oauth",
-      { en: "OAuth and user consent", ar: "OAuth وموافقة المستخدم" },
+      { en: "OAuth and user consent", ar: "OAuth وموافقة المستخدم", de: "OAuth und Einwilligung der Nutzer" },
       {
         en: list(
           "Users must see and approve every scope your app requests on the Zrzur consent screen. Never trick users into approving.",
@@ -124,11 +159,17 @@ export const developerTerms = doc({
           "اسمح للمستخدمين بفصل تطبيقك بسهولة، وتوقّف عن استخدام بياناتهم عندما يفعلون ذلك.",
           "لا تنضمّ إلى السيرفرات، ولا ترسل الرسائل، ولا تتخذ أي إجراء نيابةً عن المستخدم ما لم يطلبه بوضوح.",
         ),
+        de: list(
+          "Nutzer müssen jeden Scope, den Ihre App anfordert, auf dem Zustimmungsbildschirm von Zrzur sehen und genehmigen. Bringen Sie Nutzer niemals durch Täuschung zur Zustimmung.",
+          "Fordern Sie neue Scopes nicht stillschweigend an; fragen Sie erneut, wenn Sie mehr brauchen.",
+          "Ermöglichen Sie Nutzern, Ihre App einfach zu trennen, und hören Sie dann auf, ihre Daten zu verwenden.",
+          "Treten Sie keinen Servern bei, senden Sie keine Nachrichten und führen Sie keine Aktionen im Namen eines Nutzers aus, um die er nicht ausdrücklich gebeten hat.",
+        ),
       },
     ),
     section(
       "behaviour",
-      { en: "Bots must follow the rules", ar: "على البوتات الالتزام بالقواعد" },
+      { en: "Bots must follow the rules", ar: "على البوتات الالتزام بالقواعد", de: "Bots müssen die Regeln einhalten" },
       {
         en: list(
           "Your bot must follow the Community Guidelines, and you are responsible for everything it posts — including content generated by AI or by users through your bot.",
@@ -142,27 +183,35 @@ export const developerTerms = doc({
           "لا تبنِ بوتات تشنّ الهجمات الجماعية أو ترسل الرسائل المزعجة أو تتحايل على الحظر أو تشرف بطريقة مسيئة.",
           "يجب وصف الميزات المدفوعة في بوتك بصدق، وأن تكون الأسعار واضحة قبل أن يدفع المستخدمون.",
         ),
+        de: list(
+          "Ihr Bot muss die Community-Richtlinien einhalten, und Sie sind für alles verantwortlich, was er veröffentlicht – einschließlich Inhalten, die von KI oder von Nutzern über Ihren Bot erzeugt werden.",
+          "Bots müssen deutlich als Bots gekennzeichnet sein. Verbergen Sie nicht, dass Nutzer mit einer Automatisierung sprechen.",
+          "Entwickeln Sie keine Bots, die Raids durchführen, Spam versenden, Sperren umgehen oder missbräuchlich moderieren.",
+          "Kostenpflichtige Funktionen Ihres Bots müssen ehrlich beschrieben werden, und die Preise müssen klar sein, bevor Nutzer bezahlen.",
+        ),
       },
     ),
     section(
       "brand",
-      { en: "No impersonation of Zrzur", ar: "لا لانتحال صفة زرزور" },
+      { en: "No impersonation of Zrzur", ar: "لا لانتحال صفة زرزور", de: "Kein Auftreten als Zrzur" },
       {
         en: "Do not name, design or describe your bot or app so that it looks like it is made by Zrzur, is official, or is a Zrzur staff account. You may say your app \"works with Zrzur\". Do not use the Zrzur logo as your app's icon.",
         ar: "لا تُسمِّ بوتك أو تطبيقك أو تصمّمه أو تصفه بما يوحي بأن زرزور صنعه، أو أنه رسمي، أو أنه حساب لفريق زرزور. ويجوز لك القول إن تطبيقك «يعمل مع زرزور». ولا تستخدم شعار زرزور أيقونةً لتطبيقك.",
+        de: "Benennen, gestalten oder beschreiben Sie Ihren Bot oder Ihre App nicht so, dass der Eindruck entsteht, er oder sie stamme von Zrzur, sei offiziell oder sei ein Konto von Zrzur-Mitarbeitenden. Sie dürfen sagen, dass Ihre App „mit Zrzur funktioniert“. Verwenden Sie das Zrzur-Logo nicht als Symbol Ihrer App.",
       },
     ),
     section(
       "verification",
-      { en: "Verification", ar: "التحقّق" },
+      { en: "Verification", ar: "التحقّق", de: "Verifizierung" },
       {
         en: "Bots in more than [100] Servers, bots listed in Discover, and apps that request sensitive scopes must be verified. Verification means confirming who is responsible for the app, turning on two-factor authentication, and passing a short review of the app's purpose, permissions and privacy notice. We may ask for more information at any time.",
         ar: "يجب توثيق البوتات الموجودة في أكثر من [100] سيرفر، والبوتات المُدرجة في «اكتشف»، والتطبيقات التي تطلب نطاقات حساسة. ويعني التوثيق تأكيد الجهة المسؤولة عن التطبيق، وتفعيل التحقق بخطوتين، واجتياز مراجعة قصيرة لغرض التطبيق وصلاحياته وإشعار الخصوصية الخاص به. وقد نطلب مزيدًا من المعلومات في أي وقت.",
+        de: "Bots in mehr als [100] Servern, in Discover gelistete Bots und Apps, die sensible Scopes anfordern, müssen verifiziert sein. Verifizierung bedeutet, zu bestätigen, wer für die App verantwortlich ist, die Zwei-Faktor-Authentifizierung zu aktivieren und eine kurze Prüfung von Zweck, Berechtigungen und Datenschutzerklärung der App zu bestehen. Wir können jederzeit weitere Informationen anfordern.",
       },
     ),
     section(
       "enforcement",
-      { en: "Suspension and changes", ar: "الإيقاف والتغييرات" },
+      { en: "Suspension and changes", ar: "الإيقاف والتغييرات", de: "Sperrung und Änderungen" },
       {
         en: para(
           "We may limit, suspend or remove a bot or app, reset its tokens, or remove it from Discover if it breaks these terms, puts users at risk, or harms the Service. When we can do so safely, we warn you first and give you time to fix the problem. You can appeal as described in the Enforcement and Appeals policy.",
@@ -173,6 +222,11 @@ export const developerTerms = doc({
           "يجوز لنا تقييد بوت أو تطبيق أو إيقافه أو إزالته، أو إعادة تعيين رموزه، أو إزالته من «اكتشف»، إذا خالف هذه الشروط، أو عرّض المستخدمين للخطر، أو أضرّ بالخدمة. وحين يمكننا ذلك بأمان، ننبّهك أولًا ونمنحك وقتًا لإصلاح المشكلة. ويحق لك الاعتراض كما توضّح سياسة الإنفاذ والاعتراض.",
           "قد تتغيّر الواجهة البرمجية. ونعلن التغييرات الجذرية مسبقًا متى أمكن، لكن قد نغيّر بعض الأمور فورًا لإصلاح مشكلات أمنية.",
           "تُقدَّم الواجهة البرمجية دون ضمان في الحدود التي يسمح بها القانون. وأنت مسؤول عن المطالبات الناتجة عن مخالفة تطبيقك هذه الشروط.",
+        ),
+        de: para(
+          "Wir können einen Bot oder eine App einschränken, sperren oder entfernen, seine Tokens zurücksetzen oder ihn aus Discover entfernen, wenn er gegen diese Bedingungen verstößt, Nutzer gefährdet oder dem Dienst schadet. Wenn dies gefahrlos möglich ist, warnen wir Sie zuerst und geben Ihnen Zeit, das Problem zu beheben. Sie können Einspruch einlegen, wie in der Richtlinie zu Durchsetzung und Einspruch beschrieben.",
+          "Die API kann sich ändern. Inkompatible Änderungen kündigen wir nach Möglichkeit im Voraus an, wir können aber Dinge sofort ändern, um Sicherheitsprobleme zu beheben.",
+          "Die API wird, soweit gesetzlich zulässig, ohne Gewährleistung bereitgestellt. Sie sind für Ansprüche verantwortlich, die daraus entstehen, dass Ihre App gegen diese Bedingungen verstößt.",
         ),
       },
     ),
