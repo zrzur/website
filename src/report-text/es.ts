@@ -60,7 +60,7 @@ const text: ReportText = {
   details: "Detalles",
   privacy: "Usamos tus datos solo para tramitar esta denuncia y comunicarte el resultado. Nuestro equipo de revisión los ve; la persona denunciada, no. Borramos tu nombre y tu correo 12 meses después de cerrar el caso.",
   privacyLink: "Política de privacidad",
-  captchaNote: "Si aparece una verificación, la ofrece hCaptcha, que recibe datos de tu navegador para distinguir a las personas de los bots.",
+  captchaNote: "Si aparece una verificación, la ofrece Cloudflare Turnstile, que recibe datos de tu navegador para distinguir a las personas de los bots.",
   inApp: "¿Has iniciado sesión? También puedes usar el botón Denunciar dentro de la app.",
 };
 export default text;
