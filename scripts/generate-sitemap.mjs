@@ -1,17 +1,31 @@
 /**
  * Write public/sitemap.xml: every page in every listed language, each entry
  * with its hreflang alternates and an x-default (English at the root).
+ * Also writes src/blog-languages.ts first: the languages each post is
+ * written in, so a post without a translation points at its English page.
  * Usage: node --experimental-strip-types scripts/generate-sitemap.mjs
  */
 import { writeFileSync } from "node:fs";
 
-import { LOCALES, localizedPath } from "../src/i18n.ts";
-import { legalDocuments } from "../src/legal.ts";
-import { canonicalUrl } from "../src/config.ts";
-import { pageLanguages } from "../src/seo.ts";
 import { readPosts } from "./blog-files.mjs";
 
 const posts = readPosts();
+const ORDER = ["en", "de", "ar", "fr", "es", "ru", "zh"];
+const languagesOf = Object.fromEntries(
+  posts.map((post) => [post.slug, ORDER.filter((code) => post.text[code])]),
+);
+writeFileSync(
+  new URL("../src/blog-languages.ts", import.meta.url),
+  `// Written by scripts/generate-sitemap.mjs from content/blog; do not edit by hand.\n`
+    + `/** The languages each blog post is written in */\n`
+    + `export const postLanguages: Record<string, readonly string[]> = ${JSON.stringify(languagesOf, null, 2)};\n`,
+);
+
+// read after the file above, so the page languages include every post
+const { LOCALES, localizedPath } = await import("../src/i18n.ts");
+const { legalDocuments } = await import("../src/legal.ts");
+const { canonicalUrl } = await import("../src/config.ts");
+const { pageLanguages } = await import("../src/seo.ts");
 
 const pages = [
   "/",

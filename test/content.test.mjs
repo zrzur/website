@@ -266,3 +266,18 @@ test("the sitemap dates each policy by its version, and nothing by the build day
   // pages without a known change date carry none
   assert.doesNotMatch(sitemap, /<loc>https:\/\/zrzur\.com\/features<\/loc>\s*<lastmod>/);
 });
+
+test("a post points at its English page in languages it is not written in", async () => {
+  const { readPosts } = await import("../scripts/blog-files.mjs");
+  const { postLanguages } = await import("../src/blog-languages.ts");
+  const { pageLanguages, canonicalLanguage } = await import("../src/seo.ts");
+  for (const post of readPosts()) {
+    const written = Object.keys(post.text).sort();
+    assert.deepEqual([...postLanguages[post.slug]].sort(), written, `${post.slug}: run the build to refresh src/blog-languages.ts`);
+    for (const { code } of LOCALES) {
+      const path = `/blog/${post.slug}`;
+      assert.equal(pageLanguages(path).includes(code), written.includes(code), `${post.slug} ${code}`);
+      assert.equal(canonicalLanguage(path, code), written.includes(code) ? code : "en", `${post.slug} ${code}`);
+    }
+  }
+});
