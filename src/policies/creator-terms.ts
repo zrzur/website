@@ -112,19 +112,19 @@ const terms = doc({
         en: para(
           "You keep the copyright in your work. By submitting an item, you give Zrzur a worldwide, non-exclusive, royalty-free licence to host, copy, display and distribute it in the Zrzur apps and website, to adapt it technically (for example resizing, compressing or converting formats) and to show it in Zrzur's own promotion of the item or the Creator Program, with your creator name where possible.",
           "Users who obtain your item may use it on Zrzur for as long as it is available to them.",
-          "You can withdraw your item at any time. It then leaves Designs and everyone using it at once. The file is kept, and copies may remain in backups for a limited time.",
+          "You can withdraw your item at any time. It then leaves Designs and everyone using it at once. We keep the file with your account, so you can publish it again, until you delete the item or your account is erased; copies may stay in backups for up to 30 days.",
           "If your account is erased, all your items are deleted with it, including published ones, and they leave everyone using them.",
         ),
         ar: para(
           "تحتفظ بحقوق النشر في عملك. وبتقديمك عنصرًا، تمنح زرزور ترخيصًا عالميًا وغير حصري ودون مقابل لاستضافته ونسخه وعرضه وتوزيعه في تطبيقات زرزور وموقعه، وتكييفه تقنيًا (مثل تغيير الحجم أو الضغط أو تحويل الصيغة)، وعرضه في ترويج زرزور للعنصر أو لبرنامج المبدعين، مع ذكر اسمك كمبدع حيثما أمكن.",
           "يجوز للمستخدمين الذين يحصلون على عنصرك استخدامه في زرزور ما دام متاحًا لهم.",
-          "يمكنك سحب عنصرك في أي وقت، فيختفي فورًا من التصاميم وممن يستخدمونه. ويُحتفظ بالملف، وقد تبقى نسخ منه في النسخ الاحتياطية مدةً محدودة.",
+          "يمكنك سحب عنصرك في أي وقت، فيختفي فورًا من التصاميم وممن يستخدمونه. ونحتفظ بالملف مع حسابك لتتمكّن من نشره مجددًا، إلى أن تحذف العنصر أو يُمحى حسابك؛ وقد تبقى نسخ منه في النسخ الاحتياطية مدة تصل إلى ٣٠ يومًا.",
           "عند محو حسابك تُحذف معه جميع عناصرك، ومنها المنشورة، وتُزال ممن يستخدمونها.",
         ),
         de: para(
           "Das Urheberrecht an deinem Werk bleibt bei dir. Mit dem Einreichen eines Elements räumst du Zrzur eine weltweite, nicht ausschließliche, unentgeltliche Lizenz ein, es in den Zrzur-Apps und auf der Website zu hosten, zu vervielfältigen, anzuzeigen und zu verbreiten, es technisch anzupassen (zum Beispiel Größe ändern, komprimieren oder Formate umwandeln) und es in der eigenen Werbung von Zrzur für das Element oder das Creator-Programm zu zeigen, wenn möglich mit deinem Creator-Namen.",
           "Nutzer, die dein Element erhalten, dürfen es auf Zrzur nutzen, solange es ihnen zur Verfügung steht.",
-          "Du kannst dein Element jederzeit zurückziehen. Es verschwindet dann sofort aus Designs und bei allen, die es nutzen. Die Datei bleibt gespeichert, und Kopien können für begrenzte Zeit in Sicherungen verbleiben.",
+          "Du kannst dein Element jederzeit zurückziehen. Es verschwindet dann sofort aus Designs und bei allen, die es nutzen. Die Datei bewahren wir mit deinem Konto auf, damit du es wieder veröffentlichen kannst, bis du das Element löschst oder dein Konto gelöscht wird; Kopien können bis zu 30 Tage in Sicherungen bleiben.",
           "Wenn dein Konto gelöscht wird, werden alle deine Elemente mit ihm gelöscht, auch veröffentlichte, und sie verschwinden bei allen, die sie nutzen.",
         ),
       },
@@ -235,33 +235,9 @@ const terms = doc({
       "program",
       { en: "Creator Program rewards", ar: "مكافآت برنامج المبدعين", de: "Prämien im Creator-Programm" },
       {
-        en: para(
-          list(
-            "Rewards in the Creator Program are given as Feather time, not money. They have no cash value and cannot be exchanged, sold or transferred.",
-            "The current reward rules (for example, how use of your items is counted) are shown in the app. We may change them for the future with notice; rewards you already earned are kept.",
-            "Making bots does not count toward the Creator Program.",
-            "Taking part is voluntary and does not make you an employee, contractor or partner of Zrzur.",
-          ),
-          "[Owner to confirm: if rewards ever become money, separate terms, tax handling and payment rules will be needed.]",
-        ),
-        ar: para(
-          list(
-            "تُمنح مكافآت برنامج المبدعين على شكل مدة «ريشة»، لا مالًا. وليست لها قيمة نقدية، ولا يجوز استبدالها أو بيعها أو نقلها.",
-            "تُعرض قواعد المكافآت الحالية (مثل طريقة احتساب استخدام عناصرك) داخل التطبيق. وقد نغيّرها للمستقبل مع إشعار مسبق، وتبقى لك المكافآت التي حصلت عليها.",
-            "صنع البوتات لا يُحتسب ضمن برنامج المبدعين.",
-            "المشاركة طوعية، ولا تجعلك موظفًا لدى زرزور أو متعاقدًا معه أو شريكًا له.",
-          ),
-          "[Owner to confirm: if rewards ever become money, separate terms, tax handling and payment rules will be needed.]",
-        ),
-        de: para(
-          list(
-            "Prämien im Creator-Programm werden als Feather-Zeit gewährt, nicht als Geld. Sie haben keinen Geldwert und können nicht getauscht, verkauft oder übertragen werden.",
-            "Die aktuellen Prämienregeln (zum Beispiel wie die Nutzung deiner Elemente gezählt wird) stehen in der App. Wir können sie für die Zukunft mit Vorankündigung ändern; bereits verdiente Prämien bleiben dir.",
-            "Das Erstellen von Bots zählt nicht für das Creator-Programm.",
-            "Die Teilnahme ist freiwillig und macht dich nicht zu Angestellten, Auftragnehmern oder Partnern von Zrzur.",
-          ),
-          "[Owner to confirm: if rewards ever become money, separate terms, tax handling and payment rules will be needed.]",
-        ),
+        en: "There are no Creator Program rewards yet. Before any start, we will add their rules to these terms and tell you. Taking part is voluntary and does not make you an employee, contractor or partner of Zrzur.",
+        ar: "لا توجد مكافآت لبرنامج المبدعين حتى الآن. وقبل أن تبدأ أي مكافأة، سنضيف قواعدها إلى هذه الشروط ونخبرك. والمشاركة طوعية، ولا تجعلك موظفًا لدى زرزور أو متعاقدًا معه أو شريكًا له.",
+        de: "Prämien im Creator-Programm gibt es noch nicht. Bevor welche starten, nehmen wir ihre Regeln in diese Bedingungen auf und informieren dich. Die Teilnahme ist freiwillig und macht dich nicht zu Angestellten, Auftragnehmern oder Partnern von Zrzur.",
       },
     ),
     section(

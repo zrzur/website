@@ -23,7 +23,7 @@ export const enforcementAppeals = revised(doc({
             "Server moderation: Server owners and their moderators enforce their own server rules inside their Server (for example, deleting messages, timing out or banning members). Their decisions are theirs; contact the Server's staff first.",
             "Zrzur moderation: our safety team enforces the Terms of Service and the Community Guidelines across the whole Service, including in private messages when they are reported.",
           ),
-          "We find problems mainly through user reports and legal notices, and through our own review. [Owner to confirm whether any automated tool flags content; if one does, this page will say which kind.]",
+          "We find problems mainly through user reports and legal notices, and through our own review. Two automated tools exist. Server owners can turn on AutoMod, which acts in their Server on rules they set. The Zrzur team keeps a list of blocked words that is checked when you change public profile text; a match stops the change and tells you why. We do not scan messages or direct messages automatically.",
           "We do not read private conversations unless they are reported to us, or the law requires it, or we need to investigate a serious security problem.",
         ),
         ar: para(
@@ -32,7 +32,7 @@ export const enforcementAppeals = revised(doc({
             "إشراف السيرفر: يطبّق مالكو السيرفرات ومشرفوهم قواعد سيرفراتهم داخلها (كحذف الرسائل أو الإسكات المؤقت أو حظر الأعضاء). والقرار في ذلك لهم، فتواصل أولًا مع فريق إدارة السيرفر.",
             "إشراف زرزور: يطبّق فريق السلامة لدينا شروط الخدمة وإرشادات المجتمع في الخدمة كلها، ومنها الرسائل الخاصة عند الإبلاغ عنها.",
           ),
-          "نكتشف المشكلات أساسًا عبر بلاغات المستخدمين والإشعارات القانونية ومراجعتنا نحن. [Owner to confirm whether any automated tool flags content; if one does, this page will say which kind.]",
+          "نكتشف المشكلات أساسًا عبر بلاغات المستخدمين والإشعارات القانونية ومراجعتنا نحن. توجد أداتان آليتان. يمكن لمالكي السيرفرات تفعيل AutoMod، الذي يعمل في سيرفراتهم وفق قواعد يضعونها. ويدير فريق زرزور قائمة كلمات محظورة تُفحص عند تغيير نص الملف الشخصي العام؛ وإذا وُجدت كلمة منها يتوقف التغيير ونخبرك بالسبب. ولا نفحص الرسائل ولا الرسائل المباشرة آليًا.",
           "لا نقرأ المحادثات الخاصة إلا إذا أُبلغنا عنها، أو أوجب القانون ذلك، أو احتجنا إلى التحقيق في مشكلة أمنية خطيرة.",
         ),
         de: para(
@@ -41,7 +41,7 @@ export const enforcementAppeals = revised(doc({
             "Server-Moderation: Server-Inhaber und ihre Moderatoren setzen die eigenen Serverregeln in ihrem Server durch (zum Beispiel Nachrichten löschen, Mitglieder stummschalten oder sperren). Diese Entscheidungen sind ihre; wende dich zuerst an das Team des Servers.",
             "Zrzur-Moderation: Unser Sicherheitsteam setzt die Nutzungsbedingungen und die Community-Richtlinien im gesamten Dienst durch, auch in privaten Nachrichten, wenn sie gemeldet werden.",
           ),
-          "Probleme finden wir hauptsächlich durch Meldungen von Nutzenden und rechtliche Hinweise sowie durch eigene Prüfung. [Owner to confirm whether any automated tool flags content; if one does, this page will say which kind.]",
+          "Probleme finden wir hauptsächlich durch Meldungen von Nutzenden und rechtliche Hinweise sowie durch eigene Prüfung. Es gibt zwei automatische Werkzeuge. Server-Inhaber können AutoMod einschalten, das in ihrem Server nach selbst gesetzten Regeln handelt. Das Zrzur-Team pflegt eine Liste gesperrter Wörter, die geprüft wird, wenn du öffentlichen Profiltext änderst; bei einem Treffer wird die Änderung gestoppt und wir sagen dir, warum. Nachrichten und Direktnachrichten durchsuchen wir nicht automatisch.",
           "Wir lesen private Unterhaltungen nicht, es sei denn, sie werden uns gemeldet, das Gesetz verlangt es oder wir müssen ein ernstes Sicherheitsproblem untersuchen.",
         ),
       },
@@ -70,8 +70,8 @@ export const enforcementAppeals = revised(doc({
         ),
         de: list(
           "Inhalte entfernen, ausblenden oder mit einer Warnung versehen.",
-          "Funktionen einschränken, zum Beispiel Nachrichten senden, Servern beitreten, Server erstellen oder Discover nutzen.",
-          "Einen Server, Bot, ein Plugin, ein Community-Element oder einen Profileffekt aus Discover oder aus dem Dienst entfernen.",
+          "Funktionen einschränken, zum Beispiel Nachrichten senden, Servern beitreten, Server erstellen oder Entdecken nutzen.",
+          "Einen Server, Bot, ein Plugin, ein Community-Element oder einen Profileffekt aus Entdecken oder aus dem Dienst entfernen.",
           "Ein Konto, einen Bot oder Server für eine bestimmte Zeit sperren.",
           "Ein Konto oder einen Server dauerhaft schließen.",
           "Bezahlte Funktionen, die mit einem Regelverstoß zusammenhängen, pausieren oder beenden, wie in den Bedingungen für kostenpflichtige Dienste beschrieben.",
@@ -110,7 +110,7 @@ export const enforcementAppeals = revised(doc({
         de: para(
           "Wenn wir deine Inhalte oder dein Konto einschränken, teilen wir dir das in einer privaten Nachricht vom offiziellen Zrzur-Konto mit, in deiner App-Sprache. Sperren oder bannen wir dein Konto, senden wir sie zusätzlich an deine E-Mail-Adresse, weil du dich eventuell nicht mehr anmelden kannst. Die Nachricht nennt:",
           list(
-            "was wir getan haben (zum Beispiel eine Nachricht entfernt, das Konto gesperrt, einen Discover-Eintrag entfernt) und wie lange es gilt;",
+            "was wir getan haben (zum Beispiel eine Nachricht entfernt, das Konto gesperrt, einen Eintrag in Entdecken entfernt) und wie lange es gilt;",
             "wo es gilt (weltweit oder nur in einigen Ländern);",
             "die Tatsachen, auf die wir uns gestützt haben, und ob wir aufgrund einer Meldung, eines Hinweises auf rechtswidrige Inhalte oder aufgrund eigener Prüfung gehandelt haben;",
             "ob automatisierte Werkzeuge den Inhalt gefunden haben und ob die Entscheidung automatisiert getroffen wurde;",
@@ -225,7 +225,7 @@ export const enforcementAppeals = revised(doc({
           "Jede Person, auch ohne Konto, kann uns auf Inhalte hinweisen, die sie für rechtswidrig hält: nutze das Formular unter zrzur.com/report oder die Schaltfläche „Melden“ in der App und wähle den passenden Grund. Ein vollständiger Hinweis enthält:",
           list(
             "eine klare Erklärung, warum du den Inhalt für rechtswidrig hältst, und nach welchem Gesetz, wenn du es kennst;",
-            "den genauen Ort: einen Link auf die Nachricht, den Server, das Profil, den Discover-Eintrag, das Design oder den Profileffekt oder deren ID;",
+            "den genauen Ort: einen Link auf die Nachricht, den Server, das Profil, den Eintrag in Entdecken, das Design oder den Profileffekt oder deren ID;",
             "deinen Namen und deine E-Mail-Adresse (nicht nötig bei Meldungen zu Material über sexuellen Kindesmissbrauch);",
             "die Erklärung, dass du in gutem Glauben davon ausgehst, dass der Hinweis richtig und vollständig ist.",
           ),
@@ -241,24 +241,24 @@ export const enforcementAppeals = revised(doc({
       {
         en: list(
           "Users and the public: support@zrzur.com.",
-          "Authorities, the European Commission and the Digital Services Coordinators: dsa@zrzur.com, subject \"DSA authority request\". A separate address (dsa@zrzur.com) is planned.",
+          "Authorities, the European Commission and the Digital Services Coordinators: dsa@zrzur.com, subject \"DSA authority request\".",
+          "Removal orders for terrorist content (Regulation (EU) 2021/784): dsa@zrzur.com, subject \"TCO removal order\"; we act within one hour.",
           "Security reports: security@zrzur.com.",
           "Languages: Arabic, English and German.",
-          "[Legal representative in the EU, if the operator is established outside the EU.]",
         ),
         ar: list(
           "المستخدمون والجمهور: support@zrzur.com.",
-          "السلطات والمفوضية الأوروبية ومنسّقو الخدمات الرقمية: dsa@zrzur.com، بعنوان «DSA authority request». ومن المخطَّط تخصيص عنوان مستقل (dsa@zrzur.com).",
+          "السلطات والمفوضية الأوروبية ومنسّقو الخدمات الرقمية: dsa@zrzur.com، بعنوان «DSA authority request».",
+          "أوامر إزالة المحتوى الإرهابي (اللائحة الأوروبية 2021/784): dsa@zrzur.com، بعنوان «TCO removal order»؛ وننفّذها خلال ساعة واحدة.",
           "البلاغات الأمنية: security@zrzur.com.",
           "اللغات: العربية والإنجليزية والألمانية.",
-          "[Legal representative in the EU, if the operator is established outside the EU.]",
         ),
         de: list(
           "Nutzende und Öffentlichkeit: support@zrzur.com.",
-          "Behörden, die Europäische Kommission und die Koordinatoren für digitale Dienste: dsa@zrzur.com, Betreff „DSA authority request“. Eine eigene Adresse (dsa@zrzur.com) ist geplant.",
+          "Behörden, die Europäische Kommission und die Koordinatoren für digitale Dienste: dsa@zrzur.com, Betreff „DSA authority request“.",
+          "Entfernungsanordnungen für terroristische Inhalte (Verordnung (EU) 2021/784): dsa@zrzur.com, Betreff „TCO removal order“; wir handeln innerhalb einer Stunde.",
           "Sicherheitsmeldungen: security@zrzur.com.",
           "Sprachen: Arabisch, Englisch und Deutsch.",
-          "[Legal representative in the EU, if the operator is established outside the EU.]",
         ),
       },
     ),

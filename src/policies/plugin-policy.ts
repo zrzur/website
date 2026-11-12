@@ -8,16 +8,25 @@ export const pluginPolicy = doc({
   intro: {
     en: "What client plugins may and may not do, how we review them, and who is responsible when you turn one on.",
     ar: "ما يجوز للإضافات في التطبيق فعله وما لا يجوز، وكيف نراجعها، ومن المسؤول عند تفعيلك إحداها.",
-    de: "Was Client-Plugins dürfen und was nicht, wie wir sie prüfen und wer verantwortlich ist, wenn Sie eines aktivieren.",
+    de: "Was Client-Plugins dürfen und was nicht, wie wir sie prüfen und wer verantwortlich ist, wenn du eines aktivierst.",
   },
   sections: [
+    section(
+      "status",
+      { en: "Plugins are off for now", ar: "الإضافات معطّلة حاليًا", de: "Plugins sind vorerst ausgeschaltet" },
+      {
+        en: "Plugins are switched off for now. The app loads no plugin, and the plugin directory is closed. This policy applies when they open again.",
+        ar: "الإضافات معطّلة حاليًا، فلا يحمّل التطبيق أي إضافة، ودليل الإضافات مغلق. وتسري هذه السياسة حين تُفتح من جديد.",
+        de: "Plugins sind vorerst ausgeschaltet. Die App lädt kein Plugin, und das Plugin-Verzeichnis ist geschlossen. Diese Richtlinie gilt, sobald sie wieder freigeschaltet werden.",
+      },
+    ),
     section(
       "what",
       { en: "What plugins are", ar: "ما الإضافات", de: "Was Plugins sind" },
       {
         en: "Plugins are small add-ons that change how the Zrzur app looks or works on your device — for example, a new panel, a theme or a shortcut. They run inside your app with your account, so they must be trustworthy. This policy applies to plugin authors and to plugins published in the Zrzur plugin directory.",
         ar: "الإضافات ملحقات صغيرة تغيّر شكل تطبيق زرزور أو طريقة عمله على جهازك — مثل لوحة جديدة أو سمة أو اختصار. وهي تعمل داخل تطبيقك وبحسابك، لذا يجب أن تكون جديرة بالثقة. وتسري هذه السياسة على مؤلفي الإضافات وعلى الإضافات المنشورة في دليل إضافات زرزور.",
-        de: "Plugins sind kleine Erweiterungen, die verändern, wie die Zrzur-App auf Ihrem Gerät aussieht oder funktioniert – zum Beispiel ein neues Panel, ein Design oder eine Tastenkombination. Sie laufen innerhalb Ihrer App mit Ihrem Konto und müssen daher vertrauenswürdig sein. Diese Richtlinie gilt für Plugin-Autoren und für Plugins, die im Plugin-Verzeichnis von Zrzur veröffentlicht werden.",
+        de: "Plugins sind kleine Erweiterungen, die verändern, wie die Zrzur-App auf deinem Gerät aussieht oder funktioniert – zum Beispiel ein neues Panel, ein Farbthema oder eine Tastenkombination. Sie laufen innerhalb deiner App mit deinem Konto und müssen daher vertrauenswürdig sein. Diese Richtlinie gilt für Plugin-Autoren und für Plugins, die im Plugin-Verzeichnis von Zrzur veröffentlicht werden.",
       },
     ),
     section(
@@ -37,10 +46,10 @@ export const pluginPolicy = doc({
           "حفظ إعداداتها الخاصة على جهازك.",
         ),
         de: list(
-          "das Aussehen und Layout der App auf Ihrem eigenen Gerät ändern;",
-          "Werkzeuge und Tastenkombinationen hinzufügen, die nur auf Ihre Aufforderung hin tätig werden;",
-          "die Plugin-Schnittstellen und Berechtigungen nutzen, die die App anbietet, nachdem Sie diese genehmigt haben;",
-          "ihre eigenen Einstellungen auf Ihrem Gerät speichern.",
+          "das Aussehen und Layout der App auf deinem eigenen Gerät ändern;",
+          "Werkzeuge und Tastenkombinationen hinzufügen, die nur auf deine Aufforderung hin tätig werden;",
+          "die Plugin-Schnittstellen und Berechtigungen nutzen, die die App anbietet, nachdem du sie genehmigt hast;",
+          "ihre eigenen Einstellungen auf deinem Gerät speichern.",
         ),
       },
     ),
@@ -69,12 +78,12 @@ export const pluginPolicy = doc({
           "مخالفة إرشادات المجتمع، أو الادعاء بأنها ميزة رسمية من زرزور.",
         ),
         de: list(
-          "Ihr Anmeldetoken, Passwort, Ihre Sitzung oder Schlüssel lesen, kopieren oder versenden;",
-          "Sie oder andere Nutzer verfolgen oder Analysedaten oder Nachrichteninhalte ohne Ihre eindeutige, gesonderte Erlaubnis an einen Server senden;",
+          "dein Anmeldetoken, Passwort, deine Sitzung oder Schlüssel lesen, kopieren oder versenden;",
+          "dich oder andere Nutzer verfolgen oder Analysedaten oder Nachrichteninhalte ohne deine eindeutige, gesonderte Erlaubnis an einen Server senden;",
           "Werbung, Affiliate-Links oder bezahlte Werbeaktionen in die App einfügen;",
           "Schadsoftware, Krypto-Miner, versteckten Code oder Code enthalten, der ohne Prüfung neuen Code herunterlädt und ausführt;",
-          "ohne Ihre Aufforderung Nachrichten senden, Servern beitreten oder in Ihrem Namen sonstige Aktionen ausführen;",
-          "Nachrichten anderer ausblenden oder verändern, um Sie zu täuschen, oder Sicherheitswarnungen, Meldungen oder die Kennzeichnung „Anzeige“ bei Discover-Werbung ausblenden;",
+          "ohne deine Aufforderung Nachrichten senden, Servern beitreten oder in deinem Namen sonstige Aktionen ausführen;",
+          "Nachrichten anderer ausblenden oder verändern, um dich zu täuschen, oder Sicherheitswarnungen, Meldungen oder die Kennzeichnung „Anzeige“ bei Werbung in Entdecken ausblenden;",
           "kostenpflichtige Funktionen wie Feather-Vorteile ohne Bezahlung freischalten oder Blockierungen, Sperren und Datenschutzeinstellungen umgehen;",
           "gegen die Community-Richtlinien verstoßen oder sich als offizielle Funktion von Zrzur ausgeben.",
         ),
@@ -115,7 +124,7 @@ export const pluginPolicy = doc({
     ),
     section(
       "your-risk",
-      { en: "Turning on plugins is your choice", ar: "تفعيل الإضافات اختيارك", de: "Plugins zu aktivieren ist Ihre Entscheidung" },
+      { en: "Turning on plugins is your choice", ar: "تفعيل الإضافات اختيارك", de: "Plugins zu aktivieren ist deine Entscheidung" },
       {
         en: para(
           "Plugins are made by third parties, not by Zrzur. You turn them on at your own risk. Check the permissions a plugin asks for before you approve them. Plugins from outside the directory are not reviewed at all.",
@@ -126,7 +135,7 @@ export const pluginPolicy = doc({
           "إذا حدث خلل، فإن الوضع الآمن يعطّل جميع الإضافات دفعة واحدة. ولا يشمل دعم زرزور الأعطال التي تسبّبها الإضافات في التطبيق.",
         ),
         de: para(
-          "Plugins werden von Dritten erstellt, nicht von Zrzur. Sie aktivieren sie auf eigenes Risiko. Prüfen Sie die Berechtigungen, die ein Plugin anfordert, bevor Sie sie genehmigen. Plugins außerhalb des Verzeichnisses werden überhaupt nicht geprüft.",
+          "Plugins werden von Dritten erstellt, nicht von Zrzur. Du aktivierst sie auf eigenes Risiko. Prüfe die Berechtigungen, die ein Plugin anfordert, bevor du sie genehmigst. Plugins außerhalb des Verzeichnisses werden überhaupt nicht geprüft.",
           "Wenn etwas schiefgeht, deaktiviert der abgesicherte Modus alle Plugins auf einmal. Fehler in der App, die durch Plugins verursacht werden, sind nicht vom Support von Zrzur abgedeckt.",
         ),
       },
@@ -148,10 +157,10 @@ export const pluginPolicy = doc({
           "أبلغ عن المشكلات الأمنية في إضافتك أو في زرزور إلى security@zrzur.com.",
         ),
         de: list(
-          "Sie sind für Ihr Plugin, seine Aktualisierungen und die Daten, die es verarbeitet, verantwortlich.",
-          "Halten Sie für alle Daten, die Ihr Plugin verarbeitet, die Entwicklerbedingungen ein und veröffentlichen Sie eine Datenschutzerklärung, wenn es Daten vom Gerät versendet.",
-          "Verwenden Sie nur Code, Bilder und Schriftarten, zu deren Nutzung Sie berechtigt sind, und dokumentieren Sie deren Lizenzen.",
-          "Melden Sie Sicherheitsprobleme in Ihrem Plugin oder in Zrzur an security@zrzur.com.",
+          "Du bist für dein Plugin, seine Aktualisierungen und die Daten, die es verarbeitet, verantwortlich.",
+          "Halte für alle Daten, die dein Plugin verarbeitet, die Entwicklerbedingungen ein und veröffentliche eine Datenschutzerklärung, wenn es Daten vom Gerät versendet.",
+          "Verwende nur Code, Bilder und Schriftarten, zu deren Nutzung du berechtigt bist, und dokumentiere deren Lizenzen.",
+          "Melde Sicherheitsprobleme in deinem Plugin oder in Zrzur an security@zrzur.com.",
         ),
       },
     ),
