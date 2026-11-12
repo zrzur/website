@@ -245,3 +245,24 @@ test("explicit preview destinations stay restricted to loopback", () => {
   assert.equal(resolvePreviewUrl("127.0.0.1", "http://example.com/"), null);
   assert.equal(resolvePreviewUrl("127.0.0.1", "http://user:password@127.0.0.1/"), null);
 });
+
+test("search results show the whole home description (170 characters at most)", async () => {
+  for (const code of ["en", "ar", "de", "fr", "es", "ru", "zh"]) {
+    const { labels } = (await import(`../src/locales/${code}.ts`)).default;
+    assert(labels.seoHomeBody.length <= 170, `${code}: ${labels.seoHomeBody.length}`);
+  }
+});
+
+test("the sitemap dates each policy by its version, and nothing by the build day", async () => {
+  const sitemap = await readFile(new URL("../public/sitemap.xml", import.meta.url), "utf8");
+  for (const doc of legalDocuments) {
+    const loc = `<loc>https://zrzur.com/legal/${doc.slug}</loc>`;
+    const at = sitemap.indexOf(loc);
+    assert(at >= 0, doc.slug);
+    const entry = sitemap.slice(at + loc.length).match(/^\s*<lastmod>([^<]+)<\/lastmod>/);
+    assert(entry, doc.slug);
+    assert.equal(entry[1], doc.version, doc.slug);
+  }
+  // pages without a known change date carry none
+  assert.doesNotMatch(sitemap, /<loc>https:\/\/zrzur\.com\/features<\/loc>\s*<lastmod>/);
+});

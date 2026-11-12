@@ -185,7 +185,7 @@ const labels = {
   dlSize: "{size} MB",
   dlVersion: "Version {version}",
   seoHomeTitle: "Zrzur: a free, open-source alternative to Discord",
-  seoHomeBody: "Zrzur is a free place for friends and communities: servers with text and voice channels, screen sharing, roles and permissions. In your browser and on Windows, macOS and Linux, in many languages.",
+  seoHomeBody: "Zrzur is a free, open-source home for friends and communities: servers with text and voice channels, screen sharing, roles. On the web, Windows, macOS, Linux.",
   blog: "Blog",
   blogTitle: "The Zrzur blog.",
   blogBody: "Why we build Zrzur, what is new, and what comes next.",

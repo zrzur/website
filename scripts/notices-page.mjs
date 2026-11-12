@@ -23,6 +23,7 @@ export function renderNoticesPage(page, text) {
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="color-scheme" content="dark" />
+<meta name="robots" content="noindex" />
 <title>${escape(page.title)} — ${escape(page.brand)}</title>
 <style>
 @font-face { font-family: "IBM Plex Sans"; src: url("/assets/plex-latin-wght.woff2") format("woff2-variations"); font-weight: 100 700; font-display: swap; }

@@ -28,6 +28,20 @@ const pages = [
 // the same canonical form the pages announce (no trailing slash)
 const url = (path, code) => canonicalUrl(localizedPath(path, code));
 
+/**
+ * The date a page last really changed, where we know it: a policy carries
+ * the date of its version, a post its own date. Other pages give none, since
+ * a build date would claim changes that did not happen.
+ */
+function lastModified(page) {
+  const doc = legalDocuments.find((entry) => page === `/legal/${entry.slug}`);
+  if (doc) return doc.version;
+  const post = posts.find((entry) => page === `/blog/${entry.slug}`);
+  if (post) return post.date;
+  if (page === "/legal") return legalDocuments.map((entry) => entry.version).sort().at(-1);
+  return null;
+}
+
 const entries = [];
 // a policy shown in English under another prefix is not listed there (src/seo.ts)
 for (const page of pages)
@@ -36,7 +50,8 @@ for (const page of pages)
       (locale) => `    <xhtml:link rel="alternate" hreflang="${locale.tag}" href="${url(page, locale.code)}"/>`,
     );
     alternates.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${url(page, "en")}"/>`);
-    entries.push(`  <url>\n    <loc>${url(page, code)}</loc>\n${alternates.join("\n")}\n  </url>`);
+    const modified = lastModified(page);
+    entries.push(`  <url>\n    <loc>${url(page, code)}</loc>\n${modified ? `    <lastmod>${modified}</lastmod>\n` : ""}${alternates.join("\n")}\n  </url>`);
   }
 
 writeFileSync(

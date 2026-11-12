@@ -79,6 +79,8 @@ const shell = built
 if (!shell.includes('fetchpriority="low"')) throw new Error("index.html: the app's script tag changed");
 const SITE = "https://zrzur.com";
 const OG_LOCALE = { en: "en_US", de: "de_DE", ar: "ar_AR", fr: "fr_FR", es: "es_ES", ru: "ru_RU", zh: "zh_CN" };
+/** what the share picture shows, in the language of the page */
+const LOGO_ALT = { en: "The Zrzur logo", de: "Das Zrzur-Logo", ar: "شعار زرزور", fr: "Le logo de Zrzur", es: "El logotipo de Zrzur", ru: "Логотип Zrzur", zh: "Zrzur 标志" };
 
 /**
  * The chunk with a language's words, from Vite's manifest: the page preloads
@@ -162,6 +164,14 @@ function structured(path, code, words) {
       publisher: { "@id": `${SITE}/#org` },
       image: `${SITE}${words.post.cover ?? "/brand/og-image.png"}`,
     });
+  // where the page sits: the policies under the legal hub, a post under the blog
+  const doc = legalDocuments.find((entry) => path === `/legal/${entry.slug}`);
+  const trail = doc ? [[t.legalTitle, "/legal"], [words.title.replace(/ — [^—]+$/, ""), path]] : words.post ? [[t.blog, "/blog"], [textOf(words.post, code).title, path]] : null;
+  if (trail)
+    graph.push({
+      "@type": "BreadcrumbList",
+      itemListElement: [[t.brand, "/"], ...trail].map(([name, at], index) => ({ "@type": "ListItem", position: index + 1, name, item: url(at, canonicalLanguage(at, code)) })),
+    });
   // the JSON may not close the script element early
   return JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replace(/</g, "\\u003c");
 }
@@ -169,7 +179,10 @@ function structured(path, code, words) {
 async function page(path, code) {
   const words = pageWords(path, code);
   const dir = LOCALES.find((l) => l.code === code).dir;
-  const languages = LOCALES.filter((l) => pageLanguages(path).includes(l.code));
+  // a page that is a copy of another language (a policy without this
+  // language) names only its canonical page, no alternates of its own
+  const isCanonical = canonicalLanguage(path, code) === code;
+  const languages = isCanonical ? LOCALES.filter((l) => pageLanguages(path).includes(l.code)) : [];
   serverPage(localizedPath(path, code));
   // the hydration keys stay: the app takes these very nodes over (src/main.tsx).
   // Solid's inline hand-over scripts go (the page policy allows none); the
@@ -185,7 +198,7 @@ async function page(path, code) {
       : [
           `<link rel="canonical" href="${esc(url(path, canonicalLanguage(path, code)))}" />`,
           ...languages.map((l) => `<link rel="alternate" hreflang="${l.tag}" href="${esc(url(path, l.code))}" />`),
-          `<link rel="alternate" hreflang="x-default" href="${esc(url(path, "en"))}" />`,
+          ...(isCanonical ? [`<link rel="alternate" hreflang="x-default" href="${esc(url(path, "en"))}" />`] : []),
         ]),
     `<meta property="og:locale" content="${OG_LOCALE[code]}" />`,
     ...languages.filter((l) => l.code !== code).map((l) => `<meta property="og:locale:alternate" content="${OG_LOCALE[l.code]}" />`),
@@ -204,6 +217,7 @@ async function page(path, code) {
     .replace(/(<meta\s+property="og:description"\s+content=")[^"]*(")/, `$1${esc(words.description)}$2`)
     // a 404 page has no address of its own to share
     .replace(/\s*<meta\s+property="og:url"\s+content="[^"]*"\s*\/>/, (tag) => (notFound ? "" : tag.replace(/content="[^"]*"/, `content="${esc(url(path, canonicalLanguage(path, code)))}"`)))
+    .replace(/(<meta\s+property="og:image:alt"\s+content=")[^"]*(")/, `$1${esc(words.post ? textOf(words.post, code).title : LOGO_ALT[code])}$2`)
     .replace(/(<meta\s+property="og:type"\s+content=")[^"]*(")/, `$1${words.post ? "article" : "website"}$2`)
     .replace(/(<meta\s+(?:property="og:image"|name="twitter:image")\s+content=")[^"]*(")/g, `$1${SITE}${words.post?.cover ?? "/brand/og-image.png"}$2`)
     .replace("</head>", `    ${head}\n  </head>`)
