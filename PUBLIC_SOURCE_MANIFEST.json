@@ -1378,8 +1378,8 @@
     },
     {
       "path": "src/App.tsx",
-      "sha256": "4501495f996b8c0bbe94f588a7f1c286ea0009a5af33a6f95d45de74f4e6b369",
-      "bytes": 55660,
+      "sha256": "951338f14bdbc92590b2051a67a4ec2bbe53119a7822b6e102a0fa3cadd3dbe2",
+      "bytes": 55597,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1468,56 +1468,56 @@
     },
     {
       "path": "src/legal-page.tsx",
-      "sha256": "d27ebbce10b5904dccc56af685b7d108995d6e51519ac6931ef5aab17f969852",
-      "bytes": 8807,
+      "sha256": "0eb66cf06a69c2ba3bc20fee7dfecccaef3275f13932a012870e04a504c1a27f",
+      "bytes": 8519,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/legal.ts",
-      "sha256": "d321bb3d86d78da196660d188e4195c7e6795e4969e61f10f0a50e51a747383a",
-      "bytes": 1749,
+      "sha256": "28d861480c2bb10eac940200bac1725dd629fc13c4c0aea7db1309658369a208",
+      "bytes": 1527,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/ar.ts",
-      "sha256": "f8e3854b1b772e7e7ccdc43d9c79b142cfe48473cbd2278c4c5d4904977f0128",
-      "bytes": 21244,
+      "sha256": "ea7bb7e5cd68b136c6b90dc4fd8eb15e85158141a9a87f7f300d7fa45526d27d",
+      "bytes": 21154,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/de.ts",
-      "sha256": "e95fc65bcae40522d02aaca4d2602246aa6504da1e75b48a6eba58186857db7c",
-      "bytes": 16838,
+      "sha256": "e074a7aa4713ecf7e11a336c3a918f7c2b75d636b31d40ae13840d1626f8eea8",
+      "bytes": 16760,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/en.ts",
-      "sha256": "9862d21242ca0766417a37329566abd4d26ac007073b68618276522d613ac7b2",
-      "bytes": 15578,
+      "sha256": "039c6efc38b2dded137134ad4f1de707ea0c2bf3fb52ed7d2afc27b67895a664",
+      "bytes": 15520,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/es.ts",
-      "sha256": "d66527fd5aeb0edf6f3889f243028c0e90ca4f1ef8f4aff5967453dd6fe73a8c",
-      "bytes": 16849,
+      "sha256": "63409f2ecc163205778d84fb6eeb15792487038f3665e7d95b0e79a7e459c625",
+      "bytes": 16772,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/fr.ts",
-      "sha256": "c978f6bdf3d9cf0b223c6bf341f61486f61fe8dad7b281df5bf732ffdc501a4a",
-      "bytes": 17573,
+      "sha256": "7699684ed9fce7ef1aefa978edcb4cfc3fe4be736cccf5861e47ec5c28a4962f",
+      "bytes": 17491,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/ru.ts",
-      "sha256": "d755c2d54f16d9a4a4ca1ef4da5d29e4770c3e6aef7392e9cff28e5c1e38a81b",
-      "bytes": 24892,
+      "sha256": "c549303956c7632f188cd677e4013c361dc533652a96f83c2dc966fd6090cc96",
+      "bytes": 24780,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/zh.ts",
-      "sha256": "db194fb411ef37778c0e8d127b4a5b85831066db8791bbae39e9585ebc19b1da",
-      "bytes": 15266,
+      "sha256": "ca159ff0b3bc226c0ccd3cc40b7dd6a2f8717a46f7273f55b75da90ba3f77b44",
+      "bytes": 15201,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1540,8 +1540,8 @@
     },
     {
       "path": "src/policies/creator-terms.ts",
-      "sha256": "f5f73a4045fd1a98c48651f4243c47e1452e663f1078fd8dfd782cdc13823611",
-      "bytes": 29592,
+      "sha256": "fad9cb379255ee7df797c1c18ec47bde5cab48573a5141b843fd57b6253380b8",
+      "bytes": 29439,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1558,8 +1558,8 @@
     },
     {
       "path": "src/policies/enforcement-appeals.ts",
-      "sha256": "37e1c08b60f537900745174124ae8d6078e1f28520092a8bad984317b72d5645",
-      "bytes": 32143,
+      "sha256": "fc579d3cd517c3a499b6dfd2f0f59dce2e90437b676ce3462093f6f61905bb5b",
+      "bytes": 32252,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1570,8 +1570,8 @@
     },
     {
       "path": "src/policies/paid-services.ts",
-      "sha256": "4b7b14538b7780674da169f1fe7561df319ffedd5b08eb6fa0f3f35d8d4cfa8a",
-      "bytes": 25148,
+      "sha256": "9967e1d6d44d1351ebf8edce4d819b710ff852194ad0dea027d00bf0e0a260d8",
+      "bytes": 25025,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1582,8 +1582,8 @@
     },
     {
       "path": "src/policies/privacy.ts",
-      "sha256": "0a3b25c478ca1e4ca1ba15aacc6443696a51f6339a026456f14a08b590a69e08",
-      "bytes": 96905,
+      "sha256": "e6e26104c266d79bc4c24ae2349b1904472330058e71cad3a210d5c418c58d73",
+      "bytes": 96768,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1594,8 +1594,8 @@
     },
     {
       "path": "src/policies/shared.ts",
-      "sha256": "dfe736a2af7ecc70d4168ba2ade33afcc7a1f2add69ca0494423d4dc2760caff",
-      "bytes": 2627,
+      "sha256": "d497c3c971057b35ade98a635b81f70488037531d868954e4263b7e736ef4d77",
+      "bytes": 2091,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1690,8 +1690,8 @@
     },
     {
       "path": "src/site.css",
-      "sha256": "1bea196ac19924d6d88b92a0ad4b9f067d2d070bdd3be1fc26bba2dfb297df04",
-      "bytes": 119389,
+      "sha256": "d887bf8c8569bb9704b171628a11165a76aba5c9d2ce715b4fc892f81465f084",
+      "bytes": 119107,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1708,8 +1708,8 @@
     },
     {
       "path": "test/content.test.mjs",
-      "sha256": "7b958a9c6cc446281a49a42b44dfe1b9295c6528f0b6b651560b144a800d3e4a",
-      "bytes": 13134,
+      "sha256": "39d77d35ea5eeb5ac0f9670c78c5b310f5a822d18790e79e17dda908e6141d12",
+      "bytes": 13034,
       "category": "synthetic-test-source-or-fixture"
     },
     {
@@ -1762,8 +1762,8 @@
     },
     {
       "path": "test/legal.test.mjs",
-      "sha256": "1e1efb8f4fa7b987520efc6bdb8eec74c3f7b6edd046d05cb172aeaf29d0bf48",
-      "bytes": 17614,
+      "sha256": "0ffab548390563b5659d49a4a91d3f659a0a30c6f6d25795e53b09e1595b5e6f",
+      "bytes": 17602,
       "category": "synthetic-test-source-or-fixture"
     },
     {
