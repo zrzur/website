@@ -1582,8 +1582,8 @@
     },
     {
       "path": "src/policies/privacy.ts",
-      "sha256": "6f5a712f9db52c96b7df7290ffde76b44c3bfa34f75c7caafc3ddac50ebc8854",
-      "bytes": 95727,
+      "sha256": "f859e3e2ac24054cd4a32ba93999d1aa9374546342693cda41b91bec69cb5cd9",
+      "bytes": 95926,
       "category": "product-source-or-build-manifest"
     },
     {
