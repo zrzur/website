@@ -133,3 +133,10 @@ test("the address can fill in what is reported", () => {
   assert.equal(readPrefill("?kind=Nonsense").kind, undefined);
   assert.equal(readPrefill(`?location=${"x".repeat(900)}`).location.length, LIMITS.location);
 });
+
+test("the captcha note names Cloudflare Turnstile, the check the API runs (PR-2)", () => {
+  for (const [code, text] of Object.entries(reportText)) {
+    assert.match(text.captchaNote, /Cloudflare Turnstile/, code);
+    assert.doesNotMatch(text.captchaNote, /hCaptcha/i, code);
+  }
+});

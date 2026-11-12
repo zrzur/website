@@ -40,8 +40,8 @@ const check = (name, ok, detail = "") => {
 };
 
 /**
- * With hCaptcha on, a second report in the same visit gets a new widget and
- * a new token. The hCaptcha script is a stub here: it answers each render with
+ * With Turnstile on, a second report in the same visit gets a new widget and
+ * a new token. The Turnstile script is a stub here: it answers each render with
  * its own token.
  */
 async function secondReportWithCheck(lang, text, tag, viewport) {

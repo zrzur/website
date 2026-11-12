@@ -60,7 +60,7 @@ const text: ReportText = {
   details: "详细信息",
   privacy: "我们只将你的信息用于处理这份举报并告知你结果。我们的审核人员可以看到这些信息，被举报的人看不到。案件结束 12 个月后，我们会删除你的姓名和电子邮件。",
   privacyLink: "隐私政策",
-  captchaNote: "如果显示验证，它由 hCaptcha 提供，hCaptcha 会接收你的浏览器数据以区分真人和机器人。",
+  captchaNote: "如果显示验证，它由 Cloudflare Turnstile 提供，Cloudflare Turnstile 会接收你的浏览器数据以区分真人和机器人。",
   inApp: "已登录？你也可以使用应用内的“举报”按钮。",
 };
 export default text;

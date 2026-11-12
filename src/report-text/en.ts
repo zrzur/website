@@ -60,7 +60,7 @@ const text: ReportText = {
   details: "Details",
   privacy: "We use your details only to handle this report and to tell you the result. Our reviewers see them; the reported person does not. We delete your name and email 12 months after the case is closed.",
   privacyLink: "Privacy Policy",
-  captchaNote: "If a check is shown, it is provided by hCaptcha, which receives your browser data to tell people from bots.",
+  captchaNote: "If a check is shown, it is provided by Cloudflare Turnstile, which receives your browser data to tell people from bots.",
   inApp: "Signed in? You can also use the Report button inside the app.",
 };
 export default text;

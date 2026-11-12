@@ -60,7 +60,7 @@ const text: ReportText = {
   details: "Details",
   privacy: "Wir nutzen deine Angaben nur, um diese Meldung zu bearbeiten und dir das Ergebnis mitzuteilen. Unsere Prüfenden sehen sie, die gemeldete Person nicht. Name und E-Mail löschen wir 12 Monate nach Abschluss des Falls.",
   privacyLink: "Datenschutzerklärung",
-  captchaNote: "Wenn eine Prüfung angezeigt wird, stammt sie von hCaptcha, das dafür Daten deines Browsers erhält, um Menschen von Bots zu unterscheiden.",
+  captchaNote: "Wenn eine Prüfung angezeigt wird, stammt sie von Cloudflare Turnstile, das dafür Daten deines Browsers erhält, um Menschen von Bots zu unterscheiden.",
   inApp: "Angemeldet? Du kannst auch die Melden-Schaltfläche in der App nutzen.",
 };
 export default text;

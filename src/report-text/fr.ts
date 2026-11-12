@@ -60,7 +60,7 @@ const text: ReportText = {
   details: "Détails",
   privacy: "Nous utilisons tes informations uniquement pour traiter ce signalement et te communiquer le résultat. Nos modérateurs les voient ; la personne signalée, non. Nous supprimons ton nom et ton e-mail 12 mois après la clôture du dossier.",
   privacyLink: "Politique de confidentialité",
-  captchaNote: "Si une vérification s'affiche, elle est fournie par hCaptcha, qui reçoit les données de ton navigateur pour distinguer les personnes des robots.",
+  captchaNote: "Si une vérification s'affiche, elle est fournie par Cloudflare Turnstile, qui reçoit les données de ton navigateur pour distinguer les personnes des robots.",
   inApp: "Tu es connecté ? Tu peux aussi utiliser le bouton Signaler dans l'app.",
 };
 export default text;
