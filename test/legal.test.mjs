@@ -292,9 +292,10 @@ test("every page that is not a binding version says so and names the binding ver
   const privacy = legalDocuments.find((doc) => doc.slug === "privacy");
   assert.deepEqual(bindingNotice(privacy, "ar"), { kind: "translation", binding: ["en", "de"] });
   assert.deepEqual(bindingNotice(privacy, "fr"), { kind: "english", binding: ["en", "de"] });
-  // a German page of a policy without a German text shows the English one
+  // every policy has a German text now, so the German terms page is binding itself
   const terms = legalDocuments.find((doc) => doc.slug === "terms");
-  assert.deepEqual(bindingNotice(terms, "de"), { kind: "english", binding: ["en"] });
+  assert.equal(bindingNotice(terms, "de"), null);
+  assert.deepEqual(bindingNotice(terms, "fr"), { kind: "english", binding: ["en", "de"] });
 });
 
 test("the binding notice has its words in every language", async () => {
@@ -320,12 +321,20 @@ test("the language list per policy matches the texts", async () => {
   }
 });
 
+// Legal check 2026-11-12 (F-2): every policy is complete in German, not only
+// in English and Arabic, so no German page falls back to English.
+test("every policy is complete in English, Arabic and German", () => {
+  for (const doc of legalDocuments)
+    for (const code of ["en", "ar", "de"]) assert(hasLanguage(doc, code), `${doc.slug} ${code}`);
+});
+
 test("pages in English under another prefix point at the English page", async () => {
   const { canonicalLanguage, pageLanguages } = await import("../src/seo.ts");
   assert.deepEqual(pageLanguages("/legal/privacy").toSorted(), ["ar", "de", "en"]);
   assert.equal(canonicalLanguage("/legal/privacy", "fr"), "en");
   assert.equal(canonicalLanguage("/legal/privacy", "de"), "de");
-  assert.equal(canonicalLanguage("/legal/terms", "de"), "en");
+  assert.equal(canonicalLanguage("/legal/terms", "de"), "de");
+  assert.equal(canonicalLanguage("/legal/terms", "fr"), "en");
   assert.equal(canonicalLanguage("/legal/terms", "ar"), "ar");
   // every other page exists in every language
   assert.equal(pageLanguages("/features").length, LOCALES.length);

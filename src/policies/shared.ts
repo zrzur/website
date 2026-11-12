@@ -1,6 +1,5 @@
-// legal texts exist in English and Arabic; German exists for privacy, imprint,
-// enforcement-appeals and creator-terms, other documents fall back to English
-// until translated
+// legal texts exist in English, Arabic and German for every document; English
+// is the source text and German is a translation of it
 import type { Partial as Localized } from "../content";
 
 export type LegalSlug =

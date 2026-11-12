@@ -68,6 +68,18 @@ export const officialEmails = () =>
     },
   );
 
+/** The DSA points of contact (Art. 11 and 12), shared by the contact page and the imprint */
+export const dsaContact = () =>
+  section(
+    "dsa-contact",
+    { en: "Points of contact (Digital Services Act)", ar: "جهات الاتصال (قانون الخدمات الرقمية)", de: "Kontaktstellen (Gesetz über digitale Dienste)" },
+    {
+      en: "Our single point of contact under the EU Digital Services Act: for users, support@zrzur.com; for authorities, dsa@zrzur.com. Languages: Arabic, English and German.",
+      ar: "جهة الاتصال الموحّدة لدينا بموجب قانون الخدمات الرقمية الأوروبي: للمستخدمين support@zrzur.com، وللسلطات dsa@zrzur.com. اللغات: العربية والإنجليزية والألمانية.",
+      de: "Unsere zentrale Kontaktstelle nach dem EU-Gesetz über digitale Dienste: für Nutzerinnen und Nutzer support@zrzur.com, für Behörden dsa@zrzur.com. Sprachen: Arabisch, Englisch und Deutsch.",
+    },
+  );
+
 export const contact = doc({
   slug: "contact",
   group: "operator",
@@ -79,6 +91,7 @@ export const contact = doc({
   },
   sections: [
     officialEmails(),
+    dsaContact(),
     section(
       "security",
       { en: "Report a security problem", ar: "الإبلاغ عن مشكلة أمنية", de: "Sicherheitsproblem melden" },

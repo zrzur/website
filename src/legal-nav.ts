@@ -43,17 +43,16 @@ export const legalFooterLinks: { slug: LegalSlug; label: Label }[] = [
  * the English text: it is not a page of its own for search engines.
  */
 const WITH_GERMAN: Language[] = ["en", "ar", "de"];
-const WITHOUT_GERMAN: Language[] = ["en", "ar"];
 export const legalLanguages: Record<LegalSlug, Language[]> = {
-  terms: WITHOUT_GERMAN,
+  terms: WITH_GERMAN,
   privacy: WITH_GERMAN,
-  "community-guidelines": WITHOUT_GERMAN,
+  "community-guidelines": WITH_GERMAN,
   "enforcement-appeals": WITH_GERMAN,
-  "paid-services": WITHOUT_GERMAN,
-  "server-owner-rules": WITHOUT_GERMAN,
-  "discover-guidelines": WITHOUT_GERMAN,
-  "developer-terms": WITHOUT_GERMAN,
-  "plugin-policy": WITHOUT_GERMAN,
+  "paid-services": WITH_GERMAN,
+  "server-owner-rules": WITH_GERMAN,
+  "discover-guidelines": WITH_GERMAN,
+  "developer-terms": WITH_GERMAN,
+  "plugin-policy": WITH_GERMAN,
   "creator-terms": WITH_GERMAN,
   imprint: WITH_GERMAN,
   contact: WITH_GERMAN,

@@ -21,7 +21,7 @@ type Receipt = { reference: string };
 
 declare global {
   interface Window {
-    hcaptcha?: {
+    turnstile?: {
       render: (el: HTMLElement, options: Record<string, unknown>) => string;
       reset: (id?: string) => void;
     };
@@ -105,7 +105,8 @@ function ReportForm(props: Props & { text: () => ReportText }) {
   const [receipt, setReceipt] = createSignal<Receipt | null>(null);
   const [sentEmail, setSentEmail] = createSignal(false);
 
-  // hCaptcha only when the API says sign-up uses it
+  // Cloudflare Turnstile only when the API says it checks tokens (the backend
+  // verifies Turnstile since 2026-11; hCaptcha tokens are refused)
   let captchaBox!: HTMLDivElement;
   let captchaId: string | undefined;
   let siteKey: string | undefined;
@@ -116,10 +117,11 @@ function ReportForm(props: Props & { text: () => ReportText }) {
   function renderCaptcha() {
     setCaptchaToken(undefined);
     if (!siteKey) return;
-    captchaId = window.hcaptcha?.render(captchaBox, {
+    captchaId = window.turnstile?.render(captchaBox, {
       sitekey: siteKey,
       callback: (token: string) => setCaptchaToken(token),
       "expired-callback": () => setCaptchaToken(undefined),
+      "error-callback": () => setCaptchaToken(undefined),
     });
   }
   onMount(async () => {
@@ -132,7 +134,7 @@ function ReportForm(props: Props & { text: () => ReportText }) {
       setCaptchaOn(true);
       await new Promise<void>((resolve, reject) => {
         const script = document.createElement("script");
-        script.src = "https://js.hcaptcha.com/1/api.js?render=explicit";
+        script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
         script.async = true;
         script.onload = () => resolve();
         script.onerror = () => reject();
@@ -191,7 +193,7 @@ function ReportForm(props: Props & { text: () => ReportText }) {
             : text().failed;
       setFailure({ message, details: `${response.status} ${type} ${body?.error ?? ""}`.trim() });
       if (captchaId !== undefined) {
-        window.hcaptcha?.reset(captchaId);
+        window.turnstile?.reset(captchaId);
         setCaptchaToken(undefined);
       }
     } catch (error) {
