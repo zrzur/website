@@ -4,7 +4,11 @@ export const postLanguages: Record<string, readonly string[]> = {
   "zrzur-features": [
     "en",
     "de",
-    "ar"
+    "ar",
+    "fr",
+    "es",
+    "ru",
+    "zh"
   ],
   "why-zrzur": [
     "en",

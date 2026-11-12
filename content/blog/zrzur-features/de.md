@@ -82,7 +82,7 @@ Entwicklerinnen und Entwickler können **Bots und Apps** für Zrzur bauen. Ein v
 
 ## Überall, wo du bist
 
-Zrzur läuft in jedem aktuellen Browser, am Computer oder auf dem Handy. Für deinen Computer gibt es auf der [Download-Seite](/download) eine Desktop-App für Windows, macOS und Linux.
+Zrzur läuft in jedem aktuellen Browser, am Computer oder auf dem Handy. Für deinen Computer gibt es auf der [Download-Seite](/de/download) eine Desktop-App für Windows, macOS und Linux.
 
 ## Kostenlos, und es bleibt offen
 
