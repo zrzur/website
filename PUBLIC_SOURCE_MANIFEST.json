@@ -1246,8 +1246,8 @@
     },
     {
       "path": "public/sitemap.xml",
-      "sha256": "e9727005b76d75fc0b57ae9618a8614ad3f40c2613a96d309e0038a9a9d9a54a",
-      "bytes": 58075,
+      "sha256": "d688246e235417061af0c0ac441ca3b5ab7e35749afccf0db4ebe06096ad9268",
+      "bytes": 62709,
       "category": "reviewed-product-asset"
     },
     {
@@ -1462,8 +1462,8 @@
     },
     {
       "path": "src/legal-nav.ts",
-      "sha256": "ad533ce8a0495ce25b45fe3b00c6a8ac5206c784abb0a8a58e110f6337d99fe1",
-      "bytes": 2112,
+      "sha256": "f31366ab2b0a4357e3623953bcb24fda2353c5b142ec3f401cb090e279fb2e06",
+      "bytes": 2042,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1528,80 +1528,80 @@
     },
     {
       "path": "src/policies/community-guidelines.ts",
-      "sha256": "412503444af8db4ea098218e2104824bbbef919b7a9b03531333c7cb389ce40e",
-      "bytes": 18612,
+      "sha256": "04a77163fdcef828f94a27f58e7aa6b846465a3be9b9fe6751a17d647f445b94",
+      "bytes": 27454,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/policies/contact.ts",
-      "sha256": "6e0dc7bec9fc4c27e2c47968ef6f55806141016002b7b58a4c1832403050e604",
-      "bytes": 4058,
+      "sha256": "5346d269ea43a3a1eaf3ff27b14fcb0281697f4f6073c511f1c261b3966b1d1a",
+      "bytes": 5097,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/policies/creator-terms.ts",
-      "sha256": "d99d0a8dd2e9a5abbcc529b47308486e39014a43d11a1000f5b13a4548cff6ab",
-      "bytes": 30880,
+      "sha256": "f5f73a4045fd1a98c48651f4243c47e1452e663f1078fd8dfd782cdc13823611",
+      "bytes": 29592,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/policies/developer-terms.ts",
-      "sha256": "79fed1bc9a5ec3502afeb1a4bd77332699f80c660140b5f9e5603260d0a0bcb2",
-      "bytes": 15341,
+      "sha256": "cc91e42d6d57a9c19960f7490982d7a7f27f13fd2ffd0595fcd80dc6956dd47d",
+      "bytes": 23673,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/policies/discover-guidelines.ts",
-      "sha256": "85bc0f578868197ef4082d91598471c6b3900ad1beeca1a7ede87e1de9dfea69",
-      "bytes": 10613,
+      "sha256": "a61e5f827d207eacbbbab8d588f9a6080d5a7ef5ccb9d16ce46716ec09d54947",
+      "bytes": 16868,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/policies/enforcement-appeals.ts",
-      "sha256": "8b21fac62d65b737ee50ab050cf5238e798ad3de438c5f190527ba6f14c08174",
-      "bytes": 31176,
+      "sha256": "37e1c08b60f537900745174124ae8d6078e1f28520092a8bad984317b72d5645",
+      "bytes": 32143,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/policies/imprint.ts",
-      "sha256": "8558de994a07856f6dbc188ef8ac3d4c550fe55d437e7d5804a133bc6110ae3c",
-      "bytes": 4986,
+      "sha256": "cbd1c9ce335d8f9c103e7fe8ac09fb42e237ea3b3f65596651a1c56a007e8caa",
+      "bytes": 3697,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/policies/paid-services.ts",
-      "sha256": "76adbc75d91e67791ba1308cf976df137173e41af4ccb0834f026078e072481d",
-      "bytes": 18867,
+      "sha256": "4b7b14538b7780674da169f1fe7561df319ffedd5b08eb6fa0f3f35d8d4cfa8a",
+      "bytes": 25148,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/policies/plugin-policy.ts",
-      "sha256": "024d27d6db6e84e821d7f92162a5f607f114b472dbf184cc52c5966bf5d498fa",
-      "bytes": 9328,
+      "sha256": "8b31b05f7cfe5ca7ed4b4d0c629342bb95c5198a7a75e8c5fb7bf5c670875e33",
+      "bytes": 14314,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/policies/privacy.ts",
-      "sha256": "d6ee573f03c3db118220390c634609f7e89b282d51bcb2a012ccbe68c708a2db",
-      "bytes": 86268,
+      "sha256": "6f5a712f9db52c96b7df7290ffde76b44c3bfa34f75c7caafc3ddac50ebc8854",
+      "bytes": 95727,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/policies/server-owner-rules.ts",
-      "sha256": "0f98cfcd7d4c437e4364e9592922f8bfbacf00698b4549802ce71cab096b6b73",
-      "bytes": 12145,
+      "sha256": "6643bfdce7fe03ec9a0da20dcc6b7b84f90e7d66543c416defb0d9b17bd05b7d",
+      "bytes": 17085,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/policies/shared.ts",
-      "sha256": "5614a6db4b52688091963702663026dba62643d8e6c35056c94d0f52f7e968ba",
-      "bytes": 2671,
+      "sha256": "dfe736a2af7ecc70d4168ba2ade33afcc7a1f2add69ca0494423d4dc2760caff",
+      "bytes": 2627,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/policies/terms.ts",
-      "sha256": "ddbcf3e5bb193554d3bf2425fc22794789f7454f2f65ac584b271e07567411f2",
-      "bytes": 23435,
+      "sha256": "7a87e4603bdda4e289f0a99638cd9db9b1b2250d4fcc52e2b2ad4b30b77acd94",
+      "bytes": 36078,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1672,8 +1672,8 @@
     },
     {
       "path": "src/report.tsx",
-      "sha256": "b7c220c4c1dbad5aa981b88667006d34d6abbd4369c64889f781c6b087bc20de",
-      "bytes": 14655,
+      "sha256": "ad2eeac47d4807896335e0ce8471eb3fa76386d181eb5fac28ede1bf5f44bfd8",
+      "bytes": 14831,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1714,8 +1714,8 @@
     },
     {
       "path": "test/e2e/csp.e2e.mjs",
-      "sha256": "967ab25dcceda7e56fc85bbbcf1f1c08d7f35c0964b5dab21cf5d0ed975350ab",
-      "bytes": 4886,
+      "sha256": "6d0e0b080ce5130cd864305cf0e4c312d57ee207e6a785afcc208c8f380cbb34",
+      "bytes": 4912,
       "category": "synthetic-test-source-or-fixture"
     },
     {
@@ -1726,8 +1726,8 @@
     },
     {
       "path": "test/e2e/report-public.e2e.mjs",
-      "sha256": "df58bb4b5dbf5ade6e3150c3d0c2ca8448172511eccff980d1ce75d601873686",
-      "bytes": 10784,
+      "sha256": "beac58f582b4221bf950488e9a8e403a431a91adeeeb1c5780faee7e4d71b25c",
+      "bytes": 10805,
       "category": "synthetic-test-source-or-fixture"
     },
     {
@@ -1762,8 +1762,8 @@
     },
     {
       "path": "test/legal.test.mjs",
-      "sha256": "3dd39d4479c92bcdb35ea6a9fd0039fbb9bb696f049cae6b3a8173370b131e78",
-      "bytes": 17131,
+      "sha256": "1e1efb8f4fa7b987520efc6bdb8eec74c3f7b6edd046d05cb172aeaf29d0bf48",
+      "bytes": 17614,
       "category": "synthetic-test-source-or-fixture"
     },
     {
