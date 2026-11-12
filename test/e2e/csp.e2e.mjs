@@ -12,8 +12,9 @@ import { pathToFileURL } from "node:url";
 
 import { serveDist } from "./static-server.mjs";
 
+// the zrzur.com policy from self-hosted production/Caddyfile: Turnstile, not hCaptcha (2026-11-12)
 export const POLICY =
-  "default-src 'self'; script-src 'self' https://hcaptcha.com https://*.hcaptcha.com; style-src 'self' 'unsafe-inline' https://hcaptcha.com https://*.hcaptcha.com; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.zrzur.com https://hcaptcha.com https://*.hcaptcha.com; frame-src https://hcaptcha.com https://*.hcaptcha.com; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'";
+  "default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.zrzur.com https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'";
 
 const from = process.env.E2E_PLAYWRIGHT_FROM;
 if (!from) {

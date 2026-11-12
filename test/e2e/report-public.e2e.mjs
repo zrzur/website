@@ -48,10 +48,10 @@ async function secondReportWithCheck(lang, text, tag, viewport) {
   const context = await browser.newContext({ viewport, locale: lang });
   const page = await context.newPage();
   const sent = [];
-  await page.route("**/js.hcaptcha.com/**", (route) =>
+  await page.route("**/challenges.cloudflare.com/turnstile/**", (route) =>
     route.fulfill({
       contentType: "text/javascript",
-      body: `window.hcaptcha = { n: 0, render(el, o) { const id = ++this.n; el.dataset.rendered = id; o.callback("token-" + id); return id; }, reset() {} };`,
+      body: `window.turnstile = { n: 0, render(el, o) { const id = ++this.n; el.dataset.rendered = id; o.callback("token-" + id); return id; }, reset() {} };`,
     }),
   );
   await page.route(/:14702\/$/, (route) =>
