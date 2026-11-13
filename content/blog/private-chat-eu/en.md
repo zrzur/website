@@ -2,6 +2,7 @@
 title: A privacy-friendly chat app hosted in the EU: what Zrzur keeps, and for how long
 summary: Where Zrzur's servers are, which companies help us run it, what is encrypted and what is not, how long we keep logs, and how you download or delete your data. Plain answers, no fine print.
 date: 2026-11-13
+cover: /blog/private-chat-eu/cover.jpg
 tags: privacy, GDPR, chat app EU, data protection, secure chat
 ---
 When you pick a chat app for your friends or your community, you are also picking who holds your messages. We think you should be able to answer that in one minute, not after reading forty pages. This post gives the plain answers: where Zrzur runs, who helps us, what we keep, for how long, and what you can do about it. The full details are in our [privacy policy](/legal/privacy).

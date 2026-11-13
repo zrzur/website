@@ -2,6 +2,7 @@
 title: So richtest du einen Community-Server ein: Kanäle, Rollen, Lobby und Willkommensfragen
 summary: Eine Schritt-für-Schritt-Anleitung für deinen Community-Server auf Zrzur: Kanäle und Kategorien, Rollen, eine Lobby für Neue, Willkommensfragen, Regeln, Einladungen und Entdecken.
 date: 2026-11-13
+cover: /blog/set-up-community-server/cover.jpg
 tags: Community-Server, Server einrichten, Server-Setup, Onboarding, Discord-Alternative
 ---
 Ein guter Community-Server ist mehr als eine Liste von Kanälen. Er ist ein Ort, an dem Neue in zehn Sekunden verstehen, worum es geht, die richtigen Kanäle finden und sich willkommen fühlen. Diese Anleitung führt dich Schritt für Schritt durch die Einrichtung eines Servers auf Zrzur, vom ersten Kanal bis zu den ersten hundert Mitgliedern.

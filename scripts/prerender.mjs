@@ -19,7 +19,7 @@ import { LOCALES, localizedPath, tagOf } from "../src/i18n.ts";
 import { canonicalUrl } from "../src/config.ts";
 import { legalDocuments } from "../src/legal.ts";
 import { localize } from "../src/content.ts";
-import { canonicalLanguage, pageLanguages } from "../src/seo.ts";
+import { canonicalLanguage, metaDescription, metaTitle, pageLanguages } from "../src/seo.ts";
 import { heroPreload } from "../src/shots.ts";
 import { readProductVersions } from "./product-versions.mjs";
 import { stripSsrScripts } from "./ssr-scripts.mjs";
@@ -112,13 +112,13 @@ function pageWords(path, code) {
   const post = path.startsWith("/blog/") ? posts.find((entry) => `/blog/${entry.slug}` === path) : null;
   const doc = legalDocuments.find((entry) => path === `/legal/${entry.slug}`);
   // a heading may end in a full stop ("Zrzur on your computer."); a tab title does not
-  const of = (title, description) => ({ title: `${title.replace(/[.。]$/u, "")} — ${t.brand}`, description });
+  const of = (title, description) => ({ title: metaTitle(title, t.brand, code), description: metaDescription(description, code) });
   if (path === "/") return { title: t.seoHomeTitle, description: t.seoHomeBody };
-  if (path === "/features") return of(t.features, t.featuresBody);
-  if (path === "/project") return of(t.project, t.projectBody);
-  if (path === "/download") return of(t.downloadTitle, t.downloadBody);
-  if (path === "/guide") return of(t.help, t.helpBody);
-  if (path === "/blog") return of(t.blog, t.blogBody);
+  if (path === "/features") return of(t.seoFeaturesTitle, t.seoFeaturesBody);
+  if (path === "/project") return of(t.seoProjectTitle, t.seoProjectBody);
+  if (path === "/download") return of(t.seoDownloadTitle, t.seoDownloadBody);
+  if (path === "/guide") return of(t.seoGuideTitle, t.seoGuideBody);
+  if (path === "/blog") return of(t.seoBlogTitle, t.seoBlogBody);
   if (post) return { ...of(textOf(post, code).title, textOf(post, code).summary), post };
   if (path === "/report") return of(t.reportTitle, t.reportIntro);
   if (path === "/legal") return of(t.legalTitle, t.legalIntro);
@@ -150,6 +150,23 @@ function structured(path, code, words) {
     });
   if (path === "/guide")
     graph.push({ "@type": "FAQPage", inLanguage: tagOf(code), mainEntity: packs[code].faqs.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })) });
+  // the blog list names its posts, newest first, each at its canonical address
+  if (path === "/blog")
+    graph.push({
+      "@type": "Blog",
+      name: words.title,
+      description: words.description,
+      url: url(path, code),
+      inLanguage: tagOf(code),
+      publisher: { "@id": `${SITE}/#org` },
+      blogPost: posts.map((entry) => ({
+        "@type": "BlogPosting",
+        headline: textOf(entry, code).title,
+        datePublished: entry.date,
+        url: url(`/blog/${entry.slug}`, canonicalLanguage(`/blog/${entry.slug}`, code)),
+        image: `${SITE}${entry.cover ?? "/brand/og-image.png"}`,
+      })),
+    });
   if (words.post)
     graph.push({
       "@type": "BlogPosting",

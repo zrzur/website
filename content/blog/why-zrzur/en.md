@@ -2,6 +2,7 @@
 title: Why we are building Zrzur
 summary: We liked an open-source chat project, but not its design, and it lacked a lot. So we set out to build a real, professional alternative to Discord.
 date: 2026-11-08
+cover: /blog/why-zrzur/cover.jpg
 tags: open source, design, Discord alternative
 ---
 Zrzur is a place where friends and communities meet: servers with text and voice channels, screen sharing, roles and permissions, in your browser and on Windows, macOS and Linux. We want it to be a professional alternative to Discord that is free and open source.

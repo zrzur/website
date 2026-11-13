@@ -2,6 +2,7 @@
 title: An Arabic chat app from the ground up: Zrzur, right to left
 summary: Zrzur was built for Arabic from day one: the whole app right to left, more than five thousand strings in Modern Standard Arabic, a clear Arabic typeface and a ready filter for Arabic insults.
 date: 2026-11-13
+cover: /blog/arabic-chat-app/cover.jpg
 tags: Arabic chat app, Arabic Discord alternative, right to left, Arabic communities, voice chat
 ---
 Most chat apps were made in English first, with Arabic added later: buttons in the wrong place, word-for-word translations, text that jumps between left and right. Zrzur is different. We built it with Arabic speakers in mind from the first day, and even its name is Arabic: the زرزور, the starling, is a bird that flies in large flocks, which is how we see communities. This post explains what it means for a chat app to be Arabic from the ground up.

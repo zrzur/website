@@ -2,6 +2,7 @@
 title: Tu cherches une alternative à Discord ? Voici tout ce que fait Zrzur
 summary: Serveurs, salons vocaux, partage d'écran, rôles et bots, gratuit et open source. Ce que tu connais de Discord, comment ça marche dans Zrzur, et comment faire venir ta communauté.
 date: 2026-11-13
+cover: /blog/discord-alternative/cover.jpg
 tags: alternative à Discord, chat gratuit, open source, chat vocal, communauté
 ---
 Si tu animes une communauté sur Discord, ou si tu y retrouves simplement tes amis, tu sais déjà ce qu'est une bonne app de discussion : un serveur pour ton groupe, un salon pour chaque sujet, un salon vocal où passer à tout moment. Zrzur fonctionne de la même façon. Il est gratuit, open source, hébergé dans l'Union européenne et pensé dès le départ pour l'arabe. Cet article reprend ce que tu connais déjà, montre comment ça marche dans Zrzur et explique comment faire venir ta communauté.

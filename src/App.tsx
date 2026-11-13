@@ -12,6 +12,7 @@ import {
   onMount,
   type JSX,
 } from "solid-js";
+import { Portal } from "solid-js/web";
 import { features, type Label, type Pack } from "./content";
 import { VoiceChannels } from "./demo";
 import type { Flock } from "./flock";
@@ -30,7 +31,7 @@ import {
 import { legalFooterLinks, legalSlugs } from "./legal-nav";
 import { Icon } from "./icon";
 import { hasPost, loadPosts, type Post } from "./blog";
-import { canonicalLanguage, pageLanguages } from "./seo";
+import { canonicalLanguage, metaDescription, metaTitle, pageLanguages } from "./seo";
 import { HERO_SIZES, shotFiles } from "./shots";
 import { loadReportText } from "./report-text";
 import type { Block, Inline } from "./blog-md";
@@ -226,16 +227,18 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
         : page === "report"
           ? t("reportTitle")
         : page === "blog"
-          ? (post()?.text.title ?? t("blog"))
-          : t(({ features: "features", project: "project", download: "downloadTitle", guide: "help", "404": "notFound" } as const)[page as "features"]);
-    // a heading may end in a full stop; the tab title does not (same as the prerender)
-    document.title = page === "home" ? t("seoHomeTitle") : `${title.replace(/[.。]$/u, "")} — ${t("brand")}`;
-    const description =
+          ? (post()?.text.title ?? t("seoBlogTitle"))
+          : t(({ features: "seoFeaturesTitle", project: "seoProjectTitle", download: "seoDownloadTitle", guide: "seoGuideTitle", "404": "notFound" } as const)[page as "features"]);
+    // the same title and description as the prerendered page (src/seo.ts)
+    document.title = page === "home" ? t("seoHomeTitle") : metaTitle(title, t("brand"), code);
+    const description = metaDescription(
       page === "report"
         ? t("reportIntro")
         : page === "blog"
-          ? (post()?.text.summary ?? t("blogBody"))
-          : t(({ home: "seoHomeBody", features: "featuresBody", project: "projectBody", download: "downloadBody", guide: "helpBody", "404": "notFoundBody", legal: "legalIntro" } as const)[page as "home"]);
+          ? (post()?.text.summary ?? t("seoBlogBody"))
+          : t(({ home: "seoHomeBody", features: "seoFeaturesBody", project: "seoProjectBody", download: "seoDownloadBody", guide: "seoGuideBody", "404": "notFoundBody", legal: "legalIntro" } as const)[page as "home"]),
+      code,
+    );
     const meta = (selector: string, value: string) =>
       document.querySelector(selector)?.setAttribute("content", value);
     meta('meta[name="description"]', description);
@@ -402,10 +405,41 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
     let button!: HTMLButtonElement;
     let list: HTMLDivElement | undefined;
     const current = () => LOCALES.find((locale) => locale.code === language())!;
+    /**
+     * The list lives in <body>, not in the header or footer: the footer cuts
+     * off whatever leaves its box, which hid the first languages. It goes
+     * where it fits whole: above the footer's button, below the header's,
+     * the other way when there is more room there.
+     */
+    function place() {
+      if (!list) return;
+      const gap = 8;
+      const edge = 8;
+      const at = button.getBoundingClientRect();
+      if (props.up) list.style.width = `${at.width}px`;
+      list.style.maxHeight = "";
+      const height = list.offsetHeight;
+      const width = list.offsetWidth;
+      const above = at.top - gap - edge;
+      const below = window.innerHeight - at.bottom - gap - edge;
+      const up = props.up ? above >= height || above > below : below < height && above > below;
+      const room = Math.max(up ? above : below, 132);
+      if (height > room) list.style.maxHeight = `${room}px`;
+      const shown = Math.min(height, room);
+      const rtl = document.documentElement.dir === "rtl";
+      // the footer's list starts with its button, the header's ends with it
+      const fromStart = !!props.up !== rtl;
+      const left = fromStart ? at.left : at.right - width;
+      list.style.left = `${Math.max(edge, Math.min(left, window.innerWidth - width - edge)) + window.scrollX}px`;
+      list.style.top = `${(up ? at.top - gap - shown : at.bottom + gap) + window.scrollY}px`;
+    }
     function show() {
       setFocus(LOCALES.findIndex((locale) => locale.code === language()));
       setOpen(true);
-      queueMicrotask(() => list?.focus());
+      queueMicrotask(() => {
+        place();
+        list?.focus({ preventScroll: true });
+      });
     }
     function hide(returnFocus = true) {
       setOpen(false);
@@ -436,8 +470,17 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
     }
     onMount(() => {
       const outside = (event: PointerEvent) => {
-        if (open() && !root.contains(event.target as Node)) hide(false);
+        const target = event.target as Node;
+        if (open() && !root.contains(target) && !list?.contains(target)) hide(false);
       };
+      const moved = () => open() && place();
+      window.addEventListener("resize", moved);
+      // the header stays in place while the page scrolls under it
+      window.addEventListener("scroll", moved, { passive: true });
+      onCleanup(() => {
+        window.removeEventListener("resize", moved);
+        window.removeEventListener("scroll", moved);
+      });
       document.addEventListener("pointerdown", outside);
       onCleanup(() => document.removeEventListener("pointerdown", outside));
     });
@@ -463,10 +506,11 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
           <span lang={current().tag}>{current().name}</span>
         </button>
         <Show when={open()}>
+          <Portal>
           <div
             ref={list}
             id={`${props.id}-list`}
-            classList={{ "language-list": true, "opens-up": !!props.up }}
+            class="language-list"
             role="listbox"
             tabindex="-1"
             aria-label={t("language")}
@@ -499,6 +543,7 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
               )}
             </For>
           </div>
+          </Portal>
         </Show>
       </div>
     );
@@ -597,7 +642,6 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
       <section class="home-screen home-start" aria-labelledby="closing-title">
         <div class="container">
           <div class="home-end" data-rise>
-            <div class="home-light home-light-end" aria-hidden="true" />
             <span class="home-end-mark brand-symbol" aria-hidden="true" />
             <h2 id="closing-title">{t("endTitle")}</h2>
             <p>{t("startBody")}</p>
@@ -722,7 +766,6 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
             start side, the flock writing the name beside them on the end side,
             and the real window under both */}
         <section class="home-hero" aria-labelledby="hero-title">
-          <div class="home-light" aria-hidden="true" />
           <div class="container home-hero-top">
             <div class="home-hero-words">
               <h1 id="hero-title">{t("heroTitle")}</h1>
@@ -768,16 +811,16 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
         <section class="home-screen home-why" id="why" aria-labelledby="why-title">
           <div class="container">
             <h2 id="why-title" data-rise>{t("whyTitle")}</h2>
-            <div class="home-why-grid" data-rise>
+            <dl class="home-why-grid" data-rise>
               <For each={["why1", "why2", "why3", "why4"] as const}>
                 {(key) => (
-                  <article>
-                    <h3>{t(key)}</h3>
-                    <p>{t(`${key}Body` as Label)}</p>
-                  </article>
+                  <div>
+                    <dt>{t(key)}</dt>
+                    <dd>{t(`${key}Body` as Label)}</dd>
+                  </div>
                 )}
               </For>
-            </div>
+            </dl>
             <a class="text-link home-why-link" href={SOURCE_URL} target="_blank" rel="noopener noreferrer">
               {t("homeOpenSource")}
               <Icon name="arrow" class="directional" />
@@ -794,7 +837,6 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
         <section class="home-screen home-start" aria-labelledby="start-title">
           <div class="container">
             <div class="home-end" data-rise>
-              <div class="home-light home-light-end" aria-hidden="true" />
               <span class="home-end-mark brand-symbol" aria-hidden="true" />
               <h2 id="start-title">{t("endTitle")}</h2>
               <p>{t("startBody")}</p>
@@ -887,7 +929,6 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
                 classList={{ "feature-tile": true, "feature-wide": wide(index()), [`feature-${feature.view}`]: true }}
                 data-rise
               >
-                <span class="feature-icon" aria-hidden="true"><Icon name={feature.icon} /></span>
                 <h2>{pack().features[feature.id].title}</h2>
                 <p>{pack().features[feature.id].body}</p>
                 <div class="feature-proof">
@@ -1074,8 +1115,22 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
           return <img class="blog-image" src={block.src} alt={block.alt} loading="lazy" decoding="async" />;
       }
     };
-    const Card = (props: { entry: Post }) => (
-      <article class="blog-card" data-rise lang={props.entry.language !== language() ? tagOf(props.entry.language) : undefined}>
+    /** A post in the list: its picture, then date, title and summary; the first one is shown large */
+    const Card = (props: { entry: Post; lead?: boolean }) => (
+      <article
+        classList={{ "blog-card": true, "blog-card-lead": !!props.lead }}
+        data-rise
+        lang={props.entry.language !== language() ? tagOf(props.entry.language) : undefined}
+      >
+        <Show when={props.entry.cover}>
+          {(cover) => (
+            // the title below is the link people read; this one only makes the picture clickable
+            <a class="blog-card-cover" href={href(`/blog/${props.entry.slug}`)} tabindex="-1" aria-hidden="true">
+              <img class="blog-card-image" src={cover()} alt="" width="1200" height="630" loading={props.lead ? "eager" : "lazy"} decoding="async" />
+            </a>
+          )}
+        </Show>
+        <div class="blog-card-text">
         <p class="blog-meta">
           <time dateTime={props.entry.date}>{date(props.entry.date)}</time>
           <span>{minutes(props.entry.minutes)}</span>
@@ -1088,6 +1143,7 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
           {t("blogRead")}
           <Icon name="arrow" class="directional" />
         </a>
+        </div>
       </article>
     );
     return (
@@ -1098,7 +1154,7 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
             <PageHeading title="blogTitle" body="blogBody" words={t("flockName")} />
             <section class="container blog-list" aria-label={t("blog")}>
               <Show when={posts().length} fallback={<p>{t("blogEmpty")}</p>}>
-                <For each={posts()}>{(entry) => <Card entry={entry} />}</For>
+                <For each={posts()}>{(entry, index) => <Card entry={entry} lead={index() === 0} />}</For>
               </Show>
               <a class="text-link blog-feed" href={feed()}>{t("blogFeed")}</a>
             </section>
@@ -1108,7 +1164,7 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
         {(entry) => {
           const text = () => entry().text;
           const sections = () => text().blocks.flatMap((block) => (block.kind === "h2" ? [block] : []));
-          const others = () => posts().filter((other) => other.slug !== entry().slug).slice(0, 2);
+          const others = () => posts().filter((other) => other.slug !== entry().slug).slice(0, 3);
           return (
             <>
               <article class="container blog-post" lang={entry().language !== language() ? tagOf(entry().language) : undefined}>
@@ -1124,7 +1180,7 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
                 <h1>{text().title}</h1>
                 <p class="blog-lead">{text().summary}</p>
                 <Show when={entry().cover}>
-                  {(cover) => <img class="blog-cover" src={cover()} alt="" width="1200" height="630" />}
+                  {(cover) => <img class="blog-cover" src={cover()} alt="" width="1200" height="630" fetchpriority="high" decoding="async" />}
                 </Show>
                 <Show when={sections().length > 2}>
                   <nav class="blog-contents" aria-label={t("blogContents")}>

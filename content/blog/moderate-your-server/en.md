@@ -2,6 +2,7 @@
 title: How to keep your community server safe: AutoMod, slowmode and emergency pauses
 summary: Roles, AutoMod filters, slowmode, timeouts, bans, the audit log and one-click pauses for raids. A practical guide to moderating a community on Zrzur.
 date: 2026-11-13
+cover: /blog/moderate-your-server/cover.jpg
 tags: moderation, AutoMod, community safety, server moderation, anti-spam
 ---
 A community grows best when people feel safe in it. That does not need a large moderation team: it needs good tools, set up once, that do the boring part for you. This guide walks through the moderation tools in Zrzur, from roles to emergency pauses, and how to set each one up.

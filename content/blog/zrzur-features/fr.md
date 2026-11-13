@@ -2,6 +2,7 @@
 title: Zrzur : pourquoi nous l'avons créé, et tout ce qu'il sait faire
 summary: Discuter ne devrait pas coûter un abonnement. Nous avons redessiné un projet open source et ajouté beaucoup. Voici pourquoi, et tout ce que fait Zrzur.
 date: 2026-11-12
+cover: /blog/zrzur-features/cover.jpg
 tags: alternative à Discord, open source, chat gratuit, serveurs, chat vocal
 ---
 Zrzur est un lieu gratuit où se retrouvent amis et communautés : des serveurs avec des salons textuels et vocaux, le partage d'écran, des rôles et des permissions, dans ton navigateur et sur Windows, macOS et Linux. Dans cet article, nous expliquons pourquoi nous l'avons créé et nous passons en revue tout ce qu'il sait faire aujourd'hui.

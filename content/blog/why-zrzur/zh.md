@@ -2,6 +2,7 @@
 title: 我们为什么要做 Zrzur
 summary: 我们喜欢一个开源聊天项目，却不满意它的设计，它也缺少很多东西。于是我们决定打造一个真正专业的 Discord 替代品。
 date: 2026-11-08
+cover: /blog/why-zrzur/cover.jpg
 tags: 开源, 设计, Discord 替代品
 ---
 Zrzur 是朋友和社区相聚的地方：带文字和语音频道的服务器、屏幕共享、角色和权限，可以在浏览器中使用，也支持 Windows、macOS 和 Linux。我们希望它成为一个免费、开源、专业的 Discord 替代品。

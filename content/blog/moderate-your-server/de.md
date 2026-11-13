@@ -2,6 +2,7 @@
 title: So schützt du deinen Community-Server: AutoMod, Slowmode und Notfall-Pausen
 summary: Rollen, AutoMod-Filter, Slowmode, Timeouts, Sperren, das Protokoll und Pausen per Klick bei Raids. Ein praktischer Leitfaden für die Moderation einer Community auf Zrzur.
 date: 2026-11-13
+cover: /blog/moderate-your-server/cover.jpg
 tags: Moderation, AutoMod, Community-Sicherheit, Server-Moderation, Anti-Spam
 ---
 Eine Community wächst am besten, wenn sich die Leute darin sicher fühlen. Dafür braucht es kein großes Moderationsteam, sondern gute Werkzeuge, die du einmal einrichtest und die dir den langweiligen Teil abnehmen. Dieser Leitfaden geht die Moderationswerkzeuge in Zrzur durch, von Rollen bis zu Notfall-Pausen, und zeigt, wie du jedes einrichtest.

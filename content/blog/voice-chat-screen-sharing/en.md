@@ -2,6 +2,7 @@
 title: Free voice chat and screen sharing for your community
 summary: Voice channels you drop into, screen sharing with sound, stage channels, a soundboard with 115 sounds and clean microphone settings. How voice works in Zrzur, all free.
 date: 2026-11-13
+cover: /blog/voice-chat-screen-sharing/cover.jpg
 tags: voice chat, screen sharing, free voice chat, soundboard, community
 ---
 Text is good for keeping things. Voice is where a community comes alive: a late game night, a study group, a friend who wants to show you something on their screen. In Zrzur, all of this is free for everyone. This post explains how voice works, what you can set up, and what each setting does.

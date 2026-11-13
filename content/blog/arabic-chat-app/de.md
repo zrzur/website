@@ -2,6 +2,7 @@
 title: Eine arabische Chat-App von Grund auf: Zrzur, von rechts nach links
 summary: Zrzur ist von Anfang an für Arabisch gebaut: die ganze App von rechts nach links, über fünftausend Texte in Hocharabisch, eine klare Schrift und ein Filter für arabische Beleidigungen.
 date: 2026-11-13
+cover: /blog/arabic-chat-app/cover.jpg
 tags: arabische Chat-App, arabische Discord-Alternative, von rechts nach links, arabische Communitys, Sprachchat
 ---
 Die meisten Chat-Apps wurden zuerst auf Englisch gebaut, und Arabisch kam später dazu: Buttons an der falschen Stelle, Wort-für-Wort-Übersetzungen, Text, der zwischen links und rechts springt. Zrzur ist anders. Wir haben es vom ersten Tag an mit arabischsprachigen Menschen im Blick gebaut, und sogar der Name ist arabisch: Der زرزور, der Star, ist ein Vogel, der in großen Schwärmen fliegt, und so sehen wir Communitys. Dieser Beitrag erklärt, was es heißt, dass eine Chat-App von Grund auf arabisch ist.

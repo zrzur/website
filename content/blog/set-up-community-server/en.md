@@ -2,6 +2,7 @@
 title: How to set up a community server: channels, roles, lobby and welcome questions
 summary: A step-by-step guide to building a community server on Zrzur: channels and categories, roles, a lobby that welcomes newcomers, welcome questions, rules, invites and Discover.
 date: 2026-11-13
+cover: /blog/set-up-community-server/cover.jpg
 tags: community server, how to set up a server, server setup, onboarding, Discord alternative
 ---
 A good community server is not just a list of channels. It is a place where a newcomer understands in ten seconds what the community is about, finds the right channels, and feels welcome. This guide takes you through setting up a server on Zrzur, step by step, from the first channel to your first hundred members.

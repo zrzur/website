@@ -2,6 +2,7 @@
 title: Zrzur: warum wir es bauen und was es alles kann
 summary: Chatten sollte kein Monatsabo kosten. Wir haben ein Open-Source-Chatprojekt neu gestaltet und viel ergänzt. Hier steht, warum, und was Zrzur heute alles kann.
 date: 2026-11-12
+cover: /blog/zrzur-features/cover.jpg
 tags: Discord-Alternative, Open Source, kostenloser Chat, Server, Sprachchat
 ---
 Zrzur ist ein kostenloser Ort, an dem sich Freunde und Communitys treffen: Server mit Text- und Sprachkanälen, Bildschirmfreigabe, Rollen und Berechtigungen, im Browser und unter Windows, macOS und Linux. In diesem Beitrag erklären wir, warum wir es bauen, und zeigen dir alles, was es heute kann.

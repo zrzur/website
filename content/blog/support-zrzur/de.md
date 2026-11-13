@@ -2,6 +2,7 @@
 title: Wer Zrzur am Laufen hält, und wie du helfen kannst
 summary: Hinter Zrzur stehen keine Investoren und keine Werbung. Ein unabhängiges Projekt, aus eigener Tasche bezahlt und in der Freizeit gebaut. Was es kostet, wo seine Grenzen sind und wie du hilfst.
 date: 2026-11-13
+cover: /blog/support-zrzur/cover.jpg
 tags: Zrzur unterstützen, Ko-fi, Open Source, unabhängiges Projekt, Community
 ---
 Zrzur ist für alle kostenlos: Reden, Telefonieren, Bildschirm teilen und eine Community führen kosten nichts. Aber eine Chat-Plattform zu betreiben kostet Geld, jeden Tag. Dieser Beitrag sagt ehrlich, wer Zrzur bezahlt, was es kostet, wo heute unsere Grenzen sind und wie du helfen kannst, mit oder ohne Geld.

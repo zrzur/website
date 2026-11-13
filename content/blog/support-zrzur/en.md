@@ -2,6 +2,7 @@
 title: Who keeps Zrzur running, and how you can help
 summary: Zrzur has no investors and no ads. It is an independent project, paid for out of our own pocket and built in our free time. What it costs, where its limits are, and how you can help it grow.
 date: 2026-11-13
+cover: /blog/support-zrzur/cover.jpg
 tags: support Zrzur, Ko-fi, open source, independent project, community
 ---
 Zrzur is free for everyone: talking, calling, sharing your screen and running a community cost nothing. But running a chat platform does cost money, every day. This post is honest about who pays for Zrzur, what it costs, where our limits are today, and how you can help, with or without money.

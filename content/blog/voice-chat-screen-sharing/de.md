@@ -2,6 +2,7 @@
 title: Kostenloser Sprachchat und Bildschirm teilen für deine Community
 summary: Sprachkanäle zum Reinspringen, Bildschirm teilen mit Ton, Bühnenkanäle, ein Soundboard mit 115 Sounds und saubere Mikrofon-Einstellungen. So funktioniert Sprache in Zrzur, alles kostenlos.
 date: 2026-11-13
+cover: /blog/voice-chat-screen-sharing/cover.jpg
 tags: Sprachchat, Bildschirm teilen, kostenloser Sprachchat, Soundboard, Community
 ---
 Text ist gut, um Dinge festzuhalten. Mit Sprache wird eine Community lebendig: ein später Spieleabend, eine Lerngruppe, ein Freund, der dir etwas auf seinem Bildschirm zeigen will. In Zrzur ist das alles für alle kostenlos. Dieser Beitrag erklärt, wie Sprache funktioniert, was du einrichten kannst und was jede Einstellung macht.

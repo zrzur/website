@@ -2,6 +2,7 @@
 title: Por qué construimos Zrzur
 summary: Nos gustaba un proyecto de chat de código abierto, pero no su diseño, y le faltaban muchas cosas. Así que decidimos construir una alternativa real y profesional a Discord.
 date: 2026-11-08
+cover: /blog/why-zrzur/cover.jpg
 tags: código abierto, diseño, alternativa a Discord
 ---
 Zrzur es un lugar donde se reúnen amigos y comunidades: servidores con canales de texto y de voz, pantalla compartida, roles y permisos, en tu navegador y en Windows, macOS y Linux. Queremos que sea una alternativa profesional a Discord, gratuita y de código abierto.

@@ -2,6 +2,7 @@
 title: Eine datenschutzfreundliche Chat-App aus der EU: was Zrzur speichert und wie lange
 summary: Wo die Server von Zrzur stehen, welche Firmen uns helfen, was verschlüsselt ist und was nicht, wie lange wir Protokolle aufbewahren und wie du deine Daten herunterlädst oder löschst. Klare Antworten.
 date: 2026-11-13
+cover: /blog/private-chat-eu/cover.jpg
 tags: Datenschutz, DSGVO, Chat-App EU, Datensicherheit, sicherer Chat
 ---
 Wenn du eine Chat-App für deine Freunde oder deine Community auswählst, wählst du auch, wer deine Nachrichten aufbewahrt. Wir finden, das solltest du in einer Minute beantworten können, nicht nach vierzig Seiten. Dieser Beitrag gibt die klaren Antworten: wo Zrzur läuft, wer uns hilft, was wir speichern, wie lange und was du tun kannst. Alle Einzelheiten stehen in unserer [Datenschutzerklärung](/de/legal/privacy).
