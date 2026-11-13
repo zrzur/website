@@ -1306,8 +1306,8 @@
     },
     {
       "path": "scripts/prerender.mjs",
-      "sha256": "ae61606b76df5263febd6775017cc97fa31af267a214b8e7b00a791d5ef66bbe",
-      "bytes": 18046,
+      "sha256": "d52820382d9a1f8f1040e08cd898c7ba9fb5b1457a528b6da122b0ed0987a4e5",
+      "bytes": 18371,
       "category": "reviewed-build-and-ci"
     },
     {
@@ -1378,8 +1378,8 @@
     },
     {
       "path": "src/App.tsx",
-      "sha256": "951338f14bdbc92590b2051a67a4ec2bbe53119a7822b6e102a0fa3cadd3dbe2",
-      "bytes": 55597,
+      "sha256": "e58d74d269d21150d4b0fd9b126b81dab4461f7b0e272a3d4dbfda638ddd74ba",
+      "bytes": 55709,
       "category": "product-source-or-build-manifest"
     },
     {

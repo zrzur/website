@@ -226,7 +226,8 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
         : page === "blog"
           ? (post()?.text.title ?? t("blog"))
           : t(({ features: "features", project: "project", download: "downloadTitle", guide: "help", "404": "notFound" } as const)[page as "features"]);
-    document.title = page === "home" ? t("seoHomeTitle") : `${title} — ${t("brand")}`;
+    // a heading may end in a full stop; the tab title does not (same as the prerender)
+    document.title = page === "home" ? t("seoHomeTitle") : `${title.replace(/[.。]$/u, "")} — ${t("brand")}`;
     const description =
       page === "report"
         ? t("reportIntro")

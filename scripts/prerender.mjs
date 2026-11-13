@@ -111,7 +111,8 @@ function pageWords(path, code) {
   const t = labels[code];
   const post = path.startsWith("/blog/") ? posts.find((entry) => `/blog/${entry.slug}` === path) : null;
   const doc = legalDocuments.find((entry) => path === `/legal/${entry.slug}`);
-  const of = (title, description) => ({ title: `${title} — ${t.brand}`, description });
+  // a heading may end in a full stop ("Zrzur on your computer."); a tab title does not
+  const of = (title, description) => ({ title: `${title.replace(/[.。]$/u, "")} — ${t.brand}`, description });
   if (path === "/") return { title: t.seoHomeTitle, description: t.seoHomeBody };
   if (path === "/features") return of(t.features, t.featuresBody);
   if (path === "/project") return of(t.project, t.projectBody);
@@ -224,6 +225,8 @@ async function page(path, code) {
     .replace('<div id="root"></div>', `<div id="root" data-prerendered="${notFound ? "404" : esc(localizedPath(path, code))}">${app}</div>`);
   for (const needed of [`<html lang="${tagOf(code)}"`, wordsMeta, "<title>", notFound ? 'name="robots"' : 'rel="canonical"', "application/ld+json", "data-prerendered"])
     if (!html.includes(needed)) throw new Error(`${path} ${code}: ${needed} missing`);
+  // a tab title never carries a heading's full stop ("… computer. — Zrzur")
+  if (/[.。] — /u.test(words.title)) throw new Error(`${path} ${code}: title "${words.title}" has a full stop before the name`);
   return html;
 }
 
