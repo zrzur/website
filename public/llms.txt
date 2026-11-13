@@ -21,6 +21,11 @@ Key facts:
 ## Blog
 
 - [Looking for a Discord alternative? Here is everything Zrzur does](https://zrzur.com/blog/discord-alternative)
+- [Free voice chat and screen sharing for your community](https://zrzur.com/blog/voice-chat-screen-sharing)
+- [How to keep your community server safe: AutoMod, slowmode and emergency pauses](https://zrzur.com/blog/moderate-your-server)
+- [How to set up a community server: channels, roles, lobby and welcome questions](https://zrzur.com/blog/set-up-community-server)
+- [An Arabic chat app from the ground up: Zrzur, right to left](https://zrzur.com/blog/arabic-chat-app)
+- [A privacy-friendly chat app hosted in the EU: what Zrzur keeps, and for how long](https://zrzur.com/blog/private-chat-eu)
 - [Zrzur: why we built it, and everything it can do](https://zrzur.com/blog/zrzur-features)
 - [Why we are building Zrzur](https://zrzur.com/blog/why-zrzur)
 

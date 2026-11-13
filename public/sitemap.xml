@@ -463,6 +463,30 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog"/>
   </url>
   <url>
+    <loc>https://zrzur.com/blog/arabic-chat-app</loc>
+    <lastmod>2026-11-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/arabic-chat-app"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/arabic-chat-app"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/arabic-chat-app"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/arabic-chat-app"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/de/blog/arabic-chat-app</loc>
+    <lastmod>2026-11-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/arabic-chat-app"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/arabic-chat-app"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/arabic-chat-app"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/arabic-chat-app"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/ar/blog/arabic-chat-app</loc>
+    <lastmod>2026-11-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/arabic-chat-app"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/arabic-chat-app"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/arabic-chat-app"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/arabic-chat-app"/>
+  </url>
+  <url>
     <loc>https://zrzur.com/blog/discord-alternative</loc>
     <lastmod>2026-11-13</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/discord-alternative"/>
@@ -545,6 +569,102 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://zrzur.com/ru/blog/discord-alternative"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://zrzur.com/zh/blog/discord-alternative"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/discord-alternative"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/blog/moderate-your-server</loc>
+    <lastmod>2026-11-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/moderate-your-server"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/moderate-your-server"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/moderate-your-server"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/moderate-your-server"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/de/blog/moderate-your-server</loc>
+    <lastmod>2026-11-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/moderate-your-server"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/moderate-your-server"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/moderate-your-server"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/moderate-your-server"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/ar/blog/moderate-your-server</loc>
+    <lastmod>2026-11-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/moderate-your-server"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/moderate-your-server"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/moderate-your-server"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/moderate-your-server"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/blog/private-chat-eu</loc>
+    <lastmod>2026-11-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/private-chat-eu"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/private-chat-eu"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/private-chat-eu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/private-chat-eu"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/de/blog/private-chat-eu</loc>
+    <lastmod>2026-11-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/private-chat-eu"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/private-chat-eu"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/private-chat-eu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/private-chat-eu"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/ar/blog/private-chat-eu</loc>
+    <lastmod>2026-11-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/private-chat-eu"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/private-chat-eu"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/private-chat-eu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/private-chat-eu"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/blog/set-up-community-server</loc>
+    <lastmod>2026-11-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/set-up-community-server"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/set-up-community-server"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/set-up-community-server"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/set-up-community-server"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/de/blog/set-up-community-server</loc>
+    <lastmod>2026-11-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/set-up-community-server"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/set-up-community-server"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/set-up-community-server"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/set-up-community-server"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/ar/blog/set-up-community-server</loc>
+    <lastmod>2026-11-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/set-up-community-server"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/set-up-community-server"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/set-up-community-server"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/set-up-community-server"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/blog/voice-chat-screen-sharing</loc>
+    <lastmod>2026-11-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/voice-chat-screen-sharing"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/voice-chat-screen-sharing"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/voice-chat-screen-sharing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/voice-chat-screen-sharing"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/de/blog/voice-chat-screen-sharing</loc>
+    <lastmod>2026-11-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/voice-chat-screen-sharing"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/voice-chat-screen-sharing"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/voice-chat-screen-sharing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/voice-chat-screen-sharing"/>
+  </url>
+  <url>
+    <loc>https://zrzur.com/ar/blog/voice-chat-screen-sharing</loc>
+    <lastmod>2026-11-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zrzur.com/blog/voice-chat-screen-sharing"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zrzur.com/de/blog/voice-chat-screen-sharing"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://zrzur.com/ar/blog/voice-chat-screen-sharing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zrzur.com/blog/voice-chat-screen-sharing"/>
   </url>
   <url>
     <loc>https://zrzur.com/blog/zrzur-features</loc>
