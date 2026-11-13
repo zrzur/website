@@ -1,0 +1,36 @@
+# Zrzur
+
+> Zrzur (Arabic: زرزور) is a free, open-source alternative to Discord: a chat app for friends and communities with servers, text and voice channels, screen sharing, files, roles and member management. It runs in the browser at https://app.zrzur.com and as a desktop app for Windows, macOS and Linux. Arabic (right to left), English and German are fully supported.
+
+Key facts:
+
+- Free: there is nothing to pay in the current version, no subscription and no checkout.
+- Open source under the GNU AGPL-3.0, built on an open-source foundation with licences and contributor credit kept intact.
+- Servers are hosted in the European Union (Frankfurt am Main, Germany); Zrzur is run from Austria by the Zrzur team as a non-commercial project in its beta phase.
+- Web app: https://app.zrzur.com. Invite links use https://zrzur.cc/<code>.
+- Public servers can be found on Discover: https://discover.zrzur.com.
+
+## Main pages
+
+- [Home](https://zrzur.com/): what Zrzur is and who it is for
+- [Features](https://zrzur.com/features): servers and channels, voice and screen sharing, files, roles and permissions, Discover, appearance
+- [Download](https://zrzur.com/download): the desktop app for Windows, macOS and Linux, or use it in the browser
+- [Guide](https://zrzur.com/guide): a short guide to finding your way around
+- [About the project](https://zrzur.com/project): where Zrzur comes from and how it is built
+
+## Blog
+
+- [Zrzur: why we built it, and everything it can do](https://zrzur.com/blog/zrzur-features)
+- [Why we are building Zrzur](https://zrzur.com/blog/why-zrzur)
+
+## Policies
+
+- [Terms](https://zrzur.com/legal/terms)
+- [Privacy](https://zrzur.com/legal/privacy)
+- [Community guidelines](https://zrzur.com/legal/community-guidelines)
+- [Imprint](https://zrzur.com/legal/imprint)
+- [Contact](https://zrzur.com/legal/contact)
+
+## Other languages
+
+The website is also in Arabic (https://zrzur.com/ar), German (https://zrzur.com/de), French (https://zrzur.com/fr), Spanish (https://zrzur.com/es), Russian (https://zrzur.com/ru) and Simplified Chinese (https://zrzur.com/zh).

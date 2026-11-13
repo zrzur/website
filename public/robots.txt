@@ -1,4 +1,23 @@
+# Search engines and AI assistants are welcome on zrzur.com: we want people
+# to find Zrzur, and assistants to answer questions about it correctly.
+# Content signals: search = list our pages; ai-input = use them to answer questions.
+
 User-agent: *
+Content-Signal: search=yes, ai-input=yes
+Allow: /
+
+# the AI search and answer crawlers, named so each finds its own group
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+Content-Signal: search=yes, ai-input=yes
 Allow: /
 
 Sitemap: https://zrzur.com/sitemap.xml

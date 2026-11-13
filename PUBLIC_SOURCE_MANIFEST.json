@@ -1233,9 +1233,15 @@
       "category": "reviewed-product-asset"
     },
     {
+      "path": "public/llms.txt",
+      "sha256": "ffe6cf03f72c259dd0b7faa3296f3fbeb0add109afe0a8f047953c28ece7cb35",
+      "bytes": 2090,
+      "category": "reviewed-product-asset"
+    },
+    {
       "path": "public/robots.txt",
-      "sha256": "8aa3b10c4017f77abb30085de90cf54347725be0e7ed4b0c5573365c3f9c94d1",
-      "bytes": 63,
+      "sha256": "4710f9b1302cde84503f16261b017975f9c3bc5b55b3cefe472489ec2819f2f6",
+      "bytes": 717,
       "category": "reviewed-product-asset"
     },
     {
@@ -1714,8 +1720,8 @@
     },
     {
       "path": "test/content.test.mjs",
-      "sha256": "2c7943da93b2a430ee048ab92c196abadbb5a5754b583ea4bff9aee5f09ae92f",
-      "bytes": 14885,
+      "sha256": "6fac0023af7ca1b66750ef9bd245a34d2f3eb6d427fe737a824d59975fd9e948",
+      "bytes": 16274,
       "category": "synthetic-test-source-or-fixture"
     },
     {

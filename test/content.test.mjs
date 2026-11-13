@@ -238,6 +238,27 @@ test("robots.txt and sitemap.xml list only zrzur.com pages", async () => {
     assert(locs.includes(`https://zrzur.com/legal/${doc.slug}`), doc.slug);
 });
 
+test("search engines and AI assistants may read the site, and llms.txt points to live pages", async () => {
+  const robots = await readFile(new URL("../public/robots.txt", import.meta.url), "utf8");
+  // nothing is shut out: no Disallow line with a path
+  assert(!/^Disallow:\s*\/\S*/im.test(robots), "robots.txt blocks a path");
+  for (const bot of ["GPTBot", "OAI-SearchBot", "ClaudeBot", "PerplexityBot", "Google-Extended"])
+    assert.match(robots, new RegExp(`^User-agent: ${bot}$`, "m"), bot);
+  assert.match(robots, /^Content-Signal: search=yes, ai-input=yes$/m);
+
+  const llms = await readFile(new URL("../public/llms.txt", import.meta.url), "utf8");
+  assert.match(llms, /^# Zrzur$/m);
+  assert.match(llms, /^> /m);
+  const sitemap = await readFile(new URL("../public/sitemap.xml", import.meta.url), "utf8");
+  const pages = new Set([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].replace(/\/$/, "")));
+  const links = [...llms.matchAll(/\]\((https:\/\/zrzur\.com[^)]*)\)/g)].map((m) => m[1].replace(/\/$/, ""));
+  assert(links.length >= 10, `only ${links.length} links`);
+  // a link to a page that is not in the sitemap would send assistants to a 404
+  for (const link of links) assert(pages.has(link) || link === "https://zrzur.com", link);
+  // no draft words or placeholders
+  assert(!/\[(?:country|region|todo|tbd)\]|owner to confirm|lorem/i.test(llms));
+});
+
 
 test("explicit preview destinations stay restricted to loopback", () => {
   assert.equal(resolvePreviewUrl("127.0.0.1", "http://127.0.0.1:31060/"), "http://127.0.0.1:31060/");
