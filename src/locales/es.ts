@@ -260,7 +260,7 @@ const pack: Pack = {
   faqs: [
     {
       question: "¿Qué es Zrzur?",
-      answer: "Un lugar donde hablan amigos y comunidades: servidores con canales de texto y de voz, pantalla compartida, archivos, roles y gestión de miembros. Funciona en tu navegador y como app de escritorio, en muchos idiomas.",
+      answer: "Una alternativa gratuita y de código abierto a Discord. Un lugar donde hablan amigos y comunidades: servidores con canales de texto y de voz, pantalla compartida, archivos, roles y gestión de miembros. Funciona en tu navegador y como app de escritorio, en muchos idiomas.",
     },
     {
       question: "¿Zrzur es gratis?",
