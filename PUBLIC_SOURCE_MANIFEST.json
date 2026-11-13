@@ -1588,8 +1588,8 @@
     },
     {
       "path": "src/policies/privacy.ts",
-      "sha256": "e6e26104c266d79bc4c24ae2349b1904472330058e71cad3a210d5c418c58d73",
-      "bytes": 96768,
+      "sha256": "5fb942963d7ba6f38274a1cd197c37a8000e6efaa758b0ffc4d815f7fc9c92ba",
+      "bytes": 91866,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1768,8 +1768,8 @@
     },
     {
       "path": "test/legal.test.mjs",
-      "sha256": "0ffab548390563b5659d49a4a91d3f659a0a30c6f6d25795e53b09e1595b5e6f",
-      "bytes": 17602,
+      "sha256": "0ea021d52ae096c173bbce9939afc50ff441a11caf16a3ce4577d04165917ad7",
+      "bytes": 17943,
       "category": "synthetic-test-source-or-fixture"
     },
     {

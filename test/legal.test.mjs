@@ -228,8 +228,13 @@ test("privacy names the services that run and none that were removed", () => {
   const privacy = legalDocuments.find((doc) => doc.slug === "privacy");
   for (const lang of ["en", "ar", "de"]) {
     const text = privacy.sections.map((s) => s.body[lang]).join("\n");
-    for (const name of ["hCaptcha", "LiveKit", "Resend", "Stripe", "PayPal", "Klipy", "Cloudflare", "privacy@zrzur.com"])
+    for (const name of ["hCaptcha", "LiveKit", "Resend", "Stripe", "PayPal", "Cloudflare", "privacy@zrzur.com"])
       assert(text.includes(name), `${lang} ${name}`);
+    // GIF search (Klipy) is off: the service list does not name it
+    const processors = privacy.sections.find((s) => s.id === "processors").body[lang];
+    assert(!processors.includes("Klipy"), `${lang} Klipy`);
+    for (const left of ["[country]", "owner to confirm", "Transfer safeguard"])
+      assert(!text.includes(left), `${lang} ${left}`);
     for (const gone of ["Sentry", "Shield", "easypwned", "Tenor", "Lightspeed", "Zrzur@proton.me"])
       assert(!text.includes(gone), `${lang} ${gone}`);
   }
