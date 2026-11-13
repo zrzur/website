@@ -155,7 +155,7 @@ export const privacy = revised(doc({
         en: para(
           "We use a small number of providers who process data on our behalf under data-processing agreements. They may use it only to provide their service to us. Our servers are hosted in the European Union.",
           list(
-            "[Hosting provider]: servers, databases and file storage, located in the European Union ([region]).",
+            "Datalix (Germany): servers, databases and file storage, located in the European Union (Frankfurt am Main, Germany).",
             "Cloudflare (network protection and delivery). All traffic to our app and servers passes through Cloudflare, which protects us from attacks. Cloudflare processes your IP address and the technical data of each request for us, as our processor. Cloudflare, Inc. is located in the United States. Transfers rely on the EU-U.S. Data Privacy Framework and on the Standard Contractual Clauses in Cloudflare's data processing addendum.",
             "Cloudflare Turnstile (bot protection). When you sign up, sign in after several failed tries, reset your password, ask for a new verification email, or send the public report form, Cloudflare checks that you are a person. It receives your IP address and technical data about your browser and device, for us, as our processor, under the same agreement and safeguards as above. Turnstile does not use cookies for advertising.",
             "LiveKit: real-time voice and video. We run the open-source LiveKit software on our own voice server, so no outside company receives your voice or video.",
@@ -169,7 +169,7 @@ export const privacy = revised(doc({
         ar: para(
           "نستعين بعدد قليل من المزوّدين الذين يعالجون البيانات نيابةً عنّا بموجب اتفاقيات معالجة بيانات، ولا يجوز لهم استخدامها إلا لتقديم خدمتهم لنا. وسيرفراتنا مستضافة داخل الاتحاد الأوروبي.",
           list(
-            "[Hosting provider]: السيرفرات وقواعد البيانات وتخزين الملفات، داخل الاتحاد الأوروبي ([region]).",
+            "Datalix (ألمانيا): السيرفرات وقواعد البيانات وتخزين الملفات، داخل الاتحاد الأوروبي (فرانكفورت أم ماين، ألمانيا).",
             "Cloudflare (حماية الشبكة والتوصيل). تمرّ كل حركة البيانات إلى تطبيقنا وسيرفراتنا عبر Cloudflare التي تحمينا من الهجمات. وتعالج Cloudflare عنوان IP الخاص بك والبيانات التقنية لكل طلب نيابةً عنّا بصفتها معالجًا لدينا. تقع شركة Cloudflare, Inc. في الولايات المتحدة. ويستند نقل البيانات إليها إلى إطار خصوصية البيانات بين الاتحاد الأوروبي والولايات المتحدة، وإلى البنود التعاقدية القياسية الواردة في ملحق معالجة البيانات لدى Cloudflare.",
             "Cloudflare Turnstile (الحماية من البرامج الآلية). عند التسجيل، أو عند الدخول بعد عدة محاولات فاشلة، أو تعيد تعيين كلمة المرور، أو تطلب رسالة تحقق جديدة، أو عند إرسال نموذج البلاغ العام، تتحقق Cloudflare من أنك شخص حقيقي. وتتلقّى عنوان IP الخاص بك وبيانات تقنية عن متصفحك وجهازك نيابةً عنّا بصفتها معالجًا لدينا، بموجب الاتفاق والضمانات نفسها المذكورة أعلاه. ولا يستخدم Turnstile ملفات تعريف ارتباط إعلانية.",
             "LiveKit: الصوت والفيديو المباشر. نشغّل برنامج LiveKit المفتوح المصدر على سيرفر الصوت الخاص بنا، فلا تتلقّى أي شركة خارجية صوتك أو الفيديو الخاص بك.",
@@ -183,7 +183,7 @@ export const privacy = revised(doc({
         de: para(
           "Wir setzen wenige Dienstleister ein, die Daten in unserem Auftrag auf Grundlage von Auftragsverarbeitungsverträgen verarbeiten. Sie dürfen sie nur nutzen, um uns ihren Dienst zu erbringen. Unsere Server werden in der Europäischen Union gehostet.",
           list(
-            "[Hosting provider]: Server, Datenbanken und Dateispeicher, in der Europäischen Union ([region]).",
+            "Datalix (Deutschland): Server, Datenbanken und Dateispeicher, in der Europäischen Union (Frankfurt am Main, Deutschland).",
             "Cloudflare (Netzwerkschutz und Auslieferung). Der gesamte Datenverkehr zu unserer App und unseren Servern läuft über Cloudflare, das uns vor Angriffen schützt. Cloudflare verarbeitet deine IP-Adresse und die technischen Daten jeder Anfrage als unser Auftragsverarbeiter. Cloudflare, Inc. hat seinen Sitz in den USA. Die Übermittlung stützt sich auf das EU-US Data Privacy Framework und auf die Standardvertragsklauseln in Cloudflares Auftragsverarbeitungsvertrag.",
             "Cloudflare Turnstile (Bot-Schutz). Wenn du dich registrierst, dich nach mehreren Fehlversuchen anmeldest, dein Passwort zurücksetzt, eine neue Bestätigungs-E-Mail anforderst oder das öffentliche Meldeformular absendest, prüft Cloudflare, ob du ein Mensch bist. Cloudflare erhält deine IP-Adresse und technische Daten zu Browser und Gerät, für uns als Auftragsverarbeiter, unter derselben Vereinbarung und denselben Garantien wie oben. Turnstile nutzt keine Werbe-Cookies.",
             "LiveKit: Echtzeit-Sprache und -Video. Wir betreiben die Open-Source-Software LiveKit auf unserem eigenen Sprachserver, daher erhält kein fremdes Unternehmen deine Sprache oder dein Video.",

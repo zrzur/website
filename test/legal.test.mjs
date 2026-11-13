@@ -233,7 +233,8 @@ test("privacy names the services that run and none that were removed", () => {
     // GIF search (Klipy) is off: the service list does not name it
     const processors = privacy.sections.find((s) => s.id === "processors").body[lang];
     assert(!processors.includes("Klipy"), `${lang} Klipy`);
-    for (const left of ["[country]", "owner to confirm", "Transfer safeguard"])
+    assert(processors.includes("Datalix"), `${lang} Datalix`);
+    for (const left of ["[country]", "owner to confirm", "Transfer safeguard", "[Hosting provider]", "[region]"])
       assert(!text.includes(left), `${lang} ${left}`);
     for (const gone of ["Sentry", "Shield", "easypwned", "Tenor", "Lightspeed", "Zrzur@proton.me"])
       assert(!text.includes(gone), `${lang} ${gone}`);
