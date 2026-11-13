@@ -84,6 +84,7 @@ const labels = {
   gettingStarted: "Getting started",
   safety: "Safety and guidelines",
   feedback: "Contact support",
+  supportUs: "Support Zrzur",
   allPolicies: "All policies",
   copyright: "© 2026 Zrzur",
   footerAttribution: "Independent Zrzur releases. Open-source licences and attribution preserved.",

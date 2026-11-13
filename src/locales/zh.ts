@@ -85,6 +85,7 @@ const labels: Labels = {
   gettingStarted: "入门",
   safety: "安全与规则",
   feedback: "联系支持",
+  supportUs: "支持 Zrzur",
   allPolicies: "全部政策",
   copyright: "© 2026 Zrzur",
   footerAttribution: "Zrzur 独立发布。保留开源许可证和署名。",

@@ -55,9 +55,11 @@ test("every policy has Arabic and English title, intro and sections", () => {
 test("no policy shows a draft banner, a lawyer note or a placeholder (owner, 2026-11-12)", () => {
   for (const doc of legalDocuments) {
     assert.equal("banner" in doc, false, doc.slug);
-    assert.equal(doc.lastUpdated.en, "Last updated: 12 November 2026", doc.slug);
-    assert.equal(doc.lastUpdated.ar, "آخر تحديث: ١٢ نوفمبر ٢٠٢٦", doc.slug);
-    assert.equal(doc.lastUpdated.de, "Stand: 12. November 2026", doc.slug);
+    // the privacy policy was revised on 13 November (Ko-fi); the rest on 12 November
+    const revised13 = doc.slug === "privacy";
+    assert.equal(doc.lastUpdated.en, revised13 ? "Last updated: 13 November 2026" : "Last updated: 12 November 2026", doc.slug);
+    assert.equal(doc.lastUpdated.ar, revised13 ? "آخر تحديث: ١٣ نوفمبر ٢٠٢٦" : "آخر تحديث: ١٢ نوفمبر ٢٠٢٦", doc.slug);
+    assert.equal(doc.lastUpdated.de, revised13 ? "Stand: 13. November 2026" : "Stand: 12. November 2026", doc.slug);
     assert.deepEqual(doc.sources, []);
     const text = JSON.stringify(doc);
     for (const word of ["lawyer", "محامٍ", "محام", "anwaltlich", "Entwurf", "مسودة", "Owner to confirm", "<date>"])
@@ -103,7 +105,12 @@ test("product names are used exactly", () => {
 test("policyVersions covers every slug with the policy date", () => {
   assert.deepEqual(Object.keys(policyVersions).sort(), [...EXPECTED_SLUGS].sort());
   assert.equal(CREATOR_TERMS_VERSION, "2026-11-12");
-  for (const slug of EXPECTED_SLUGS) assert.equal(policyVersions[slug], "2026-11-12", slug);
+  for (const slug of EXPECTED_SLUGS)
+    assert.equal(policyVersions[slug], slug === "privacy" ? "2026-11-13" : "2026-11-12", slug);
+  // the date shown matches the version
+  const privacy = legalDocuments.find((doc) => doc.slug === "privacy");
+  assert.match(privacy.lastUpdated.en, /13 November 2026/);
+  assert.match(JSON.stringify(privacy), /ko-fi\.com\/zrzur/);
 });
 
 test("the site footer says nothing about drafts or legal review", async () => {

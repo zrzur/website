@@ -30,6 +30,11 @@ export const postLanguages: Record<string, readonly string[]> = {
     "de",
     "ar"
   ],
+  "support-zrzur": [
+    "en",
+    "de",
+    "ar"
+  ],
   "voice-chat-screen-sharing": [
     "en",
     "de",

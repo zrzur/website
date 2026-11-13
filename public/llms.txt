@@ -29,6 +29,12 @@ Key facts:
 - [Zrzur: why we built it, and everything it can do](https://zrzur.com/blog/zrzur-features)
 - [Why we are building Zrzur](https://zrzur.com/blog/why-zrzur)
 
+## Support
+
+Zrzur is an independent, non-commercial project with no investors and no advertising; its costs are paid by the team. Voluntary support is possible on Ko-fi (https://ko-fi.com/zrzur), once or monthly; it unlocks no features.
+
+- [Who keeps Zrzur running, and how you can help](https://zrzur.com/blog/support-zrzur)
+
 ## Policies
 
 - [Terms](https://zrzur.com/legal/terms)

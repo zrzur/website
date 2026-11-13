@@ -84,6 +84,7 @@ const labels: Labels = {
   gettingStarted: "Начало работы",
   safety: "Безопасность и правила",
   feedback: "Написать в поддержку",
+  supportUs: "Поддержать Zrzur",
   allPolicies: "Все правила",
   copyright: "© 2026 Zrzur",
   footerAttribution: "Независимые выпуски Zrzur. Лицензии открытого кода и указание авторства сохранены.",

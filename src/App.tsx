@@ -195,6 +195,8 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
   const appUrl = () => links().app;
   const discoverUrl = () => links().discover;
   const SUPPORT_MAIL = "mailto:support@zrzur.com";
+  // voluntary support; it unlocks nothing (privacy policy, Ko-fi)
+  const KOFI_URL = "https://ko-fi.com/zrzur";
 
   async function setLanguage(next: Language) {
     if (next === language()) return;
@@ -1254,6 +1256,7 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
               {column("footerProject", [
                 { href: href("/project"), label: t("project") },
                 { href: SOURCE_URL, label: t("source"), external: true },
+                { href: KOFI_URL, label: t("supportUs"), external: true },
                 { href: href("/project#source"), label: t("licences") },
                 { href: href("/third-party-notices"), label: t("thirdParty") },
               ])}

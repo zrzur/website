@@ -84,6 +84,7 @@ const labels: Labels = {
   gettingStarted: "دليل البداية",
   safety: "الأمان والإرشادات",
   feedback: "تواصل مع الدعم",
+  supportUs: "ادعم زرزور",
   allPolicies: "كل السياسات",
   copyright: "© 2026 زرزور",
   footerAttribution: "إصدارات زرزور المستقلة. نحافظ على تراخيص المصدر المفتوح وحقوق المساهمين.",

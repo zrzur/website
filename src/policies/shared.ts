@@ -48,6 +48,23 @@ export const lastUpdated: Localized = {
  */
 export const revised = (document: LegalDocument): LegalDocument => document;
 
+/** A policy changed after {@link POLICY_DATE}: its own version and date */
+export type Revision = { version: string; lastUpdated: Localized };
+export const revisedOn = (revision: Revision, document: LegalDocument): LegalDocument => ({
+  ...document,
+  ...revision,
+});
+
+/** 13 November 2026: the privacy policy adds Ko-fi for voluntary support */
+export const REVISION_2026_11_13: Revision = {
+  version: "2026-11-13",
+  lastUpdated: {
+    en: "Last updated: 13 November 2026",
+    ar: "آخر تحديث: ١٣ نوفمبر ٢٠٢٦",
+    de: "Stand: 13. November 2026",
+  },
+};
+
 /**
  * Section bodies are plain text. Blocks are separated by a blank line.
  * A block whose lines all start with "- " is rendered as a bullet list.
