@@ -1234,8 +1234,8 @@
     },
     {
       "path": "public/llms.txt",
-      "sha256": "ffe6cf03f72c259dd0b7faa3296f3fbeb0add109afe0a8f047953c28ece7cb35",
-      "bytes": 2090,
+      "sha256": "eaadb6710d3be78db225316ad0e7f493f62ea99a1dabfa32b996ea8980946265",
+      "bytes": 2203,
       "category": "reviewed-product-asset"
     },
     {
@@ -1252,8 +1252,8 @@
     },
     {
       "path": "public/sitemap.xml",
-      "sha256": "552e3685864e8a6c6b06fcd2127d9ef6d255f00a1a40b3c7bf9fcad208ff0876",
-      "bytes": 70573,
+      "sha256": "110a49086fd8ff5e3c7e69cab8180c97cc1951b4f86a1b5b5912045f472df74d",
+      "bytes": 77052,
       "category": "reviewed-product-asset"
     },
     {
@@ -1390,8 +1390,8 @@
     },
     {
       "path": "src/blog-languages.ts",
-      "sha256": "1eb2e2b0fe526a68018c80b3feaa369f1f3bded4be8c7cdfe218414a409a1c3b",
-      "bytes": 388,
+      "sha256": "2081481bd8d154e1c76a6c40173924bec4a872c377107d06b131dc962ab1d1e4",
+      "bytes": 489,
       "category": "product-source-or-build-manifest"
     },
     {

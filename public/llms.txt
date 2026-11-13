@@ -20,6 +20,7 @@ Key facts:
 
 ## Blog
 
+- [Looking for a Discord alternative? Here is everything Zrzur does](https://zrzur.com/blog/discord-alternative)
 - [Zrzur: why we built it, and everything it can do](https://zrzur.com/blog/zrzur-features)
 - [Why we are building Zrzur](https://zrzur.com/blog/why-zrzur)
 
