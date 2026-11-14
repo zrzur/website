@@ -48,8 +48,8 @@ const DESKTOP_DOWNLOADS = {
     { url: "/downloads/Zrzur-win32-x64-26.1.0-beta.1.zip", sha256: "a0de6d705c62ad852c5c09c1cc136b6430aa54d9794dedb6d9a13cd7098a04a7", size: 151, label: "dlWindowsZip" },
   ],
   mac: [
-    { url: "/downloads/Zrzur-darwin-arm64-26.1.0-beta.1.zip", sha256: "28f4d851d2ce9775892bb5e2f194184d7fde33c1974030a447a0fc998dce22be", size: 121, label: "dlMacArm" },
-    { url: "/downloads/Zrzur-darwin-x64-26.1.0-beta.1.zip", sha256: "b73e33c07e6383edc9ad7a58d45732664465e545334dd81e645107c849287ec4", size: 126, label: "dlMacIntel" },
+    { url: "/downloads/Zrzur-darwin-arm64-26.1.0-beta.1.zip", sha256: "7b9024cce01eb0419d87c3be75d3f4e34b07bb20bcafca2638b9c8d78da6718b", size: 121, label: "dlMacArm" },
+    { url: "/downloads/Zrzur-darwin-x64-26.1.0-beta.1.zip", sha256: "e62b173948b0063eb2ce42cb9ab8c9d24088cc6b3a68a4a692c110acf97abff0", size: 128, label: "dlMacIntel" },
   ],
   linux: [
     { url: "/downloads/zrzur-desktop_26.1.0-beta.1_amd64.deb", sha256: "1fb3b67227ce96a107505af2ab0732ddb181a9c1dc15a855d097189de51a1d92", size: 92, label: "dlLinuxDeb" },

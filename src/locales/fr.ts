@@ -180,7 +180,7 @@ const labels: Labels = {
   dlLinuxDeb: "Télécharger pour Linux (.deb)",
   dlLinuxZip: "Zip pour les autres systèmes",
   dlWindowsHow: "Pas encore signé : Windows peut le bloquer (Smart App Control) ou t'avertir au premier lancement. S'il est bloqué, utilise Zrzur dans le navigateur sur app.zrzur.com avec le même compte. Si tu vois seulement un avertissement, choisis Informations complémentaires, puis Exécuter quand même.",
-  dlMacHow: "Pas encore signé. Décompresse-le, déplace Zrzur dans Applications, puis fais un clic droit dessus et choisis Ouvrir la première fois.",
+  dlMacHow: "Pas encore signé par Apple. Décompresse-le et déplace Zrzur dans Applications. La première fois, macOS l’arrête : ouvre Réglages Système, puis Confidentialité et sécurité, et choisis « Ouvrir quand même ». Sous macOS 13 et 14, fais plutôt un clic droit sur Zrzur et choisis Ouvrir.",
   dlLinuxHow: "Sur Debian ou Ubuntu : sudo apt install ./zrzur-desktop_26.1.0-beta.1_amd64.deb. Depuis le zip, lance zrzur-desktop ; il a besoin des bibliothèques NSS du système (libnss3).",
   dlYours: "Pour cet ordinateur",
   dlSize: "{size} Mo",

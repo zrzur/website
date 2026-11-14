@@ -181,7 +181,7 @@ const labels: Labels = {
   dlLinuxDeb: "下载 Linux 版（.deb）",
   dlLinuxZip: "适用于其他系统的 Zip",
   dlWindowsHow: "尚未签名，因此 Windows 可能会阻止它（智能应用控制），或在首次启动前发出警告。如果被阻止，请用同一账号在浏览器中访问 app.zrzur.com 使用 Zrzur。如果只看到警告，请选择“更多信息”，再选择“仍要运行”。",
-  dlMacHow: "尚未签名。解压后把 Zrzur 移到“应用程序”，首次打开时右键点击它并选择“打开”。",
+  dlMacHow: "尚未经过 Apple 签名。解压后把 Zrzur 移到“应用程序”。首次打开时 macOS 会拦下它：打开“系统设置”，再进入“隐私与安全性”，选择“仍要打开”。在 macOS 13 和 14 上，可改为右键点击 Zrzur 并选择“打开”。",
   dlLinuxHow: "在 Debian 或 Ubuntu 上：sudo apt install ./zrzur-desktop_26.1.0-beta.1_amd64.deb。使用 zip 时运行 zrzur-desktop；它需要系统的 NSS 库（libnss3）。",
   dlYours: "适用于这台电脑",
   dlSize: "{size} MB",
