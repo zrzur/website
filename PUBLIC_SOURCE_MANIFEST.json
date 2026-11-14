@@ -1384,8 +1384,8 @@
     },
     {
       "path": "src/App.tsx",
-      "sha256": "f3a4cf4980caac1a00c66a876b826ead4df896c1dc68aaee359a14191681b932",
-      "bytes": 58398,
+      "sha256": "90066cab2ed85e449e9e74f9c7103f679c160c6a1ceeb6b0e73b014d6b256ee0",
+      "bytes": 58445,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1498,38 +1498,38 @@
     },
     {
       "path": "src/locales/de.ts",
-      "sha256": "92083cef6bde2f3577f7765c20f4a2e69c0454a8504841a6d5e8cc4d089e4f0e",
-      "bytes": 18097,
+      "sha256": "46a51b0a4aa48bc29de5405c56df164ec0c3819ced46571f993c6bbdf3f158b1",
+      "bytes": 18104,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/en.ts",
-      "sha256": "3b9579234e2424d00c71e300a1f1453b71d0fd36bc41d0910f77909562bbe30c",
-      "bytes": 16887,
+      "sha256": "0d5bb95af831ddd2793d8c4cbdec1592d1acd5b32dde2cff89f4872bd66c1ee8",
+      "bytes": 16894,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/es.ts",
-      "sha256": "c0b8ca0b5f7efbdeea9a79118bae0bb36fc00593db54b88168056df75dbbfd3c",
-      "bytes": 18090,
+      "sha256": "d8ea1e1c7d5186c2a3a7511f74707d7ac69f3f8387be325b84852cd37a2c77a5",
+      "bytes": 18097,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/fr.ts",
-      "sha256": "46a5ce947553fa97ef1b0d3022283f1384e4034c3e9888a4511232a49931a6f2",
-      "bytes": 18805,
+      "sha256": "829e569e55530e2359940c6a9f5ab81be7616c0e283e18f85f62bd8e05dda6f4",
+      "bytes": 18812,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/ru.ts",
-      "sha256": "11c10f2dfe89e9a8bbde329b2c8785af0b72e3d4dd5f34bb923d7d697ca90014",
-      "bytes": 26750,
+      "sha256": "ac6b340b298e6f8437745946d749825f0708bd4a8fb40f78e6a6a5bd4687a65e",
+      "bytes": 26757,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/zh.ts",
-      "sha256": "d490f536706085dca442f748e09e50f18cd65bcb9ec6f6b7e559f51f8e2faa59",
-      "bytes": 16476,
+      "sha256": "9901e659878991e4cfd9206eb61aa648c2971d37c6a2f9127c2079e6aca9a396",
+      "bytes": 16483,
       "category": "product-source-or-build-manifest"
     },
     {
