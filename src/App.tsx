@@ -41,19 +41,19 @@ import type { Block, Inline } from "./blog-md";
  * repository: they are put on the server beside the site (`downloads/`), and
  * each checksum is shown so people can check what they got. Sizes in MB (MiB).
  */
-const DESKTOP_VERSION = "26.0.0";
+const DESKTOP_VERSION = "26.1.0 Beta";
 const DESKTOP_DOWNLOADS = {
   windows: [
-    { url: "/downloads/Zrzur-Setup-26.0.0-x64.exe", sha256: "2acba0c60486411679edd20d642563e9ff0e04e36c94bc55bcab9568329e08aa", size: 147, label: "dlWindowsSetup" },
-    { url: "/downloads/Zrzur-win32-x64-26.0.0.zip", sha256: "d31cb008bd00afa4f7b473b6824a7aa391f63cc21085301ba00468039d7204d5", size: 151, label: "dlWindowsZip" },
+    { url: "/downloads/Zrzur-Setup-26.1.0-beta.1-x64.exe", sha256: "13a328b87eb911752e864e322efaa037f08e881cf59fcfc409f9ba5381990b37", size: 147, label: "dlWindowsSetup" },
+    { url: "/downloads/Zrzur-win32-x64-26.1.0-beta.1.zip", sha256: "a0de6d705c62ad852c5c09c1cc136b6430aa54d9794dedb6d9a13cd7098a04a7", size: 151, label: "dlWindowsZip" },
   ],
   mac: [
-    { url: "/downloads/Zrzur-darwin-arm64-26.0.0.zip", sha256: "e470c5f2d820e17a84712ed8e441e6af5a950a6f659dbb7c23f8f937215384c1", size: 121, label: "dlMacArm" },
-    { url: "/downloads/Zrzur-darwin-x64-26.0.0.zip", sha256: "f67f358bdc0a3e5f45aced6b2901b1aa32d08de9994dba24223f5e00db8f580b", size: 126, label: "dlMacIntel" },
+    { url: "/downloads/Zrzur-darwin-arm64-26.1.0-beta.1.zip", sha256: "28f4d851d2ce9775892bb5e2f194184d7fde33c1974030a447a0fc998dce22be", size: 121, label: "dlMacArm" },
+    { url: "/downloads/Zrzur-darwin-x64-26.1.0-beta.1.zip", sha256: "b73e33c07e6383edc9ad7a58d45732664465e545334dd81e645107c849287ec4", size: 126, label: "dlMacIntel" },
   ],
   linux: [
-    { url: "/downloads/zrzur-desktop_26.0.0_amd64.deb", sha256: "d86744974219e17883ecfa51457d885e52026ad072f16a16c6da2ea33ff06757", size: 92, label: "dlLinuxDeb" },
-    { url: "/downloads/Zrzur-linux-x64-26.0.0.zip", sha256: "b2b57ec96e2d9a310895af84c4113975c023c1cc9af5d4f7fa6f2a828c7364d6", size: 118, label: "dlLinuxZip" },
+    { url: "/downloads/zrzur-desktop_26.1.0-beta.1_amd64.deb", sha256: "1fb3b67227ce96a107505af2ab0732ddb181a9c1dc15a855d097189de51a1d92", size: 92, label: "dlLinuxDeb" },
+    { url: "/downloads/Zrzur-linux-x64-26.1.0-beta.1.zip", sha256: "81dee92e80c744977625107e2abb66b8b2fbc3d1e3560b45dfe066ad3278f6f2", size: 118, label: "dlLinuxZip" },
   ],
 } as const;
 type DesktopSystem = keyof typeof DESKTOP_DOWNLOADS;

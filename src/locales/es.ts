@@ -181,7 +181,7 @@ const labels: Labels = {
   dlLinuxZip: "Zip para otros sistemas",
   dlWindowsHow: "Aún no está firmado, así que Windows puede bloquearlo (Smart App Control) o avisarte antes del primer inicio. Si está bloqueado, usa Zrzur en el navegador en app.zrzur.com con la misma cuenta. Si solo ves un aviso, elige Más información y luego Ejecutar de todas formas.",
   dlMacHow: "Aún no está firmado. Descomprímelo, mueve Zrzur a Aplicaciones, haz clic derecho y elige Abrir la primera vez.",
-  dlLinuxHow: "En Debian o Ubuntu: sudo apt install ./zrzur-desktop_26.0.0_amd64.deb. Desde el zip, inicia zrzur-desktop; necesita las bibliotecas NSS del sistema (libnss3).",
+  dlLinuxHow: "En Debian o Ubuntu: sudo apt install ./zrzur-desktop_26.1.0-beta.1_amd64.deb. Desde el zip, inicia zrzur-desktop; necesita las bibliotecas NSS del sistema (libnss3).",
   dlYours: "Para este ordenador",
   dlSize: "{size} MB",
   dlVersion: "Versión {version}",
