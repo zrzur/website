@@ -16,8 +16,8 @@
     },
     {
       "path": ".github/dependabot.yml",
-      "sha256": "31cf0ebb2e5edb591de0943b01dfddf7061d5d91e48108f311687da5e3fdc41c",
-      "bytes": 305,
+      "sha256": "528deb10ac36da8ed34c6031ab3126aec8bbe5bf82b7eb59a0154963725128e2",
+      "bytes": 643,
       "category": "reviewed-build-and-ci"
     },
     {
@@ -34,8 +34,8 @@
     },
     {
       "path": ".gitignore",
-      "sha256": "553fac3cb2caaa9c3a6894f13022cc3da9127fcc41638bba64cccd86f5479b0e",
-      "bytes": 538,
+      "sha256": "0032d30a8e43f80dffdafae0c10b966d8160b0569283f058abc473388982ac88",
+      "bytes": 492,
       "category": "product-source-or-build-manifest"
     },
     {
