@@ -185,7 +185,7 @@ const labels: Labels = {
   dlYours: "Für diesen Computer",
   dlSize: "{size} MB",
   dlVersion: "Version {version}",
-  seoHomeTitle: "Zrzur: kostenlose Open-Source-Alternative zu Discord",
+  seoHomeTitle: "Zrzur: Open-Source-Chat für Freunde und Communitys",
   seoHomeBody: "Zrzur ist kostenlos und Open Source, für Freunde und Communitys: Server mit Text- und Sprachkanälen, Bildschirmfreigabe, Rollen. Im Browser, Windows, macOS, Linux.",
   seoFeaturesTitle: "Zrzur-Funktionen: Server, Sprachchat, Bildschirmfreigabe",
   seoFeaturesBody: "Alles in Zrzur: Server mit Text- und Sprachkanälen, Bildschirmfreigabe, Dateien, Rollen und Berechtigungen, Willkommensfragen und öffentliche Server zum Entdecken.",

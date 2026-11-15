@@ -186,7 +186,7 @@ const labels: Labels = {
   dlYours: "适用于这台电脑",
   dlSize: "{size} MB",
   dlVersion: "版本 {version}",
-  seoHomeTitle: "Zrzur：免费开源的 Discord 替代品",
+  seoHomeTitle: "Zrzur：面向朋友和社区的开源聊天",
   seoHomeBody: "Zrzur 是朋友和社区的免费聚集地：带文字和语音频道的服务器、屏幕共享、角色和权限。支持浏览器以及 Windows、macOS 和 Linux，提供多种语言。",
   seoFeaturesTitle: "Zrzur 功能：服务器、语音聊天、屏幕共享、角色",
   seoFeaturesBody: "Zrzur 的全部功能：带文字和语音频道的服务器、屏幕共享、文件分享、角色与权限、入群问题，以及公开服务器发现。",
