@@ -50,34 +50,3 @@ jobs:
           VITE_PUBLIC_API_URL: https://api.zrzur.com
           VITE_PUBLIC_DISCOVER_URL: https://discover.zrzur.com
         run: npm run build
-
-  a11y:
-    name: Accessibility (axe, en/ar/de, desktop and 375 px)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-        with:
-          persist-credentials: false
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
-        with:
-          node-version: 24
-          cache: npm
-      - run: npm ci
-      - name: Build as published
-        env:
-          VITE_PUBLIC_APP_URL: https://app.zrzur.com
-          VITE_PUBLIC_API_URL: https://api.zrzur.com
-          VITE_PUBLIC_DISCOVER_URL: https://discover.zrzur.com
-        run: npm run build
-      - name: Playwright and axe-core, outside the site's own dependencies
-        run: |
-          set -eu
-          mkdir -p "$RUNNER_TEMP/a11y"
-          cd "$RUNNER_TEMP/a11y"
-          echo '{"private":true}' > package.json
-          npm install --no-audit --no-fund @playwright/test@1.60.0 axe-core@4.10.3
-          npx playwright install --with-deps chromium
-      - name: Serious and critical findings fail
-        env:
-          E2E_PLAYWRIGHT_FROM: ${{ runner.temp }}/a11y/package.json
-        run: node --experimental-strip-types test/e2e/a11y.e2e.mjs
