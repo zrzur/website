@@ -65,6 +65,16 @@ export const REVISION_2026_11_13: Revision = {
   },
 };
 
+/** 15 November 2026: the privacy policy adds linked accounts */
+export const REVISION_2026_11_15: Revision = {
+  version: "2026-11-15",
+  lastUpdated: {
+    en: "Last updated: 15 November 2026",
+    ar: "آخر تحديث: ١٥ نوفمبر ٢٠٢٦",
+    de: "Stand: 15. November 2026",
+  },
+};
+
 /**
  * Section bodies are plain text. Blocks are separated by a blank line.
  * A block whose lines all start with "- " is rendered as a bullet list.
