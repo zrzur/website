@@ -43,7 +43,7 @@ test("every listed language has every text (no half-translated language)", () =>
 
 test("a new language is translated, not English left in place", () => {
   // words that stay the same in every language: names, units, codes
-  const same = new Set(["brand", "flockName", "copyright", "demoPeople1", "demoPeople3", "dlSize", "blog", "menu", "documents", "questions", "rolesP2", "why2", "rolesP1", "legalLinkContact", "demoChat", "demoChatCategory", "demoInfo", "demoLobby", "help", "rolesP3", "dlVersion", "footerLegal"]);
+  const same = new Set(["brand", "flockName", "copyright", "demoPeople1", "demoPeople3", "dlSize", "blog", "menu", "documents", "questions", "rolesP2", "why2", "rolesP1", "legalLinkContact", "demoChat", "demoChatCategory", "demoInfo", "demoLobby", "help", "rolesP3", "dlVersion", "footerLegal", "sourceVersion", "sourceCommit"]);
   for (const code of ["fr", "es", "ru", "zh"]) {
     const copied = Object.entries(packs[code].labels).filter(([key, value]) => !same.has(key) && value === packs.en.labels[key]);
     assert.deepEqual(copied.map(([key]) => key), [], `${code}: still in English`);

@@ -22,25 +22,9 @@ writeFileSync(
 );
 
 // read after the file above, so the page languages include every post
-const { LOCALES, localizedPath } = await import("../src/i18n.ts");
 const { legalDocuments } = await import("../src/legal.ts");
-const { canonicalUrl } = await import("../src/config.ts");
-const { pageLanguages } = await import("../src/seo.ts");
-
-const pages = [
-  "/",
-  "/features",
-  "/project",
-  "/download",
-  "/guide",
-  "/blog",
-  ...posts.map((post) => `/blog/${post.slug}`),
-  "/legal",
-  "/report",
-  ...legalDocuments.map((doc) => `/legal/${doc.slug}`),
-];
-// the same canonical form the pages announce (no trailing slash)
-const url = (path, code) => canonicalUrl(localizedPath(path, code));
+// the same list of pages, languages and alternates the checks use
+const { routeManifest } = await import("./route-manifest.mjs");
 
 /**
  * The date a page last really changed, where we know it: a policy carries
@@ -56,17 +40,14 @@ function lastModified(page) {
   return null;
 }
 
-const entries = [];
 // a policy shown in English under another prefix is not listed there (src/seo.ts)
-for (const page of pages)
-  for (const { code } of LOCALES.filter((locale) => pageLanguages(page).includes(locale.code))) {
-    const alternates = LOCALES.filter((locale) => pageLanguages(page).includes(locale.code)).map(
-      (locale) => `    <xhtml:link rel="alternate" hreflang="${locale.tag}" href="${url(page, locale.code)}"/>`,
-    );
-    alternates.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${url(page, "en")}"/>`);
-    const modified = lastModified(page);
-    entries.push(`  <url>\n    <loc>${url(page, code)}</loc>\n${modified ? `    <lastmod>${modified}</lastmod>\n` : ""}${alternates.join("\n")}\n  </url>`);
-  }
+const entries = routeManifest(posts).map((route) => {
+  const alternates = route.alternates.map(
+    (alt) => `    <xhtml:link rel="alternate" hreflang="${alt.hreflang}" href="${alt.href}"/>`,
+  );
+  const modified = lastModified(route.path);
+  return `  <url>\n    <loc>${route.url}</loc>\n${modified ? `    <lastmod>${modified}</lastmod>\n` : ""}${alternates.join("\n")}\n  </url>`;
+});
 
 writeFileSync(
   new URL("../public/sitemap.xml", import.meta.url),

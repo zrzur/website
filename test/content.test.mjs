@@ -149,7 +149,8 @@ test("launch copy: only what exists, no prices, no paid extras", async () => {
   for (const [language, word] of [["fr", /Télécharg/], ["es", /Descarg/], ["ru", /Скача/], ["zh", /下载/]])
     assert.doesNotMatch(labels[language].heroBody, word, language);
   // every system the copy names has a real file, each with its own checksum
-  const app = await readFile(new URL("../src/App.tsx", import.meta.url), "utf8");
+  // (the release manifest the download page reads)
+  const app = await readFile(new URL("../src/releases.ts", import.meta.url), "utf8");
   for (const file of [/Zrzur-win32-x64-[\w.-]+\.zip/, /Zrzur-darwin-arm64-[\w.-]+\.zip/, /Zrzur-darwin-x64-[\w.-]+\.zip/, /Zrzur-linux-x64-[\w.-]+\.zip/])
     assert.match(app, new RegExp(`url: "/downloads/${file.source}", sha256: "[0-9a-f]{64}"`), file.source);
   const sums = app.match(/sha256: "([0-9a-f]{64})"/g) ?? [];

@@ -3538,8 +3538,10 @@ html { scrollbar-width: none; }
 .home-end-mark.brand-symbol { color: #fff; width: 56px; height: 56px; }
 .home-end .button-primary { background: #fff; color: #171925; }
 .home-end .button-primary:hover { background: #f1f2f8; color: #171925; }
-.home-end .button-soft { background: rgb(255 255 255 / .16); color: #fff; }
-.home-end .button-soft:hover { background: rgb(255 255 255 / .26); color: #fff; }
+/* white on a darker tint of the field: 4.5:1 or more (white on a lighter
+   tint was 3.96:1, below WCAG AA for 17 px text) */
+.home-end .button-soft { background: rgb(0 0 0 / .2); color: #fff; box-shadow: inset 0 0 0 1px rgb(255 255 255 / .45); }
+.home-end .button-soft:hover { background: rgb(0 0 0 / .3); color: #fff; }
 .home-end :is(a, button):focus-visible { outline-color: #fff; }
 
 /* pictures lie flat on the page: the tone step is their edge, no drop shadow
