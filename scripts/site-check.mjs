@@ -54,6 +54,27 @@ export function checkPage(html, route, options = {}) {
   return problems;
 }
 
+/**
+ * What a running service says about itself, checked against the one product
+ * version (ZR-002, ZR-003). `answer` is what the live check read from it.
+ * @param {{ repo: string, url: string, versionKey: string }} part
+ * @param {{ status: number, allowOrigin: string | null, json: unknown, public: boolean | null }} answer
+ * @param {string} productVersion
+ * @param {(json: unknown, key: string) => { version: string, commit: string } | null} readLive
+ * @returns {string[]}
+ */
+export function runningProblems(part, answer, productVersion, readLive) {
+  const problems = [];
+  if (answer.status !== 200) return [`${part.url}: status ${answer.status}`];
+  if (answer.allowOrigin !== "*" && answer.allowOrigin !== "https://zrzur.com")
+    problems.push(`${part.url}: zrzur.com may not read it (Access-Control-Allow-Origin: ${answer.allowOrigin ?? "none"})`);
+  const live = readLive(answer.json, part.versionKey);
+  if (!live) return [...problems, `${part.url}: no version under "${part.versionKey}" or no full commit`];
+  if (live.version !== productVersion) problems.push(`${part.repo} runs ${live.version}, the product version is ${productVersion}`);
+  if (answer.public === false) problems.push(`${part.repo} runs ${live.commit.slice(0, 12)}, which is not public at github.com/zrzur/${part.repo}`);
+  return problems;
+}
+
 /** The URLs a sitemap lists */
 export const sitemapUrls = (xml) => [...xml.matchAll(/<loc>([^<]*)<\/loc>/g)].map((m) => m[1]);
 
@@ -99,7 +120,8 @@ async function pool(items, limit, work) {
  */
 export async function runChecks(target) {
   const { routeManifest } = await import("./route-manifest.mjs");
-  const { RELEASES } = await import("../src/releases.ts");
+  const { RELEASES, PRODUCT_VERSION } = await import("../src/releases.ts");
+  const { readLive } = await import("./source-runtime.mjs");
   const routes = routeManifest();
   const banned = target.live || target.appUrlSet ? await dialogTexts() : [];
   const failures = [];
@@ -148,10 +170,53 @@ export async function runChecks(target) {
       if (page.status !== 200) fail(path, `status ${page.status}${page.location ? ` → ${page.location}` : ""}`);
       html = page.text;
     }
-    if (html)
+    if (html) {
       for (const part of Object.values(RELEASES))
         if (!html.includes(`https://github.com/zrzur/${part.repo}/archive/${part.commit}.tar.gz`))
           fail(path, `no archive link for ${part.repo} ${part.commit.slice(0, 12)}`);
+      // the running services are read in the browser; the page says when it could not
+      if (!html.includes('<script type="module" src="/source.js"></script>')) fail(path, "does not load /source.js");
+      if (!html.includes('id="source-status"')) fail(path, "has no status line");
+      for (const part of Object.values(RELEASES))
+        if (part.live && !html.includes(`data-live="${part.live.url}"`)) fail(path, `${part.repo} row is not read from ${part.live.url}`);
+    }
+  }
+  if (target.dist) {
+    if (!existsSync(join(target.dist, "source.js"))) fail("source.js", "missing");
+  } else {
+    const script = await fetchText(`${target.live}/source.js`);
+    if (script.status !== 200 || !script.text.includes("applyLive")) fail("/source.js", `status ${script.status}`);
+  }
+
+  // one product version: the desktop download names it, and (live) every running part
+  if (RELEASES.desktop.version !== PRODUCT_VERSION) fail("src/releases.ts", `desktop ${RELEASES.desktop.version}, product ${PRODUCT_VERSION}`);
+  if (target.live) {
+    const policy = (await fetch(`${target.live}/source`, { method: "HEAD" })).headers.get("content-security-policy") ?? "";
+    const connect = policy.match(/connect-src([^;]*)/)?.[1] ?? "";
+    for (const part of Object.values(RELEASES)) {
+      if (!part.live) continue;
+      const origin = new URL(part.live.url).origin;
+      if (!connect.split(/\s+/).includes(origin)) fail("/source", `the page policy does not let it read ${origin}`);
+      const answer = { status: 0, allowOrigin: null, json: null, public: null };
+      try {
+        const response = await fetch(part.live.url, { headers: { origin: "https://zrzur.com", "user-agent": "zrzur-site-check" }, cache: "no-store" });
+        answer.status = response.status;
+        answer.allowOrigin = response.headers.get("access-control-allow-origin");
+        answer.json = response.ok ? await response.json().catch(() => null) : null;
+      } catch (error) {
+        answer.status = String(error.message);
+      }
+      const live = readLive(answer.json, part.live.versionKey);
+      if (live) {
+        // the running commit must be public: AGPL section 13 points people at it
+        const headers = { "user-agent": "zrzur-site-check", accept: "application/vnd.github+json" };
+        if (process.env.GITHUB_TOKEN) headers.authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+        const github = await fetch(`https://api.github.com/repos/zrzur/${part.repo}/commits/${live.commit}`, { headers }).catch(() => null);
+        answer.public = github ? (github.status === 200 ? true : github.status === 404 || github.status === 422 ? false : null) : null;
+      }
+      for (const problem of runningProblems({ repo: part.repo, url: part.live.url, versionKey: part.live.versionKey }, answer, PRODUCT_VERSION, readLive))
+        fail("/source", problem);
+    }
   }
 
   // the Imprint and contact addresses are plain mailto: links, also without JavaScript

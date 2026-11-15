@@ -7,7 +7,8 @@
  * and the post-publish checks (scripts/site-check.mjs, scripts/check-downloads.mjs).
  * The website's own version and commit come from its build (src/buildInfo.ts).
  *
- * Update it with every deploy of web, backend or the desktop installers:
+ * Update it with every deploy of web, backend or the desktop installers (the
+ * web and backend rows are only a fallback: /source reads the running ones):
  * version = the component's RELEASE.json, commit = the commit the deployed
  * build or image was made from (full 40 characters, pushed to GitHub).
  */
@@ -29,18 +30,37 @@ export interface Component {
   repo: string;
   version: string;
   commit: string;
+  /**
+   * Where the running service says what it is, read by /source in the
+   * visitor's browser and by the live check: a JSON document with the
+   * version under `versionKey` and the full commit under `commit`. A part
+   * without it (the desktop app is a download, not a service) shows the
+   * values above.
+   */
+  live?: { url: string; versionKey: string };
 }
 
+/**
+ * The one product version (owner rule ZR-002): the desktop app, the web app
+ * and the server name the same version. The live check fails when a running
+ * part says otherwise.
+ */
+export const PRODUCT_VERSION = "26.1.0-beta.2";
+
 export const RELEASES = {
+  // web and backend: the values of the last deploy, shown only when the
+  // page cannot read the running service (no JavaScript, service down)
   web: {
     repo: "web",
     version: "26.1.0-beta.1",
-    commit: "7d0d742345809c67fee42787d605a6fb4881ad54",
+    commit: "f08dc31784f421adedbb2454a34c0cbee937c7f0",
+    live: { url: "https://app.zrzur.com/build.json", versionKey: "version" },
   },
   backend: {
     repo: "backend",
     version: "26.1.0-beta.1",
-    commit: "b31b8293322df2caaecd12cc30df75c219f44396",
+    commit: "8a90378eeb622dfed123131242f82b1f20ee19ea",
+    live: { url: "https://api.zrzur.com/", versionKey: "zrzur" },
   },
   desktop: {
     repo: "desktop",
