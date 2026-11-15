@@ -1246,8 +1246,8 @@
     },
     {
       "path": "public/sitemap.xml",
-      "sha256": "4c2c2b31cbed4851cb0ca0a7f8b815ac84bb32b4675dddf554b011d91cbdbf97",
-      "bytes": 86295,
+      "sha256": "9b44e8b19774b3974e1fa2243cd4190f7b9461c4c56e9760d354c793cc4cfa69",
+      "bytes": 84822,
       "category": "reviewed-product-asset"
     },
     {
@@ -1372,8 +1372,8 @@
     },
     {
       "path": "scripts/site-check.mjs",
-      "sha256": "41c7d9fb4b2266eebee29eaa102adff4ab1c56cd77f66e1945c2e81d6179dcb8",
-      "bytes": 14190,
+      "sha256": "61f404ae6afcbc8e0456e2a23f7b295e00e900a3108dac45e9c18de24058f083",
+      "bytes": 14708,
       "category": "reviewed-build-and-ci"
     },
     {
@@ -1504,8 +1504,8 @@
     },
     {
       "path": "src/legal-nav.ts",
-      "sha256": "f31366ab2b0a4357e3623953bcb24fda2353c5b142ec3f401cb090e279fb2e06",
-      "bytes": 2042,
+      "sha256": "81c287520d50575d0c8e352ad91b1ad7820c2a4c1d4e6a2cf8b30354a8cca559",
+      "bytes": 1991,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1516,8 +1516,8 @@
     },
     {
       "path": "src/legal.ts",
-      "sha256": "28d861480c2bb10eac940200bac1725dd629fc13c4c0aea7db1309658369a208",
-      "bytes": 1527,
+      "sha256": "706dc502bbdfe07c4d2c74f1faf4de827c0f0bdfdd285e52d98f196d1c7828a5",
+      "bytes": 1451,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1570,8 +1570,8 @@
     },
     {
       "path": "src/policies/community-guidelines.ts",
-      "sha256": "04a77163fdcef828f94a27f58e7aa6b846465a3be9b9fe6751a17d647f445b94",
-      "bytes": 27454,
+      "sha256": "9ed96806200eeb94afedba1d7c32162bf974ad94e5c24bb383f44a9d7fb56155",
+      "bytes": 28138,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1600,8 +1600,8 @@
     },
     {
       "path": "src/policies/enforcement-appeals.ts",
-      "sha256": "cdcdfcfe29863ab713d360f5340b958c6221915724b25041df2f7063e6ca5f17",
-      "bytes": 33440,
+      "sha256": "7944e9eb804653ee5a780ef1400ac041ef8bc4f2c1ce55cd6ce99a38105bc7cb",
+      "bytes": 34036,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1617,15 +1617,9 @@
       "category": "product-source-or-build-manifest"
     },
     {
-      "path": "src/policies/plugin-policy.ts",
-      "sha256": "8b31b05f7cfe5ca7ed4b4d0c629342bb95c5198a7a75e8c5fb7bf5c670875e33",
-      "bytes": 14314,
-      "category": "product-source-or-build-manifest"
-    },
-    {
       "path": "src/policies/privacy.ts",
-      "sha256": "35e88f5ffd4d97423e5ebbb2f53be2ce2085bcc3c0eb60083a85622a01f334b4",
-      "bytes": 127857,
+      "sha256": "527eb859982be1d1b52d6e3947c464171d6eeb29ce5ecc13d2ab3022d11be64a",
+      "bytes": 127756,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1636,14 +1630,14 @@
     },
     {
       "path": "src/policies/shared.ts",
-      "sha256": "a615ace1a35df37725c660efc84aa3cef574aaf19f8679ff9b9ea07b8fbd72dd",
-      "bytes": 2994,
+      "sha256": "51d6e6ab6d3e8a1cd91f06045e3b21268c3ec59567e028af2746246646f62712",
+      "bytes": 3109,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/policies/terms.ts",
-      "sha256": "6aa6040982e7dc933fa2fe313a460633d9a01e77aeccb67aa2837e3f311ce293",
-      "bytes": 36425,
+      "sha256": "e17d8b5b2891f7e79ce56a2836b38e7cf5abfce205792c21dc8b5e2cdf980656",
+      "bytes": 36521,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1756,8 +1750,8 @@
     },
     {
       "path": "test/content.test.mjs",
-      "sha256": "b78190db826f15274296823f5df21e84260d9af2c02c5b3dc158d9f27322a357",
-      "bytes": 16330,
+      "sha256": "b53a746e669c0890e1df275aeb42f48e3587559c021b64d6666052e941fe2ef0",
+      "bytes": 16396,
       "category": "synthetic-test-source-or-fixture"
     },
     {
@@ -1768,8 +1762,8 @@
     },
     {
       "path": "test/legal.test.mjs",
-      "sha256": "2cd98cea12a5d6087cf8b5abb6dc66e55aba55c434e5cfdb6edcd80780e31c17",
-      "bytes": 20864,
+      "sha256": "6aa44f068cb87c7e14aac8fa4d38057f80b618d886043a036c7a9210160941cf",
+      "bytes": 23656,
       "category": "synthetic-test-source-or-fixture"
     },
     {
