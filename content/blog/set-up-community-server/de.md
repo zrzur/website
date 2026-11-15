@@ -67,6 +67,6 @@ Erstelle im Servermenü einen **Einladungslink**. Er sieht aus wie `zrzur.cc/dei
 
 Die **Statistiken** zeigen Nachrichten pro Kanal, wer beigetreten ist und wer gegangen ist, und wie viele Leute jeden Tag schreiben. Damit siehst du, welche Kanäle die Leute lieben und welche du zusammenlegen oder schließen kannst.
 
-## Alles hier ist kostenlos
+## Nichts zu bezahlen
 
-Jeder Schritt in dieser Anleitung ist auf Zrzur kostenlos: In dieser Version gibt es nichts zu bezahlen. Wenn du eine bestehende Community von Discord mitbringst, lies [unseren Leitfaden zum Umzug](/de/blog/discord-alternative).
+Für keinen Schritt in dieser Anleitung gibt es in dieser Version etwas zu bezahlen. Wenn du eine bestehende Community von Discord mitbringst, lies [unseren Leitfaden zum Umzug](/de/blog/discord-alternative).

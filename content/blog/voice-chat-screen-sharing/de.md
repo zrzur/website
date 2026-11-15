@@ -1,11 +1,11 @@
 ---
-title: Kostenloser Sprachchat und Bildschirm teilen für deine Community
-summary: Sprachkanäle zum Reinspringen, Bildschirm teilen mit Ton, Bühnenkanäle, ein Soundboard mit 115 Sounds und saubere Mikrofon-Einstellungen. So funktioniert Sprache in Zrzur, alles kostenlos.
+title: Sprachchat und Bildschirm teilen für deine Community
+summary: Sprachkanäle zum Reinspringen, Bildschirm teilen mit Ton, Bühnenkanäle, ein Soundboard mit 115 Sounds und saubere Mikrofon-Einstellungen. So funktioniert Sprache in Zrzur.
 date: 2026-11-13
 cover: /blog/voice-chat-screen-sharing/cover.jpg
-tags: Sprachchat, Bildschirm teilen, kostenloser Sprachchat, Soundboard, Community
+tags: Sprachchat, Bildschirm teilen, Soundboard, Community
 ---
-Text ist gut, um Dinge festzuhalten. Mit Sprache wird eine Community lebendig: ein später Spieleabend, eine Lerngruppe, ein Freund, der dir etwas auf seinem Bildschirm zeigen will. In Zrzur ist das alles für alle kostenlos. Dieser Beitrag erklärt, wie Sprache funktioniert, was du einrichten kannst und was jede Einstellung macht.
+Text ist gut, um Dinge festzuhalten. Mit Sprache wird eine Community lebendig: ein später Spieleabend, eine Lerngruppe, ein Freund, der dir etwas auf seinem Bildschirm zeigen will. In Zrzur steht das alles allen offen. Dieser Beitrag erklärt, wie Sprache funktioniert, was du einrichten kannst und was jede Einstellung macht.
 
 ## Sprachkanäle: immer offen
 
@@ -17,7 +17,7 @@ Im Gespräch kannst du dein Mikrofon **stummschalten**, dich **taubstellen**, so
 
 Drück im Gespräch auf **Bildschirm teilen** und wähle ein Fenster, einen Tab oder deinen ganzen Bildschirm. Deine Freunde sehen ihn sofort. Hake **Audio teilen** an, und der **Ton** geht mit, sodass auch ein Video oder ein Spiel zu hören ist; kann dein Browser von dort keinen Ton teilen, sagt Zrzur es dir. Alle, die zuschauen, können den Ton des Streams für sich lauter, leiser oder stumm stellen.
 
-Bildschirm teilen läuft mit **720p und 30 Bildern pro Sekunde**, kostenlos für alle. Fahre über jemanden, der streamt, um eine kleine Vorschau zu sehen, bevor du den Stream öffnest.
+Bildschirm teilen läuft mit **720p und 30 Bildern pro Sekunde**, für alle. Fahre über jemanden, der streamt, um eine kleine Vorschau zu sehen, bevor du den Stream öffnest.
 
 ## Bühnenkanäle für Vorträge und Events
 
@@ -46,9 +46,9 @@ Wenn du deinen Bildschirm für andere streamst, schalte den **Streamer-Modus** e
 
 Zrzur betreibt einen eigenen Sprachserver auf Basis der Open-Source-Software LiveKit in Frankfurt am Main. Deine Stimme und dein Video gehen an unseren Server, nicht an ein fremdes Unternehmen. Sprache funktioniert in jedem aktuellen Browser und in der Desktop-App für Windows, macOS und Linux.
 
-## Was kostenlos ist
+## Was es kostet
 
-Alles in diesem Beitrag ist kostenlos: Sprachkanäle, Video, Bildschirm teilen mit Ton, Bühnenkanäle und das Soundboard. In dieser Version gibt es nichts zu bezahlen.
+Sprachkanäle, Video, Bildschirm teilen mit Ton, Bühnenkanäle und das Soundboard: Für nichts davon gibt es in dieser Version etwas zu bezahlen.
 
 ## Probier es aus
 

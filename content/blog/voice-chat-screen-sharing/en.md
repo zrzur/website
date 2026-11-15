@@ -1,11 +1,11 @@
 ---
-title: Free voice chat and screen sharing for your community
-summary: Voice channels you drop into, screen sharing with sound, stage channels, a soundboard with 115 sounds and clean microphone settings. How voice works in Zrzur, all free.
+title: Voice chat and screen sharing for your community
+summary: Voice channels you drop into, screen sharing with sound, stage channels, a soundboard with 115 sounds and clean microphone settings. How voice works in Zrzur.
 date: 2026-11-13
 cover: /blog/voice-chat-screen-sharing/cover.jpg
-tags: voice chat, screen sharing, free voice chat, soundboard, community
+tags: voice chat, screen sharing, soundboard, community
 ---
-Text is good for keeping things. Voice is where a community comes alive: a late game night, a study group, a friend who wants to show you something on their screen. In Zrzur, all of this is free for everyone. This post explains how voice works, what you can set up, and what each setting does.
+Text is good for keeping things. Voice is where a community comes alive: a late game night, a study group, a friend who wants to show you something on their screen. In Zrzur, all of this is open to everyone. This post explains how voice works, what you can set up, and what each setting does.
 
 ## Voice channels: always open
 
@@ -17,7 +17,7 @@ In a call you can **mute** your microphone, **deafen** yourself so you hear noth
 
 Press **Share screen** in the call and choose a window, a tab or your whole screen. Your friends see it straight away. Tick **Share audio** and the **sound** goes with it, so a video or a game is heard too; if your browser cannot share sound from there, Zrzur tells you. Everyone watching can turn the stream's sound up, down or off on their own.
 
-Screen sharing runs at **720p and 30 frames per second**, free for everyone. Hover over someone who is streaming to see a small preview before you open it.
+Screen sharing runs at **720p and 30 frames per second** for everyone. Hover over someone who is streaming to see a small preview before you open it.
 
 ## Stage channels for talks and events
 
@@ -46,9 +46,9 @@ If you stream your screen to other people, turn on **Streamer mode**. It hides y
 
 Zrzur runs its own voice server, built on the open-source LiveKit software, in Frankfurt am Main, Germany. Your voice and video go to our server, not to an outside company. Voice works in any current browser and in the desktop app for Windows, macOS and Linux.
 
-## What is free
+## What it costs
 
-Everything in this post is free: voice channels, video, screen sharing with sound, stage channels and the soundboard. There is nothing to pay in this version.
+Voice channels, video, screen sharing with sound, stage channels and the soundboard: there is nothing to pay for any of them in this version.
 
 ## Try it
 

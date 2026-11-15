@@ -42,9 +42,9 @@ Zrzur runs in any current browser on a computer or a phone, so you need no app s
 
 Arabic, English and German are the languages we check line by line, and the app comes in dozens of other languages. Zrzur picks your device's language on its own, and you can change it at any time in **Settings › Language**. Our website zrzur.com is in seven languages, Arabic among them.
 
-## Free and open source
+## Open source, nothing to pay
 
-Everything in this post is free: there is nothing to pay in this version. Zrzur is open source under the AGPL licence, and our servers are in Frankfurt am Main, Germany.
+There is nothing to pay for anything in this post in this version. Zrzur is open source under the AGPL licence, and our servers are in Frankfurt am Main, Germany.
 
 ## Start now
 

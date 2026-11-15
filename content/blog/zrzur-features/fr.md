@@ -3,15 +3,15 @@ title: Zrzur : pourquoi nous l'avons créé, et tout ce qu'il sait faire
 summary: Discuter ne devrait pas coûter un abonnement. Nous avons redessiné un projet open source et ajouté beaucoup. Voici pourquoi, et tout ce que fait Zrzur.
 date: 2026-11-12
 cover: /blog/zrzur-features/cover.jpg
-tags: alternative à Discord, open source, chat gratuit, serveurs, chat vocal
+tags: alternative à Discord, open source, serveurs, chat vocal
 ---
-Zrzur est un lieu gratuit où se retrouvent amis et communautés : des serveurs avec des salons textuels et vocaux, le partage d'écran, des rôles et des permissions, dans ton navigateur et sur Windows, macOS et Linux. Dans cet article, nous expliquons pourquoi nous l'avons créé et nous passons en revue tout ce qu'il sait faire aujourd'hui.
+Zrzur est un lieu où se retrouvent amis et communautés : des serveurs avec des salons textuels et vocaux, le partage d'écran, des rôles et des permissions, dans ton navigateur et sur Windows, macOS et Linux. Dans cet article, nous expliquons pourquoi nous l'avons créé et nous passons en revue tout ce qu'il sait faire aujourd'hui.
 
 ## Pourquoi nous avons créé Zrzur
 
 Les applications de discussion étaient simples : tu créais un serveur, tu invitais tes amis et vous parliez. Au fil des années, une part toujours plus grande de ce qui rendait Discord agréable est passée derrière un abonnement mensuel : des envois plus lourds, un partage d'écran plus net, tes propres emojis partout, l'apparence de ton profil, un extra payant après l'autre. Nous ne sommes pas contre le fait de payer pour quelque chose de bien, mais parler avec tes amis ne devrait pas demander une carte bancaire.
 
-Nous voulions un lieu où l'essentiel du quotidien est gratuit pour tout le monde : écrire, appeler, partager son écran et faire vivre une communauté.
+Nous voulions un lieu où l'essentiel du quotidien ne coûte rien : écrire, appeler, partager son écran et faire vivre une communauté.
 
 ## D'où vient Zrzur
 
@@ -35,7 +35,7 @@ Chaque communauté a son serveur, et chaque sujet y trouve sa place.
 - **Les salons vocaux** sont toujours ouverts : tu les rejoins en un clic et tu pars quand tu veux.
 - **Le partage d'écran** directement dans l'appel, avec un aperçu quand tu passes la souris sur quelqu'un qui diffuse.
 - **Les salons conférence** pour les présentations et les événements : les intervenants parlent, le public écoute, et chacun peut demander la parole.
-- **La table de sons** : de courts sons à jouer dans l'appel, avec une bibliothèque de plus de cent sons gratuits que chaque serveur peut ajouter.
+- **La table de sons** : de courts sons à jouer dans l'appel, avec une bibliothèque de plus de cent sons que chaque serveur peut ajouter.
 - **Appuyer pour parler et sensibilité du micro**, pour que ton micro n'envoie que ce que tu veux dire.
 
 ## Un accueil à l'image de ta communauté
@@ -85,6 +85,6 @@ Les développeurs peuvent créer des **bots et des applications** pour Zrzur. Un
 
 Zrzur fonctionne dans tout navigateur récent, sur ordinateur ou sur téléphone. Pour ton ordinateur, une application de bureau pour Windows, macOS et Linux t'attend sur la [page de téléchargement](/fr/download).
 
-## Gratuit, et ouvert pour de bon
+## Ouvert, et pour de bon
 
-Tout ce qui est décrit ici est gratuit : il n'y a rien à payer dans cette version. Zrzur n'en est qu'à ses débuts, et ce blog est l'endroit où nous te racontons ce que nous construisons et pourquoi. [Ouvre Zrzur](https://app.zrzur.com), crée un serveur pour tes amis, et dis-nous ce qui manque.
+Il n'y a rien à payer pour ce qui est décrit ici dans cette version. Zrzur n'en est qu'à ses débuts, et ce blog est l'endroit où nous te racontons ce que nous construisons et pourquoi. [Ouvre Zrzur](https://app.zrzur.com), crée un serveur pour tes amis, et dis-nous ce qui manque.

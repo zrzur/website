@@ -75,4 +75,4 @@ Deine Werkzeuge kümmern sich um deinen Server. Bei allem Illegalen oder bei ein
 
 ## Probier es aus
 
-Alle diese Werkzeuge sind kostenlos. [Öffne Zrzur](https://app.zrzur.com), lege einen Server an und nimm dir fünf Minuten für die **Servereinstellungen**: Richte deine Rollen ein, eine AutoMod-Regel gegen Spam und deine Regeln zum Akzeptieren. Wenn du eine neue Community aufbaust, lies als Nächstes unseren Leitfaden zum [Einrichten eines Community-Servers](/de/blog/set-up-community-server).
+Alle diese Werkzeuge hat jeder Server. [Öffne Zrzur](https://app.zrzur.com), lege einen Server an und nimm dir fünf Minuten für die **Servereinstellungen**: Richte deine Rollen ein, eine AutoMod-Regel gegen Spam und deine Regeln zum Akzeptieren. Wenn du eine neue Community aufbaust, lies als Nächstes unseren Leitfaden zum [Einrichten eines Community-Servers](/de/blog/set-up-community-server).

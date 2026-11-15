@@ -42,9 +42,9 @@ Zrzur läuft in jedem aktuellen Browser auf Computer und Handy, du brauchst also
 
 Arabisch, Englisch und Deutsch prüfen wir Zeile für Zeile, und die App gibt es in Dutzenden weiteren Sprachen. Zrzur wählt die Sprache deines Geräts von selbst, und du kannst sie jederzeit unter **Einstellungen › Sprache** ändern. Unsere Website zrzur.com gibt es in sieben Sprachen, darunter Arabisch.
 
-## Kostenlos und Open Source
+## Open Source, nichts zu bezahlen
 
-Alles in diesem Beitrag ist kostenlos: In dieser Version gibt es nichts zu bezahlen. Zrzur ist Open Source unter der AGPL-Lizenz, und unsere Server stehen in Frankfurt am Main.
+Für nichts in diesem Beitrag gibt es in dieser Version etwas zu bezahlen. Zrzur ist Open Source unter der AGPL-Lizenz, und unsere Server stehen in Frankfurt am Main.
 
 ## Fang jetzt an
 

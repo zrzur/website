@@ -3,15 +3,15 @@ title: Zrzur: why we built it, and everything it can do
 summary: Chat should not cost a monthly fee. We took an open-source chat project, redesigned every screen and added much more. Here is why, and everything Zrzur can do today.
 date: 2026-11-12
 cover: /blog/zrzur-features/cover.jpg
-tags: Discord alternative, open source, free chat, servers, voice chat
+tags: Discord alternative, open source, servers, voice chat
 ---
-Zrzur is a free place where friends and communities meet: servers with text and voice channels, screen sharing, roles and permissions, in your browser and on Windows, macOS and Linux. This post explains why we built it and walks through everything it can do today.
+Zrzur is a place where friends and communities meet: servers with text and voice channels, screen sharing, roles and permissions, in your browser and on Windows, macOS and Linux. This post explains why we built it and walks through everything it can do today.
 
 ## Why we built Zrzur
 
 Chat apps used to be simple: you made a server, invited your friends, and talked. Over the years, more and more of what made Discord fun moved behind a monthly subscription. Bigger uploads, sharper screen sharing, your own emoji everywhere, the look of your profile: one paid extra after another. We are not against paying for something good, but talking with your friends should not need a credit card.
 
-We wanted a place where the everyday things are free for everyone: talking, calling, sharing your screen and running a community.
+We wanted a place where the everyday things cost nothing: talking, calling, sharing your screen and running a community.
 
 ## Where Zrzur comes from
 
@@ -35,7 +35,7 @@ Every community gets a server, and every topic gets a place inside it.
 - **Voice channels** are always open: you join in one click and leave when you want.
 - **Screen sharing** from inside the call, with a preview when you hover over someone who is streaming.
 - **Stage channels** for talks and events: speakers talk, listeners listen, and anyone can ask to speak.
-- **Soundboard**: short sounds you play into the call, with a ready library of more than a hundred free sounds that any server can add.
+- **Soundboard**: short sounds you play into the call, with a ready library of more than a hundred sounds that any server can add.
 - **Push-to-talk and voice sensitivity**, so your microphone sends only what you mean to say.
 
 ## A welcome that fits your community
@@ -85,6 +85,6 @@ Developers can build **bots and apps** for Zrzur. A verified bot carries a clear
 
 Zrzur runs in any current browser, on a computer or a phone. For your computer there is a desktop app for Windows, macOS and Linux on the [download page](/download).
 
-## Free, and staying open
+## Open, and staying open
 
-Everything in this post is free: there is nothing to pay in this version. Zrzur is at its beginning, and this blog is where we tell you what we build and why. [Open Zrzur](https://app.zrzur.com), make a server for your friends, and tell us what is missing.
+There is nothing to pay for anything in this post in this version. Zrzur is at its beginning, and this blog is where we tell you what we build and why. [Open Zrzur](https://app.zrzur.com), make a server for your friends, and tell us what is missing.

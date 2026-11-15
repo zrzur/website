@@ -1,10 +1,10 @@
 # Zrzur
 
-> Zrzur (Arabic: زرزور) is a free, open-source alternative to Discord: a chat app for friends and communities with servers, text and voice channels, screen sharing, files, roles and member management. It runs in the browser at https://app.zrzur.com and as a desktop app for Windows, macOS and Linux. Arabic (right to left), English and German are fully supported.
+> Zrzur (Arabic: زرزور) is an open-source alternative to Discord: a chat app for friends and communities with servers, text and voice channels, screen sharing, files, roles and member management. It runs in the browser at https://app.zrzur.com and as a desktop app for Windows, macOS and Linux. Arabic (right to left), English and German are fully supported.
 
 Key facts:
 
-- Free: there is nothing to pay in the current version, no subscription and no checkout.
+- Price: there is nothing to pay in the current version, no subscription and no checkout.
 - Open source under the GNU AGPL-3.0, built on an open-source foundation with licences and contributor credit kept intact.
 - Servers are hosted in the European Union (Frankfurt am Main, Germany); Zrzur is run from Austria by the Zrzur team as a non-commercial project in its beta phase.
 - Web app: https://app.zrzur.com. Invite links use https://zrzur.cc/<code>.
@@ -21,7 +21,7 @@ Key facts:
 ## Blog
 
 - [Looking for a Discord alternative? Here is everything Zrzur does](https://zrzur.com/blog/discord-alternative)
-- [Free voice chat and screen sharing for your community](https://zrzur.com/blog/voice-chat-screen-sharing)
+- [Voice chat and screen sharing for your community](https://zrzur.com/blog/voice-chat-screen-sharing)
 - [How to keep your community server safe: AutoMod, slowmode and emergency pauses](https://zrzur.com/blog/moderate-your-server)
 - [How to set up a community server: channels, roles, lobby and welcome questions](https://zrzur.com/blog/set-up-community-server)
 - [An Arabic chat app from the ground up: Zrzur, right to left](https://zrzur.com/blog/arabic-chat-app)

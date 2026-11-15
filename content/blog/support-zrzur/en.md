@@ -5,7 +5,7 @@ date: 2026-11-13
 cover: /blog/support-zrzur/cover.jpg
 tags: support Zrzur, Ko-fi, open source, independent project, community
 ---
-Zrzur is free for everyone: talking, calling, sharing your screen and running a community cost nothing. But running a chat platform does cost money, every day. This post is honest about who pays for Zrzur, what it costs, where our limits are today, and how you can help, with or without money.
+On Zrzur, talking, calling, sharing your screen and running a community cost nothing. But running a chat platform does cost money, every day. This post is honest about who pays for Zrzur, what it costs, where our limits are today, and how you can help, with or without money.
 
 ## An independent project
 
@@ -37,7 +37,7 @@ As more people support Zrzur, these limits move.
 
 If Zrzur is useful to you or your community, you can support it on **[Ko-fi](https://ko-fi.com/zrzur)**, once or every month.
 
-- **It is voluntary.** Supporting Zrzur unlocks no features, and Zrzur stays free for everyone either way.
+- **It is voluntary.** Supporting Zrzur unlocks no features, and Zrzur stays the same for everyone either way.
 - **It goes to running Zrzur**: the servers, the voice server, storage, domains, email, security and backups.
 - **Ko-fi handles the payment.** We never see your card or account details. What Ko-fi shares with us, and how we use it, is in our [privacy policy](/legal/privacy).
 - Zrzur is a personal project, not a registered charity, so support is not tax-deductible.
@@ -55,4 +55,4 @@ Money is only one way. Most of what Zrzur needs costs you nothing:
 
 ## Thank you
 
-Every server that opens, every friend who joins and every coffee on Ko-fi keeps Zrzur running and free. Thank you for being part of it. If you have not tried it yet, [open Zrzur](https://app.zrzur.com), or read [what Zrzur can do](/blog/discord-alternative) first.
+Every server that opens, every friend who joins and every coffee on Ko-fi keeps Zrzur running. Thank you for being part of it. If you have not tried it yet, [open Zrzur](https://app.zrzur.com), or read [what Zrzur can do](/blog/discord-alternative) first.

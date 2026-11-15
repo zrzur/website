@@ -1,17 +1,17 @@
 ---
 title: Looking for a Discord alternative? Here is everything Zrzur does
-summary: Servers, voice channels, screen sharing, roles and bots, free and open source. What you know from Discord, how it works in Zrzur, and how to bring your community over.
+summary: Servers, voice channels, screen sharing, roles and bots, open source. What you know from Discord, how it works in Zrzur, and how to bring your community over.
 date: 2026-11-13
 cover: /blog/discord-alternative/cover.jpg
-tags: Discord alternative, free chat, open source, voice chat, community
+tags: Discord alternative, open source chat, voice chat, community
 ---
-If you run a community on Discord, or you just hang out there with friends, you already know how a good chat app feels: a server for your group, channels for every topic, a voice channel you can drop into at any time. Zrzur works the same way. It is free, open source, hosted in the European Union, and built with Arabic from the ground up. This post goes through what you already know, shows how it works in Zrzur, and explains how to move your community.
+If you run a community on Discord, or you just hang out there with friends, you already know how a good chat app feels: a server for your group, channels for every topic, a voice channel you can drop into at any time. Zrzur works the same way. It is open source, hosted in the European Union, and built with Arabic from the ground up. This post goes through what you already know, shows how it works in Zrzur, and explains how to move your community.
 
 ## The same idea you already know
 
 Zrzur is built around **servers**. A server is your community's home: you create it in a minute, give it a name and an icon, and invite people with a link. Inside it, **categories** and **channels** give every topic its own place. If you have used Discord, nothing here needs explaining, and that is on purpose: the way you talk with your people should not have to change.
 
-What does change is the price. On Zrzur, the everyday things are free for everyone: talking, calling, sharing your screen and running a community. There is nothing to pay in this version, no subscription and no checkout.
+What does change is the price. On Zrzur, the everyday things cost nothing: talking, calling, sharing your screen and running a community. There is nothing to pay in this version, no subscription and no checkout.
 
 ## Text: channels, forums and threads
 

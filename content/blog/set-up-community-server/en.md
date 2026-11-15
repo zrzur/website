@@ -67,6 +67,6 @@ Create an **invite link** from the server menu. It looks like `zrzur.cc/your-cod
 
 **Insights** shows messages per channel, who joined and who left, and how many people write each day. Use it to see which channels people love, and which ones you can merge or close.
 
-## Everything here is free
+## Nothing to pay
 
-Every step in this guide is free on Zrzur: there is nothing to pay in this version. If you are bringing an existing community from Discord, read [our guide for moving over](/blog/discord-alternative).
+There is nothing to pay for any step in this guide in this version. If you are bringing an existing community from Discord, read [our guide for moving over](/blog/discord-alternative).

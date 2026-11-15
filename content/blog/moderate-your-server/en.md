@@ -75,4 +75,4 @@ Your tools handle your server. For anything illegal, or a person who harms other
 
 ## Try it
 
-All of these tools are free. [Open Zrzur](https://app.zrzur.com), create a server, and spend five minutes in **Server settings**: set up your roles, one AutoMod rule against spam and your rules to accept. If you are setting up a new community, read our guide on [setting up a community server](/blog/set-up-community-server) next.
+All of these tools come with every server. [Open Zrzur](https://app.zrzur.com), create a server, and spend five minutes in **Server settings**: set up your roles, one AutoMod rule against spam and your rules to accept. If you are setting up a new community, read our guide on [setting up a community server](/blog/set-up-community-server) next.

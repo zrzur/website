@@ -1,17 +1,17 @@
 ---
 title: Auf der Suche nach einer Discord-Alternative? Das alles kann Zrzur
-summary: Server, Sprachkanäle, Bildschirmfreigabe, Rollen und Bots, kostenlos und Open Source. Was du von Discord kennst, wie es in Zrzur funktioniert und wie deine Community umzieht.
+summary: Server, Sprachkanäle, Bildschirmfreigabe, Rollen und Bots, Open Source. Was du von Discord kennst, wie es in Zrzur funktioniert und wie deine Community umzieht.
 date: 2026-11-13
 cover: /blog/discord-alternative/cover.jpg
-tags: Discord-Alternative, kostenloser Chat, Open Source, Sprachchat, Community
+tags: Discord-Alternative, Open-Source-Chat, Sprachchat, Community
 ---
-Wenn du eine Community auf Discord betreibst oder dort einfach mit Freunden abhängst, weißt du schon, wie sich eine gute Chat-App anfühlt: ein Server für deine Gruppe, Kanäle für jedes Thema, ein Sprachkanal, in den du jederzeit hineinspringst. Zrzur funktioniert genauso. Es ist kostenlos, Open Source, in der Europäischen Union gehostet und von Anfang an auch für Arabisch gebaut. Dieser Beitrag geht durch, was du schon kennst, zeigt, wie es in Zrzur funktioniert, und erklärt, wie deine Community umzieht.
+Wenn du eine Community auf Discord betreibst oder dort einfach mit Freunden abhängst, weißt du schon, wie sich eine gute Chat-App anfühlt: ein Server für deine Gruppe, Kanäle für jedes Thema, ein Sprachkanal, in den du jederzeit hineinspringst. Zrzur funktioniert genauso. Es ist Open Source, in der Europäischen Union gehostet und von Anfang an auch für Arabisch gebaut. Dieser Beitrag geht durch, was du schon kennst, zeigt, wie es in Zrzur funktioniert, und erklärt, wie deine Community umzieht.
 
 ## Die Idee, die du schon kennst
 
 Zrzur ist um **Server** herum gebaut. Ein Server ist das Zuhause deiner Community: Du legst ihn in einer Minute an, gibst ihm einen Namen und ein Bild und lädst Leute mit einem Link ein. Darin geben **Kategorien** und **Kanäle** jedem Thema seinen Platz. Wenn du Discord kennst, muss hier nichts erklärt werden, und das ist Absicht: Wie du mit deinen Leuten redest, soll sich nicht ändern müssen.
 
-Was sich ändert, ist der Preis. In Zrzur sind die alltäglichen Dinge für alle kostenlos: reden, telefonieren, den Bildschirm teilen und eine Community führen. In dieser Version gibt es nichts zu bezahlen, kein Abo und keinen Bezahlvorgang.
+Was sich ändert, ist der Preis. In Zrzur kosten die alltäglichen Dinge nichts: reden, telefonieren, den Bildschirm teilen und eine Community führen. In dieser Version gibt es nichts zu bezahlen, kein Abo und keinen Bezahlvorgang.
 
 ## Text: Kanäle, Foren und Threads
 

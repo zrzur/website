@@ -1,17 +1,17 @@
 ---
 title: Tu cherches une alternative à Discord ? Voici tout ce que fait Zrzur
-summary: Serveurs, salons vocaux, partage d'écran, rôles et bots, gratuit et open source. Ce que tu connais de Discord, comment ça marche dans Zrzur, et comment faire venir ta communauté.
+summary: Serveurs, salons vocaux, partage d'écran, rôles et bots, open source. Ce que tu connais de Discord, comment ça marche dans Zrzur, et comment faire venir ta communauté.
 date: 2026-11-13
 cover: /blog/discord-alternative/cover.jpg
-tags: alternative à Discord, chat gratuit, open source, chat vocal, communauté
+tags: alternative à Discord, open source, chat vocal, communauté
 ---
-Si tu animes une communauté sur Discord, ou si tu y retrouves simplement tes amis, tu sais déjà ce qu'est une bonne app de discussion : un serveur pour ton groupe, un salon pour chaque sujet, un salon vocal où passer à tout moment. Zrzur fonctionne de la même façon. Il est gratuit, open source, hébergé dans l'Union européenne et pensé dès le départ pour l'arabe. Cet article reprend ce que tu connais déjà, montre comment ça marche dans Zrzur et explique comment faire venir ta communauté.
+Si tu animes une communauté sur Discord, ou si tu y retrouves simplement tes amis, tu sais déjà ce qu'est une bonne app de discussion : un serveur pour ton groupe, un salon pour chaque sujet, un salon vocal où passer à tout moment. Zrzur fonctionne de la même façon. Il est open source, hébergé dans l'Union européenne et pensé dès le départ pour l'arabe. Cet article reprend ce que tu connais déjà, montre comment ça marche dans Zrzur et explique comment faire venir ta communauté.
 
 ## La même idée que tu connais
 
 Zrzur est construit autour des **serveurs**. Un serveur, c'est la maison de ta communauté : tu le crées en une minute, tu lui donnes un nom et une image, et tu invites les gens avec un lien. À l'intérieur, les **catégories** et les **salons** donnent sa place à chaque sujet. Si tu as utilisé Discord, rien ici n'a besoin d'explication, et c'est voulu : ta façon de parler avec tes proches ne devrait pas avoir à changer.
 
-Ce qui change, c'est le prix. Sur Zrzur, l'essentiel est gratuit pour tout le monde : parler, appeler, partager ton écran et animer une communauté. Il n'y a rien à payer dans cette version : ni abonnement, ni paiement.
+Ce qui change, c'est le prix. Sur Zrzur, l'essentiel ne coûte rien : parler, appeler, partager ton écran et animer une communauté. Il n'y a rien à payer dans cette version : ni abonnement, ni paiement.
 
 ## Le texte : salons, forums et fils
 

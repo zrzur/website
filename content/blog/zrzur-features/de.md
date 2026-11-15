@@ -3,15 +3,15 @@ title: Zrzur: warum wir es bauen und was es alles kann
 summary: Chatten sollte kein Monatsabo kosten. Wir haben ein Open-Source-Chatprojekt neu gestaltet und viel ergänzt. Hier steht, warum, und was Zrzur heute alles kann.
 date: 2026-11-12
 cover: /blog/zrzur-features/cover.jpg
-tags: Discord-Alternative, Open Source, kostenloser Chat, Server, Sprachchat
+tags: Discord-Alternative, Open Source, Server, Sprachchat
 ---
-Zrzur ist ein kostenloser Ort, an dem sich Freunde und Communitys treffen: Server mit Text- und Sprachkanälen, Bildschirmfreigabe, Rollen und Berechtigungen, im Browser und unter Windows, macOS und Linux. In diesem Beitrag erklären wir, warum wir es bauen, und zeigen dir alles, was es heute kann.
+Zrzur ist ein Ort, an dem sich Freunde und Communitys treffen: Server mit Text- und Sprachkanälen, Bildschirmfreigabe, Rollen und Berechtigungen, im Browser und unter Windows, macOS und Linux. In diesem Beitrag erklären wir, warum wir es bauen, und zeigen dir alles, was es heute kann.
 
 ## Warum wir Zrzur bauen
 
 Chat-Apps waren einmal einfach: Du hast einen Server erstellt, deine Freunde eingeladen und geredet. Mit den Jahren ist bei Discord immer mehr von dem, was Spaß gemacht hat, hinter ein Monatsabo gewandert: größere Uploads, schärfere Bildschirmfreigabe, eigene Emojis überall, das Aussehen deines Profils, ein bezahltes Extra nach dem anderen. Wir haben nichts dagegen, für etwas Gutes zu bezahlen. Aber mit deinen Freunden zu reden, sollte keine Kreditkarte brauchen.
 
-Wir wollten einen Ort, an dem das Alltägliche für alle kostenlos ist: schreiben, telefonieren, den Bildschirm teilen und eine Community führen.
+Wir wollten einen Ort, an dem das Alltägliche nichts kostet: schreiben, telefonieren, den Bildschirm teilen und eine Community führen.
 
 ## Woher Zrzur kommt
 
@@ -35,7 +35,7 @@ Jede Community bekommt einen Server, und jedes Thema einen Platz darin.
 - **Sprachkanäle** sind immer offen: Du trittst mit einem Klick bei und gehst, wann du willst.
 - **Bildschirmfreigabe** direkt im Anruf, mit einer Vorschau, wenn du über jemanden fährst, der gerade streamt.
 - **Bühnen** für Vorträge und Veranstaltungen: Sprecher sprechen, Zuhörer hören zu, und alle können ums Wort bitten.
-- **Soundboard**: kurze Klänge, die du im Anruf abspielst, mit einer fertigen Bibliothek aus mehr als hundert kostenlosen Klängen, die jeder Server hinzufügen kann.
+- **Soundboard**: kurze Klänge, die du im Anruf abspielst, mit einer fertigen Bibliothek aus mehr als hundert Klängen, die jeder Server hinzufügen kann.
 - **Push-to-Talk und Mikrofonempfindlichkeit**, damit dein Mikrofon nur sendet, was du sagen willst.
 
 ## Ein Empfang, der zu deiner Community passt
@@ -85,6 +85,6 @@ Entwicklerinnen und Entwickler können **Bots und Apps** für Zrzur bauen. Ein v
 
 Zrzur läuft in jedem aktuellen Browser, am Computer oder auf dem Handy. Für deinen Computer gibt es auf der [Download-Seite](/de/download) eine Desktop-App für Windows, macOS und Linux.
 
-## Kostenlos, und es bleibt offen
+## Offen, und es bleibt offen
 
-Alles in diesem Beitrag ist kostenlos: In dieser Version gibt es nichts zu bezahlen. Zrzur steht am Anfang, und in diesem Blog erzählen wir dir, was wir bauen und warum. [Öffne Zrzur](https://app.zrzur.com), erstelle einen Server für deine Freunde und sag uns, was fehlt.
+Für nichts in diesem Beitrag gibt es in dieser Version etwas zu bezahlen. Zrzur steht am Anfang, und in diesem Blog erzählen wir dir, was wir bauen und warum. [Öffne Zrzur](https://app.zrzur.com), erstelle einen Server für deine Freunde und sag uns, was fehlt.

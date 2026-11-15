@@ -5,7 +5,7 @@ date: 2026-11-08
 cover: /blog/why-zrzur/cover.jpg
 tags: 开源, 设计, Discord 替代品
 ---
-Zrzur 是朋友和社区相聚的地方：带文字和语音频道的服务器、屏幕共享、角色和权限，可以在浏览器中使用，也支持 Windows、macOS 和 Linux。我们希望它成为一个免费、开源、专业的 Discord 替代品。
+Zrzur 是朋友和社区相聚的地方：带文字和语音频道的服务器、屏幕共享、角色和权限，可以在浏览器中使用，也支持 Windows、macOS 和 Linux。我们希望它成为一个开源、专业的 Discord 替代品。
 
 ## 一切从哪里开始
 

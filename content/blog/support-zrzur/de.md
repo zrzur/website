@@ -5,7 +5,7 @@ date: 2026-11-13
 cover: /blog/support-zrzur/cover.jpg
 tags: Zrzur unterstützen, Ko-fi, Open Source, unabhängiges Projekt, Community
 ---
-Zrzur ist für alle kostenlos: Reden, Telefonieren, Bildschirm teilen und eine Community führen kosten nichts. Aber eine Chat-Plattform zu betreiben kostet Geld, jeden Tag. Dieser Beitrag sagt ehrlich, wer Zrzur bezahlt, was es kostet, wo heute unsere Grenzen sind und wie du helfen kannst, mit oder ohne Geld.
+In Zrzur kosten Reden, Telefonieren, Bildschirm teilen und eine Community führen nichts. Aber eine Chat-Plattform zu betreiben kostet Geld, jeden Tag. Dieser Beitrag sagt ehrlich, wer Zrzur bezahlt, was es kostet, wo heute unsere Grenzen sind und wie du helfen kannst, mit oder ohne Geld.
 
 ## Ein unabhängiges Projekt
 
@@ -37,7 +37,7 @@ Je mehr Leute Zrzur unterstützen, desto weiter verschieben sich diese Grenzen.
 
 Wenn Zrzur dir oder deiner Community nützt, kannst du es auf **[Ko-fi](https://ko-fi.com/zrzur)** unterstützen, einmalig oder jeden Monat.
 
-- **Es ist freiwillig.** Eine Unterstützung schaltet keine Funktionen frei, und Zrzur bleibt in jedem Fall für alle kostenlos.
+- **Es ist freiwillig.** Eine Unterstützung schaltet keine Funktionen frei, und Zrzur bleibt in jedem Fall für alle gleich.
 - **Es geht in den Betrieb von Zrzur**: Server, Sprachserver, Speicher, Domains, E-Mail, Sicherheit und Backups.
 - **Ko-fi wickelt die Zahlung ab.** Deine Karten- oder Kontodaten sehen wir nie. Was Ko-fi mit uns teilt und wie wir es nutzen, steht in unserer [Datenschutzerklärung](/de/legal/privacy).
 - Zrzur ist ein persönliches Projekt und keine eingetragene gemeinnützige Organisation, deshalb ist eine Unterstützung nicht steuerlich absetzbar.
@@ -55,4 +55,4 @@ Geld ist nur ein Weg. Das meiste, was Zrzur braucht, kostet dich nichts:
 
 ## Danke
 
-Jeder Server, der aufmacht, jeder Freund, der beitritt, und jeder Kaffee auf Ko-fi hält Zrzur am Laufen und kostenlos. Danke, dass du dabei bist. Wenn du es noch nicht ausprobiert hast, [öffne Zrzur](https://app.zrzur.com) oder lies zuerst, [was Zrzur kann](/de/blog/discord-alternative).
+Jeder Server, der aufmacht, jeder Freund, der beitritt, und jeder Kaffee auf Ko-fi hält Zrzur am Laufen. Danke, dass du dabei bist. Wenn du es noch nicht ausprobiert hast, [öffne Zrzur](https://app.zrzur.com) oder lies zuerst, [was Zrzur kann](/de/blog/discord-alternative).
