@@ -22,7 +22,6 @@ const EXPECTED_SLUGS = [
   "server-owner-rules",
   "discover-guidelines",
   "developer-terms",
-  "plugin-policy",
   "creator-terms",
   "imprint",
   "contact",
@@ -52,13 +51,14 @@ test("every policy has Arabic and English title, intro and sections", () => {
   }
 });
 
-const REVISED_15 = ["privacy", "terms", "paid-services", "enforcement-appeals", "creator-terms"];
+const REVISED_15 = ["privacy", "terms", "paid-services", "enforcement-appeals", "creator-terms", "community-guidelines"];
 
 test("no policy shows a draft banner, a lawyer note or a placeholder (owner, 2026-11-12)", () => {
   for (const doc of legalDocuments) {
     assert.equal("banner" in doc, false, doc.slug);
     // revised on 15 November: privacy (linked accounts, legal audit), terms,
-    // paid services, enforcement and appeals, creator terms (legal audit); the rest on 12 November
+    // paid services, enforcement and appeals, creator terms (legal audit),
+    // community guidelines (plugins withdrawn); the rest on 12 November
     const revised13 = REVISED_15.includes(doc.slug);
     assert.equal(doc.lastUpdated.en, revised13 ? "Last updated: 15 November 2026" : "Last updated: 12 November 2026", doc.slug);
     assert.equal(doc.lastUpdated.ar, revised13 ? "آخر تحديث: ١٥ نوفمبر ٢٠٢٦" : "آخر تحديث: ١٢ نوفمبر ٢٠٢٦", doc.slug);
@@ -188,9 +188,9 @@ test("the Privacy Policy says what erasure does to designs", () => {
 
 test("the Privacy Policy names effects, creators, links and what bots get, in all three languages", () => {
   const words = {
-    en: ["profile effects", "links to other sites", "in what order", "rights confirmation", "Bots and plugins", "We do not record who opened your profile."],
-    ar: ["مؤثرات الملف الشخصي", "الروابط إلى مواقع أخرى", "وترتيبها", "تأكيد حقوقك", "البوتات والإضافات", "ولا نسجّل من فتح ملفك الشخصي."],
-    de: ["Profileffekte", "Links zu anderen Websites", "in welcher Reihenfolge", "Rechtebestätigung", "Bots und Plugins", "Wir speichern nicht, wer dein Profil geöffnet hat."],
+    en: ["profile effects", "links to other sites", "in what order", "rights confirmation", "Bots do not get more", "We do not record who opened your profile."],
+    ar: ["مؤثرات الملف الشخصي", "الروابط إلى مواقع أخرى", "وترتيبها", "تأكيد حقوقك", "ولا تحصل البوتات على أكثر من ذلك", "ولا نسجّل من فتح ملفك الشخصي."],
+    de: ["Profileffekte", "Links zu anderen Websites", "in welcher Reihenfolge", "Rechtebestätigung", "Bots bekommen nicht mehr", "Wir speichern nicht, wer dein Profil geöffnet hat."],
   };
   for (const [lang, list] of Object.entries(words))
     for (const word of list) assert(all("privacy", lang).includes(word), `${lang} ${word}`);
@@ -359,6 +359,46 @@ test("pages in English under another prefix point at the English page", async ()
   assert(!sitemap.includes('hreflang="fr" href="https://zrzur.com/fr/legal/privacy"'));
   assert(sitemap.includes("<loc>https://zrzur.com/ar/legal/privacy</loc>"));
   assert(sitemap.includes("<loc>https://zrzur.com/fr/legal</loc>"));
+});
+
+// Owner, 2026-11-15: plugins are switched off for good. The Plugin Policy is
+// gone, and no policy promises, describes or regulates plugins; each changed
+// policy only says, in its changes text, that the Plugin Policy was withdrawn.
+const WITHDRAWN = {
+  en: /[Pp]lugins are not offered; the Plugin Policy was withdrawn\./g,
+  ar: /لا تُقدَّم الإضافات، وسُحبت سياسة الإضافات\./g,
+  de: /Plugins werden nicht angeboten; die Richtlinie für Erweiterungen wurde zurückgezogen\./g,
+};
+const PLUGIN_WORDS = { en: /plugin/i, ar: /الإضافات|سياسة الإضافات|أو إضافة|البوت أو الإضافة/, de: /Plugin|Erweiterung/ };
+
+test("plugins are not offered: no Plugin Policy and no plugin text in any policy", async () => {
+  assert(!legalDocuments.some((doc) => doc.slug === "plugin-policy"));
+  assert(!("plugin-policy" in policyVersions));
+  const { legalSlugs, legalLanguages } = await import("../src/legal-nav.ts");
+  assert(!legalSlugs.includes("plugin-policy"));
+  assert(!("plugin-policy" in legalLanguages));
+  const sitemap = await readFile(new URL("../public/sitemap.xml", import.meta.url), "utf8");
+  assert(!sitemap.includes("plugin-policy"));
+  for (const doc of legalDocuments)
+    for (const lang of ["en", "ar", "de"]) {
+      const parts = [doc.title[lang], doc.intro[lang], ...doc.sections.flatMap((s) => [s.title[lang], s.body[lang]])];
+      const text = parts.join("\n").replace(WITHDRAWN[lang], "");
+      assert(!PLUGIN_WORDS[lang].test(text), `${doc.slug} ${lang}: ${text.match(PLUGIN_WORDS[lang])?.[0]}`);
+    }
+});
+
+test("each policy changed for the withdrawal says so in en, ar and de, with the 15 November version", () => {
+  for (const slug of ["terms", "privacy", "community-guidelines", "enforcement-appeals"]) {
+    assert.equal(policyVersions[slug], "2026-11-15", slug);
+    const changes = policy(slug).sections.find((s) => s.id === "changes");
+    assert(changes, `${slug} has a changes section`);
+    for (const lang of ["en", "ar", "de"]) assert.match(changes.body[lang], new RegExp(WITHDRAWN[lang].source), `${slug} ${lang}`);
+  }
+  // the terms no longer incorporate a Plugin Policy, and bots and apps keep their sentence
+  assert.match(body("terms", "about", "en"), /the Developer Terms and the Creator Terms\./);
+  assert.match(body("terms", "about", "de"), /den Entwicklerbedingungen und den Bedingungen für Creator\./);
+  assert.match(body("terms", "about", "ar"), /وشروط المطوّرين، وشروط المبدعين\./);
+  assert.match(body("terms", "servers", "en"), /Bots and apps are made by third parties\. Their makers are responsible for them under the Developer Terms\./);
 });
 
 // Outside legal audit, 2026-11-15 (internal legal/external-legal-audit-check-2026-11-15.md)

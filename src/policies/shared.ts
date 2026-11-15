@@ -12,7 +12,6 @@ export type LegalSlug =
   | "server-owner-rules"
   | "discover-guidelines"
   | "developer-terms"
-  | "plugin-policy"
   | "creator-terms"
   | "imprint";
 
@@ -65,7 +64,11 @@ export const REVISION_2026_11_13: Revision = {
   },
 };
 
-/** 15 November 2026: the privacy policy adds linked accounts */
+/**
+ * 15 November 2026: the privacy policy adds linked accounts; plugins are not
+ * offered and the Plugin Policy was withdrawn (terms, privacy, community
+ * guidelines, enforcement and appeals)
+ */
 export const REVISION_2026_11_15: Revision = {
   version: "2026-11-15",
   lastUpdated: {

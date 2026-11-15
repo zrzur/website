@@ -1,6 +1,7 @@
 import { doc, list, para, REVISION_2026_11_15, revisedOn, section } from "./shared.ts";
 
-// 15 November 2026: no native apps, licence after deletion, liability cap (legal audit)
+// 15 November 2026: no native apps, licence after deletion, liability cap (legal audit);
+// plugins are not offered, the Plugin Policy was withdrawn
 export const terms = revisedOn(REVISION_2026_11_15, doc({
   slug: "terms",
   group: "everyone",
@@ -18,17 +19,17 @@ export const terms = revisedOn(REVISION_2026_11_15, doc({
       {
         en: para(
           "Zrzur is a chat service for communities, friends and teams. It is an experimental project in its beta phase, run from Austria by the Zrzur team (\"Zrzur\", \"we\", \"us\"). You can reach us at the addresses on the Contact page. These terms apply when you use the Zrzur web app (also in a phone's browser), desktop app, website and APIs that we run at zrzur.com and its subdomains (together, the \"Service\").",
-          "By creating an account or using the Service, you agree to these terms and to the policies they mention: the Privacy Policy, the Community Guidelines, the Enforcement and Appeals policy and, when you use them, the Paid Services terms, the Server Owner Rules, the Discover Guidelines, the Developer Terms, the Plugin Policy and the Creator Terms. If you do not agree, please do not use the Service.",
+          "By creating an account or using the Service, you agree to these terms and to the policies they mention: the Privacy Policy, the Community Guidelines, the Enforcement and Appeals policy and, when you use them, the Paid Services terms, the Server Owner Rules, the Discover Guidelines, the Developer Terms and the Creator Terms. If you do not agree, please do not use the Service.",
           "Zrzur's software is open source under the GNU Affero General Public License v3.0. These terms do not limit any right that licence gives you over the code. If someone else runs their own copy of the software, that operator — not us — is responsible for their service and their rules.",
         ),
         ar: para(
           "زرزور خدمة محادثة للمجتمعات والأصدقاء وفرق العمل، وهي مشروع تجريبي في مرحلة البيتا يديره فريق زرزور من النمسا (ويُشار إليه بـ«زرزور» أو «نحن»). ويمكنك مراسلتنا على العناوين المذكورة في صفحة التواصل. تسري هذه الشروط عند استخدامك تطبيق زرزور على الويب (ومنه متصفح الهاتف) أو على سطح المكتب، أو الموقع، أو الواجهات البرمجية التي نشغّلها على zrzur.com ونطاقاته الفرعية (ويُشار إليها مجتمعةً بـ«الخدمة»).",
-          "بإنشائك حسابًا أو استخدامك الخدمة، فإنك توافق على هذه الشروط وعلى السياسات المذكورة فيها: سياسة الخصوصية، وإرشادات المجتمع، وسياسة الإنفاذ والاعتراض، وعند الاستخدام: شروط الخدمات المدفوعة، وقواعد مالكي السيرفرات، وإرشادات «اكتشف»، وشروط المطوّرين، وسياسة الإضافات، وشروط المبدعين. إن لم توافق، فالرجاء عدم استخدام الخدمة.",
+          "بإنشائك حسابًا أو استخدامك الخدمة، فإنك توافق على هذه الشروط وعلى السياسات المذكورة فيها: سياسة الخصوصية، وإرشادات المجتمع، وسياسة الإنفاذ والاعتراض، وعند الاستخدام: شروط الخدمات المدفوعة، وقواعد مالكي السيرفرات، وإرشادات «اكتشف»، وشروط المطوّرين، وشروط المبدعين. إن لم توافق، فالرجاء عدم استخدام الخدمة.",
           "برمجيات زرزور مفتوحة المصدر بموجب رخصة جنو أفيرو العمومية العامة، الإصدار الثالث (AGPL-3.0). ولا تُقيّد هذه الشروط أي حق تمنحك إياه تلك الرخصة على الشيفرة. وإذا شغّل طرف آخر نسخته الخاصة من البرمجيات، فهو المسؤول عن خدمته وقواعده، لا نحن.",
         ),
         de: para(
           "Zrzur ist ein Chatdienst für Communities, Freundeskreise und Teams. Es ist ein experimentelles Projekt in der Beta-Phase, betrieben vom Zrzur-Team aus Österreich („Zrzur“, „wir“, „uns“). Du erreichst uns unter den Adressen auf der Kontaktseite. Diese Bedingungen gelten, wenn du die Web-App (auch im Browser eines Telefons), die Desktop-App, die Website und die APIs von Zrzur nutzt, die wir unter zrzur.com und seinen Subdomains betreiben (zusammen der „Dienst“).",
-          "Indem du ein Konto erstellst oder den Dienst nutzt, stimmst du diesen Bedingungen und den darin genannten Richtlinien zu: der Datenschutzerklärung, den Community-Richtlinien, der Richtlinie zu Durchsetzung und Einspruch und, soweit du sie nutzt, den Bedingungen für kostenpflichtige Dienste, den Regeln für Serverinhaber, den Richtlinien für „Entdecken“, den Entwicklerbedingungen, der Richtlinie für Erweiterungen und den Bedingungen für Creator. Wenn du nicht zustimmst, nutze den Dienst bitte nicht.",
+          "Indem du ein Konto erstellst oder den Dienst nutzt, stimmst du diesen Bedingungen und den darin genannten Richtlinien zu: der Datenschutzerklärung, den Community-Richtlinien, der Richtlinie zu Durchsetzung und Einspruch und, soweit du sie nutzt, den Bedingungen für kostenpflichtige Dienste, den Regeln für Serverinhaber, den Richtlinien für „Entdecken“, den Entwicklerbedingungen und den Bedingungen für Creator. Wenn du nicht zustimmst, nutze den Dienst bitte nicht.",
           "Die Software von Zrzur ist Open Source unter der GNU Affero General Public License v3.0. Diese Bedingungen schränken keine Rechte ein, die dir diese Lizenz am Code einräumt. Betreibt jemand anderes eine eigene Kopie der Software, ist dieser Betreiber – nicht wir – für seinen Dienst und seine Regeln verantwortlich.",
         ),
       },
@@ -107,7 +108,7 @@ export const terms = revisedOn(REVISION_2026_11_15, doc({
             "access accounts, servers or data you are not allowed to access, or try to get around security, rate limits or bans;",
             "send malware, run attacks, or overload or disrupt the Service;",
             "collect data about other users without their permission, including by scraping;",
-            "use bots, scripts or modified clients to spam, inflate numbers or act in ways the Developer Terms or Plugin Policy do not allow;",
+            "use bots, scripts or modified clients to spam, inflate numbers or act in ways the Developer Terms do not allow;",
             "pretend to be Zrzur, our staff, or another person or organisation;",
             "use the Service to send unwanted advertising.",
           ),
@@ -120,7 +121,7 @@ export const terms = revisedOn(REVISION_2026_11_15, doc({
             "الدخول إلى حسابات أو سيرفرات أو بيانات غير مسموح لك بها، أو محاولة تجاوز أنظمة الحماية أو حدود الاستخدام أو الحظر؛",
             "إرسال البرمجيات الضارّة، أو شنّ الهجمات، أو إثقال الخدمة أو تعطيلها؛",
             "جمع بيانات المستخدمين الآخرين دون إذنهم، ومن ذلك الجمع الآلي للبيانات؛",
-            "استخدام البوتات أو البرامج النصية أو العملاء المعدّلة لإرسال الرسائل المزعجة أو تضخيم الأرقام أو التصرّف بما لا تسمح به شروط المطوّرين أو سياسة الإضافات؛",
+            "استخدام البوتات أو البرامج النصية أو العملاء المعدّلة لإرسال الرسائل المزعجة أو تضخيم الأرقام أو التصرّف بما لا تسمح به شروط المطوّرين؛",
             "انتحال صفة زرزور أو فريقه أو أي شخص أو جهة أخرى؛",
             "استخدام الخدمة لإرسال إعلانات غير مرغوب فيها.",
           ),
@@ -133,7 +134,7 @@ export const terms = revisedOn(REVISION_2026_11_15, doc({
             "auf Konten, Server oder Daten zugreifen, für die du keine Berechtigung hast, oder versuchen, Sicherheitsvorkehrungen, Ratenbegrenzungen oder Sperren zu umgehen;",
             "Schadsoftware versenden, Angriffe durchführen oder den Dienst überlasten oder stören;",
             "ohne deren Erlaubnis Daten über andere Nutzer sammeln, auch nicht durch Scraping;",
-            "Bots, Skripte oder modifizierte Clients einsetzen, um Spam zu versenden, Zahlen künstlich zu erhöhen oder auf eine Weise zu handeln, die die Entwicklerbedingungen oder die Richtlinie für Erweiterungen nicht erlauben;",
+            "Bots, Skripte oder modifizierte Clients einsetzen, um Spam zu versenden, Zahlen künstlich zu erhöhen oder auf eine Weise zu handeln, die die Entwicklerbedingungen nicht erlauben;",
             "dich als Zrzur, unsere Mitarbeitenden oder eine andere Person oder Organisation ausgeben;",
             "den Dienst zum Versand unerwünschter Werbung nutzen.",
           ),
@@ -148,17 +149,17 @@ export const terms = revisedOn(REVISION_2026_11_15, doc({
         en: para(
           "Anyone can create a Server on Zrzur. Server owners set their own server rules, but those rules can never allow what our policies forbid. Owners and moderators must also follow the Server Owner Rules.",
           "Content on Zrzur comes from its users, bots and creators, not from us. We do not check messages before they are sent. Some things are checked first: a reviewer approves each profile effect before it is published, avatar decorations and nameplates pass automatic file checks, and public profile text is checked against a list of blocked words that the Zrzur team keeps. Server owners can also use automatic moderation (AutoMod) in their own Server. We act on reports and on illegal content we become aware of, as described in the Enforcement and Appeals policy.",
-          "Bots, apps and plugins are made by third parties. Their makers are responsible for them under the Developer Terms and the Plugin Policy. Check what a bot or plugin asks for before you add it.",
+          "Bots and apps are made by third parties. Their makers are responsible for them under the Developer Terms. Check what a bot asks for before you add it.",
         ),
         ar: para(
           "يمكن لأي شخص إنشاء سيرفر على زرزور. ويضع مالكو السيرفرات قواعدهم الخاصة، لكن هذه القواعد لا يجوز أن تسمح أبدًا بما تحظره سياساتنا. وعلى المالكين والمشرفين الالتزام كذلك بقواعد مالكي السيرفرات.",
           "المحتوى على زرزور يأتي من المستخدمين والبوتات والمبدعين، لا منّا. ولا نراجع الرسائل قبل إرسالها. لكن بعض الأشياء تُفحص أولًا: يوافق مراجع على كل مؤثر للملف الشخصي قبل نشره، وتمرّ زينة الصورة ولوحات الأسماء بفحوص آلية للملف، ويُفحص نص الملف الشخصي العام مقابل قائمة كلمات محظورة يديرها فريق زرزور. ويمكن لمالكي السيرفرات أيضًا استخدام الإشراف الآلي (AutoMod) في سيرفراتهم. ونتعامل مع البلاغات ومع المحتوى غير القانوني الذي نعلم به، كما توضّح سياسة الإنفاذ والاعتراض.",
-          "البوتات والتطبيقات والإضافات يصنعها أطراف آخرون، وهم مسؤولون عنها بموجب شروط المطوّرين وسياسة الإضافات. تحقّق ممّا يطلبه البوت أو الإضافة قبل إضافته.",
+          "البوتات والتطبيقات يصنعها أطراف آخرون، وهم مسؤولون عنها بموجب شروط المطوّرين. تحقّق ممّا يطلبه البوت قبل إضافته.",
         ),
         de: para(
           "Jeder kann auf Zrzur einen Server erstellen. Serverinhaber legen eigene Serverregeln fest, aber diese Regeln dürfen niemals erlauben, was unsere Richtlinien verbieten. Inhaber und Moderatoren müssen außerdem die Regeln für Serverinhaber einhalten.",
           "Inhalte auf Zrzur stammen von seinen Nutzern, Bots und Creatorn, nicht von uns. Nachrichten prüfen wir nicht, bevor sie gesendet werden. Manches wird vorher geprüft: Jeder Profileffekt wird vor der Veröffentlichung von einer prüfenden Person freigegeben, Avatar-Dekorationen und Namensschilder durchlaufen automatische Dateiprüfungen, und öffentlicher Profiltext wird mit einer Liste gesperrter Wörter abgeglichen, die das Zrzur-Team pflegt. Serverinhaber können in ihrem eigenen Server außerdem automatische Moderation (AutoMod) nutzen. Wir gehen Meldungen und rechtswidrigen Inhalten nach, von denen wir Kenntnis erlangen, wie in der Richtlinie zu Durchsetzung und Einspruch beschrieben.",
-          "Bots, Apps und Plugins werden von Dritten erstellt. Ihre Ersteller sind nach den Entwicklerbedingungen und der Richtlinie für Erweiterungen für sie verantwortlich. Prüfe, welche Berechtigungen ein Bot oder Plugin verlangt, bevor du ihn hinzufügst.",
+          "Bots und Apps werden von Dritten erstellt. Ihre Ersteller sind nach den Entwicklerbedingungen für sie verantwortlich. Prüfe, welche Berechtigungen ein Bot verlangt, bevor du ihn hinzufügst.",
         ),
       },
     ),
@@ -256,14 +257,17 @@ export const terms = revisedOn(REVISION_2026_11_15, doc({
         en: para(
           "We may update these terms when the Service or the law changes. For important changes we will tell you in the app or by email at least 30 days before they take effect, and the app will ask you to read and accept the new version. Small changes that do not affect your rights (such as fixing typos) may take effect right away.",
           "If you do not agree with a change, you can stop using the Service and delete your account before the change takes effect. The date at the top of this page shows the current version.",
+          "Change on 15 November 2026: plugins are not offered; the Plugin Policy was withdrawn.",
         ),
         ar: para(
           "قد نحدّث هذه الشروط عند تغيّر الخدمة أو القانون. وفي التغييرات المهمة سنخبرك داخل التطبيق أو بالبريد الإلكتروني قبل 30 يومًا على الأقل من نفاذها، وسيطلب منك التطبيق قراءة النسخة الجديدة وقبولها. أما التغييرات الصغيرة التي لا تمسّ حقوقك (كتصحيح الأخطاء الإملائية) فقد تسري فورًا.",
           "وإن لم توافق على تغيير ما، فيمكنك التوقف عن استخدام الخدمة وحذف حسابك قبل نفاذه. ويبيّن التاريخ في أعلى هذه الصفحة النسخة الحالية.",
+          "تغيير بتاريخ ١٥ نوفمبر ٢٠٢٦: لا تُقدَّم الإضافات، وسُحبت سياسة الإضافات.",
         ),
         de: para(
           "Wir können diese Bedingungen aktualisieren, wenn sich der Dienst oder die Rechtslage ändert. Über wichtige Änderungen informieren wir dich mindestens 30 Tage vor ihrem Inkrafttreten in der App oder per E-Mail, und die App bittet dich, die neue Fassung zu lesen und zu akzeptieren. Kleine Änderungen, die deine Rechte nicht berühren (etwa die Korrektur von Tippfehlern), können sofort wirksam werden.",
           "Wenn du mit einer Änderung nicht einverstanden bist, kannst du die Nutzung des Dienstes beenden und dein Konto löschen, bevor die Änderung wirksam wird. Das Datum oben auf dieser Seite zeigt die aktuelle Fassung.",
+          "Änderung vom 15. November 2026: Plugins werden nicht angeboten; die Richtlinie für Erweiterungen wurde zurückgezogen.",
         ),
       },
     ),

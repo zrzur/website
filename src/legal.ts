@@ -11,7 +11,6 @@ import { paidServices } from "./policies/paid-services.ts";
 import { serverOwnerRules } from "./policies/server-owner-rules.ts";
 import { discoverGuidelines } from "./policies/discover-guidelines.ts";
 import { developerTerms } from "./policies/developer-terms.ts";
-import { pluginPolicy } from "./policies/plugin-policy.ts";
 import { creatorTerms } from "./policies/creator-terms.ts";
 import { imprint } from "./policies/imprint.ts";
 import { contact } from "./policies/contact.ts";
@@ -28,7 +27,6 @@ export const legalDocuments: LegalDocument[] = [
   serverOwnerRules,
   discoverGuidelines,
   developerTerms,
-  pluginPolicy,
   creatorTerms,
   imprint,
   contact,
