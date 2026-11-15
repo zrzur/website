@@ -22,8 +22,8 @@
     },
     {
       "path": ".github/workflows/ci.yml",
-      "sha256": "7458dd02b74802314d8f42abe144500abce299306373bcf9f2808f93c69f88e5",
-      "bytes": 2918,
+      "sha256": "b2f8c17838edd3cf81010da4b34d02a9ac789178b0cc0c45ddf4bc72121427f3",
+      "bytes": 1717,
       "category": "reviewed-build-and-ci"
     },
     {
@@ -34,8 +34,8 @@
     },
     {
       "path": ".gitignore",
-      "sha256": "0032d30a8e43f80dffdafae0c10b966d8160b0569283f058abc473388982ac88",
-      "bytes": 492,
+      "sha256": "486bfcccad607a7734c3ad5474efb7468df90fa47e5906727031fe51a778c247",
+      "bytes": 593,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1752,54 +1752,6 @@
       "path": "test/content.test.mjs",
       "sha256": "b78190db826f15274296823f5df21e84260d9af2c02c5b3dc158d9f27322a357",
       "bytes": 16330,
-      "category": "synthetic-test-source-or-fixture"
-    },
-    {
-      "path": "test/e2e/a11y.e2e.mjs",
-      "sha256": "0ecbfe6e64affeca453285abdbb97dc9125b51fd29386aa2c5007dd7e1bd256e",
-      "bytes": 4071,
-      "category": "synthetic-test-source-or-fixture"
-    },
-    {
-      "path": "test/e2e/csp.e2e.mjs",
-      "sha256": "6d0e0b080ce5130cd864305cf0e4c312d57ee207e6a785afcc208c8f380cbb34",
-      "bytes": 4912,
-      "category": "synthetic-test-source-or-fixture"
-    },
-    {
-      "path": "test/e2e/not-found.e2e.mjs",
-      "sha256": "27891efa217202dc8a0d9fd3c822e85a0d2761ab3d33dbc06f49f495b2063186",
-      "bytes": 4988,
-      "category": "synthetic-test-source-or-fixture"
-    },
-    {
-      "path": "test/e2e/report-public.e2e.mjs",
-      "sha256": "fc4b4935311249d1aab9784d3b2368eb0f298d06788e5510e60bffa3ea1ba87c",
-      "bytes": 10807,
-      "category": "synthetic-test-source-or-fixture"
-    },
-    {
-      "path": "test/e2e/site-languages.e2e.mjs",
-      "sha256": "9a4018a55781d73a492eb2762bbe51d84ecf9b03ec2001da8d4084d3db374a0f",
-      "bytes": 33003,
-      "category": "synthetic-test-source-or-fixture"
-    },
-    {
-      "path": "test/e2e/site-live.e2e.mjs",
-      "sha256": "ce282b934ac37918c8ec1827077f8549262e12dfb2cd6a3ca6fcd13f9c53ac04",
-      "bytes": 7465,
-      "category": "synthetic-test-source-or-fixture"
-    },
-    {
-      "path": "test/e2e/site-vitals.e2e.mjs",
-      "sha256": "3883bd8fc11335aa4fc97beaee79cfed48258c1db1b6d26078463e30a04b7c5d",
-      "bytes": 6479,
-      "category": "synthetic-test-source-or-fixture"
-    },
-    {
-      "path": "test/e2e/static-server.mjs",
-      "sha256": "bffb3ccd7e90f1227bebea4d6ff440e6d8334a74afa20ad3b29d0e40d5a74e12",
-      "bytes": 2158,
       "category": "synthetic-test-source-or-fixture"
     },
     {
