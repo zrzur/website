@@ -75,6 +75,12 @@ export function runningProblems(part, answer, productVersion, readLive) {
   return problems;
 }
 
+/**
+ * Pages that were taken off the site and must answer "not found": the Plugin
+ * Policy (owner, 2026-11-15: plugins are not offered).
+ */
+export const WITHDRAWN_PATHS = ["/legal/plugin-policy", "/de/legal/plugin-policy", "/ar/legal/plugin-policy"];
+
 /** The URLs a sitemap lists */
 export const sitemapUrls = (xml) => [...xml.matchAll(/<loc>([^<]*)<\/loc>/g)].map((m) => m[1]);
 
@@ -230,9 +236,12 @@ export async function runChecks(target) {
 
   if (target.dist) {
     for (const file of ["404.html", "ar/404.html"]) if (!existsSync(join(target.dist, file))) fail(file, "missing");
+    for (const path of WITHDRAWN_PATHS)
+      if (existsSync(join(target.dist, `${path.slice(1)}.html`)) || existsSync(join(target.dist, path.slice(1), "index.html")))
+        fail(path, "a withdrawn page is still in the build");
   } else {
-    // unknown addresses are a real 404, in the address's language
-    for (const path of ["/zrzur-site-check-unknown", "/ar/zrzur-site-check-unknown"]) {
+    // unknown and withdrawn addresses are a real 404, in the address's language
+    for (const path of ["/zrzur-site-check-unknown", "/ar/zrzur-site-check-unknown", ...WITHDRAWN_PATHS]) {
       const page = await fetchText(target.live + path);
       if (page.status !== 404) fail(path, `status ${page.status}, expected 404`);
     }

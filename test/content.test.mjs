@@ -203,7 +203,8 @@ test("all bundled fonts and approved marks exist", async () => {
     await access(new URL(`../public/assets/${file}`, import.meta.url));
 });
 test("legal documents are bilingual, without invented operator details", () => {
-  assert.equal(legalDocuments.length, 12);
+  // 11 since the Plugin Policy was withdrawn (owner, 2026-11-15)
+  assert.equal(legalDocuments.length, 11);
   for (const doc of legalDocuments) {
     assert(doc.title.ar && doc.title.en);
     for (const section of doc.sections)

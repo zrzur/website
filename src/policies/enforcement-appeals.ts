@@ -2,7 +2,8 @@ import { doc, list, para, REVISION_2026_11_15, revisedOn, section } from "./shar
 
 // Text in square brackets is still to be supplied.
 
-// 15 November 2026: report data purposes, CSAM retention, voluntary appeals, transparency report (legal audit)
+// 15 November 2026: report data purposes, CSAM retention, voluntary appeals, transparency report (legal audit);
+// plugins are not offered, the Plugin Policy was withdrawn
 export const enforcementAppeals = revisedOn(REVISION_2026_11_15, doc({
   slug: "enforcement-appeals",
   group: "everyone",
@@ -54,7 +55,7 @@ export const enforcementAppeals = revisedOn(REVISION_2026_11_15, doc({
         en: list(
           "Remove or hide content, or put a warning on it.",
           "Limit features, for example sending messages, joining Servers, creating Servers, or using Discover.",
-          "Remove a Server, bot, plugin, community item or profile effect from Discover or from the Service.",
+          "Remove a Server, bot, community item or profile effect from Discover or from the Service.",
           "Suspend an account, bot or Server for a set time.",
           "Close an account or Server permanently.",
           "Pause or end paid features linked to a broken rule, as described in the Paid Services terms.",
@@ -63,7 +64,7 @@ export const enforcementAppeals = revisedOn(REVISION_2026_11_15, doc({
         ar: list(
           "إزالة المحتوى أو إخفاؤه أو وضع تحذير عليه.",
           "تقييد الميزات، كإرسال الرسائل، أو الانضمام إلى السيرفرات، أو إنشائها، أو استخدام «اكتشف».",
-          "إزالة سيرفر أو بوت أو إضافة أو عنصر مجتمع أو مؤثر ملف شخصي من «اكتشف» أو من الخدمة.",
+          "إزالة سيرفر أو بوت أو عنصر مجتمع أو مؤثر ملف شخصي من «اكتشف» أو من الخدمة.",
           "إيقاف حساب أو بوت أو سيرفر مدةً محددة.",
           "إغلاق حساب أو سيرفر نهائيًا.",
           "تعليق الميزات المدفوعة المرتبطة بالمخالفة أو إنهاؤها، كما توضّح شروط الخدمات المدفوعة.",
@@ -72,7 +73,7 @@ export const enforcementAppeals = revisedOn(REVISION_2026_11_15, doc({
         de: list(
           "Inhalte entfernen, ausblenden oder mit einer Warnung versehen.",
           "Funktionen einschränken, zum Beispiel Nachrichten senden, Servern beitreten, Server erstellen oder Entdecken nutzen.",
-          "Einen Server, Bot, ein Plugin, ein Community-Element oder einen Profileffekt aus Entdecken oder aus dem Dienst entfernen.",
+          "Einen Server, Bot, ein Community-Element oder einen Profileffekt aus Entdecken oder aus dem Dienst entfernen.",
           "Ein Konto, einen Bot oder Server für eine bestimmte Zeit sperren.",
           "Ein Konto oder einen Server dauerhaft schließen.",
           "Bezahlte Funktionen, die mit einem Regelverstoß zusammenhängen, pausieren oder beenden, wie in den Bedingungen für kostenpflichtige Dienste beschrieben.",
@@ -300,6 +301,15 @@ export const enforcementAppeals = revisedOn(REVISION_2026_11_15, doc({
         en: "Where the law requires it, we publish a transparency report on zrzur.com; until then we may publish one voluntarily. Such a report shows how many reports and legal notices we received, what actions we took, how many were automated, how many appeals we received, and how many decisions we reversed. We never include personal data.",
         ar: "حيث يُلزمنا القانون بذلك ننشر تقرير شفافية على zrzur.com، وإلى ذلك الحين قد ننشره طوعًا. ويبيّن هذا التقرير عدد البلاغات والإشعارات القانونية التي تلقّيناها، والإجراءات التي اتخذناها، وعدد ما تم منها آليًا، وعدد الاعتراضات، وعدد القرارات التي تراجعنا عنها. ولا نُدرج فيه أي بيانات شخصية أبدًا.",
         de: "Wo das Gesetz es verlangt, veröffentlichen wir einen Transparenzbericht auf zrzur.com; bis dahin können wir freiwillig einen veröffentlichen. Ein solcher Bericht zeigt, wie viele Meldungen und rechtliche Hinweise wir erhalten haben, welche Maßnahmen wir ergriffen haben, wie viele davon automatisiert waren, wie viele Einsprüche wir erhalten und wie viele Entscheidungen wir aufgehoben haben. Wir nehmen nie personenbezogene Daten auf.",
+      },
+    ),
+    section(
+      "changes",
+      { en: "Changes to this policy", ar: "التغييرات على هذه السياسة", de: "Änderungen dieser Richtlinie" },
+      {
+        en: "Change on 15 November 2026: plugins are not offered; the Plugin Policy was withdrawn.",
+        ar: "تغيير بتاريخ ١٥ نوفمبر ٢٠٢٦: لا تُقدَّم الإضافات، وسُحبت سياسة الإضافات.",
+        de: "Änderung vom 15. November 2026: Plugins werden nicht angeboten; die Richtlinie für Erweiterungen wurde zurückgezogen.",
       },
     ),
   ],

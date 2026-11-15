@@ -1,6 +1,7 @@
-import { doc, list, para, section } from "./shared.ts";
+import { doc, list, para, REVISION_2026_11_15, revisedOn, section } from "./shared.ts";
 
-export const communityGuidelines = doc({
+// 15 November 2026: plugins are not offered; the Plugin Policy was withdrawn
+export const communityGuidelines = revisedOn(REVISION_2026_11_15, doc({
   slug: "community-guidelines",
   group: "everyone",
   title: { en: "Community Guidelines", ar: "إرشادات المجتمع",
@@ -17,15 +18,15 @@ export const communityGuidelines = doc({
       {
         en: para(
           "Treat people with respect, keep it legal, and do not put anyone at risk. Server owners can add stricter rules for their own Server, but nobody can allow what these guidelines forbid.",
-          "These guidelines apply to everything on Zrzur: messages, profiles, usernames, avatars, Server names and icons, bots, plugins, Designs (avatar decorations, nameplates and profile effects) and Discover listings.",
+          "These guidelines apply to everything on Zrzur: messages, profiles, usernames, avatars, Server names and icons, bots, Designs (avatar decorations, nameplates and profile effects) and Discover listings.",
         ),
         ar: para(
           "عامِل الناس باحترام، والتزم بالقانون، ولا تعرّض أحدًا للخطر. يمكن لمالكي السيرفرات إضافة قواعد أشد في سيرفراتهم، لكن لا يحق لأحد أن يسمح بما تحظره هذه الإرشادات.",
-          "تسري هذه الإرشادات على كل شيء في زرزور: الرسائل، والملفات الشخصية، وأسماء المستخدمين، والصور الرمزية، وأسماء السيرفرات وأيقوناتها، والبوتات، والإضافات، والتصاميم (زينة الصورة ولوحات الأسماء ومؤثرات الملف الشخصي)، وقوائم «اكتشف».",
+          "تسري هذه الإرشادات على كل شيء في زرزور: الرسائل، والملفات الشخصية، وأسماء المستخدمين، والصور الرمزية، وأسماء السيرفرات وأيقوناتها، والبوتات، والتصاميم (زينة الصورة ولوحات الأسماء ومؤثرات الملف الشخصي)، وقوائم «اكتشف».",
         ),
         de: para(
           "Behandle andere mit Respekt, halte dich an das Gesetz und bringe niemanden in Gefahr. Serverinhaber können für ihren eigenen Server strengere Regeln festlegen, aber niemand kann erlauben, was diese Richtlinien verbieten.",
-          "Diese Richtlinien gelten für alles auf Zrzur: Nachrichten, Profile, Benutzernamen, Avatare, Servernamen und -symbole, Bots, Plugins, Designs (Avatar-Dekorationen, Namensschilder und Profileffekte) und Einträge in Entdecken.",
+          "Diese Richtlinien gelten für alles auf Zrzur: Nachrichten, Profile, Benutzernamen, Avatare, Servernamen und -symbole, Bots, Designs (Avatar-Dekorationen, Namensschilder und Profileffekte) und Einträge in Entdecken.",
         ),
       },
     ),
@@ -287,5 +288,14 @@ export const communityGuidelines = doc({
         ),
       },
     ),
+    section(
+      "changes",
+      { en: "Changes to these guidelines", ar: "التغييرات على هذه الإرشادات", de: "Änderungen dieser Richtlinien" },
+      {
+        en: "Change on 15 November 2026: plugins are not offered; the Plugin Policy was withdrawn.",
+        ar: "تغيير بتاريخ ١٥ نوفمبر ٢٠٢٦: لا تُقدَّم الإضافات، وسُحبت سياسة الإضافات.",
+        de: "Änderung vom 15. November 2026: Plugins werden nicht angeboten; die Richtlinie für Erweiterungen wurde zurückgezogen.",
+      },
+    ),
   ],
-});
+}));
