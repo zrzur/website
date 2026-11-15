@@ -186,7 +186,7 @@ const labels: Labels = {
   dlSize: "{size} Mo",
   dlVersion: "Version {version}",
   seoHomeTitle: "Zrzur : le chat open source pour les amis et les communautés",
-  seoHomeBody: "Zrzur est gratuit et open source, pour amis et communautés : serveurs avec salons textuels et vocaux, partage d'écran, rôles. Navigateur, Windows, macOS, Linux.",
+  seoHomeBody: "Zrzur est open source, pour amis et communautés : serveurs avec salons textuels et vocaux, partage d'écran, rôles. Navigateur, Windows, macOS, Linux.",
   seoFeaturesTitle: "Fonctionnalités de Zrzur : serveurs, vocal, partage d'écran",
   seoFeaturesBody: "Tout Zrzur : serveurs avec salons textuels et vocaux, partage d'écran et de fichiers, rôles et permissions, questions d'accueil et découverte de serveurs publics.",
   seoProjectTitle: "À propos de Zrzur : un chat gratuit et open source",

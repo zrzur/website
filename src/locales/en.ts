@@ -186,7 +186,7 @@ const labels = {
   dlSize: "{size} MB",
   dlVersion: "Version {version}",
   seoHomeTitle: "Zrzur: open-source chat for friends and communities",
-  seoHomeBody: "Zrzur is a free, open-source home for friends and communities: servers with text and voice channels, screen sharing, roles. On the web, Windows, macOS, Linux.",
+  seoHomeBody: "Zrzur is an open-source home for friends and communities: servers with text and voice channels, screen sharing, roles. On the web, Windows, macOS, Linux.",
   // what a search result shows for each page: its own title and description
   seoFeaturesTitle: "Zrzur features: servers, voice chat, screen sharing, roles",
   seoFeaturesBody: "Everything in Zrzur: servers with text and voice channels, screen sharing, file sharing, roles and permissions, welcome questions and public server discovery.",

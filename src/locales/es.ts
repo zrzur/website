@@ -186,7 +186,7 @@ const labels: Labels = {
   dlSize: "{size} MB",
   dlVersion: "Versión {version}",
   seoHomeTitle: "Zrzur: chat de código abierto para amigos y comunidades",
-  seoHomeBody: "Zrzur es gratuito y de código abierto, para amigos y comunidades: servidores con canales de texto y voz, pantalla compartida, roles. Navegador, Windows, macOS, Linux.",
+  seoHomeBody: "Zrzur es de código abierto, para amigos y comunidades: servidores con canales de texto y voz, pantalla compartida, roles. Navegador, Windows, macOS, Linux.",
   seoFeaturesTitle: "Funciones de Zrzur: servidores, voz y pantalla compartida",
   seoFeaturesBody: "Todo Zrzur: servidores con canales de texto y voz, pantalla compartida, archivos, roles y permisos, preguntas de bienvenida y servidores públicos por descubrir.",
   seoProjectTitle: "Sobre Zrzur: un chat gratuito y de código abierto",
