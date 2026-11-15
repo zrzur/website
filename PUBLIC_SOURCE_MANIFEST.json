@@ -1246,7 +1246,7 @@
     },
     {
       "path": "public/sitemap.xml",
-      "sha256": "c7a61c35a78205b06c2fb974c53b6e279017c9993c0a380fdb4913775937fbd6",
+      "sha256": "f56fc4b92ceaca2c53832d319b26850e808c132c08b308ffde2c826caee1910e",
       "bytes": 86295,
       "category": "reviewed-product-asset"
     },
@@ -1588,8 +1588,8 @@
     },
     {
       "path": "src/policies/privacy.ts",
-      "sha256": "db4ddec7da829c1a56f94d3f5337196491af775b89e9bc4f4c2b450d1de41220",
-      "bytes": 94246,
+      "sha256": "b49bfac388b514e9cff7c2f0fb7c366bbce7eba1c9fa797ad5aa460e1a753109",
+      "bytes": 123401,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1600,8 +1600,8 @@
     },
     {
       "path": "src/policies/shared.ts",
-      "sha256": "ee1dc800c1077f2e6c70c789df781380f48f27bd8cf389a9ffda80b73a1e85ee",
-      "bytes": 2672,
+      "sha256": "5b40e416706aa552a9211c4b4a44c77be631cb2f737c2519201985c9e5fd1423",
+      "bytes": 2970,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1768,8 +1768,8 @@
     },
     {
       "path": "test/legal.test.mjs",
-      "sha256": "b23bf199ad78a31d647c3d751f3d11aa9bc91ab40c33499e47cbb0d9b1cb204e",
-      "bytes": 18596,
+      "sha256": "6ad00e246d81042a689910abd86a618a524487a809df2e4e5a556291254c0040",
+      "bytes": 18666,
       "category": "synthetic-test-source-or-fixture"
     },
     {
