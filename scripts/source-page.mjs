@@ -2,8 +2,12 @@
 // version, the commit it was built from, a link to that exact source and a
 // download of it. One page per site language (/source, /ar/source, ...).
 // The website row comes from this build; the other rows from the release
-// manifest (src/releases.ts). Plain Node, no dependencies; the site serves
-// {path}.html for {path}.
+// manifest (src/releases.ts). The web app and server rows are read again in
+// the visitor's browser from the running services (/source.js, from
+// scripts/source-runtime.mjs), so a deploy after the website build still shows
+// its own commit; without JavaScript the page says its rows may be older.
+// Plain Node; the site serves {path}.html for {path}.
+import { readFileSync } from "node:fs";
 
 const ORG = "https://github.com/zrzur";
 
@@ -13,14 +17,14 @@ const escape = (text) =>
 /**
  * The rows of the table, website first.
  * @param {{ version: string, commit: string }} website this build
- * @param {Record<string, { repo: string, version: string, commit: string }>} releases
- * @returns {{ key: string, repo: string, version: string, commit: string }[]}
+ * @param {Record<string, { repo: string, version: string, commit: string, live?: { url: string, versionKey: string } }>} releases
+ * @returns {{ key: string, repo: string, version: string, commit: string, live?: { url: string, versionKey: string } }[]}
  */
 export function sourceRows(website, releases) {
   const rows = [
     { key: "sourceWebsite", repo: "website", version: website.version, commit: website.commit },
-    { key: "sourceWebApp", repo: releases.web.repo, version: releases.web.version, commit: releases.web.commit },
-    { key: "sourceServer", repo: releases.backend.repo, version: releases.backend.version, commit: releases.backend.commit },
+    { key: "sourceWebApp", repo: releases.web.repo, version: releases.web.version, commit: releases.web.commit, live: releases.web.live },
+    { key: "sourceServer", repo: releases.backend.repo, version: releases.backend.version, commit: releases.backend.commit, live: releases.backend.live },
     { key: "sourceDesktop", repo: releases.desktop.repo, version: releases.desktop.version, commit: releases.desktop.commit },
   ];
   for (const row of rows)
@@ -40,11 +44,14 @@ export function renderSourcePage(page, rows) {
     .map((row) => {
       const tree = `${ORG}/${row.repo}/tree/${row.commit}`;
       const archive = `${ORG}/${row.repo}/archive/${row.commit}.tar.gz`;
-      return `<tr>
+      const live = row.live
+        ? ` data-live="${escape(row.live.url)}" data-version-key="${escape(row.live.versionKey)}" data-repo="${escape(row.repo)}" data-state="build"`
+        : "";
+      return `<tr${live}>
 <th scope="row">${escape(l[row.key])}</th>
-<td dir="ltr">${escape(row.version)}</td>
-<td dir="ltr"><code>${escape(row.commit.slice(0, 12))}</code></td>
-<td><a href="${escape(tree)}" rel="noopener">${escape(l.sourceBrowse)}</a> <a href="${escape(archive)}" rel="noopener">${escape(l.sourceArchive)}</a></td>
+<td dir="ltr" data-cell="version">${escape(row.version)}</td>
+<td dir="ltr"><code data-cell="commit" title="${escape(row.commit)}">${escape(row.commit.slice(0, 12))}</code></td>
+<td><a href="${escape(tree)}" rel="noopener" data-link="tree">${escape(l.sourceBrowse)}</a> <a href="${escape(archive)}" rel="noopener" data-link="archive">${escape(l.sourceArchive)}</a></td>
 </tr>`;
     })
     .join("\n");
@@ -56,6 +63,7 @@ export function renderSourcePage(page, rows) {
 <meta name="color-scheme" content="dark" />
 <meta name="robots" content="noindex" />
 <title>${escape(l.source)} — ${escape(l.brand)}</title>
+<script type="module" src="/source.js"></script>
 <style>
 @font-face { font-family: "IBM Plex Sans"; src: url("/assets/plex-latin-wght.woff2") format("woff2-variations"); font-weight: 100 700; font-display: swap; }
 @font-face { font-family: "IBM Plex Sans Arabic"; src: url("/assets/plex-arabic-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
@@ -77,6 +85,7 @@ tr:last-child th, tr:last-child td { border-block-end: 0; }
 thead th { font-size: 14px; font-weight: 600; color: #A1A5B8; }
 td a + a { margin-inline-start: 16px; }
 code { font: 14px/1.6 "IBM Plex Mono", ui-monospace, monospace; }
+.status { margin: 16px 0 0; font-size: 14px; }
 </style>
 </head>
 <body>
@@ -92,6 +101,7 @@ ${body}
 </tbody>
 </table>
 </div>
+<p class="status" id="source-status" role="status" data-state="fallback" data-live="${escape(l.sourceLive)}" data-partial="${escape(l.sourcePartial)}">${escape(l.sourceFallback)}</p>
 </main>
 </body>
 </html>
@@ -126,6 +136,8 @@ export function sourcePagesPlugin(pages, rowsOf) {
     generateBundle() {
       const rows = rowsOf();
       for (const page of pages) this.emitFile({ type: "asset", fileName: page.file, source: renderSourcePage(page, rows) });
+      // the script that reads the running services, as a file of the site
+      this.emitFile({ type: "asset", fileName: "source.js", source: readFileSync(new URL("./source-runtime.mjs", import.meta.url), "utf8") });
     },
   };
 }

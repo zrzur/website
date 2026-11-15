@@ -1,6 +1,6 @@
 import type { Plugin } from "vite";
 
-export type SourceRow = { key: string; repo: string; version: string; commit: string };
+export type SourceRow = { key: string; repo: string; version: string; commit: string; live?: { url: string; versionKey: string } };
 
 export type SourcePage = {
   file: string;
@@ -12,7 +12,7 @@ export type SourcePage = {
 
 export function sourceRows(
   website: { version: string; commit: string },
-  releases: Record<"web" | "backend" | "desktop", { repo: string; version: string; commit: string }>,
+  releases: Record<"web" | "backend" | "desktop", { repo: string; version: string; commit: string; live?: { url: string; versionKey: string } }>,
 ): SourceRow[];
 export function renderSourcePage(page: SourcePage, rows: SourceRow[]): string;
 export function sourcePages(
