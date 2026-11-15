@@ -235,10 +235,10 @@ const labels: Labels = {
   legalTranslationNote: "Diese Seite ist eine Übersetzung, die dir das Lesen erleichtern soll.",
   legalEnglishNote: "Diese Richtlinie gibt es noch nicht auf Deutsch, deshalb steht sie hier auf Englisch.",
   legalBindingEn: "Rechtlich verbindlich ist nur die englische Fassung.",
-  legalBindingEnDe: "Rechtlich verbindlich sind nur die englische und die deutsche Fassung.",
+  legalBindingDe: "Rechtlich verbindlich ist nur die deutsche Fassung.",
   legalReadEnglish: "Englische Fassung lesen",
   legalReadGerman: "Deutsche Fassung lesen",
-  legalHubNote: "Unsere Richtlinien sind nur auf Englisch und, wo es eine deutsche Fassung gibt, auf Deutsch rechtlich verbindlich. Die anderen Sprachen sollen dir das Lesen erleichtern.",
+  legalHubNote: "Unsere Richtlinien sind auf Deutsch rechtlich verbindlich. Die anderen Sprachen, auch Englisch und Arabisch, sind Übersetzungen, die dir das Lesen erleichtern sollen. Weicht eine Übersetzung vom deutschen Text ab, gilt der deutsche Text. Das schränkt keine Rechte ein, die dir das zwingende Recht deines Wohnsitzlandes gibt.",
   reportLoadFailed: "Das Meldeformular konnte nicht geladen werden. Prüfe deine Verbindung und versuch es erneut.",
   reportRetry: "Erneut versuchen",
 };

@@ -1,11 +1,11 @@
-import { doc, list, para, section } from "./shared.ts";
+import { doc, list, para, REVISION_2026_11_15, revisedOn, section } from "./shared.ts";
 
 /**
  * What a creator accepts with each effect. The server refuses any other
  * value, so backend and web carry the same one; it changes when these terms
  * change in substance.
  */
-export const CREATOR_TERMS_VERSION = "2026-11-12";
+export const CREATOR_TERMS_VERSION = "2026-11-15";
 
 const terms = doc({
   slug: "creator-terms",
@@ -67,9 +67,9 @@ const terms = doc({
       "content",
       { en: "Content rules", ar: "قواعد المحتوى", de: "Inhaltsregeln" },
       {
-        en: "Community items are visible to everyone, so they must be suitable for everyone who uses Zrzur, including people aged 16 and 17. No sexual content, gore, hate symbols, political propaganda, scams, hidden messages or anything else that breaks the Community Guidelines. Items must not imitate Zrzur badges, staff marks, verification marks or safety labels.",
-        ar: "عناصر المجتمع ظاهرة للجميع، لذا يجب أن تناسب كل من يستخدم زرزور، ومنهم من تبلغ أعمارهم ١٦ أو ١٧ عامًا. فلا محتوى جنسيًا، ولا مشاهد دموية، ولا رموز كراهية، ولا دعاية سياسية، ولا احتيال، ولا رسائل مخفية، ولا أي شيء يخالف إرشادات المجتمع. ولا يجوز أن تقلّد العناصرُ شاراتِ زرزور أو علامات فريقه أو علامات التوثيق أو وسوم السلامة.",
-        de: "Community-Elemente sind für alle sichtbar und müssen daher für alle geeignet sein, die Zrzur nutzen, auch für Personen von 16 und 17 Jahren. Keine sexuellen Inhalte, keine Gewaltdarstellungen, keine Hasssymbole, keine politische Propaganda, kein Betrug, keine versteckten Botschaften und nichts anderes, das gegen die Community-Richtlinien verstößt. Elemente dürfen keine Zrzur-Abzeichen, Team-Kennzeichen, Verifizierungszeichen oder Sicherheitshinweise nachahmen.",
+        en: "Community items are visible to everyone, so they must be suitable for everyone who uses Zrzur, including people aged 16 and 17. No sexual content, gore, hate symbols, election or campaign material (nothing that promotes or attacks a political party, candidate, government or side in a vote, including party names, logos, slogans and symbols), scams, hidden messages or anything else that breaks the Community Guidelines. Items must not imitate Zrzur badges, staff marks, verification marks or safety labels.",
+        ar: "عناصر المجتمع ظاهرة للجميع، لذا يجب أن تناسب كل من يستخدم زرزور، ومنهم من تبلغ أعمارهم ١٦ أو ١٧ عامًا. فلا محتوى جنسيًا، ولا مشاهد دموية، ولا رموز كراهية، ولا مواد انتخابية أو دعائية لحملة (أي شيء يروّج لحزب سياسي أو مرشح أو حكومة أو طرف في تصويت أو يهاجمه، ومن ذلك أسماء الأحزاب وشعاراتها المرسومة وعباراتها ورموزها)، ولا احتيال، ولا رسائل مخفية، ولا أي شيء يخالف إرشادات المجتمع. ولا يجوز أن تقلّد العناصرُ شاراتِ زرزور أو علامات فريقه أو علامات التوثيق أو وسوم السلامة.",
+        de: "Community-Elemente sind für alle sichtbar und müssen daher für alle geeignet sein, die Zrzur nutzen, auch für Personen von 16 und 17 Jahren. Keine sexuellen Inhalte, keine Gewaltdarstellungen, keine Hasssymbole, kein Wahl- oder Wahlkampfmaterial (nichts, was für oder gegen eine politische Partei, eine Kandidatin oder einen Kandidaten, eine Regierung oder eine Seite in einer Abstimmung wirbt, einschließlich Parteinamen, Logos, Slogans und Symbolen), kein Betrug, keine versteckten Botschaften und nichts anderes, das gegen die Community-Richtlinien verstößt. Elemente dürfen keine Zrzur-Abzeichen, Team-Kennzeichen, Verifizierungszeichen oder Sicherheitshinweise nachahmen.",
       },
     ),
     section(
@@ -285,7 +285,8 @@ const terms = doc({
   ],
 });
 
+// 15 November 2026: "political propaganda" defined as election and campaign material (legal audit)
 export const creatorTerms = {
-  ...terms,
+  ...revisedOn(REVISION_2026_11_15, terms),
   version: CREATOR_TERMS_VERSION,
 };

@@ -235,10 +235,10 @@ const labels: Labels = {
   legalTranslationNote: "Esta página es una traducción para ayudarte a leerla.",
   legalEnglishNote: "Esta política aún no está disponible en español, así que se muestra en inglés.",
   legalBindingEn: "Solo la versión en inglés es jurídicamente vinculante.",
-  legalBindingEnDe: "Solo las versiones en inglés y en alemán son jurídicamente vinculantes.",
+  legalBindingDe: "Solo la versión en alemán es jurídicamente vinculante.",
   legalReadEnglish: "Leer la versión en inglés",
   legalReadGerman: "Leer la versión en alemán",
-  legalHubNote: "Nuestras políticas solo son jurídicamente vinculantes en inglés y, cuando existe una versión en alemán, en alemán. Los demás idiomas están para ayudarte a leerlas.",
+  legalHubNote: "Nuestras políticas son jurídicamente vinculantes en alemán. Los demás idiomas, también el inglés y el árabe, son traducciones para ayudarte a leerlas. Si una traducción difiere del texto alemán, se aplica el texto alemán. Esto no limita ningún derecho que te dé la ley imperativa del país donde vives.",
   reportLoadFailed: "No se pudo cargar el formulario de denuncia. Comprueba tu conexión e inténtalo de nuevo.",
   reportRetry: "Intentar de nuevo",
 };

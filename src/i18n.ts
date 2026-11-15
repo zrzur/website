@@ -22,7 +22,7 @@ export const DEFAULT_LANGUAGE: Language = "en";
  * The policies are binding in these languages only; every other language
  * shows a translation (or the English text) with a link to them.
  */
-export const BINDING_LANGUAGES: readonly Language[] = ["en", "de"];
+export const BINDING_LANGUAGES: readonly Language[] = ["de"];
 const STORAGE_KEY = "zrzur-site-language";
 
 export const isLanguage = (value: string | null | undefined): value is Language =>

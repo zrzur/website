@@ -1,5 +1,5 @@
-// legal texts exist in English, Arabic and German for every document; English
-// is the source text and German is a translation of it
+// legal texts exist in English, Arabic and German for every document; German
+// is the binding reference text (owner, 2026-11-15) and the others translate it
 import type { Partial as Localized } from "../content";
 
 export type LegalSlug =

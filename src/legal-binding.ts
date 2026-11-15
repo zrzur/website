@@ -1,7 +1,7 @@
 /**
  * Which version of a policy is binding, and what a page in another language
- * must say about it. The policies are binding in English and, where a full
- * German text exists, in German (BINDING_LANGUAGES). Every other page is a
+ * must say about it. The policies are binding in German, the reference
+ * language (BINDING_LANGUAGES). Every other page is a
  * translation to help people read, or the English text when there is none:
  * it says so at the top and links to the binding versions.
  */
@@ -17,9 +17,15 @@ export const hasLanguage = (doc: LegalDocument, language: Language) =>
 export const shownLanguage = (doc: LegalDocument, language: Language): Language =>
   hasLanguage(doc, language) ? language : "en";
 
-/** The binding versions of one policy: English, plus German when it is complete */
-export const bindingLanguages = (doc: LegalDocument): Language[] =>
-  BINDING_LANGUAGES.filter((language) => hasLanguage(doc, language));
+/**
+ * The binding version of one policy: German, the reference language (owner,
+ * 2026-11-15). A policy without a complete German text binds in English
+ * until its German text exists, so a page always names a binding version.
+ */
+export const bindingLanguages = (doc: LegalDocument): Language[] => {
+  const complete = BINDING_LANGUAGES.filter((language) => hasLanguage(doc, language));
+  return complete.length ? complete : ["en"];
+};
 
 export type BindingNotice = {
   /** "translation": the text is in the page language; "english": the page shows the English text */

@@ -236,10 +236,10 @@ const labels: Labels = {
   legalTranslationNote: "本页为翻译版本，仅供阅读参考。",
   legalEnglishNote: "本政策暂无中文版本，因此以英文显示。",
   legalBindingEn: "只有英文版本具有法律约束力。",
-  legalBindingEnDe: "只有英文版本和德文版本具有法律约束力。",
+  legalBindingDe: "只有德文版本具有法律约束力。",
   legalReadEnglish: "阅读英文版本",
   legalReadGerman: "阅读德文版本",
-  legalHubNote: "我们的政策仅以英文版本具有法律约束力；如有德文版本，德文版本同样具有约束力。其他语言版本仅供阅读参考。",
+  legalHubNote: "我们的政策以德文版本具有法律约束力。其他语言版本（包括英文和阿拉伯文）均为翻译，仅供阅读参考。如译文与德文文本不一致，以德文文本为准。这不限制你所在国家的强制性法律赋予你的任何权利。",
   reportLoadFailed: "举报表单未能加载。请检查网络连接后重试。",
   reportRetry: "重试",
 };

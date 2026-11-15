@@ -1,8 +1,9 @@
-import { doc, list, para, revised, section } from "./shared.ts";
+import { doc, list, para, REVISION_2026_11_15, revisedOn, section } from "./shared.ts";
 
 // Text in square brackets is still to be supplied.
 
-export const enforcementAppeals = revised(doc({
+// 15 November 2026: report data purposes, CSAM retention, voluntary appeals, transparency report (legal audit)
+export const enforcementAppeals = revisedOn(REVISION_2026_11_15, doc({
   slug: "enforcement-appeals",
   group: "everyone",
   title: { en: "Enforcement and Appeals", ar: "الإنفاذ والاعتراض",
@@ -127,6 +128,7 @@ export const enforcementAppeals = revised(doc({
       {
         en: para(
           list(
+            "Our appeal process is voluntary: while Zrzur is a micro or small enterprise, the Digital Services Act does not require it (Art. 19). We run it anyway, as described here.",
             "In Zrzur, open Settings, Feedback & reports and choose Appeal next to the decision. If you cannot sign in, reply to the email we sent you or write to support@zrzur.com with your reference.",
             "You can appeal for at least 6 months after the decision.",
             "Explain briefly why you think the decision is wrong. You can add context we may have missed.",
@@ -137,6 +139,7 @@ export const enforcementAppeals = revised(doc({
         ),
         ar: para(
           list(
+            "طريقة الاعتراض لدينا طوعية: فما دام زرزور مؤسسة صغيرة جدًا أو صغيرة لا يُلزمنا بها قانون الخدمات الرقمية (المادة 19)، ومع ذلك نتّبعها كما هو موضّح هنا.",
             "في زرزور افتح الإعدادات ثم الملاحظات والبلاغات، واختر «اعتراض» بجانب القرار. وإذا لم تستطع تسجيل الدخول فردّ على البريد الذي أرسلناه إليك أو اكتب إلى support@zrzur.com مع رقم المرجع.",
             "يمكنك الاعتراض مدة ستة أشهر على الأقل بعد القرار.",
             "اشرح باختصار لماذا ترى أن القرار خاطئ، ويمكنك إضافة سياق ربما فاتنا.",
@@ -147,6 +150,7 @@ export const enforcementAppeals = revised(doc({
         ),
         de: para(
           list(
+            "Unser Einspruchsverfahren ist freiwillig: Solange Zrzur ein Kleinst- oder Kleinunternehmen ist, verlangt das Gesetz über digitale Dienste es nicht (Art. 19). Wir bieten es trotzdem an, wie hier beschrieben.",
             "Öffne in Zrzur Einstellungen, Feedback und Meldungen und wähle neben der Entscheidung „Einspruch“. Wenn du dich nicht anmelden kannst, antworte auf die E-Mail, die wir dir geschickt haben, oder schreibe mit deiner Referenz an support@zrzur.com.",
             "Du kannst mindestens 6 Monate nach der Entscheidung Einspruch einlegen.",
             "Erkläre kurz, warum du die Entscheidung für falsch hältst. Du kannst Zusammenhänge ergänzen, die uns entgangen sein könnten.",
@@ -266,9 +270,9 @@ export const enforcementAppeals = revised(doc({
       "other-options",
       { en: "Other ways to resolve a dispute", ar: "طرق أخرى لحل النزاع", de: "Andere Wege zur Streitbeilegung" },
       {
-        en: "If you are in the EU and do not agree with our decision, including a decision on your appeal, you can take the dispute to a certified out-of-court dispute settlement body under Article 21 of the Digital Services Act. You choose the body. The European Commission publishes the list of certified bodies on its website: https://digital-strategy.ec.europa.eu/en/policies/dsa-out-court-dispute-settlement. Using our appeal process first is usually the fastest route, but it is not required, and none of this affects your right to go to court.",
-        ar: "إذا كنت في الاتحاد الأوروبي ولم توافق على قرارنا، ومنه قرارنا في اعتراضك، فيمكنك عرض النزاع على جهة معتمدة لتسوية النزاعات خارج المحاكم بموجب المادة 21 من قانون الخدمات الرقمية. وأنت من يختار الجهة. وتنشر المفوضية الأوروبية قائمة الجهات المعتمدة على موقعها: https://digital-strategy.ec.europa.eu/en/policies/dsa-out-court-dispute-settlement. واستخدام طريقة الاعتراض لدينا أولًا هو عادةً الطريق الأسرع، لكنه ليس شرطًا، ولا يمسّ شيء من هذا حقك في اللجوء إلى القضاء.",
-        de: "Wenn du in der EU bist und mit unserer Entscheidung, auch über deinen Einspruch, nicht einverstanden bist, kannst du den Streit nach Artikel 21 des Gesetzes über digitale Dienste vor eine zertifizierte außergerichtliche Streitbeilegungsstelle bringen. Du wählst die Stelle. Die Europäische Kommission veröffentlicht die Liste der zertifizierten Stellen auf ihrer Website: https://digital-strategy.ec.europa.eu/en/policies/dsa-out-court-dispute-settlement. Unser Einspruchsverfahren zuerst zu nutzen ist meist der schnellste Weg, aber nicht erforderlich, und nichts davon berührt dein Recht, ein Gericht anzurufen.",
+        en: "If you are in the EU and do not agree with our decision, including a decision on your appeal, you can turn to a certified out-of-court dispute settlement body. You choose the body; the European Commission publishes the list on its website: https://digital-strategy.ec.europa.eu/en/policies/dsa-out-court-dispute-settlement. Where the Digital Services Act obliges us to take part (Art. 21), we do; while Zrzur is a micro or small enterprise, it does not (Art. 19). None of this affects your right to go to court.",
+        ar: "إذا كنت في الاتحاد الأوروبي ولم توافق على قرارنا، ومنه قرارنا في اعتراضك، فيمكنك اللجوء إلى جهة معتمدة لتسوية النزاعات خارج المحاكم. وأنت من يختار الجهة، وتنشر المفوضية الأوروبية قائمتها على موقعها: https://digital-strategy.ec.europa.eu/en/policies/dsa-out-court-dispute-settlement. وحيث يُلزمنا قانون الخدمات الرقمية بالمشاركة (المادة 21) نشارك، وما دام زرزور مؤسسة صغيرة جدًا أو صغيرة فلا يُلزمنا بذلك (المادة 19). ولا يمسّ شيء من هذا حقك في اللجوء إلى القضاء.",
+        de: "Wenn du in der EU bist und mit unserer Entscheidung, auch über deinen Einspruch, nicht einverstanden bist, kannst du dich an eine zertifizierte außergerichtliche Streitbeilegungsstelle wenden. Du wählst die Stelle; die Europäische Kommission veröffentlicht die Liste auf ihrer Website: https://digital-strategy.ec.europa.eu/en/policies/dsa-out-court-dispute-settlement. Wo uns das Gesetz über digitale Dienste zur Teilnahme verpflichtet (Art. 21), nehmen wir teil; solange Zrzur ein Kleinst- oder Kleinunternehmen ist, verpflichtet es uns nicht (Art. 19). Nichts davon berührt dein Recht, ein Gericht anzurufen.",
       },
     ),
     section(
@@ -284,18 +288,18 @@ export const enforcementAppeals = revised(doc({
       "reports-data",
       { en: "Reports and your data", ar: "البلاغات وبياناتك", de: "Meldungen und deine Daten" },
       {
-        en: "If you report content without an account, we keep your name, email address and what you wrote only to handle the report, answer you and stop misuse of reporting. Our safety reviewers see them; the person you reported does not. We delete your name and email address 12 months after the case is closed. Reports of child sexual abuse material are kept longer while we clarify our legal duties to preserve evidence.",
-        ar: "إذا أبلغت عن محتوى دون حساب، فنحتفظ باسمك وبريدك الإلكتروني وما كتبته فقط لمعالجة البلاغ والرد عليك ومنع إساءة استخدام البلاغات. ويراها مراجعو السلامة لدينا، ولا يراها الشخص الذي أبلغت عنه. ونحذف اسمك وبريدك الإلكتروني بعد ١٢ شهرًا من إغلاق الحالة. أما بلاغات مواد الاعتداء الجنسي على الأطفال فتُحفظ مدة أطول إلى أن نوضّح التزاماتنا القانونية في حفظ الأدلة.",
-        de: "Wenn du Inhalte ohne Konto meldest, speichern wir deinen Namen, deine E-Mail-Adresse und das, was du geschrieben hast, nur, um die Meldung zu bearbeiten, dir zu antworten und Missbrauch von Meldungen zu verhindern. Unsere Sicherheitsprüfer sehen sie; die gemeldete Person nicht. Deinen Namen und deine E-Mail-Adresse löschen wir 12 Monate nach Abschluss des Falls. Meldungen zu Material über sexuellen Kindesmissbrauch bewahren wir länger auf, während wir unsere gesetzlichen Pflichten zur Beweissicherung klären.",
+        en: "If you report content without an account, we keep your name, email address and what you wrote only to handle the report, answer you, stop misuse of reporting and meet legal duties where they apply. Our safety reviewers see them; the person you reported does not. We delete your name and email address 12 months after the case is closed. Reports of child sexual abuse material are kept longer while we clarify our legal duties to preserve evidence.",
+        ar: "إذا أبلغت عن محتوى دون حساب، فنحتفظ باسمك وبريدك الإلكتروني وما كتبته فقط لمعالجة البلاغ والرد عليك ومنع إساءة استخدام البلاغات والوفاء بالتزاماتنا القانونية حيث تسري. ويراها مراجعو السلامة لدينا، ولا يراها الشخص الذي أبلغت عنه. ونحذف اسمك وبريدك الإلكتروني بعد ١٢ شهرًا من إغلاق الحالة. أما بلاغات مواد الاعتداء الجنسي على الأطفال فتُحفظ مدة أطول إلى أن نوضّح التزاماتنا القانونية في حفظ الأدلة.",
+        de: "Wenn du Inhalte ohne Konto meldest, speichern wir deinen Namen, deine E-Mail-Adresse und das, was du geschrieben hast, nur, um die Meldung zu bearbeiten, dir zu antworten, Missbrauch von Meldungen zu verhindern und, wo sie gelten, gesetzliche Pflichten zu erfüllen. Unsere Sicherheitsprüfer sehen sie; die gemeldete Person nicht. Deinen Namen und deine E-Mail-Adresse löschen wir 12 Monate nach Abschluss des Falls. Meldungen zu Material über sexuellen Kindesmissbrauch bewahren wir länger auf, während wir unsere gesetzlichen Pflichten zur Beweissicherung klären.",
       },
     ),
     section(
       "transparency",
       { en: "Transparency", ar: "الشفافية", de: "Transparenz" },
       {
-        en: "We publish a transparency report at least once a year on zrzur.com. It shows how many reports and legal notices we received, what actions we took, how many were automated, how many appeals we received, and how many decisions we reversed. We never include personal data.",
-        ar: "ننشر تقرير شفافية مرة واحدة سنويًا على الأقل على zrzur.com، يبيّن عدد البلاغات والإشعارات القانونية التي تلقّيناها، والإجراءات التي اتخذناها، وعدد ما تم منها آليًا، وعدد الاعتراضات، وعدد القرارات التي تراجعنا عنها. ولا نُدرج فيه أي بيانات شخصية أبدًا.",
-        de: "Wir veröffentlichen mindestens einmal im Jahr einen Transparenzbericht auf zrzur.com. Er zeigt, wie viele Meldungen und rechtliche Hinweise wir erhalten haben, welche Maßnahmen wir ergriffen haben, wie viele davon automatisiert waren, wie viele Einsprüche wir erhalten und wie viele Entscheidungen wir aufgehoben haben. Wir nehmen nie personenbezogene Daten auf.",
+        en: "Where the law requires it, we publish a transparency report on zrzur.com; until then we may publish one voluntarily. Such a report shows how many reports and legal notices we received, what actions we took, how many were automated, how many appeals we received, and how many decisions we reversed. We never include personal data.",
+        ar: "حيث يُلزمنا القانون بذلك ننشر تقرير شفافية على zrzur.com، وإلى ذلك الحين قد ننشره طوعًا. ويبيّن هذا التقرير عدد البلاغات والإشعارات القانونية التي تلقّيناها، والإجراءات التي اتخذناها، وعدد ما تم منها آليًا، وعدد الاعتراضات، وعدد القرارات التي تراجعنا عنها. ولا نُدرج فيه أي بيانات شخصية أبدًا.",
+        de: "Wo das Gesetz es verlangt, veröffentlichen wir einen Transparenzbericht auf zrzur.com; bis dahin können wir freiwillig einen veröffentlichen. Ein solcher Bericht zeigt, wie viele Meldungen und rechtliche Hinweise wir erhalten haben, welche Maßnahmen wir ergriffen haben, wie viele davon automatisiert waren, wie viele Einsprüche wir erhalten und wie viele Entscheidungen wir aufgehoben haben. Wir nehmen nie personenbezogene Daten auf.",
       },
     ),
   ],

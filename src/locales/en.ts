@@ -236,10 +236,10 @@ const labels = {
   legalTranslationNote: "This page is a translation to help you read it.",
   legalEnglishNote: "This policy is not available in this language yet, so it is shown in English.",
   legalBindingEn: "Only the English version is legally binding.",
-  legalBindingEnDe: "Only the English and German versions are legally binding.",
+  legalBindingDe: "Only the German version is legally binding.",
   legalReadEnglish: "Read the English version",
   legalReadGerman: "Read the German version",
-  legalHubNote: "Our policies are legally binding only in English and, where a German version exists, in German. The other languages are there to help you read them.",
+  legalHubNote: "Our policies are legally binding in German. The other languages, English and Arabic included, are translations to help you read them. If a translation differs from the German text, the German text applies. This does not limit any rights you have under the mandatory law of the country where you live.",
   reportLoadFailed: "The report form could not load. Check your connection and try again.",
   reportRetry: "Try again",
 };

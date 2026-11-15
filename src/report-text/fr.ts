@@ -58,7 +58,7 @@ const text: ReportText = {
   captchaFailed: `Résous la vérification et réessaie. Si elle n'apparaît pas, écris à ${CONTACT_EMAIL}.`,
   unavailable: `Le signalement n'est pas disponible sur cette page pour le moment. Écris à ${CONTACT_EMAIL}.`,
   details: "Détails",
-  privacy: "Nous utilisons tes informations uniquement pour traiter ce signalement et te communiquer le résultat. Nos modérateurs les voient ; la personne signalée, non. Nous supprimons ton nom et ton e-mail 12 mois après la clôture du dossier.",
+  privacy: "Nous utilisons tes informations pour traiter ce signalement, te contacter à son sujet et te communiquer le résultat, protéger les signalements contre les abus et respecter nos obligations légales lorsqu'elles s'appliquent. Nos modérateurs les voient ; la personne signalée, non. Nous supprimons ton nom et ton e-mail 12 mois après la clôture du dossier.",
   privacyLink: "Politique de confidentialité",
   captchaNote: "Si une vérification s'affiche, elle est fournie par Cloudflare Turnstile, qui reçoit les données de ton navigateur pour distinguer les personnes des robots.",
   inApp: "Tu es connecté ? Tu peux aussi utiliser le bouton Signaler dans l'app.",

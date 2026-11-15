@@ -52,11 +52,14 @@ test("every policy has Arabic and English title, intro and sections", () => {
   }
 });
 
+const REVISED_15 = ["privacy", "terms", "paid-services", "enforcement-appeals", "creator-terms"];
+
 test("no policy shows a draft banner, a lawyer note or a placeholder (owner, 2026-11-12)", () => {
   for (const doc of legalDocuments) {
     assert.equal("banner" in doc, false, doc.slug);
-    // the privacy policy was revised on 15 November (linked accounts); the rest on 12 November
-    const revised13 = doc.slug === "privacy";
+    // revised on 15 November: privacy (linked accounts, legal audit), terms,
+    // paid services, enforcement and appeals, creator terms (legal audit); the rest on 12 November
+    const revised13 = REVISED_15.includes(doc.slug);
     assert.equal(doc.lastUpdated.en, revised13 ? "Last updated: 15 November 2026" : "Last updated: 12 November 2026", doc.slug);
     assert.equal(doc.lastUpdated.ar, revised13 ? "آخر تحديث: ١٥ نوفمبر ٢٠٢٦" : "آخر تحديث: ١٢ نوفمبر ٢٠٢٦", doc.slug);
     assert.equal(doc.lastUpdated.de, revised13 ? "Stand: 15. November 2026" : "Stand: 12. November 2026", doc.slug);
@@ -104,9 +107,9 @@ test("product names are used exactly", () => {
 
 test("policyVersions covers every slug with the policy date", () => {
   assert.deepEqual(Object.keys(policyVersions).sort(), [...EXPECTED_SLUGS].sort());
-  assert.equal(CREATOR_TERMS_VERSION, "2026-11-12");
+  assert.equal(CREATOR_TERMS_VERSION, "2026-11-15");
   for (const slug of EXPECTED_SLUGS)
-    assert.equal(policyVersions[slug], slug === "privacy" ? "2026-11-15" : "2026-11-12", slug);
+    assert.equal(policyVersions[slug], REVISED_15.includes(slug) ? "2026-11-15" : "2026-11-12", slug);
   // the date shown matches the version
   const privacy = legalDocuments.find((doc) => doc.slug === "privacy");
   assert.match(privacy.lastUpdated.en, /15 November 2026/);
@@ -128,7 +131,8 @@ const body = (slug, id, lang) => policy(slug).sections.find((s) => s.id === id).
 const all = (slug, lang) => policy(slug).sections.map((s) => s.body[lang]).join("\n");
 
 test("the Creator Terms say what the code does", () => {
-  assert.equal(CREATOR_TERMS_VERSION, "2026-11-12");
+  // the backend and the web app pin the same version (CREATOR_TERMS_VERSION)
+  assert.equal(CREATOR_TERMS_VERSION, "2026-11-15");
   for (const lang of ["en", "ar"]) {
     assert(!all("creator-terms", lang).includes(lang === "en" ? "aged 13" : "١٣"), lang);
     assert(!all("creator-terms", lang).includes("[7]"), lang);
@@ -268,17 +272,19 @@ test("enforcement page makes no claim the code does not keep", () => {
 });
 
 // Owner brief 2026-11-10: translations may be shown, but each translated
-// policy says the English (and, where complete, German) version is binding
-// and links to it.
-test("only English and complete German texts are binding", () => {
+// policy says which version is binding and links to it. Owner 2026-11-15:
+// German is the one reference language; English only stands in for a policy
+// that has no complete German text yet.
+test("the German text is the binding one", () => {
   for (const doc of legalDocuments) {
     const binding = bindingLanguages(doc);
-    assert.equal(binding[0], "en", doc.slug);
-    assert.equal(binding.includes("de"), hasLanguage(doc, "de"), doc.slug);
-    assert(!binding.includes("ar"), doc.slug);
+    assert.deepEqual(binding, hasLanguage(doc, "de") ? ["de"] : ["en"], doc.slug);
   }
   const privacy = legalDocuments.find((doc) => doc.slug === "privacy");
-  assert.deepEqual(bindingLanguages(privacy), ["en", "de"]);
+  assert.deepEqual(bindingLanguages(privacy), ["de"]);
+  // a policy without a German text still names a binding version
+  const noGerman = { ...privacy, title: { ...privacy.title, de: "" } };
+  assert.deepEqual(bindingLanguages(noGerman), ["en"]);
 });
 
 test("every page that is not a binding version says so and names the binding versions", () => {
@@ -295,18 +301,19 @@ test("every page that is not a binding version says so and names the binding ver
       assert.equal(notice.kind, hasLanguage(doc, code) ? "translation" : "english", `${doc.slug} ${code}`);
       assert.equal(shownLanguage(doc, code), hasLanguage(doc, code) ? code : "en");
     }
-  // the Arabic privacy policy is a translation; the French one shows the English text
+  // the Arabic and English privacy policies are translations; the French one shows the English text
   const privacy = legalDocuments.find((doc) => doc.slug === "privacy");
-  assert.deepEqual(bindingNotice(privacy, "ar"), { kind: "translation", binding: ["en", "de"] });
-  assert.deepEqual(bindingNotice(privacy, "fr"), { kind: "english", binding: ["en", "de"] });
-  // every policy has a German text now, so the German terms page is binding itself
+  assert.deepEqual(bindingNotice(privacy, "ar"), { kind: "translation", binding: ["de"] });
+  assert.deepEqual(bindingNotice(privacy, "en"), { kind: "translation", binding: ["de"] });
+  assert.deepEqual(bindingNotice(privacy, "fr"), { kind: "english", binding: ["de"] });
+  // the German terms page is the binding text itself
   const terms = legalDocuments.find((doc) => doc.slug === "terms");
   assert.equal(bindingNotice(terms, "de"), null);
-  assert.deepEqual(bindingNotice(terms, "fr"), { kind: "english", binding: ["en", "de"] });
+  assert.deepEqual(bindingNotice(terms, "fr"), { kind: "english", binding: ["de"] });
 });
 
 test("the binding notice has its words in every language", async () => {
-  const keys = ["legalTranslationNote", "legalEnglishNote", "legalBindingEn", "legalBindingEnDe", "legalReadEnglish", "legalReadGerman", "legalHubNote"];
+  const keys = ["legalTranslationNote", "legalEnglishNote", "legalBindingEn", "legalBindingDe", "legalReadEnglish", "legalReadGerman", "legalHubNote"];
   for (const { code } of LOCALES) {
     const { labels } = (await import(`../src/locales/${code}.ts`)).default;
     for (const key of keys) assert(labels[key]?.trim(), `${code} ${key}`);
@@ -352,4 +359,27 @@ test("pages in English under another prefix point at the English page", async ()
   assert(!sitemap.includes('hreflang="fr" href="https://zrzur.com/fr/legal/privacy"'));
   assert(sitemap.includes("<loc>https://zrzur.com/ar/legal/privacy</loc>"));
   assert(sitemap.includes("<loc>https://zrzur.com/fr/legal</loc>"));
+});
+
+// Outside legal audit, 2026-11-15 (internal legal/external-legal-audit-check-2026-11-15.md)
+test("the fixes from the outside legal audit stay in every policy language", async () => {
+  const text = (slug) => ["en", "ar", "de"].map((lang) => all(slug, lang)).join("\n");
+  // P-82: no legal obligation under Art. 8 GDPR for the age rule
+  assert(!/under Art\. 8 GDPR/.test(all("privacy", "en")));
+  assert.match(all("privacy", "en"), /contract, Art\. 6\(1\)\(b\)/);
+  // P-83 (CSAM retention) waits for the backend change D-19, so its text is not checked here
+  // P-86: Resend named with entity and safeguards in en, ar and de
+  for (const lang of ["en", "ar", "de"]) assert.match(all("privacy", lang), /Plus Five Five, Inc\./, lang);
+  // D-45 / D-46: no yearly report promised; appeals and out-of-court route not written as mandatory
+  assert(!/at least once a year/.test(all("enforcement-appeals", "en")));
+  assert.match(all("enforcement-appeals", "en"), /Our appeal process is voluntary/);
+  assert.match(all("enforcement-appeals", "en"), /Art\. 19/);
+  // D-47: no native or store apps
+  assert(!/mobile apps|App Store|Google Play|app store/.test(text("terms") + text("paid-services")));
+  // D-48: "political propaganda" replaced by a definition (election and campaign material)
+  assert(!/political propaganda|politische Propaganda|دعاية سياسية/.test(text("creator-terms")));
+  assert.match(all("creator-terms", "en"), /election or campaign material/);
+  // P-84: the report form names every purpose, not "only" one
+  const { default: report } = await import("../src/report-text/en.ts");
+  assert.match(JSON.stringify(report), /protect reporting from misuse/);
 });

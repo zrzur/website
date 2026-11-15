@@ -235,10 +235,10 @@ const labels: Labels = {
   legalTranslationNote: "Cette page est une traduction pour t'aider à la lire.",
   legalEnglishNote: "Cette politique n'existe pas encore en français, elle est donc affichée en anglais.",
   legalBindingEn: "Seule la version anglaise a une valeur juridique.",
-  legalBindingEnDe: "Seules les versions anglaise et allemande ont une valeur juridique.",
+  legalBindingDe: "Seule la version allemande a une valeur juridique.",
   legalReadEnglish: "Lire la version anglaise",
   legalReadGerman: "Lire la version allemande",
-  legalHubNote: "Nos politiques n'ont de valeur juridique qu'en anglais et, lorsqu'une version allemande existe, en allemand. Les autres langues sont là pour t'aider à les lire.",
+  legalHubNote: "Nos politiques ont une valeur juridique en allemand. Les autres langues, y compris l'anglais et l'arabe, sont des traductions pour t'aider à les lire. Si une traduction s'écarte du texte allemand, c'est le texte allemand qui s'applique. Cela ne limite aucun des droits que te donne la loi impérative du pays où tu vis.",
   reportLoadFailed: "Le formulaire de signalement n'a pas pu se charger. Vérifie ta connexion et réessaie.",
   reportRetry: "Réessayer",
 };

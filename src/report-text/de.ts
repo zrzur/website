@@ -58,7 +58,7 @@ const text: ReportText = {
   captchaFailed: `Bitte löse die Prüfung und versuch es erneut. Wenn sie nicht erscheint, schreib an ${CONTACT_EMAIL}.`,
   unavailable: `Melden ist auf dieser Seite gerade nicht möglich. Schreib an ${CONTACT_EMAIL}.`,
   details: "Details",
-  privacy: "Wir nutzen deine Angaben nur, um diese Meldung zu bearbeiten und dir das Ergebnis mitzuteilen. Unsere Prüfenden sehen sie, die gemeldete Person nicht. Name und E-Mail löschen wir 12 Monate nach Abschluss des Falls.",
+  privacy: "Wir nutzen deine Angaben, um diese Meldung zu bearbeiten, dich dazu zu kontaktieren und dir das Ergebnis mitzuteilen, Meldungen vor Missbrauch zu schützen und, wo sie gelten, gesetzliche Pflichten zu erfüllen. Unsere Prüfenden sehen sie, die gemeldete Person nicht. Name und E-Mail löschen wir 12 Monate nach Abschluss des Falls.",
   privacyLink: "Datenschutzerklärung",
   captchaNote: "Wenn eine Prüfung angezeigt wird, stammt sie von Cloudflare Turnstile, das dafür Daten deines Browsers erhält, um Menschen von Bots zu unterscheiden.",
   inApp: "Angemeldet? Du kannst auch die Melden-Schaltfläche in der App nutzen.",
