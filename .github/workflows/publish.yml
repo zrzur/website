@@ -3,6 +3,11 @@ name: Publish the website
 # put on zrzur.com. Nothing reaches the site unless the guard, the tests and
 # the build pass; the live site stays as it is until then.
 #
+# The job runs in the protected environment "production": GitHub holds it
+# until a required reviewer (the owner) approves it (ZR-007). The environment
+# and its reviewer are set in the repository settings; without them GitHub
+# would create an unprotected environment, so set them up first.
+#
 # The server key (secret ZRZUR_SITE_DEPLOY_KEY) can do one thing only: hand
 # the server a built site. The server side keeps the old site beside the new
 # one (/opt/zrzur/website.prev-<time>), so a bad publish is undone by moving
@@ -21,8 +26,11 @@ jobs:
   publish:
     name: Check, build and publish
     runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://zrzur.com
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
           persist-credentials: false
@@ -37,7 +45,7 @@ jobs:
           if [ -n "$BASE" ] && git cat-file -e "$BASE^{commit}" 2>/dev/null; then range="$BASE..HEAD"; fi
           docker run --rm -v "$PWD:/repo" ghcr.io/gitleaks/gitleaks:v8.21.2 \
             git /repo --log-opts="$range" --redact --no-banner
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 24
           cache: npm
@@ -51,7 +59,7 @@ jobs:
         run: npm run build
       - name: The build has every page and language
         run: |
-          for page in index.html ar.html de.html blog.html ar/blog.html de/blog.html download.html blog/feed.xml ar/blog/feed.xml sitemap.xml; do
+          for page in index.html ar.html de.html blog.html ar/blog.html de/blog.html download.html source.html ar/source.html blog/feed.xml ar/blog/feed.xml sitemap.xml; do
             test -s "dist/$page" || { echo "missing dist/$page"; exit 1; }
           done
       - name: Hand the site to the server
@@ -66,11 +74,9 @@ jobs:
           # the server's own public host key: anything else is refused
           echo "176.100.37.233 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM4vx8U2EtWyJZIK0o8yPW0WKCr7H0fesHWgBodVcRbk" > ~/.ssh/known_hosts
           tar -C dist -czf - . | ssh -i ~/.ssh/site_key -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes zrzur@176.100.37.233 publish
-      - name: The live site answers with this build
+      - name: Every page in every language, live (status, lang/dir, canonical, hreflang, title, no placeholders, 404, redirects, /source)
         run: |
           sleep 5
-          for path in / /ar /de /blog /ar/blog/feed.xml; do
-            code=$(curl -s -o /dev/null -w '%{http_code}' "https://zrzur.com$path")
-            echo "$path $code"
-            [ "$code" = "200" ] || exit 1
-          done
+          node --experimental-strip-types scripts/site-check.mjs --live https://zrzur.com
+      - name: Every installer on the download page matches its SHA-256
+        run: node --experimental-strip-types scripts/check-downloads.mjs https://zrzur.com

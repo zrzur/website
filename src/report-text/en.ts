@@ -58,7 +58,7 @@ const text: ReportText = {
   captchaFailed: `Please solve the check and try again. If it does not appear, write to ${CONTACT_EMAIL}.`,
   unavailable: `Reporting is not available on this page right now. Write to ${CONTACT_EMAIL}.`,
   details: "Details",
-  privacy: "We use your details only to handle this report and to tell you the result. Our reviewers see them; the reported person does not. We delete your name and email 12 months after the case is closed.",
+  privacy: "We use your details to handle this report, to contact you about it and tell you the outcome, to protect reporting from misuse, and to meet legal duties where they apply. Our reviewers see them; the reported person does not. We delete your name and email 12 months after the case is closed.",
   privacyLink: "Privacy Policy",
   captchaNote: "If a check is shown, it is provided by Cloudflare Turnstile, which receives your browser data to tell people from bots.",
   inApp: "Signed in? You can also use the Report button inside the app.",

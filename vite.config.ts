@@ -5,6 +5,8 @@ import { buildDefine, readReleaseInfo } from './scripts/release-info.mjs';
 import { readProductVersions } from './scripts/product-versions.mjs';
 import { thirdPartyNotices } from './scripts/third-party-notices.mjs';
 import { noticesPages, noticesPagesPlugin } from './scripts/notices-page.mjs';
+import { sourcePages, sourcePagesPlugin, sourceRows } from './scripts/source-page.mjs';
+import { RELEASES } from './src/releases';
 import { LOCALES } from './src/i18n';
 import en from './src/locales/en';
 import de from './src/locales/de';
@@ -31,6 +33,9 @@ export const noticeExtras = [
 const packs = { en, de, ar, fr, es, ru, zh } as const;
 const noticePages = noticesPages(LOCALES, (code) => packs[code as keyof typeof packs].labels);
 
+/** The /source page in every site language (scripts/source-page.mjs): this build plus the release manifest */
+const sourcePageList = sourcePages(LOCALES, (code) => packs[code as keyof typeof packs].labels);
+
 /** Content hash per product picture (scripts/product-versions.mjs) */
 export const productVersions = readProductVersions(`${assets}/product`);
 
@@ -48,6 +53,7 @@ export default defineConfig(({ isSsrBuild }) => ({
         solid({ ssr: true }),
         thirdPartyNotices({ productName: 'Zrzur website', extras: noticeExtras }),
         noticesPagesPlugin(noticePages),
+        sourcePagesPlugin(sourcePageList, () => sourceRows({ version: releaseInfo.version, commit: releaseInfo.commit }, RELEASES)),
       ],
   server: { host: '127.0.0.1', port: 14826, strictPort: true },
   preview: { host: '127.0.0.1', port: 14826, strictPort: true },

@@ -58,7 +58,7 @@ const text: ReportText = {
   captchaFailed: `请完成验证后重试。如果验证没有出现，请写信至 ${CONTACT_EMAIL}。`,
   unavailable: `此页面暂时无法举报。请写信至 ${CONTACT_EMAIL}。`,
   details: "详细信息",
-  privacy: "我们只将你的信息用于处理这份举报并告知你结果。我们的审核人员可以看到这些信息，被举报的人看不到。案件结束 12 个月后，我们会删除你的姓名和电子邮件。",
+  privacy: "我们将你的信息用于处理这份举报、就此与你联系并告知结果、防止举报被滥用，以及在适用时履行法律义务。我们的审核人员可以看到这些信息，被举报的人看不到。案件结束 12 个月后，我们会删除你的姓名和电子邮件。",
   privacyLink: "隐私政策",
   captchaNote: "如果显示验证，它由 Cloudflare Turnstile 提供，Cloudflare Turnstile 会接收你的浏览器数据以区分真人和机器人。",
   inApp: "已登录？你也可以使用应用内的“举报”按钮。",

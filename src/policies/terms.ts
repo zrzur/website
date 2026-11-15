@@ -1,6 +1,7 @@
-import { doc, list, para, section } from "./shared.ts";
+import { doc, list, para, REVISION_2026_11_15, revisedOn, section } from "./shared.ts";
 
-export const terms = doc({
+// 15 November 2026: no native apps, licence after deletion, liability cap (legal audit)
+export const terms = revisedOn(REVISION_2026_11_15, doc({
   slug: "terms",
   group: "everyone",
   title: { en: "Terms of Service", ar: "شروط الخدمة",
@@ -16,17 +17,17 @@ export const terms = doc({
       { en: "Who we are and what these terms cover", ar: "من نحن وما الذي تشمله هذه الشروط", de: "Wer wir sind und wofür diese Bedingungen gelten" },
       {
         en: para(
-          "Zrzur is a chat service for communities, friends and teams. It is an experimental project in its beta phase, run from Austria by the Zrzur team (\"Zrzur\", \"we\", \"us\"). You can reach us at the addresses on the Contact page. These terms apply when you use the Zrzur web app, desktop app, mobile apps, website and APIs that we run at zrzur.com and its subdomains (together, the \"Service\").",
+          "Zrzur is a chat service for communities, friends and teams. It is an experimental project in its beta phase, run from Austria by the Zrzur team (\"Zrzur\", \"we\", \"us\"). You can reach us at the addresses on the Contact page. These terms apply when you use the Zrzur web app (also in a phone's browser), desktop app, website and APIs that we run at zrzur.com and its subdomains (together, the \"Service\").",
           "By creating an account or using the Service, you agree to these terms and to the policies they mention: the Privacy Policy, the Community Guidelines, the Enforcement and Appeals policy and, when you use them, the Paid Services terms, the Server Owner Rules, the Discover Guidelines, the Developer Terms, the Plugin Policy and the Creator Terms. If you do not agree, please do not use the Service.",
           "Zrzur's software is open source under the GNU Affero General Public License v3.0. These terms do not limit any right that licence gives you over the code. If someone else runs their own copy of the software, that operator — not us — is responsible for their service and their rules.",
         ),
         ar: para(
-          "زرزور خدمة محادثة للمجتمعات والأصدقاء وفرق العمل، وهي مشروع تجريبي في مرحلة البيتا يديره فريق زرزور من النمسا (ويُشار إليه بـ«زرزور» أو «نحن»). ويمكنك مراسلتنا على العناوين المذكورة في صفحة التواصل. تسري هذه الشروط عند استخدامك تطبيق زرزور على الويب أو سطح المكتب أو الهاتف، أو الموقع، أو الواجهات البرمجية التي نشغّلها على zrzur.com ونطاقاته الفرعية (ويُشار إليها مجتمعةً بـ«الخدمة»).",
+          "زرزور خدمة محادثة للمجتمعات والأصدقاء وفرق العمل، وهي مشروع تجريبي في مرحلة البيتا يديره فريق زرزور من النمسا (ويُشار إليه بـ«زرزور» أو «نحن»). ويمكنك مراسلتنا على العناوين المذكورة في صفحة التواصل. تسري هذه الشروط عند استخدامك تطبيق زرزور على الويب (ومنه متصفح الهاتف) أو على سطح المكتب، أو الموقع، أو الواجهات البرمجية التي نشغّلها على zrzur.com ونطاقاته الفرعية (ويُشار إليها مجتمعةً بـ«الخدمة»).",
           "بإنشائك حسابًا أو استخدامك الخدمة، فإنك توافق على هذه الشروط وعلى السياسات المذكورة فيها: سياسة الخصوصية، وإرشادات المجتمع، وسياسة الإنفاذ والاعتراض، وعند الاستخدام: شروط الخدمات المدفوعة، وقواعد مالكي السيرفرات، وإرشادات «اكتشف»، وشروط المطوّرين، وسياسة الإضافات، وشروط المبدعين. إن لم توافق، فالرجاء عدم استخدام الخدمة.",
           "برمجيات زرزور مفتوحة المصدر بموجب رخصة جنو أفيرو العمومية العامة، الإصدار الثالث (AGPL-3.0). ولا تُقيّد هذه الشروط أي حق تمنحك إياه تلك الرخصة على الشيفرة. وإذا شغّل طرف آخر نسخته الخاصة من البرمجيات، فهو المسؤول عن خدمته وقواعده، لا نحن.",
         ),
         de: para(
-          "Zrzur ist ein Chatdienst für Communities, Freundeskreise und Teams. Es ist ein experimentelles Projekt in der Beta-Phase, betrieben vom Zrzur-Team aus Österreich („Zrzur“, „wir“, „uns“). Du erreichst uns unter den Adressen auf der Kontaktseite. Diese Bedingungen gelten, wenn du die Web-App, die Desktop-App, die mobilen Apps, die Website und die APIs von Zrzur nutzt, die wir unter zrzur.com und seinen Subdomains betreiben (zusammen der „Dienst“).",
+          "Zrzur ist ein Chatdienst für Communities, Freundeskreise und Teams. Es ist ein experimentelles Projekt in der Beta-Phase, betrieben vom Zrzur-Team aus Österreich („Zrzur“, „wir“, „uns“). Du erreichst uns unter den Adressen auf der Kontaktseite. Diese Bedingungen gelten, wenn du die Web-App (auch im Browser eines Telefons), die Desktop-App, die Website und die APIs von Zrzur nutzt, die wir unter zrzur.com und seinen Subdomains betreiben (zusammen der „Dienst“).",
           "Indem du ein Konto erstellst oder den Dienst nutzt, stimmst du diesen Bedingungen und den darin genannten Richtlinien zu: der Datenschutzerklärung, den Community-Richtlinien, der Richtlinie zu Durchsetzung und Einspruch und, soweit du sie nutzt, den Bedingungen für kostenpflichtige Dienste, den Regeln für Serverinhaber, den Richtlinien für „Entdecken“, den Entwicklerbedingungen, der Richtlinie für Erweiterungen und den Bedingungen für Creator. Wenn du nicht zustimmst, nutze den Dienst bitte nicht.",
           "Die Software von Zrzur ist Open Source unter der GNU Affero General Public License v3.0. Diese Bedingungen schränken keine Rechte ein, die dir diese Lizenz am Code einräumt. Betreibt jemand anderes eine eigene Kopie der Software, ist dieser Betreiber – nicht wir – für seinen Dienst und seine Regeln verantwortlich.",
         ),
@@ -78,19 +79,19 @@ export const terms = doc({
         en: para(
           "Your messages, files, images, voice and other content stay yours. We do not claim ownership of them.",
           "To run the Service, you give us a worldwide, non-exclusive, royalty-free licence to store, copy, transmit, display and technically adapt your content (for example, making thumbnails, compressing images or converting file formats). We use this licence only to provide, secure and support the Service — for example, to deliver a message to the people you sent it to — and to enforce our rules. We do not sell your content.",
-          "This licence ends when you delete the content or your account, except for: copies that other people already received or re-shared; copies kept for a limited time in backups; and copies we must keep by law or to handle a report or legal claim.",
+          "This licence ends when you delete the content or your account. It continues only for: text other people already forwarded, quoted or copied into their own messages; copies in backups, for up to 30 days; and copies we must keep by law or to handle a report or legal claim.",
           "You promise that you have the rights needed to share what you post, and that it does not break these terms or the law.",
         ),
         ar: para(
           "رسائلك وملفاتك وصورك وصوتك وسائر محتواك تبقى ملكًا لك، ولا ندّعي ملكيتها.",
           "لتشغيل الخدمة، تمنحنا ترخيصًا عالميًا وغير حصري ودون مقابل لتخزين محتواك ونسخه ونقله وعرضه وتكييفه تقنيًا (مثل إنشاء صور مصغّرة، أو ضغط الصور، أو تحويل صيغ الملفات). ولا نستخدم هذا الترخيص إلا لتقديم الخدمة وحمايتها ودعمها — كإيصال رسالتك إلى من أرسلتها إليهم — ولتطبيق قواعدنا. ولا نبيع محتواك.",
-          "ينتهي هذا الترخيص عند حذفك المحتوى أو حسابك، باستثناء: النسخ التي تلقّاها آخرون أو أعادوا مشاركتها، والنسخ المحفوظة مدةً محدودة في النسخ الاحتياطية، والنسخ التي يلزمنا القانون بحفظها أو نحتاجها لمعالجة بلاغ أو مطالبة قانونية.",
+          "ينتهي هذا الترخيص عند حذفك المحتوى أو حسابك، ولا يستمر إلا في: النص الذي أعاد آخرون توجيهه أو اقتبسوه أو نسخوه في رسائلهم، والنسخ الموجودة في النسخ الاحتياطية لمدة أقصاها ٣٠ يومًا، والنسخ التي يلزمنا القانون بحفظها أو نحتاجها لمعالجة بلاغ أو مطالبة قانونية.",
           "وتتعهّد بأنك تملك الحقوق اللازمة لمشاركة ما تنشره، وأنه لا يخالف هذه الشروط ولا القانون.",
         ),
         de: para(
           "Deine Nachrichten, Dateien, Bilder, Sprachaufnahmen und sonstigen Inhalte bleiben dein Eigentum. Wir beanspruchen kein Eigentum daran.",
           "Für den Betrieb des Dienstes räumst du uns eine weltweite, nicht ausschließliche, unentgeltliche Lizenz ein, deine Inhalte zu speichern, zu vervielfältigen, zu übermitteln, anzuzeigen und technisch anzupassen (zum Beispiel Vorschaubilder zu erstellen, Bilder zu komprimieren oder Dateiformate umzuwandeln). Wir nutzen diese Lizenz nur, um den Dienst bereitzustellen, abzusichern und zu unterstützen – zum Beispiel, um eine Nachricht an die Personen zuzustellen, an die du sie gesendet hast – und um unsere Regeln durchzusetzen. Wir verkaufen deine Inhalte nicht.",
-          "Diese Lizenz endet, wenn du die Inhalte oder dein Konto löschst, ausgenommen: Kopien, die andere Personen bereits erhalten oder weiterverbreitet haben; Kopien, die für begrenzte Zeit in Sicherungen aufbewahrt werden; und Kopien, die wir gesetzlich oder zur Bearbeitung einer Meldung oder eines Rechtsanspruchs aufbewahren müssen.",
+          "Diese Lizenz endet, wenn du die Inhalte oder dein Konto löschst. Sie gilt nur weiter für: Text, den andere Personen bereits weitergeleitet, zitiert oder in eigene Nachrichten kopiert haben; Kopien in Sicherungen, für höchstens 30 Tage; und Kopien, die wir gesetzlich oder zur Bearbeitung einer Meldung oder eines Rechtsanspruchs aufbewahren müssen.",
           "Du sicherst zu, dass du die nötigen Rechte hast, um das zu teilen, was du veröffentlichst, und dass es weder gegen diese Bedingungen noch gegen das Gesetz verstößt.",
         ),
       },
@@ -193,17 +194,17 @@ export const terms = doc({
       { en: "Suspension and ending your use", ar: "الإيقاف وإنهاء الاستخدام", de: "Sperrung und Beendigung der Nutzung" },
       {
         en: para(
-          "You can stop using Zrzur and delete your account at any time in the app settings. Deleting your account does not by itself cancel a paid subscription bought through an app store; see the Paid Services terms.",
+          "You can stop using Zrzur and delete your account at any time in the app settings.",
           "We may remove content, limit features, or suspend or close an account or Server if you break these terms or our policies, if the law requires it, or to protect users or the Service. We follow the Enforcement and Appeals policy: we tell you what we did and why, and you can appeal in the app. In serious cases (for example, child sexual abuse material or credible threats of violence) we may act immediately and without warning.",
           "We may stop offering the Service or a feature. If we close the whole Service, we will give at least 30 days' notice where possible so you can download your data, and we will refund unused prepaid time on paid services.",
         ),
         ar: para(
-          "يمكنك التوقف عن استخدام زرزور وحذف حسابك في أي وقت من إعدادات التطبيق. ولا يُلغي حذف الحساب وحده اشتراكًا مدفوعًا اشتريته عبر متجر تطبيقات؛ راجع شروط الخدمات المدفوعة.",
+          "يمكنك التوقف عن استخدام زرزور وحذف حسابك في أي وقت من إعدادات التطبيق.",
           "يجوز لنا إزالة محتوى، أو تقييد ميزات، أو إيقاف حساب أو سيرفر أو إغلاقه، إذا خالفت هذه الشروط أو سياساتنا، أو إذا أوجب القانون ذلك، أو لحماية المستخدمين أو الخدمة. ونتّبع سياسة الإنفاذ والاعتراض: نخبرك بما فعلناه وسببه، ويمكنك الاعتراض من داخل التطبيق. وفي الحالات الخطيرة (مثل مواد الاعتداء الجنسي على الأطفال أو التهديدات الجدية بالعنف) قد نتصرّف فورًا ودون إنذار.",
           "يجوز لنا إيقاف تقديم الخدمة أو ميزة منها. وإذا أغلقنا الخدمة كلها، فسنُعلن ذلك قبل 30 يومًا على الأقل متى أمكن، لتتمكّن من تنزيل بياناتك، وسنردّ قيمة المدة المدفوعة مسبقًا غير المستخدمة في الخدمات المدفوعة.",
         ),
         de: para(
-          "Du kannst die Nutzung von Zrzur jederzeit beenden und dein Konto in den App-Einstellungen löschen. Die Löschung deines Kontos kündigt nicht von selbst ein über einen App-Store abgeschlossenes kostenpflichtiges Abo; siehe die Bedingungen für kostenpflichtige Dienste.",
+          "Du kannst die Nutzung von Zrzur jederzeit beenden und dein Konto in den App-Einstellungen löschen.",
           "Wir können Inhalte entfernen, Funktionen einschränken oder ein Konto oder einen Server sperren oder schließen, wenn du gegen diese Bedingungen oder unsere Richtlinien verstößt, wenn das Gesetz es verlangt oder um Nutzer oder den Dienst zu schützen. Dabei folgen wir der Richtlinie zu Durchsetzung und Einspruch: Wir teilen dir mit, was wir getan haben und warum, und du kannst in der App Einspruch einlegen. In schweren Fällen (zum Beispiel bei Darstellungen sexuellen Kindesmissbrauchs oder ernsthaften Gewaltdrohungen) können wir sofort und ohne Vorwarnung handeln.",
           "Wir können das Angebot des Dienstes oder einer Funktion einstellen. Wenn wir den gesamten Dienst einstellen, kündigen wir dies nach Möglichkeit mindestens 30 Tage im Voraus an, damit du deine Daten herunterladen kannst, und erstatten nicht genutzte, im Voraus bezahlte Zeiträume kostenpflichtiger Dienste.",
         ),
@@ -216,17 +217,17 @@ export const terms = doc({
         en: para(
           "We work hard to keep Zrzur fast, secure and available, but we cannot promise it will always be free of errors or interruptions. Keep your own copies of anything important.",
           "To the extent the law allows, the Service is provided \"as is\". Nothing in these terms limits liability that cannot be limited by law — including for death or personal injury caused by negligence, for fraud, for intent or gross negligence, or under mandatory consumer-protection law.",
-          "Otherwise, if we are liable for slight negligence, we are liable only for breach of an essential obligation of these terms and only for damage that was typical and foreseeable when you started using the Service. For paid services, our total liability is limited to the amount you paid us in the 12 months before the event.",
+          "Otherwise, if we are liable for slight negligence, we are liable only for breach of an essential obligation of these terms and only for damage that was typical and foreseeable when you started using the Service. For paid services, and only as far as the law allows such a limit, our total liability for slight negligence is limited to the amount you paid us in the 12 months before the event; this limit never applies to injury to life, body or health.",
         ),
         ar: para(
           "نعمل جاهدين لإبقاء زرزور سريعًا وآمنًا ومتاحًا، لكننا لا نستطيع أن نعد بأنه سيبقى دائمًا خاليًا من الأخطاء أو الانقطاعات. احتفظ بنسخ خاصة بك من كل ما هو مهم.",
           "في الحدود التي يسمح بها القانون، تُقدَّم الخدمة «كما هي». ولا يحدّ أي شيء في هذه الشروط من المسؤولية التي لا يجوز قانونًا الحدّ منها — ومنها المسؤولية عن الوفاة أو الإصابة الجسدية الناتجة عن الإهمال، أو عن الاحتيال، أو عن العمد أو الإهمال الجسيم، أو بموجب قوانين حماية المستهلك الإلزامية.",
-          "وفيما عدا ذلك، إذا كنّا مسؤولين عن إهمال بسيط، فلا نُسأل إلا عن الإخلال بالتزام جوهري في هذه الشروط، وعن الضرر المعتاد والمتوقّع عند بدء استخدامك الخدمة فقط. وتقتصر مسؤوليتنا الكلية عن الخدمات المدفوعة على ما دفعته لنا خلال الأشهر الاثني عشر السابقة للحادثة.",
+          "وفيما عدا ذلك، إذا كنّا مسؤولين عن إهمال بسيط، فلا نُسأل إلا عن الإخلال بالتزام جوهري في هذه الشروط، وعن الضرر المعتاد والمتوقّع عند بدء استخدامك الخدمة فقط. وفي الخدمات المدفوعة، وبالقدر الذي يجيزه القانون فقط، تقتصر مسؤوليتنا الكلية عن الإهمال البسيط على ما دفعته لنا خلال الأشهر الاثني عشر السابقة للحادثة، ولا يسري هذا الحد أبدًا على الضرر الذي يلحق بالحياة أو الجسد أو الصحة.",
         ),
         de: para(
           "Wir arbeiten hart daran, dass Zrzur schnell, sicher und verfügbar bleibt, können aber nicht versprechen, dass der Dienst immer frei von Fehlern oder Unterbrechungen ist. Bewahre eigene Kopien von allem Wichtigen auf.",
           "Soweit gesetzlich zulässig, wird der Dienst „wie besehen“ bereitgestellt. Nichts in diesen Bedingungen beschränkt eine Haftung, die gesetzlich nicht beschränkt werden kann – einschließlich der Haftung für Tod oder Körperverletzung aufgrund von Fahrlässigkeit, für Betrug, für Vorsatz oder grobe Fahrlässigkeit oder nach zwingendem Verbraucherschutzrecht.",
-          "Im Übrigen haften wir bei leichter Fahrlässigkeit nur für die Verletzung einer wesentlichen Pflicht aus diesen Bedingungen und nur für Schäden, die bei Beginn deiner Nutzung des Dienstes typisch und vorhersehbar waren. Für kostenpflichtige Dienste ist unsere Haftung insgesamt auf den Betrag begrenzt, den du uns in den 12 Monaten vor dem Ereignis gezahlt hast.",
+          "Im Übrigen haften wir bei leichter Fahrlässigkeit nur für die Verletzung einer wesentlichen Pflicht aus diesen Bedingungen und nur für Schäden, die bei Beginn deiner Nutzung des Dienstes typisch und vorhersehbar waren. Für kostenpflichtige Dienste ist unsere Haftung für leichte Fahrlässigkeit, nur soweit das Gesetz eine solche Begrenzung erlaubt, insgesamt auf den Betrag begrenzt, den du uns in den 12 Monaten vor dem Ereignis gezahlt hast; für Schäden an Leben, Körper oder Gesundheit gilt diese Begrenzung nie.",
         ),
       },
     ),
@@ -276,4 +277,4 @@ export const terms = doc({
       },
     ),
   ],
-});
+}));

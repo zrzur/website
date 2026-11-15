@@ -194,6 +194,9 @@ function structured(path, code, words) {
   return JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replace(/</g, "\\u003c");
 }
 
+/** Pages whose mailto: links stay plain links (Imprint § 5 ECG, contact) */
+const PLAIN_EMAIL_PAGES = ["/legal/imprint", "/legal/contact"];
+
 async function page(path, code) {
   const words = pageWords(path, code);
   const dir = LOCALES.find((l) => l.code === code).dir;
@@ -239,7 +242,12 @@ async function page(path, code) {
     .replace(/(<meta\s+property="og:type"\s+content=")[^"]*(")/, `$1${words.post ? "article" : "website"}$2`)
     .replace(/(<meta\s+(?:property="og:image"|name="twitter:image")\s+content=")[^"]*(")/g, `$1${SITE}${words.post?.cover ?? "/brand/og-image.png"}$2`)
     .replace("</head>", `    ${head}\n  </head>`)
-    .replace('<div id="root"></div>', `<div id="root" data-prerendered="${notFound ? "404" : esc(localizedPath(path, code))}">${app}</div>`);
+    .replace('<div id="root"></div>', () => {
+      const root = `<div id="root" data-prerendered="${notFound ? "404" : esc(localizedPath(path, code))}">${app}</div>`;
+      // The operator's addresses must work without JavaScript (ZR-013): the
+      // CDN's email protection leaves pages between these markers alone.
+      return PLAIN_EMAIL_PAGES.includes(path) ? `<!--email_off-->${root}<!--email_on-->` : root;
+    });
   for (const needed of [`<html lang="${tagOf(code)}"`, wordsMeta, "<title>", notFound ? 'name="robots"' : 'rel="canonical"', "application/ld+json", "data-prerendered"])
     if (!html.includes(needed)) throw new Error(`${path} ${code}: ${needed} missing`);
   // a tab title never carries a heading's full stop ("… computer. — Zrzur")

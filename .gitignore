@@ -36,12 +36,7 @@ out/
 !.vscode/extensions.json
 
 # ----- project-specific -----
-node_modules/
-.env
-.env.*
-!.env.example
 reports/*.png
-dist/
 .local/
 CLAUDE.local.md
 screenshots/

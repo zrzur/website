@@ -143,7 +143,7 @@ export default function LegalPage(props: { language: Language; path: string; t: 
             <div>
               <p>
                 <strong>{t(info().kind === "translation" ? "legalTranslationNote" : "legalEnglishNote")}</strong>{" "}
-                {t(info().binding.includes("de") ? "legalBindingEnDe" : "legalBindingEn")}
+                {t(info().binding.includes("de") ? "legalBindingDe" : "legalBindingEn")}
               </p>
               <p class="legal-binding-links">
                 <For each={info().binding}>

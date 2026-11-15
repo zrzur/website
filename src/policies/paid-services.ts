@@ -1,6 +1,7 @@
-import { doc, list, para, revised, section } from "./shared.ts";
+import { doc, list, para, REVISION_2026_11_15, revisedOn, section } from "./shared.ts";
 
-export const paidServices = revised(doc({
+// 15 November 2026: payments through Stripe or PayPal only, no app stores (legal audit)
+export const paidServices = revisedOn(REVISION_2026_11_15, doc({
   slug: "paid-services",
   group: "everyone",
   title: { en: "Paid Services Terms", ar: "شروط الخدمات المدفوعة",
@@ -71,15 +72,15 @@ export const paidServices = revised(doc({
       {
         en: para(
           "The price, currency, billing period and any taxes are shown at checkout before you confirm. Prices for consumers include VAT where it applies.",
-          "Payments will be processed by Stripe, PayPal or by the app store you buy through (for example Google Play or the Apple App Store). Zrzur never stores your card number. Where an app store handles the purchase, its own billing rules also apply, and cancellations and refunds may need to go through that store.",
+          "Payments will be processed by Stripe or PayPal. Zrzur never stores your card number.",
         ),
         ar: para(
           "يُعرض السعر والعملة ومدة الفوترة وأي ضرائب عند الدفع قبل أن تؤكد. وتشمل أسعار المستهلكين ضريبة القيمة المضافة حيث تنطبق.",
-          "ستُعالج المدفوعات عبر Stripe أو PayPal أو عبر متجر التطبيقات الذي تشتري منه (مثل Google Play أو Apple App Store). ولا يحفظ زرزور رقم بطاقتك أبدًا. وحين يتولّى متجر التطبيقات عملية الشراء، تسري قواعد الفوترة الخاصة به أيضًا، وقد يلزم إجراء الإلغاء والاسترداد عبر ذلك المتجر.",
+          "ستُعالج المدفوعات عبر Stripe أو PayPal. ولا يحفظ زرزور رقم بطاقتك أبدًا.",
         ),
         de: para(
           "Preis, Währung, Abrechnungszeitraum und etwaige Steuern werden beim Bezahlvorgang angezeigt, bevor du bestätigst. Preise für Verbraucher enthalten die Umsatzsteuer, soweit diese anfällt.",
-          "Zahlungen werden über Stripe, PayPal oder den App-Store abgewickelt, über den du kaufst (zum Beispiel Google Play oder den Apple App Store). Zrzur speichert niemals deine Kartennummer. Wickelt ein App-Store den Kauf ab, gelten zusätzlich dessen eigene Abrechnungsregeln, und Kündigungen und Erstattungen müssen möglicherweise über diesen Store erfolgen.",
+          "Zahlungen werden über Stripe oder PayPal abgewickelt. Zrzur speichert niemals deine Kartennummer.",
         ),
       },
     ),

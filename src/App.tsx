@@ -17,7 +17,6 @@ import { features, type Label, type Pack } from "./content";
 import { VoiceChannels } from "./demo";
 import type { Flock } from "./flock";
 import { loadPack } from "./strings";
-import { SOURCE_URL } from "./buildInfo";
 import { canonicalUrl, resolveAppUrl, resolvePreviewUrl } from "./config";
 import {
   LOCALES,
@@ -35,27 +34,15 @@ import { canonicalLanguage, metaDescription, metaTitle, pageLanguages } from "./
 import { HERO_SIZES, shotFiles } from "./shots";
 import { loadReportText } from "./report-text";
 import type { Block, Inline } from "./blog-md";
+import { DESKTOP_DOWNLOADS, RELEASES, displayVersion } from "./releases";
 
 /**
- * The desktop app on zrzur.com, for each system. The files are not in this
- * repository: they are put on the server beside the site (`downloads/`), and
- * each checksum is shown so people can check what they got. Sizes in MB (MiB).
+ * The desktop app on zrzur.com, for each system: version, files and
+ * checksums come from the release manifest (src/releases.ts). The files are
+ * not in this repository: they are put on the server beside the site
+ * (`downloads/`), and each checksum is shown so people can check what they got.
  */
-const DESKTOP_VERSION = "26.1.0 Beta 2";
-const DESKTOP_DOWNLOADS = {
-  windows: [
-    { url: "/downloads/Zrzur-Setup-26.1.0-beta.2-x64.exe", sha256: "3cb4612258091d8954c563a1e4c540a3e28eb2a85d221a7ddc359f17516967c5", size: 147, label: "dlWindowsSetup" },
-    { url: "/downloads/Zrzur-win32-x64-26.1.0-beta.2.zip", sha256: "be50cc31c5177465a86a1c9d51351ffe20ab6efb856d2b2b4447654bdbb39263", size: 151, label: "dlWindowsZip" },
-  ],
-  mac: [
-    { url: "/downloads/Zrzur-darwin-arm64-26.1.0-beta.2.zip", sha256: "2a92ebdd27d4e4267f9cc68e2846f8e64d9cc2307c6493371b924dd1b6ab59bd", size: 121, label: "dlMacArm" },
-    { url: "/downloads/Zrzur-darwin-x64-26.1.0-beta.2.zip", sha256: "819a0f3bd18b5149c6c0a952e653620e5e2b9c3731c3f67cb43ac6637742e88e", size: 128, label: "dlMacIntel" },
-  ],
-  linux: [
-    { url: "/downloads/zrzur-desktop_26.1.0-beta.2_amd64.deb", sha256: "d1e5a7111c1b86c93bcd62292569672626c3cf57be3e17369aac0b4532bf3bcc", size: 92, label: "dlLinuxDeb" },
-    { url: "/downloads/Zrzur-linux-x64-26.1.0-beta.2.zip", sha256: "841e782a5140ea29f7177bc914ac2df7d000cdbd605ea39d0a8417cbcb6a1aad", size: 118, label: "dlLinuxZip" },
-  ],
-} as const;
+const DESKTOP_VERSION = displayVersion(RELEASES.desktop.version);
 type DesktopSystem = keyof typeof DESKTOP_DOWNLOADS;
 /** The visitor's own system, read once from the browser (Windows when unsure) */
 function visitorSystem(): DesktopSystem {
@@ -178,7 +165,9 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
   onMount(() => setTheme(document.documentElement.dataset.theme === "light" ? "light" : "dark"));
   const [menuOpen, setMenuOpen] = createSignal(false);
   const [scrolled, setScrolled] = createSignal(false);
-  let dialog!: HTMLDialogElement;
+  // only drawn while there is no app address (ZR-004): a build with
+  // VITE_PUBLIC_APP_URL ships no "not switched on yet" text
+  let dialog: HTMLDialogElement | undefined;
   let flockCanvas: HTMLCanvasElement | undefined;
   let flock: Flock | undefined;
   const t = (key: Label) => pack().labels[key];
@@ -350,7 +339,7 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
       window.scrollTo({ top: 0 });
   }
   function openAvailability() {
-    dialog.showModal();
+    dialog?.showModal();
   }
   function AppAction(props: { class?: string; arrow?: boolean; label?: Label }) {
     const cls = () => `button ${props.class || "button-primary"}`;
@@ -821,7 +810,7 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
                 )}
               </For>
             </dl>
-            <a class="text-link home-why-link" href={SOURCE_URL} target="_blank" rel="noopener noreferrer">
+            <a class="text-link home-why-link" href={href("/source")}>
               {t("homeOpenSource")}
               <Icon name="arrow" class="directional" />
             </a>
@@ -964,9 +953,9 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
             <p class="fine-print">{t("storyNote")}</p>
           </div>
           <nav class="license-links" aria-label={t("licences")} data-rise>
-            <a href={SOURCE_URL} target="_blank" rel="noopener noreferrer">
+            <a href={href("/source")}>
               {t("source")}
-              <Icon name="arrowDiagonal" />
+              <Icon name="arrow" class="directional" />
             </a>
             <a href={href("/legal")}>
               {t("licences")}
@@ -1311,7 +1300,7 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
               ])}
               {column("footerProject", [
                 { href: href("/project"), label: t("project") },
-                { href: SOURCE_URL, label: t("source"), external: true },
+                { href: href("/source"), label: t("source") },
                 { href: KOFI_URL, label: t("supportUs"), external: true },
                 { href: href("/project#source"), label: t("licences") },
                 { href: href("/third-party-notices"), label: t("thirdParty") },
@@ -1434,23 +1423,25 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
         </Show>
       </main>
       <Footer />
-      <dialog ref={dialog} class="site-dialog" aria-labelledby="dialog-title">
-        <button
-          type="button"
-          class="icon-button dialog-close"
-          aria-label={t("close")}
-          onClick={() => dialog.close()}
-        >
-          <Icon name="close" />
-        </button>
-        <div class="availability-content">
-          <h2 id="dialog-title">{t("modalTitle")}</h2>
-          <p>{t("modalBody")}</p>
-          <a href={href("/features")} class="button button-primary">
-            {t("explore")}
-          </a>
-        </div>
-      </dialog>
+      <Show when={!appUrl()}>
+        <dialog ref={dialog} class="site-dialog" aria-labelledby="dialog-title">
+          <button
+            type="button"
+            class="icon-button dialog-close"
+            aria-label={t("close")}
+            onClick={() => dialog?.close()}
+          >
+            <Icon name="close" />
+          </button>
+          <div class="availability-content">
+            <h2 id="dialog-title">{t("modalTitle")}</h2>
+            <p>{t("modalBody")}</p>
+            <a href={href("/features")} class="button button-primary">
+              {t("explore")}
+            </a>
+          </div>
+        </dialog>
+      </Show>
     </>
   );
 }
