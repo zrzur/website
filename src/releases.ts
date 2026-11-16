@@ -45,47 +45,47 @@ export interface Component {
  * and the server name the same version. The live check fails when a running
  * part says otherwise.
  */
-export const PRODUCT_VERSION = "26.1.0-beta.2";
+export const PRODUCT_VERSION = "26.1.0-beta.3";
 
 export const RELEASES = {
   // web and backend: the values of the last deploy, shown only when the
   // page cannot read the running service (no JavaScript, service down)
   web: {
     repo: "web",
-    version: "26.1.0-beta.1",
-    commit: "f08dc31784f421adedbb2454a34c0cbee937c7f0",
+    version: "26.1.0-beta.3",
+    commit: "cab7f9b50d5a2f30b9abb88b229ac9c674c65c49",
     live: { url: "https://app.zrzur.com/build.json", versionKey: "version" },
   },
   backend: {
     repo: "backend",
-    version: "26.1.0-beta.1",
-    commit: "8a90378eeb622dfed123131242f82b1f20ee19ea",
+    version: "26.1.0-beta.3",
+    commit: "0edbaf53840eb311effc5bb9d49ad55184e367a5",
     live: { url: "https://api.zrzur.com/", versionKey: "zrzur" },
   },
   desktop: {
     repo: "desktop",
-    version: "26.1.0-beta.2",
-    commit: "1b8071f9383ee695f9b02521b78bdfff99e8821b",
+    version: "26.1.0-beta.3",
+    commit: "07c120e59f6a335e78e139fd87d905fabc9431bd",
   },
 } as const satisfies Record<ComponentId, Component>;
 
 /** The desktop files on zrzur.com/downloads, per system */
 export const DESKTOP_DOWNLOADS = {
   windows: [
-    { url: "/downloads/Zrzur-Setup-26.1.0-beta.2-x64.exe", sha256: "3cb4612258091d8954c563a1e4c540a3e28eb2a85d221a7ddc359f17516967c5", size: 147, label: "dlWindowsSetup" },
-    { url: "/downloads/Zrzur-win32-x64-26.1.0-beta.2.zip", sha256: "be50cc31c5177465a86a1c9d51351ffe20ab6efb856d2b2b4447654bdbb39263", size: 151, label: "dlWindowsZip" },
+    { url: "/downloads/Zrzur-Setup-26.1.0-beta.3-x64.exe", sha256: "e41179330b6e179abf0a07850d2b57ac3533166f177c0990cf2bb8d1e8c5f6c5", size: 147, label: "dlWindowsSetup" },
+    { url: "/downloads/Zrzur-win32-x64-26.1.0-beta.3.zip", sha256: "7a57ba97381b31ae2419eb773e58e0347389129915dff5c15ab5be841787dfa1", size: 151, label: "dlWindowsZip" },
   ],
   mac: [
-    { url: "/downloads/Zrzur-darwin-arm64-26.1.0-beta.2.zip", sha256: "2a92ebdd27d4e4267f9cc68e2846f8e64d9cc2307c6493371b924dd1b6ab59bd", size: 121, label: "dlMacArm" },
-    { url: "/downloads/Zrzur-darwin-x64-26.1.0-beta.2.zip", sha256: "819a0f3bd18b5149c6c0a952e653620e5e2b9c3731c3f67cb43ac6637742e88e", size: 128, label: "dlMacIntel" },
+    { url: "/downloads/Zrzur-darwin-arm64-26.1.0-beta.3.zip", sha256: "4e2c281aaf04a4eb5f1f7bb22bb4e206612c6454a44ce1919636050a9b3503c5", size: 121, label: "dlMacArm" },
+    { url: "/downloads/Zrzur-darwin-x64-26.1.0-beta.3.zip", sha256: "139c2f13373d5617df293ffd4999f306a570ea2371f05e6ad2b64294dadbe462", size: 128, label: "dlMacIntel" },
   ],
   linux: [
-    { url: "/downloads/zrzur-desktop_26.1.0-beta.2_amd64.deb", sha256: "d1e5a7111c1b86c93bcd62292569672626c3cf57be3e17369aac0b4532bf3bcc", size: 92, label: "dlLinuxDeb" },
-    { url: "/downloads/Zrzur-linux-x64-26.1.0-beta.2.zip", sha256: "841e782a5140ea29f7177bc914ac2df7d000cdbd605ea39d0a8417cbcb6a1aad", size: 118, label: "dlLinuxZip" },
+    { url: "/downloads/zrzur-desktop_26.1.0-beta.3_amd64.deb", sha256: "495c02c6507bcc962a8314d98778c2229686d561b0e2db439ac834aeef201d76", size: 92, label: "dlLinuxDeb" },
+    { url: "/downloads/Zrzur-linux-x64-26.1.0-beta.3.zip", sha256: "eb94b1a88ce29422bb3c8d6485351055ac8acd573e81dc7d1711f80bd348899a", size: 118, label: "dlLinuxZip" },
   ],
 } as const satisfies Record<string, readonly DesktopFile[]>;
 
-/** "26.1.0-beta.2" → "26.1.0 Beta 2", "26.1.0" → "26.1.0" */
+/** "26.1.0-beta.3" → "26.1.0 Beta 3", "26.1.0" → "26.1.0" */
 export function displayVersion(version: string): string {
   const match = version.match(/^(\d+\.\d+\.\d+)(?:-(alpha|beta|rc)\.(\d+))?$/);
   if (!match) return version;
