@@ -1,6 +1,6 @@
 ---
 title: Por qué construimos Zrzur
-summary: Nos gustaba un proyecto de chat de código abierto, pero no su diseño, y le faltaban muchas cosas. Así que decidimos construir una alternativa real y profesional a Discord.
+summary: Nos gustaba un proyecto de chat de código abierto, pero no su diseño, y le faltaba mucho. Así que construimos una alternativa profesional a Discord.
 date: 2026-11-08
 cover: /blog/why-zrzur/cover.jpg
 tags: código abierto, diseño, alternativa a Discord
@@ -15,7 +15,7 @@ Así que decidimos tomarlo y construir nuestro propio producto sobre él: un dis
 
 ## Qué significa hoy
 
-Cada servidor tiene una página de bienvenida con su icono, su banner y su descripción. Los canales de voz siguen abiertos: entras con un clic y compartes tu pantalla dentro de la llamada. Los roles y permisos deciden quién lee, quién escribe y quién modera, y quienes llegan eligen sus intereses en su primera visita. Los servidores públicos se encuentran por tema. La app está disponible en muchos idiomas, y el árabe, el inglés y el alemán se revisan línea por línea.
+Cada servidor puede tener una página de bienvenida con su icono, su banner y su descripción. Los canales de voz son salas abiertas: entras con un clic y compartes tu pantalla dentro de la llamada. Los roles y permisos deciden quién lee, quién escribe y quién modera, y quienes llegan eligen sus intereses en su primera visita. Los eventos ayudan a un servidor a planear noches de juegos y quedadas, y los servidores públicos se encuentran por tema. La app está disponible en muchos idiomas, y el árabe, el inglés y el alemán se revisan línea por línea.
 
 ## Lo que conservamos
 

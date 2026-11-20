@@ -91,6 +91,11 @@
           ? "/assets/plex-cyrillic-wght.woff2"
           : "/assets/plex-latin-wght.woff2",
   });
+  // Arabic body text has its own file (the Latin one is one variable font):
+  // without it here, the text is first drawn in a wider system font and
+  // jumps when Plex arrives (a layout shift of about 0.2 on the blog)
+  if (language === "ar")
+    link({ rel: "preload", as: "font", type: "font/woff2", crossorigin: "", href: "/assets/plex-arabic-400.woff2" });
   // the first picture of the page, in the shade the page shows: the build
   // writes its addresses (scripts/prerender.mjs); the other shade never loads
   var hero = document.querySelector('meta[name="zrzur-hero"]');

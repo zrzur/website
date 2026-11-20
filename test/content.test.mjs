@@ -66,43 +66,46 @@ test("local app shortcut is restricted to loopback previews", () => {
   assert.equal(resolveAppUrl("preview.example", undefined), null);
   assert.equal(resolveAppUrl("zrzur.com", "https://stoat.chat"), null);
 });
-// Owner decisions 2026-11-01: the site shows real screens of the app (captured
-// from the running app with demo accounts), no
-// illustrations or stock pictures; every screen exists in each site language
-// and in the app's dark and light themes (no CSS filters faking a theme).
-test("product pictures are real app screens in every language and theme", async () => {
+// Owner decisions 2026-11-01 and 2026-11-20: the site shows real screens of
+// the app only, no illustrations, stock pictures or drawn mock-ups. For 26.2.0
+// they are the owner's own screenshots (internal/assets/website-26.2.0/SHOT-LIST.md),
+// made into page sizes by scripts/site-shots.py; a slot without its shot shows
+// an empty frame of the same size.
+test("product pictures are the owner's screenshots, one per slot, with their size", async () => {
   const app = await readFile(new URL("../src/App.tsx", import.meta.url), "utf8");
   assert(!app.includes("ScreenshotGallery"), "Image gallery must not return");
-  // the only product <img> is the Shot component, fed by shotFiles (src/shots.ts);
-  // blog posts show their own pictures (class blog-cover / blog-image)
-  assert.equal((app.match(/<img\b(?![^>]*class="blog-)/g) ?? []).length, 1, "one product <img>, inside Shot");
-  assert(app.includes("shotFiles(PRODUCT_VERSIONS, { code: code(), view: props.view"));
-  // a new capture gets a new address (content hash), so no cache keeps the old one
-  const { shotFiles } = await import("../src/shots.ts");
-  const files = shotFiles({ "de-chat-dark.jpg": "abc", "de-chat-crop-dark.avif": "def" }, { code: "de", view: "chat", shade: "dark", hasPhone: true });
-  assert.equal(files.src, "/assets/product/de-chat-dark.jpg?v=abc");
-  assert.equal(files.sources[0].srcset, "/assets/product/de-chat-crop-dark.avif?v=def");
-  // AVIF first, a JPEG behind it, on phones the 780 x 488 crop
-  assert.deepEqual(files.sources.map((source) => source.type ?? "jpeg"), ["image/avif", "jpeg", "image/avif"]);
-  assert.deepEqual([files.sources[0].width, files.sources[0].height], [780, 488]);
-  assert.match(files.srcset, /-1152\.jpg 1152w, .*de-chat-dark\.jpg\?v=abc 2304w$/);
+  // the only product <img> is the Slot component; blog posts show their own pictures
+  assert.equal((app.match(/<img\b(?![^>]*class="blog-)/g) ?? []).length, 1, "one product <img>, inside Slot");
+  // the drawn call (owner, 2026-11-20) frames a real shot; no other drawn screens
+  assert.doesNotMatch(app, /VoiceChannels|<Shot\b/, "no drawn app screens on the page");
+  assert.match(app, /<CallScene[\s\S]*?screen=\{<Slot id="d1" \/>\}/);
+  const { SLOTS, shotFor, shotFiles, heroPreload } = await import("../src/shots.ts");
+  const ids = [...app.matchAll(/<Slot id="(\w+)"|"(m\d)"/g)].flatMap((m) => m.slice(1).filter(Boolean));
+  for (const id of ["d1", "d2", "d6", "d7", "m1", "m2", "m3", "m4", "m5", "m6"]) assert(ids.includes(id), `slot ${id} is on a page`);
+  for (const id of Object.keys(SLOTS)) assert.match(SLOTS[id].alt, /^shot[DM]\dAlt$/);
+  // Arabic pages take the Arabic shot, the others the English one, else the other language
+  const shots = { "ar-d1": { w: 2400, h: 1500, widths: [800, 1400, 2400], v: "abc" }, "en-d2": { w: 1400, h: 875, widths: [800, 1400], v: "def" } };
+  assert.equal(shotFor(shots, "d1", "ar").language, "ar");
+  assert.equal(shotFor(shots, "d1", "de").language, "ar");
+  assert.equal(shotFor(shots, "d1", "de", true), null, "a German phone needs its own German shot");
+  assert.equal(shotFor(shots, "d2", "ar").language, "en");
+  assert.equal(shotFor(shots, "d4", "en"), null);
+  const files = shotFiles("d1", "ar", shots["ar-d1"], "100vw");
+  assert.equal(files.avif, "/assets/shots/ar-d1-800.avif?v=abc 800w, /assets/shots/ar-d1-1400.avif?v=abc 1400w, /assets/shots/ar-d1-2400.avif?v=abc 2400w");
+  assert.equal(files.src, "/assets/shots/ar-d1-2400.webp?v=abc");
+  assert.deepEqual([files.width, files.height], [2400, 1500]);
+  assert.equal(heroPreload({}, "en"), null);
+  assert.equal(heroPreload(shots, "en").dark[0].type, "image/avif");
+  // every shot in the manifest has its files
+  const { SHOTS } = await import("../src/shot-manifest.ts");
+  for (const [key, entry] of Object.entries(SHOTS))
+    for (const width of entry.widths)
+      for (const ext of ["avif", "webp"]) await access(new URL(`../public/assets/shots/${key}-${width}.${ext}`, import.meta.url));
   assert(!/filter:\s*invert/.test(await readFile(new URL("../src/site.css", import.meta.url), "utf8")));
-  const views = [...app.matchAll(/<Shot view="(\w+)"/g)].map((m) => m[1]);
-  assert(views.length >= 5, "the homepage shows several real screens");
-  for (const language of ["ar", "en", "de"])
-    for (const theme of ["dark", "light"]) {
-      // every capture with its smaller copies (scripts/product-images.py)
-      for (const view of new Set(views))
-        for (const end of [".jpg", ".avif", "-1152.jpg", "-1152.avif"])
-          await access(new URL(`../public/assets/product/${language}-${view}-${theme}${end}`, import.meta.url));
-      for (const view of ["chat", "lobby"])
-        for (const name of [`phone-${theme}.jpg`, `crop-${theme}.jpg`, `crop-${theme}.avif`])
-          await access(new URL(`../public/assets/product/${language}-${view}-${name}`, import.meta.url));
-    }
 });
 
 test("the site has no native select and dark is the default theme", async () => {
-  for (const file of ["App.tsx", "demo.tsx", "report.tsx", "legal-page.tsx"]) {
+  for (const file of ["App.tsx", "report.tsx", "legal-page.tsx"]) {
     const source = await readFile(new URL(`../src/${file}`, import.meta.url), "utf8");
     assert.doesNotMatch(source, /<select\b/, file);
   }
@@ -148,13 +151,11 @@ test("launch copy: only what exists, no prices, no paid extras", async () => {
     assert.doesNotMatch(labels[language].heroBody, /Download|تنزيل/);
   for (const [language, word] of [["fr", /Télécharg/], ["es", /Descarg/], ["ru", /Скача/], ["zh", /下载/]])
     assert.doesNotMatch(labels[language].heroBody, word, language);
-  // every system the copy names has a real file, each with its own checksum
-  // (the release manifest the download page reads)
+  // every system the copy names has a real file on the GitHub release
+  // (the release manifest the download page reads; checksums: release-manifest test)
   const app = await readFile(new URL("../src/releases.ts", import.meta.url), "utf8");
-  for (const file of [/Zrzur-win32-x64-[\w.-]+\.zip/, /Zrzur-darwin-arm64-[\w.-]+\.zip/, /Zrzur-darwin-x64-[\w.-]+\.zip/, /Zrzur-linux-x64-[\w.-]+\.zip/])
-    assert.match(app, new RegExp(`url: "/downloads/${file.source}", sha256: "[0-9a-f]{64}"`), file.source);
-  const sums = app.match(/sha256: "([0-9a-f]{64})"/g) ?? [];
-  assert.equal(new Set(sums).size, sums.length, "each file has its own checksum");
+  for (const file of [/Zrzur-Setup-[\w.-]+-x64\.exe/, /Zrzur-win32-x64-[\w.-]+\.zip/, /Zrzur-darwin-arm64-[\w.-]+\.zip/, /Zrzur-darwin-x64-[\w.-]+\.zip/, /zrzur-desktop_[\w.-]+_amd64\.deb/, /Zrzur-linux-x64-[\w.-]+\.zip/])
+    assert.match(app, new RegExp(`url: asset\\("${file.source}"\\)`), file.source);
 });
 
 test("the flock fills a shape with exactly as many birds as it has", async () => {

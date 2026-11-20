@@ -1,6 +1,6 @@
 ---
 title: Pourquoi nous construisons Zrzur
-summary: Nous aimions un projet de discussion open source, mais pas son design, et il lui manquait beaucoup. Alors nous avons décidé de construire une vraie alternative professionnelle à Discord.
+summary: Nous aimions un projet de discussion open source, mais pas son design, et il lui manquait beaucoup. Alors nous construisons une alternative à Discord.
 date: 2026-11-08
 cover: /blog/why-zrzur/cover.jpg
 tags: open source, design, alternative à Discord
@@ -15,7 +15,7 @@ Nous avons donc décidé de le reprendre et de construire notre propre produit d
 
 ## Ce que cela veut dire aujourd'hui
 
-Chaque serveur a une page d'accueil avec son icône, sa bannière et sa description. Les salons vocaux restent ouverts : tu entres en un clic et tu partages ton écran dans l'appel. Les rôles et les permissions décident qui lit, qui écrit et qui modère, et les nouveaux venus choisissent leurs centres d'intérêt dès leur première visite. Les serveurs publics se trouvent par thème. L'app existe dans de nombreuses langues, et l'arabe, l'anglais et l'allemand sont vérifiés ligne par ligne.
+Chaque serveur peut avoir une page d'accueil avec son icône, sa bannière et sa description. Les salons vocaux sont des pièces ouvertes : tu entres en un clic et tu partages ton écran dans l'appel. Les rôles et les permissions décident qui lit, qui écrit et qui modère, et les nouveaux venus choisissent leurs centres d'intérêt dès leur première visite. Les événements aident un serveur à organiser des soirées jeux et des rencontres, et les serveurs publics se trouvent par thème. L'app existe dans de nombreuses langues, et l'arabe, l'anglais et l'allemand sont vérifiés ligne par ligne.
 
 ## Ce que nous gardons
 

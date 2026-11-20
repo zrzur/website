@@ -13,8 +13,7 @@ import {
   type JSX,
 } from "solid-js";
 import { Portal } from "solid-js/web";
-import { features, type Label, type Pack } from "./content";
-import { VoiceChannels } from "./demo";
+import type { Label, Pack } from "./content";
 import type { Flock } from "./flock";
 import { loadPack } from "./strings";
 import { canonicalUrl, resolveAppUrl, resolvePreviewUrl } from "./config";
@@ -29,12 +28,13 @@ import {
 } from "./i18n";
 import { legalFooterLinks, legalSlugs } from "./legal-nav";
 import { Icon } from "./icon";
+import { CallScene } from "./call-scene";
 import { hasPost, loadPosts, type Post } from "./blog";
 import { canonicalLanguage, metaDescription, metaTitle, pageLanguages } from "./seo";
-import { HERO_SIZES, shotFiles } from "./shots";
+import { DEFAULT_SIZES, EMPTY_SIZE, HERO_SIZES, PHONE_SIZES, SHOTS, SLOTS, shotFiles, shotFor, type SlotId } from "./shots";
 import { loadReportText } from "./report-text";
 import type { Block, Inline } from "./blog-md";
-import { DESKTOP_DOWNLOADS, RELEASES, displayVersion } from "./releases";
+import { CHECKSUMS_FILE, DESKTOP_DOWNLOADS, RELEASES, RELEASE_PAGE, displayVersion } from "./releases";
 
 /**
  * The desktop app on zrzur.com, for each system: version, files and
@@ -51,11 +51,6 @@ function visitorSystem(): DesktopSystem {
   if (/Linux|X11/.test(agent) && !/Android/.test(agent)) return "linux";
   return "windows";
 }
-
-/** Content hash per product picture, from vite.config.ts (missing in tests) */
-declare const __PRODUCT_VERSIONS__: Record<string, string> | undefined;
-const PRODUCT_VERSIONS: Record<string, string> =
-  typeof __PRODUCT_VERSIONS__ !== "undefined" ? __PRODUCT_VERSIONS__ : {};
 
 export type Page =
   | "home"
@@ -97,10 +92,6 @@ export const pageForPath = (path: string): Page => {
   );
 };
 
-/** Views captured from the running app from the running app with demo accounts */
-type View = "chat" | "lobby" | "discover" | "settings" | "roles";
-const PHONE_VIEWS: readonly View[] = ["chat", "lobby"];
-
 // the long legal texts and the report form load only on their own pages
 const LegalPage = lazy(() => import("./legal-page"));
 const ReportPage = lazy(() => import("./report"));
@@ -119,8 +110,41 @@ export const preparePage = (page: Page, language: Language): Promise<unknown> =>
 /** The pages where the flock flies; legal and report pages stay quiet */
 const FLOCK_PAGES: readonly Page[] = ["home", "features", "project", "guide", "download", "blog", "404"];
 
-/** The languages the app screens were captured in; the others show the English screens */
-const SHOT_LANGUAGES: readonly Language[] = ["ar", "en", "de"];
+/**
+ * What you can do in Zrzur, in four groups of three: each group is one panel
+ * with its own real screen (src/shots.ts), so there is no row of identical cards.
+ */
+const GROUPS = [
+  // drawn as the call scene (CallScene); its shared screen shows the real app shot d1 (no live call to capture)
+  { id: "talk", title: "groupTalkTitle", body: "groupTalkBody", items: ["fServers", "fDms", "fVoice"], slot: "d1" },
+  { id: "run", title: "groupRunTitle", body: "groupRunBody", items: ["fRoles", "fEvents", "fBots"], slot: "d8" },
+  { id: "find", title: "groupFindTitle", body: "groupFindBody", items: ["fDiscover", "fJoin", "fImport"], slot: "d4" },
+  { id: "yours", title: "groupYoursTitle", body: "groupYoursBody", items: ["fDesigns", "fSaved", "fSaveData"], slot: "d5" },
+] as const satisfies readonly { id: string; title: Label; body: Label; items: readonly Label[]; slot: SlotId }[];
+/**
+ * About how wide the longest unbreakable word of a headline is, in em of the
+ * bold headline font: Latin and Cyrillic letters ~0.62 em, Arabic ~0.5 em,
+ * Chinese characters 1 em each but each may start a new line.
+ */
+export function longestWord(text: string): number {
+  const width = (word: string) =>
+    [...word].reduce((sum, c) => sum + (/[؀-ۿݐ-ݿ]/.test(c) ? 0.5 : 0.62), 0);
+  const words = text.split(/\s+|(?=[　-鿿＀-￯])|(?<=[　-鿿＀-￯])/u).filter(Boolean);
+  return Math.round(Math.max(1, ...words.map((word) => (/[　-鿿＀-￯]/.test(word) ? 1 : width(word)))) * 100) / 100;
+}
+
+/** "n minutes" in Arabic, with the noun agreeing with the number */
+export function arabicMinutes(n: number, shown = String(n)): string {
+  if (n === 1) return "دقيقة واحدة";
+  if (n === 2) return "دقيقتان";
+  const rest = n % 100;
+  return rest >= 3 && rest <= 10 ? `${shown} دقائق` : `${shown} دقيقة`;
+}
+
+/** The two posts of the 26.2.0 launch */
+const FEATURES_POST = "/blog/everything-in-zrzur";
+const FAMILIAR_POST = "/blog/why-it-looks-familiar";
+const GITHUB = "https://github.com/zrzur";
 
 /**
  * The site. main.tsx hands it the words of the first language (already
@@ -555,58 +579,59 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
     );
   }
   /**
-   * A real screen of the app. Both theme captures are in the page and CSS shows
-   * the one matching the site theme. `in` shows it in another language.
+   * One app screen: the owner's screenshot for this slot (src/shots.ts), or
+   * until it exists a marked empty frame of the same size. Only the home
+   * page's first picture loads at once; the rest load as they come near.
    */
-  function Shot(props: { view: View; alt: Label; hero?: boolean; phone?: boolean; theme?: "dark" | "light"; in?: Language }) {
-    const code = () => {
-      const wanted = props.in ?? language();
-      return SHOT_LANGUAGES.includes(wanted) ? wanted : "en";
-    };
-    const hasPhone = () => PHONE_VIEWS.includes(props.view);
-    const files = (shade: "dark" | "light") =>
-      shotFiles(PRODUCT_VERSIONS, { code: code(), view: props.view, shade, phone: props.phone, hasPhone: hasPhone(), sizes: props.hero ? HERO_SIZES : undefined });
-    const shades = () => (props.theme ? [props.theme] : (["dark", "light"] as const));
+  function Slot(props: { id: SlotId; hero?: boolean; in?: "ar" | "en" | "de" }) {
+    const slot = SLOTS[props.id];
+    const wanted = () => props.in ?? language();
+    const found = () => shotFor(SHOTS, props.id, wanted(), !!props.in);
+    const sizes = () => (props.hero ? HERO_SIZES : slot.phone ? PHONE_SIZES : DEFAULT_SIZES);
+    const empty = slot.phone ? EMPTY_SIZE.phone : EMPTY_SIZE.desktop;
     return (
       <figure
-        classList={{
-          "product-shot": true,
-          "phone-shot": !!props.phone,
-          "fixed-theme": !!props.theme,
-          "shot-rtl": code() === "ar",
-          [`shot-${props.view}`]: true,
-        }}
+        classList={{ "product-shot": true, "phone-shot": slot.phone, "shot-empty": !found(), "shot-rtl": found()?.language === "ar" }}
+        data-slot={props.id}
+        // the frame takes the shot's own ratio, so it is shown whole and never jumps
+        style={found() ? { "aspect-ratio": `${found()!.entry.w} / ${found()!.entry.h}` } : undefined}
       >
-        <For each={shades()}>
-          {(shade) => (
-            <picture class={`shot-${shade}`}>
-              {/* AVIF first; each source has its own size, so no box jumps when it loads */}
-              <For each={files(shade).sources}>
-                {(source) => <source media={source.media} type={source.type} srcset={source.srcset} sizes={source.sizes} width={source.width} height={source.height} />}
-              </For>
-              {/* always lazy: the build cannot know the visitor's theme, so the
-                  first picture is preloaded in the shown shade by theme.js */}
-              <img
-                src={files(shade).src}
-                srcset={files(shade).srcset}
-                sizes={files(shade).sizes}
-                alt={t(props.alt)}
-                width={files(shade).width}
-                height={files(shade).height}
-                loading="lazy"
-                decoding="async"
-              />
-            </picture>
-          )}
-        </For>
+        <Show
+          when={found()}
+          fallback={
+            <div class="shot-placeholder" role="img" aria-label={t(slot.alt)} style={{ "aspect-ratio": `${empty.w} / ${empty.h}` }}>
+              <span class="shot-placeholder-id" dir="ltr">{props.id.toUpperCase()}</span>
+              <span class="shot-placeholder-note">{slot.note[language() === "ar" ? "ar" : "en"]}</span>
+              <Show when={props.in}>{(code) => <span class="shot-placeholder-note" lang={code()}>{LOCALES.find((l) => l.code === code())!.name}</span>}</Show>
+            </div>
+          }
+        >
+          {(shot) => {
+            const files = () => shotFiles(props.id, shot().language, shot().entry, sizes());
+            return (
+              <picture>
+                <source type="image/avif" srcset={files().avif} sizes={files().sizes} />
+                <source type="image/webp" srcset={files().webp} sizes={files().sizes} />
+                <img
+                  src={files().src}
+                  alt={t(slot.alt)}
+                  width={files().width}
+                  height={files().height}
+                  loading={props.hero ? "eager" : "lazy"}
+                  fetchpriority={props.hero ? "high" : undefined}
+                  decoding="async"
+                />
+              </picture>
+            );
+          }}
+        </Show>
       </figure>
     );
   }
+  /** Arabic done properly: the words, the flock greeting, and the same screen in three languages */
   function Languages() {
-    const altOf = { ar: "langAltAr", en: "langAltEn", de: "langAltDe" } as const;
-    // the phones show the three languages the app screens exist in, the page's own first
-    const phones = () =>
-      [...SHOT_LANGUAGES].sort((a, b) => Number(b === language()) - Number(a === language()));
+    const phoneLanguages = () =>
+      (["ar", "en", "de"] as const).slice().sort((a, b) => Number(b === language()) - Number(a === language()));
     return (
       <section class="languages home-screen" id="languages" aria-labelledby="languages-title">
         <div class="container languages-grid">
@@ -618,9 +643,7 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
           <div class="flock-stage home-greet" data-flock="word" data-words="أهلًا|Hello|Hallo" aria-hidden="true" />
           {/* scrolls sideways on phones: reachable and named for the keyboard */}
           <div class="languages-phones" data-rise tabindex="0" role="group" aria-labelledby="languages-title">
-            <For each={phones()}>
-              {(code) => <Shot view="chat" alt={altOf[code as keyof typeof altOf]} phone in={code} />}
-            </For>
+            <For each={phoneLanguages()}>{(code) => <Slot id="m2" in={code} />}</For>
           </div>
         </div>
       </section>
@@ -663,7 +686,7 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
     );
   }
   /** One service in its own large panel: the words on one side, the real screen on the other */
-  function Chapter(props: { id: string; title: string; body: string; points?: Label[]; flip?: boolean; phone?: boolean; children: JSX.Element }) {
+  function Chapter(props: { id: string; title: string; body: string; points?: Label[]; after?: JSX.Element; phone?: boolean; children: JSX.Element }) {
     return (
       <section class="home-screen" id={props.id} aria-labelledby={`${props.id}-title`}>
         {/* the words in their box at the start side, the picture large and free beside it:
@@ -673,6 +696,7 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
             <h2 id={`${props.id}-title`}>{props.title}</h2>
             <p>{props.body}</p>
             <Show when={props.points}>{(points) => <Points class="home-points" items={points()} />}</Show>
+            {props.after}
           </div>
           <div classList={{ "home-media": true, "home-phone-frame": !!props.phone }}>{props.children}</div>
         </div>
@@ -701,63 +725,52 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
       </div>
     );
   }
-  /**
-   * A call as the app draws it: the shared screen on top, the people under it
-   * (who speaks has the ring), and the call's own buttons. A picture of the
-   * app, not a working call: the buttons are drawn, not focusable.
-   */
-  function VoiceCall() {
-    const people = [
-      { name: "demoPeople1", tone: "a", speaking: true },
-      { name: "demoPeople2", tone: "you", speaking: false },
-      { name: "demoPeople3", tone: "b", speaking: false },
-    ] as const;
+  /** The four groups of what you can do, each a panel with its screen; the sides take turns */
+  function Groups() {
     return (
-      <figure
-        class="voice-call"
-        role="img"
-        aria-label={`${t("demoLounge")}, ${t("voiceConnected")}, ${t("demoPeople1")} ${t("voiceSharing")}`}
-      >
-        <div class="call-bar" aria-hidden="true">
-          <Icon name="headphones" />
-          <strong>{t("demoLounge")}</strong>
-          <span>{t("voiceConnected")}</span>
-          <span class="call-live"><span class="live-dot" />{t("voiceLive")}</span>
-        </div>
-        <div class="call-screen" aria-hidden="true">
-          <Shot view="lobby" alt="lobbyAlt" />
-          <span class="hero-chip call-sharing">{t("demoPeople1")}: {t("voiceSharing")}</span>
-        </div>
-        <div class="call-people" aria-hidden="true">
-          <For each={people}>
-            {(person) => (
-              <div classList={{ "call-person": true, speaking: person.speaking }}>
-                <span class={`call-avatar call-avatar-${person.tone}`} />
-                <span>{t(person.name)}</span>
+      <For each={GROUPS}>
+        {(group) =>
+          group.id === "talk" ? (
+            <section class="home-screen home-voice" id={group.id} aria-labelledby={`${group.id}-title`}>
+              {/* the flock leaves the name and becomes the sound of the call */}
+              <div class="flock-stage voice-stage home-wave" data-flock="wave" data-tone="voice" aria-hidden="true" />
+              <div class="home-row" data-rise>
+                <div class="home-copy home-card">
+                  <h2 id={`${group.id}-title`}>{t(group.title)}</h2>
+                  <p>{t(group.body)}</p>
+                  <Points class="home-points" items={[...group.items]} />
+                </div>
+                <div class="home-media">
+                  <CallScene
+                    room={t("demoLounge")}
+                    names={[t("demoPeople1"), t("demoPeople2"), t("demoPeople3")]}
+                    label={`${t("demoLounge")}, ${t("voiceConnected")}, ${t("demoPeople1")} ${t("voiceSharing")}`}
+                    screen={<Slot id="d1" />}
+                  />
+                </div>
               </div>
-            )}
-          </For>
-        </div>
-        <div class="call-controls" aria-hidden="true">
-          <span class="call-round" title={t("voiceMute")}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3" /><path d="M5 11a7 7 0 0 0 14 0M12 18v3" /></svg>
-          </span>
-          <span class="call-round" title={t("voiceShareScreen")}><Icon name="monitor" /></span>
-          <span class="call-leave">{t("voiceLeave")}</span>
-        </div>
-      </figure>
+            </section>
+          ) : (
+            <Chapter id={group.id} title={t(group.title)} body={t(group.body)} points={[...group.items]}>
+              <Slot id={group.slot} />
+            </Chapter>
+          )
+        }
+      </For>
     );
   }
   function Home() {
     return (
       <>
-        {/* the first screen: the headline, its line and the two buttons on the
-            start side, the flock writing the name beside them on the end side,
-            and the real window under both */}
+        {/* the first screen: the release line, the headline, its line and the
+            two buttons on the start side, the flock writing the name beside
+            them on the end side, and the real window under both */}
         <section class="home-hero" aria-labelledby="hero-title">
           <div class="container home-hero-top">
             <div class="home-hero-words">
-              <h1 id="hero-title">{t("heroTitle")}</h1>
+              {/* --longest: the width of the longest word in em, so CSS can size the
+                  headline to fit its column without ever breaking a word */}
+              <h1 id="hero-title" style={{ "--longest": String(longestWord(t("heroTitle"))) }}>{t("heroTitle")}</h1>
               <p>{t("heroBody")}</p>
               <div class="home-actions">
                 <AppAction arrow={false} />
@@ -771,49 +784,50 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
           </div>
           <div class="container home-window" id="tour">
             <div class="home-window-frame">
-              <Shot view="chat" alt="chatAlt" hero />
+              <Slot id="d1" hero />
             </div>
           </div>
         </section>
         <Band />
-        {/* three main services only, with room between them */}
-        <Chapter id="servers" title={t("serversTitle")} body={t("serversBody")} points={["serversP1", "serversP2", "serversP3"]}>
-          <Shot view="lobby" alt="lobbyAlt" />
-        </Chapter>
-        <section class="home-screen home-voice" id="voice" aria-labelledby="voice-title">
-          {/* the flock leaves the name and becomes the sound of the call */}
-          <div class="flock-stage voice-stage home-wave" data-flock="wave" data-tone="voice" aria-hidden="true" />
-          <div class="home-row" data-rise>
-            <div class="home-copy home-card">
-              <h2 id="voice-title">{t("voiceTitle")}</h2>
-              <p>{t("voiceBody")}</p>
-              <Points class="home-points" items={["voiceP1", "voiceP2", "voiceP3"]} />
-            </div>
-            <div class="home-media"><VoiceCall /></div>
-          </div>
-        </section>
-        <Chapter id="roles" title={pack().features.roles.title} body={pack().features.roles.body} points={["rolesP1", "rolesP2", "rolesP3"]}>
-          <Shot view="settings" alt="commAlt" />
-        </Chapter>
-        <Languages />
-        {/* the reasons, each a title and one line */}
-        <section class="home-screen home-why" id="why" aria-labelledby="why-title">
-          <div class="container">
-            <h2 id="why-title" data-rise>{t("whyTitle")}</h2>
-            <dl class="home-why-grid" data-rise>
-              <For each={["why1", "why2", "why3", "why4"] as const}>
-                {(key) => (
-                  <div>
-                    <dt>{t(key)}</dt>
-                    <dd>{t(`${key}Body` as Label)}</dd>
-                  </div>
-                )}
-              </For>
-            </dl>
-            <a class="text-link home-why-link" href={href("/source")}>
-              {t("homeOpenSource")}
+        {/* why it looks familiar: the layout people know, kept on purpose */}
+        <Chapter
+          id="familiar"
+          title={t("familiarTitle")}
+          body={t("familiarBody")}
+          after={
+            <a class="text-link" href={href(FAMILIAR_POST)}>
+              {t("familiarLink")}
               <Icon name="arrow" class="directional" />
             </a>
+          }
+        >
+          <Slot id="d2" />
+        </Chapter>
+        <Groups />
+        <div class="container home-all">
+          <a class="text-link" href={href(FEATURES_POST)}>
+            {t("featuresAll")}
+            <Icon name="arrow" class="directional" />
+          </a>
+        </div>
+        <Languages />
+        {/* open source, and the project it is built on */}
+        <section class="home-screen home-open" id="open-source" aria-labelledby="open-title">
+          <div class="container home-open-inner" data-rise>
+            <h2 id="open-title">{t("openTitle")}</h2>
+            <div>
+              <p>{t("openBody")}</p>
+              <p class="home-open-links">
+                <a class="text-link" href={href("/source")}>
+                  {t("homeOpenSource")}
+                  <Icon name="arrow" class="directional" />
+                </a>
+                <a class="text-link" href={GITHUB} target="_blank" rel="noopener noreferrer">
+                  {t("openGithub")}
+                  <Icon name="arrowDiagonal" />
+                </a>
+              </p>
+            </div>
           </div>
         </section>
         <section class="home-screen home-faq" id="faq" aria-labelledby="faq-title">
@@ -868,65 +882,35 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
       </div>
     );
   }
-  /** What proves a feature: a real screen, the live voice list, or the source */
-  function FeatureProof(props: { view: (typeof features)[number]["view"] }) {
-    return (
-      <Switch>
-        <Match when={props.view === "lobby"}>
-          <Shot view="lobby" alt="lobbyAlt" />
-        </Match>
-        <Match when={props.view === "voice"}>
-          <VoiceChannels t={t} />
-        </Match>
-        <Match when={props.view === "chat"}>
-          <Shot view="chat" alt="chatAlt" />
-        </Match>
-        <Match when={props.view === "settings"}>
-          <Shot view="settings" alt="commAlt" />
-        </Match>
-        <Match when={props.view === "roles"}>
-          <Shot view="roles" alt="rolesAlt" />
-        </Match>
-        <Match when={props.view === "discover"}>
-          <Shot view="discover" alt="discoverAlt" />
-        </Match>
-        <Match when={props.view === "light"}>
-          <Shot view="chat" alt="chatAlt" theme={theme() === "dark" ? "light" : "dark"} />
-        </Match>
-        <Match when={props.view === "code"}>
-          <pre class="source-card" dir="ltr">
-            <code>{"github.com/zrzur\n\nAGPL-3.0"}</code>
-          </pre>
-        </Match>
-      </Switch>
-    );
-  }
-  /**
-   * Every feature as a card on one grid: wide and narrow cards take turns
-   * (7 + 5, then 5 + 7), so the page has a rhythm; each card shows its proof.
-   */
+  /** Every feature, in the four groups, then the profile, the phone and the long post */
   function Features() {
-    const wide = (index: number) => [0, 3, 4, 6].includes(index);
     return (
       <>
         <PageHeading title="featuresTitle" body="featuresBody" words="#" />
-        <section class="container feature-grid" aria-label={t("features")}>
-          <For each={features}>
-            {(feature, index) => (
-              <article
-                id={feature.id}
-                classList={{ "feature-tile": true, "feature-wide": wide(index()), [`feature-${feature.view}`]: true }}
-                data-rise
-              >
-                <h2>{pack().features[feature.id].title}</h2>
-                <p>{pack().features[feature.id].body}</p>
-                <div class="feature-proof">
-                  <FeatureProof view={feature.view} />
-                </div>
-              </article>
-            )}
-          </For>
+        <Groups />
+        <Chapter id="profile" title={t("profileTitle")} body={t("profileBody")}>
+          <div class="shot-pair">
+            <Slot id="d6" />
+            <Slot id="d7" />
+          </div>
+        </Chapter>
+        <section class="home-screen" id="phone" aria-labelledby="phone-title">
+          <div class="container languages-grid">
+            <div class="languages-copy" data-rise>
+              <h2 id="phone-title">{t("phoneTitle")}</h2>
+              <p>{t("phoneBody")}</p>
+            </div>
+            <div class="languages-phones" data-rise tabindex="0" role="group" aria-labelledby="phone-title">
+              <For each={["m1", "m3", "m4", "m5", "m6"] as const}>{(id) => <Slot id={id} />}</For>
+            </div>
+          </div>
         </section>
+        <div class="container home-all">
+          <a class="text-link" href={href(FEATURES_POST)}>
+            {t("featuresAll")}
+            <Icon name="arrow" class="directional" />
+          </a>
+        </div>
         <CTA />
       </>
     );
@@ -981,7 +965,11 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
       </>
     );
   }
-  /** The desktop app for Windows, macOS and Linux, and the browser beside it */
+  /**
+   * The desktop app for Windows, macOS and Linux from GitHub Releases, in one
+   * frame: a row per system (the visitor's own first), what the first-start
+   * warning means, how to check a file, and the browser beside it.
+   */
   function Download() {
     // Windows as at build time, then the visitor's own system
     const [yours, setYours] = createSignal<DesktopSystem>("windows");
@@ -991,7 +979,9 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
       { id: "mac", name: "macOS", meta: "dlMacMeta", how: "dlMacHow" },
       { id: "linux", name: "Linux", meta: "dlLinuxMeta", how: "dlLinuxHow" },
     ] as const;
-    const size = (mb: number) => t("dlSize").replace("{size}", String(mb));
+    // the order stays fixed (no jump after the page loads); the visitor's own system is marked
+    const size = (mb: number | null) => (mb ? t("dlSize").replace("{size}", String(mb)) : null);
+    const checks = () => t("dlChecksums").split("SHA256SUMS-{version}.txt");
     return (
       <>
         <PageHeading title="downloadTitle" body="downloadBody" words={t("flockName")} />
@@ -1010,44 +1000,69 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
                       <a
                         classList={{ button: true, "button-primary": system.id === yours() && index() === 0, "button-soft": !(system.id === yours() && index() === 0) }}
                         href={file.url}
-                        download=""
+                        rel="noopener"
                       >
                         <Icon name="download" />
                         <span>{t(file.label)}</span>
-                        <span class="download-size">{size(file.size)}</span>
+                        <Show when={size(file.size)}>{(text) => <span class="download-size">{text()}</span>}</Show>
                       </a>
                     )}
                   </For>
                 </div>
-                <p class="download-how">{t(system.how)}</p>
-                <details class="download-check">
-                  <summary>{t("downloadCheck")}</summary>
-                  <For each={DESKTOP_DOWNLOADS[system.id]}>
-                    {(file) => (
-                      <p>
-                        <span dir="ltr">{file.url.split("/").pop()}</span>
-                        <code dir="ltr">{file.sha256}</code>
-                      </p>
-                    )}
+                {/* a command reads left to right inside any language, so it never mixes with Arabic text */}
+                <p class="download-how">
+                  <For each={t(system.how).replace(/[\u200e\u200f]/g, "").split(/(sudo apt install \S+?\.deb)/)}>
+                    {(part, index) => (index() % 2 ? <code dir="ltr">{part}</code> : part)}
                   </For>
-                </details>
+                </p>
+                {/* each file's checksum, once the release has them */}
+                <Show when={DESKTOP_DOWNLOADS[system.id].every((file) => file.sha256)}>
+                  <details class="download-check">
+                    <summary>{t("downloadCheck")}</summary>
+                    <For each={DESKTOP_DOWNLOADS[system.id]}>
+                      {(file) => (
+                        <p>
+                          <span dir="ltr">{file.url.split("/").pop()}</span>
+                          <code dir="ltr">{file.sha256}</code>
+                        </p>
+                      )}
+                    </For>
+                  </details>
+                </Show>
               </article>
             )}
           </For>
         </section>
+        <section class="container download-notes">
+          <div data-rise>
+            <h2>{t("dlUnsignedTitle")}</h2>
+            <p>{t("dlUnsignedBody")}</p>
+          </div>
+          <div data-rise>
+            <p class="download-version">
+              {t("dlVersion").split("{version}")[0]}
+              <span dir="ltr">{DESKTOP_VERSION}</span>
+              {t("dlVersion").split("{version}")[1]}
+            </p>
+            <p>
+              {checks()[0]}
+              <code dir="ltr">{CHECKSUMS_FILE}</code>
+              {checks()[1]}
+            </p>
+            <a class="text-link" href={RELEASE_PAGE} target="_blank" rel="noopener noreferrer">
+              {t("dlRelease")}
+              <Icon name="arrowDiagonal" />
+            </a>
+          </div>
+        </section>
         <section class="container download-web">
-          <div class="download-card download-browser" data-rise>
+          <div class="download-browser" data-rise>
             <div>
               <h2 dir="ltr">app.zrzur.com</h2>
               <p>{t("heroFacts")}</p>
             </div>
             <AppAction class="button-soft" label="downloadOpenWeb" arrow={false} />
           </div>
-          <p class="download-version">
-            {t("dlVersion").split("{version}")[0]}
-            <span dir="ltr">{DESKTOP_VERSION}</span>
-            {t("dlVersion").split("{version}")[1]}
-          </p>
         </section>
         <section class="container web-only">
           <div>
@@ -1062,7 +1077,12 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
   function Blog() {
     const date = (iso: string) =>
       new Intl.DateTimeFormat(tagOf(language()), { year: "numeric", month: "long", day: "numeric" }).format(new Date(`${iso}T12:00:00Z`));
-    const minutes = (n: number) => t("blogMinutes").replace("{n}", new Intl.NumberFormat(tagOf(language())).format(n));
+    const minutes = (n: number) => {
+      const shown = new Intl.NumberFormat(tagOf(language())).format(n);
+      // Arabic counts its nouns: دقيقة واحدة، دقيقتان، 3 إلى 10 دقائق، 11 دقيقة فما فوق
+      if (language() === "ar") return `مدة القراءة: ${arabicMinutes(n, shown)}`;
+      return t("blogMinutes").replace("{n}", shown);
+    };
     const feed = () => `${import.meta.env.BASE_URL}${language() === "en" ? "" : `${language()}/`}blog/feed.xml`;
     const Parts = (props: { parts: Inline[] }) => (
       <For each={props.parts}>

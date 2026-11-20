@@ -9,7 +9,7 @@ This file lists the assets the website ships today. Earlier artwork (cartoon ava
 
 ## Product pictures
 
-- `public/assets/product/` holds screenshots of the running Zrzur app in Arabic, English and German, light and dark, desktop and phone. They show demo accounts and demo content only, never real people's data. The language and theme are as captured; they are real captures, not a claim that every later app version looks identical.
+- `public/assets/shots/` holds screenshots of the running Zrzur app (26.2.0) taken by the Zrzur maintainer, in Arabic and English, desktop and phone, made into page sizes by `scripts/site-shots.py` without metadata. They show Zrzur's own official servers and accounts, never other people's messages or private data. They are real captures, not a claim that every later app version looks identical.
 
 ## Fonts (served locally, no Google Fonts or other remote font request)
 

@@ -147,7 +147,8 @@ export function parsePost(source: string, where = "post"): PostFile {
     title: meta.title,
     summary: meta.summary,
     date: meta.date,
-    tags: (meta.tags ?? "").split(",").map((tag) => tag.trim()).filter(Boolean),
+    // the Latin comma or the Arabic one «،» (an Arabic writer types the latter)
+    tags: (meta.tags ?? "").split(/[,،]/).map((tag) => tag.trim()).filter(Boolean),
     cover: meta.cover || undefined,
     blocks,
     words,

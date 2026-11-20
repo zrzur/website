@@ -1,10 +1,10 @@
-"""Finds metadata in public/assets/product and public/brand pictures, and with
+"""Finds metadata in public/assets/shots and public/brand pictures, and with
 --strip removes it without decoding the picture again.
 
 JPEG: APP1 (Exif, XMP), APP13 (IPTC/Photoshop) and COM segments are dropped
 byte for byte; the image data and its colour profile (APP2 ICC) stay.
-AVIF and PNG: reported only (the AVIF files are written by
-scripts/product-images.py, which writes no Exif or XMP).
+AVIF, WebP and PNG: reported only (the shots are written by
+scripts/site-shots.py, which writes no Exif or XMP).
   uv run --with pillow python scripts/image-metadata.py [--strip]
 """
 import pathlib

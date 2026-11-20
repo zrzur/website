@@ -1,6 +1,6 @@
 ---
 title: Zrzur: warum wir es bauen und was es alles kann
-summary: Chatten sollte kein Monatsabo kosten. Wir haben ein Open-Source-Chatprojekt neu gestaltet und viel ergänzt. Hier steht, warum, und was Zrzur heute alles kann.
+summary: Wir haben ein Open-Source-Chatprojekt neu gestaltet und viel ergänzt. Hier steht, warum wir Zrzur bauen und was es heute alles kann.
 date: 2026-11-12
 cover: /blog/zrzur-features/cover.jpg
 tags: Discord-Alternative, Open Source, Server, Sprachchat
@@ -9,9 +9,9 @@ Zrzur ist ein Ort, an dem sich Freunde und Communitys treffen: Server mit Text- 
 
 ## Warum wir Zrzur bauen
 
-Chat-Apps waren einmal einfach: Du hast einen Server erstellt, deine Freunde eingeladen und geredet. Mit den Jahren ist bei Discord immer mehr von dem, was Spaß gemacht hat, hinter ein Monatsabo gewandert: größere Uploads, schärfere Bildschirmfreigabe, eigene Emojis überall, das Aussehen deines Profils, ein bezahltes Extra nach dem anderen. Wir haben nichts dagegen, für etwas Gutes zu bezahlen. Aber mit deinen Freunden zu reden, sollte keine Kreditkarte brauchen.
+Chat-Apps waren einmal einfach: Du hast einen Server erstellt, deine Freunde eingeladen und geredet. Diese Einfachheit wollten wir zurück, in einer App, die Open Source ist, in der Europäischen Union gehostet wird und von Anfang an für Arabisch gemacht ist, nicht erst nachträglich übersetzt.
 
-Wir wollten einen Ort, an dem das Alltägliche nichts kostet: schreiben, telefonieren, den Bildschirm teilen und eine Community führen.
+Wir wollten einen Ort, an dem das Alltägliche einfach funktioniert: schreiben, telefonieren, den Bildschirm teilen und eine Community führen.
 
 ## Woher Zrzur kommt
 
@@ -26,32 +26,37 @@ Das Projekt, von dem wir ausgegangen sind, bleibt genannt: Zrzur ist Open Source
 Jede Community bekommt einen Server, und jedes Thema einen Platz darin.
 
 - **Textkanäle und Kategorien** halten Alltagschat, Ankündigungen und geteilte Dateien übersichtlich.
-- **Forumkanäle** für längere Diskussionen: Jeder Beitrag hat seine eigenen Antworten, sortiert nach Tags.
+- **Forenkanäle** für längere Diskussionen: Jeder Beitrag hat seine eigenen Antworten, sortiert nach Tags.
 - **Threads** holen ein Nebengespräch aus einem vollen Kanal, ohne dass es verloren geht.
-- **Nachrichten** tragen Bilder, Dateien, Formatierung, Emojis und Reaktionen. Jeder Server kann eigene Emojis hinzufügen.
+- **Nachrichten** tragen Bilder, Dateien, Formatierung, Emoji und Reaktionen. Jeder Server kann eigene Emoji hinzufügen.
+- **Gespeicherte Nachrichten** und **Erinnere mich**: Heb dir eine Nachricht für später auf, oder lass sie zu der Zeit zurückkommen, die du wählst.
 
 ## Sprache, Video und Bildschirmfreigabe
 
-- **Sprachkanäle** sind immer offen: Du trittst mit einem Klick bei und gehst, wann du willst.
-- **Bildschirmfreigabe** direkt im Anruf, mit einer Vorschau, wenn du über jemanden fährst, der gerade streamt.
-- **Bühnen** für Vorträge und Veranstaltungen: Sprecher sprechen, Zuhörer hören zu, und alle können ums Wort bitten.
-- **Soundboard**: kurze Klänge, die du im Anruf abspielst, mit einer fertigen Bibliothek aus mehr als hundert Klängen, die jeder Server hinzufügen kann.
-- **Push-to-Talk und Mikrofonempfindlichkeit**, damit dein Mikrofon nur sendet, was du sagen willst.
+- **Sprachkanäle** sind offene Räume: Du trittst mit einem Klick bei und gehst, wann du willst.
+- **Bildschirmfreigabe** direkt im Gespräch; fahr über jemanden, der streamt, um ein Standbild seines Bildschirms zu sehen.
+- **Bühnenkanäle** für Vorträge und Veranstaltungen: Sprechende sprechen, Zuhörende hören zu, und alle können um das Wort bitten.
+- **Soundboard**: kurze Sounds, die du im Gespräch abspielst, mit einer fertigen Bibliothek aus 115 Sounds, die jeder Server hinzufügen kann.
+- **Push-to-Talk und Eingabeempfindlichkeit**, damit dein Mikrofon nur sendet, was du sagen willst.
 
 ## Ein Empfang, der zu deiner Community passt
 
-- Jeder Server hat eine **Willkommensseite** mit Symbol, Banner und Beschreibung.
-- Beim ersten Besuch **wählen Neue ihre Interessen**, indem sie ein paar Fragen beantworten, und bekommen sofort die passenden Rollen. Sie können das überspringen und später ändern.
-- **Regeln**: Neue Mitglieder akzeptieren beim Beitritt die Regeln deines Servers, und mit **Beitrittsanfragen** nimmst du Mitglieder selbst an.
+- Jeder Server kann eine **Willkommensseite** mit Symbol, Banner und Beschreibung haben.
+- Wenn Neue den Server zum ersten Mal öffnen, **wählen sie ihre Interessen**, indem sie ein paar Fragen beantworten, und bekommen sofort die passenden Rollen. Sie können das überspringen und später ändern.
+- **Regeln**: Neue Mitglieder akzeptieren die Regeln deines Servers, bevor sie schreiben, und mit **Beitrittsanfragen** nimmst du Mitglieder selbst an.
+
+## Events
+
+- Mit **Events** plant ein Server Spieleabende und Treffen. Die Mitglieder antworten mit „Ich komme“, „Vielleicht“ oder „Kann nicht“, und alle sehen eine Zeile „Events“.
 
 ## Rollen, Moderation und Sicherheit
 
 - **Rollen und Berechtigungen** legen fest, wer lesen, wer schreiben und wer moderieren darf, bis hinunter zu jedem Kanal.
-- **AutoMod** stoppt gesperrte Wörter, Erwähnungs-Spam, Link-Spam und wiederholte Nachrichten: Er blockiert sie, alarmiert dein Team oder schaltet den Absender eine Zeit lang stumm.
+- **AutoMod** stoppt gesperrte Wörter, Erwähnungsspam, Linkspam und wiederholte Nachrichten: Er blockiert sie, warnt dein Team oder gibt dem Absender ein Timeout.
 - Das **Protokoll** zeigt, wer was in deinem Server geändert hat.
 - **Pausiere** Einladungen und Direktnachrichten eine Zeit lang, wenn dein Server angegriffen wird.
 - **Einblicke** zeigen, wie deine Community wächst: Nachrichten pro Kanal, wer beigetreten ist und wer gegangen ist, und wie viele Menschen jeden Tag schreiben.
-- Alle können eine Nachricht, ein Profil oder einen Server **melden**, und unser Team prüft die Meldung. Konten von Personen mit 16 oder 17 Jahren bekommen Direktnachrichten nur von ihren Freunden.
+- Alle können eine Nachricht, ein Profil oder einen Server **melden**, und unser Team prüft die Meldung. Mit 16- und 17-Jährigen können nur ihre Freunde eine Direktnachricht beginnen.
 
 ## Entdecken: finde deine Community
 
@@ -59,7 +64,7 @@ Jede Community bekommt einen Server, und jedes Thema einen Platz darin.
 
 ## Profile, Designs und Abzeichen
 
-- Dein **Profil** hat ein Banner, eine kurze Beschreibung und Abzeichen, die zeigen, was du auf Zrzur beigetragen hast.
+- Dein **Profil** hat ein Banner, eine kurze Bio und Abzeichen, die zeigen, was du auf Zrzur beigetragen hast.
 - **Designs** ist eine Galerie mit Rahmen und Namensschildern, gestaltet von Creators aus unserer Community. Du wählst eins aus, und es erscheint in deinem Profil und neben deinem Namen.
 
 ## Bots und Apps
@@ -71,12 +76,13 @@ Entwicklerinnen und Entwickler können **Bots und Apps** für Zrzur bauen. Ein v
 - **Dunkel oder hell**, mit einer Akzentfarbe deiner Wahl.
 - **Tastenkürzel** für das, was du am häufigsten tust; mit Strg+/ siehst du alle.
 - Der **Streamer-Modus** verbirgt deine persönlichen Daten, während du streamst.
-- **Weniger Bewegung** für alle, die weniger Animation mögen.
-- **Arabisch, Englisch und Deutsch** prüfen wir Zeile für Zeile, Arabisch vollständig von rechts nach links, und die App spricht viele weitere Sprachen.
+- **Bewegung reduzieren** für alle, die weniger Animation mögen.
+- **Daten sparen**: Auf diesem Gerät laden GIFs und Videos erst, wenn du sie antippst, und animierte Emoji bleiben still.
+- **Arabisch, Englisch und Deutsch** prüfen wir Zeile für Zeile, Arabisch vollständig von rechts nach links, und die App gibt es in vielen weiteren Sprachen.
 
 ## Dein Konto, deine Daten
 
-- **Anmeldung in zwei Schritten** und eine Liste deiner aktiven Sitzungen, die du jederzeit beenden kannst.
+- **Anmeldung in zwei Schritten** und eine Liste deiner Sitzungen, die du jederzeit beenden kannst.
 - **Lade deine Daten herunter**, wann immer du willst.
 - **Lösche dein Konto** selbst: Es wird sofort gesperrt und 14 Tage später gelöscht.
 - Wir zeigen niemandem Werbung auf Grundlage von Profiling.
@@ -87,4 +93,4 @@ Zrzur läuft in jedem aktuellen Browser, am Computer oder auf dem Handy. Für de
 
 ## Offen, und es bleibt offen
 
-Für nichts in diesem Beitrag gibt es in dieser Version etwas zu bezahlen. Zrzur steht am Anfang, und in diesem Blog erzählen wir dir, was wir bauen und warum. [Öffne Zrzur](https://app.zrzur.com), erstelle einen Server für deine Freunde und sag uns, was fehlt.
+Zrzur steht am Anfang, und in diesem Blog erzählen wir dir, was wir bauen und warum. [Öffne Zrzur](https://app.zrzur.com), erstelle einen Server für deine Freunde und sag uns, was fehlt.
