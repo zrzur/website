@@ -214,74 +214,74 @@
     },
     {
       "path": "public/assets/shots/ar-d1-1400.avif",
-      "sha256": "b29fec0802c4f72a836702837eb8c3a114d8b76ff0db8fe768c23d8800c13d31",
-      "bytes": 51418,
+      "sha256": "d74bbdd6ae9efa801f015a2aa9f66e867764200702e6b28e19adffedd0449c72",
+      "bytes": 42762,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d1-1400.webp",
-      "sha256": "d8ea782136584c70e5ddf235cd9e26d8ed51e630a597d896a1d26f42a53a723f",
-      "bytes": 69140,
+      "sha256": "657ce1539547bbe12aef6b83627ade813f5510d780748c0a63bf4f20de5063f5",
+      "bytes": 55544,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d1-2400.avif",
-      "sha256": "ad1a7e7a23fef1663738de2caa5510d237c9c5d9acea30d90a932e0f6335aa69",
-      "bytes": 85737,
+      "sha256": "d3529427056fdb2741d723724ebb76ff59ed14c0c42ba9b7420462d2b262fd8d",
+      "bytes": 77943,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d1-2400.webp",
-      "sha256": "22790c0a5b51ebc6fcdf87f73b512df2a72d2d3a17025e733782e6374180b67c",
-      "bytes": 128694,
+      "sha256": "c1a4db02fa5c525d541e4b82b26fdf6b6665fbb3a8cc450688bbfbc8039ae531",
+      "bytes": 105530,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d1-800.avif",
-      "sha256": "6ab0744b563130ab80ebaa1a77389fa73c36c2fe9bc92dd179e2f69acee04775",
-      "bytes": 24551,
+      "sha256": "6bf5d0c00d908206e5a4ea603bce0d913ddd47af9e041c3c9c8c27bdad61b5d5",
+      "bytes": 21333,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d1-800.webp",
-      "sha256": "5110c0446f0d551a0119376afc6fbb7538537a6943352feee782e0dea27db346",
-      "bytes": 30914,
+      "sha256": "14cc9490cd3333e5de3ba3691db715cb3d9fd5401b9f74b5a2f8954e415ed18a",
+      "bytes": 26142,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d2-1400.avif",
-      "sha256": "1c06b356faa598994bd10480a8c7e6804c1512dcd6f15a5d5af41793b951b1fd",
-      "bytes": 49643,
+      "sha256": "70e1bf459177057d2f8f56bcfd0adbc31ce60bfc78f7b6e11828ff601c930582",
+      "bytes": 35889,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d2-1400.webp",
-      "sha256": "e872dfedaaa4e4224251d849cdc91207c739ee9e7d4d161f89036951f029b2cd",
-      "bytes": 65380,
+      "sha256": "a6aa2496cee064dcba97768ca0102fed179ed88e92c0952297a248a5b8bc5e1e",
+      "bytes": 47068,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d2-2400.avif",
-      "sha256": "39ba4234b41b67ea4d57a7ce81b291070b8e49d37160b45ea968d32aed23959e",
-      "bytes": 91884,
+      "sha256": "3cf3c89195e4edeaac4d2166854c3b768684b9d67f1d2a2ed0b144bfb86132d0",
+      "bytes": 68169,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d2-2400.webp",
-      "sha256": "fcb2c2f7b1103c191c4606590ce589cfefc1cb1f6d754bea0161b7b61c11630e",
-      "bytes": 127762,
+      "sha256": "fb7edd701d998a6df5df16e9b1a3674cb700ef001658e1d1431e0879027c3941",
+      "bytes": 91538,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d2-800.avif",
-      "sha256": "7f1cdb08c7517f05a0f85757028bb1d5a37bd29d3a224327bc362717e5a94bc6",
-      "bytes": 23756,
+      "sha256": "ba4f9e8673c0a5e5c97dc4478c34c74b03680d0256c15ff7d8eb194bdc5e524b",
+      "bytes": 18147,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d2-800.webp",
-      "sha256": "5f00c73036b5e30a821fe622c622c221a6557e30924549dc57180c8211ebc96f",
-      "bytes": 29430,
+      "sha256": "4cc48d2a0dd3b2f0e454737e154ef780726e27ebd4efde135b73a696d142242a",
+      "bytes": 22306,
       "category": "reviewed-product-asset"
     },
     {
@@ -358,38 +358,38 @@
     },
     {
       "path": "public/assets/shots/ar-d6-1400.avif",
-      "sha256": "bc65ab9e6c813d1e69e8100db780de1fdaf2764253418c13e2797d83fcaaaff6",
-      "bytes": 54123,
+      "sha256": "0d2e54cb09b9d41eacd12e9d48c13f979033e60218b845c9e7e746f874bff478",
+      "bytes": 47531,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d6-1400.webp",
-      "sha256": "481a1a377a88c1f4f9fb57829188450707b88317b6bccf2948010c8a4abb2911",
-      "bytes": 72692,
+      "sha256": "6260e84b8e8b187232e51fb0bf8ea1c2a7ef2fbaa86b31ce0fa670dc7275e681",
+      "bytes": 61902,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d6-2400.avif",
-      "sha256": "5a4f5dae65f734dbd318961b902b7056960d43504b3fd7f53f48fdb3b5aa0678",
-      "bytes": 91510,
+      "sha256": "c71255d8e251608d570686c7f5e13ecfa5046a3cfaf4c701c627db1160f33961",
+      "bytes": 86951,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d6-2400.webp",
-      "sha256": "5d05a308dcc2944d6eb657854bc25e77630c528ec4d99228abcadddba149dcc0",
-      "bytes": 135396,
+      "sha256": "c49b5ce3b0e4a28da3e657c5d3607143f98c172a9ec99ba7c994e156a0c03a48",
+      "bytes": 117260,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d6-800.avif",
-      "sha256": "0575ebbaff05f528736a4f8a0d015b4a75429454dbe7dea1dc779efda60167d7",
-      "bytes": 25772,
+      "sha256": "44cffb7d0f2c23d1b53ddb10b22c28b7783ae4e989dfc486db1a74ecfed45958",
+      "bytes": 23289,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d6-800.webp",
-      "sha256": "73d4c945f068702b6d3558738bd0f2b5b49756bc2ae6ea146cc3afc8572ae210",
-      "bytes": 32876,
+      "sha256": "f3447bef97158cecdf9407ffab8c1e9be84fd7ed8180434230c6e192f55ec254",
+      "bytes": 29070,
       "category": "reviewed-product-asset"
     },
     {
@@ -430,110 +430,110 @@
     },
     {
       "path": "public/assets/shots/ar-d8-1400.avif",
-      "sha256": "e843ee8cc192c6a5b887a4ab832e9d5fd69b5b99d02a5a46bc7b3f846c2675fe",
-      "bytes": 23261,
+      "sha256": "076b70c4cb3909362457551fae51486264312d628e4c2a69b46ccc27b7566468",
+      "bytes": 25698,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d8-1400.webp",
-      "sha256": "52936a512fb96156ca720e77b9cc84aae0c174d6080f0180ced59a10400fd179",
-      "bytes": 29818,
+      "sha256": "c60af6943633646beb7f94c532d361590c5f09be43a654a14cd9f98e9480f055",
+      "bytes": 32142,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d8-2400.avif",
-      "sha256": "b9692dc98e2755a124184331a4c37454c39d55cc653b3388c072e99afbb88371",
-      "bytes": 42167,
+      "sha256": "0ac82cee676a12a3c6d99e81d63cedddfd3d309f17624f15907dae2392668ea3",
+      "bytes": 46353,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d8-2400.webp",
-      "sha256": "2a731c6ab15838feffa890e6cbd2b2c9ddd0f12363190c24fb368bf433df5c08",
-      "bytes": 59374,
+      "sha256": "b6b45c0d5e470cad5ceeab605ab93a191cc8d61bc8e37fb53c95aa8efcb38d59",
+      "bytes": 64280,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d8-800.avif",
-      "sha256": "471cd4377a6e3923b1b19d01d176f28d5c6cd358a2c122053cbaad2d7425b49a",
-      "bytes": 11586,
+      "sha256": "145e41e058800dbc3ff05c54fbdb9eb8bed8bab5520a20736eef2172f663e80a",
+      "bytes": 12523,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-d8-800.webp",
-      "sha256": "4ad82ac99d19a90d9b07a42a1ff7a1d6c9ca053f16f7559a32281e27b6f438cb",
-      "bytes": 13462,
+      "sha256": "cceae940d91834cf673dcaad3f8b58dc68fa19e5bc408f370c8f4ce8c5731e95",
+      "bytes": 14826,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-m1-390.avif",
-      "sha256": "b3c7e757808e53362de776f77ad93fdced6daca5b1de41115f7a2c04fdc82fc3",
-      "bytes": 11001,
+      "sha256": "a2e1b740af1b6c7106c39e5eb2ae332c452a22545d7ee41e54d5725160f2c192",
+      "bytes": 10895,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-m1-390.webp",
-      "sha256": "697d862b54f4bdbf8ae71e01ddac087230aed88b5854aaa63d7b970b7f96d862",
-      "bytes": 13898,
+      "sha256": "6229ba1c38ea281916d67f7b12bbb5ed57cf6a3f5ea05d086b317659cb956ae3",
+      "bytes": 13992,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-m1-780.avif",
-      "sha256": "46a8bd19d69a19c6013f713e496337eb6a00efe37af722e9adaa95068815e991",
-      "bytes": 21716,
+      "sha256": "f4fad1d647c033d457ce964d262836c1ec243ce19f90a58505552266a1b5ddc3",
+      "bytes": 22266,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-m1-780.webp",
-      "sha256": "210d8a6c8d5f406a29a2111f2f1d43e3c9a1fb67cc49a5d0172360827564e293",
-      "bytes": 30392,
+      "sha256": "633d9ccd0531db8226c8472d83c61536ffa92c251328a483ec445165d3dde9ec",
+      "bytes": 30604,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-m2-390.avif",
-      "sha256": "750951ea7549b1f520e20205cc90dd5116b5a0f3f72b6403b5d7c46794ec5ae2",
-      "bytes": 27945,
+      "sha256": "2864677956fccee2bab3eceaba8ab3f8ff0ba4ac81c2253e71ce90b5aa8ef843",
+      "bytes": 26993,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-m2-390.webp",
-      "sha256": "8c96479135bebc5d0a95399ee388e64873a7616d54d1c08d2e6e344e3d5351ce",
-      "bytes": 38538,
+      "sha256": "427a0e619b0731e2151b1225c6d2ac958a0e9c74f694b1b53bcc292406a9c9c7",
+      "bytes": 37528,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-m2-780.avif",
-      "sha256": "ffc26ae4191cb646dd2125200b9225119a23ad551db9fd8d9181ab4ccdb869e4",
-      "bytes": 56094,
+      "sha256": "cce1348540dfc7f1b3e10a6d20e94c956402bbc843e2f85b1fa959c1e44936c8",
+      "bytes": 57223,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-m2-780.webp",
-      "sha256": "d42ef9136e5959e03495d79eb295c705571ce4a3325451b131887d2f68c737de",
-      "bytes": 86494,
+      "sha256": "66d009f41171f399314f56f24422e508e9fbc1a2e339d4f3db6dd65987412e1c",
+      "bytes": 85888,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-m3-390.avif",
-      "sha256": "4523694282ffce2bf476b71b2c7c5fc4f4b00ae712e208186a8bea4c3d69884d",
-      "bytes": 12211,
+      "sha256": "5d9947aa0ef280febfdbded2837b9160fcebbc71f36d7a1ff50c2c7ce9c15b97",
+      "bytes": 11902,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-m3-390.webp",
-      "sha256": "c00b488db3ad99db4d419786f596b4fad2069f0a959dd80a72fa7b3f5bf5f858",
-      "bytes": 16000,
+      "sha256": "8a13f9cb164eba454bfbcec7631f04f99b06c087a14e449076862d13066928ef",
+      "bytes": 15062,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-m3-780.avif",
-      "sha256": "134558ddda5973744a270be6ccb0ef5ff092fab9969ca75e5f42bb0029172c27",
-      "bytes": 26197,
+      "sha256": "e28acdf5c954876db134a601ff409037a5a7b97fb1952fe0679e96d63e9fd39c",
+      "bytes": 25152,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-m3-780.webp",
-      "sha256": "776163f729cbc346788d7cffdee4d14a70ad196cd36595a2a03ad381f0caef4a",
-      "bytes": 37932,
+      "sha256": "c8abf4a5c51bfff8b990186747120de5f2cfdc0a5d70f37893360958df5b7098",
+      "bytes": 36284,
       "category": "reviewed-product-asset"
     },
     {
@@ -562,122 +562,122 @@
     },
     {
       "path": "public/assets/shots/ar-m5-390.avif",
-      "sha256": "93913d9ffa5f2e3a8455f3528d4e821b28950dc1a62665a16151053660f2a4fa",
-      "bytes": 12368,
+      "sha256": "83c31ce8d6b397b419cb6d6d0c150aa3700403f850b3cca6cad2c648ee04eb00",
+      "bytes": 12598,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-m5-390.webp",
-      "sha256": "d9234325a9ef008b34e4b3d07f7faad2aab481ab96f232592d77f038d07932ba",
-      "bytes": 16216,
+      "sha256": "fb65edcf65360bc5bb2ffef899d646e6cd9be1460f19f0634edf948ee730de3e",
+      "bytes": 16178,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-m5-780.avif",
-      "sha256": "f10a7bf39453f34353d1e01a203cf741bee8d111017ae896e97bb8f53b1a920b",
-      "bytes": 24883,
+      "sha256": "a98589c0af6bae61c7f27a54715c4d5d5a214147fd0488aee9de8d2cc01dfeb9",
+      "bytes": 24871,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-m5-780.webp",
-      "sha256": "b77c2123b4e60cea05074a929f706b471d3e7a4b55364c74e478e40b26059dd9",
-      "bytes": 35668,
+      "sha256": "05fb9de1ffe3c87ab51e1f96acf152376b98ec39caf62ec5cfebe81ba2593c5e",
+      "bytes": 35832,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-m6-390.avif",
-      "sha256": "b06d7bffab6e8639ac30c13565d8a97d58bedf4d00dc6561669939dd0f91df2b",
-      "bytes": 9800,
+      "sha256": "86f339766bb3b718343a841b3c925596d071b56da841d0bd237ad4d01df42164",
+      "bytes": 11830,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-m6-390.webp",
-      "sha256": "ef3573df487a350f409f0a41afe80293d3f50fc01de92099c6f819af6a15c42b",
-      "bytes": 11548,
+      "sha256": "62b436ba556f8fef417a05af37e35f2bfa50dacecaa98cc13ee6806d02f3c040",
+      "bytes": 13992,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-m6-780.avif",
-      "sha256": "158d33ab6dc523615968cfc6d7f977d854db0468aba96e36cb56e4a28069d881",
-      "bytes": 20675,
+      "sha256": "f7e8f07296f10f563016c08d22a95713659fec2d4b38bee91917d53ab4499c4c",
+      "bytes": 24918,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/ar-m6-780.webp",
-      "sha256": "f32cd12a90a57c2fc9fc2c23e8940533eb4682ce4e7c6afc2ea33976c512327d",
-      "bytes": 26464,
+      "sha256": "d3335ba35c656965d5680bcb1808d5eda63ed21f2c8c6e4b7e88bbfd4c727277",
+      "bytes": 31904,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d1-1400.avif",
-      "sha256": "6dba844c5be9da55dcebc24671adf25978760ae5df0813e85d97b53fdc3b4a8f",
-      "bytes": 51381,
+      "sha256": "932742725e30819b317d4abd94e6564c6f5aab7f4998092c105f0cf5e15948af",
+      "bytes": 52954,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d1-1400.webp",
-      "sha256": "9a6d6f9f36ddbf603444d14f7a22986c3107d630220a4b4eefc6c8057af4058f",
-      "bytes": 69926,
+      "sha256": "311885f23258909abb68b4ecae3e6af5c5a2a0f9045eda31632098f11a0d8c61",
+      "bytes": 75354,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d1-2400.avif",
-      "sha256": "b7d9152841c672daf0e1d67490af81784f8e7269804b91609db64973ddd71339",
-      "bytes": 85401,
+      "sha256": "8246bfa0c3f9a307272aadca570bd51350fc91d0f7687ac456a9c0748dbd1c11",
+      "bytes": 101760,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d1-2400.webp",
-      "sha256": "89b2536fecc325028dd98bdef752d889932be5158762082a4903153d494d43bc",
-      "bytes": 129194,
+      "sha256": "f6dcbaae80103254286737a5261cff85c29ade1375a5d15f4e64d553b9c6adad",
+      "bytes": 140832,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d1-800.avif",
-      "sha256": "007bf9475a0c816755c0d33a845a32d2f738bfa5d932a4c04df802428013bce7",
-      "bytes": 24180,
+      "sha256": "0d3c798eb0dbb9b5151f4c41457ec8bd91198d6c92248f26ce91cb2eea803346",
+      "bytes": 25804,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d1-800.webp",
-      "sha256": "2d50eb2789be7123726981bd3c58ebb67aaebb03c72f1f8f683efaebdc74d899",
-      "bytes": 30978,
+      "sha256": "a5d63153ee6726fc8a5ac1afe0f2991114cd53028fbce0a9be8e02c3afd95ef0",
+      "bytes": 34050,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d2-1400.avif",
-      "sha256": "e5f05a7acce4f33f4308487634bc62b33d4a6475686a45d7ae97dffe42e3246b",
-      "bytes": 42894,
+      "sha256": "7e37c504c7347b7b1ec3d4edd94dd2cbcd1e20be899be9a4154c4c3177433073",
+      "bytes": 41129,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d2-1400.webp",
-      "sha256": "42cec068ccfad16e10221c4a64d84db8fc98676a54727c0db237aa6ebcaec770",
-      "bytes": 56008,
+      "sha256": "aa099d84fb642f8cb412de8e89434823b9c23a4cdd6f27a13ddefd150e9d8f8a",
+      "bytes": 53628,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d2-2400.avif",
-      "sha256": "8f18755008ab4a0aca8422fc082cc0806e677ca9206aa57fa63c0773bf0f27f7",
-      "bytes": 79380,
+      "sha256": "c9ea752ef0b295e8d826a9ce6db9971ea27044cc28527ea9ca29b74aad40cd49",
+      "bytes": 77894,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d2-2400.webp",
-      "sha256": "537f7983b906f820b5ee2e6b0c52f5e049dfc4eaa25407177a62bd0013d65238",
-      "bytes": 106710,
+      "sha256": "6af2de6c5ab9aa0570d6d59bfefd1f8172855467e3f8bff47006f752c58029be",
+      "bytes": 102590,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d2-800.avif",
-      "sha256": "504228a88deaf4f78b541d7e7052ef2257fa50dac7a664e2c99147fb2886a275",
-      "bytes": 20138,
+      "sha256": "14a188348c009c839ec196416c8e53aa54c4c2823f9d72f52af0d3ed1e93a195",
+      "bytes": 19982,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d2-800.webp",
-      "sha256": "95d1238e76c54976a2446e86754d6f88973d5e3b6b85ff94e0ad80bb1b499f69",
-      "bytes": 25382,
+      "sha256": "186f6149c820a77f9b5cd68641213420572506a331b85a0ad8f05e688dc2aa68",
+      "bytes": 24804,
       "category": "reviewed-product-asset"
     },
     {
@@ -754,38 +754,38 @@
     },
     {
       "path": "public/assets/shots/de-d6-1400.avif",
-      "sha256": "387817b626189f1016b3c65edaef1b16e271e87d6d9021a5b940df6f76b7ee27",
-      "bytes": 46331,
+      "sha256": "2a34ceb5df50c6d0c65515336fcc3078217f7a9a0d10a7cec76d3b0d8c8aff04",
+      "bytes": 47863,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d6-1400.webp",
-      "sha256": "28bdf76913ffd78c8751bdb5fc4dcb5175ddd0c66f9d09c5e2637e550d1d5ca8",
-      "bytes": 60674,
+      "sha256": "6ca3fd4075c9cf07751d909b535c47f861c21588a7f991ee4f04444dfb2e2cee",
+      "bytes": 64488,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d6-2400.avif",
-      "sha256": "9cee0b28281e21aaa3a5b5144b1f88d099c168fcad2a42f586a547e76481736a",
-      "bytes": 79280,
+      "sha256": "9c0e95f085e370f080dffb64155db3b8eb0bb9960823cd541a31ae1fad7b9954",
+      "bytes": 85257,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d6-2400.webp",
-      "sha256": "b6865e3b104db8e8c689c944dc5e9951ea885e8ed7bc4cfceb21e481118303c9",
-      "bytes": 112284,
+      "sha256": "b2a6b2be5251c9e50641a41c8b3aa669bc92a80bef3c298c3db69d97e19f437b",
+      "bytes": 122764,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d6-800.avif",
-      "sha256": "2a5d2b8d973884645cb50e8491bc3043f7e3963bb32deb90e8b4699da39963f4",
-      "bytes": 21979,
+      "sha256": "61cde6dfb72d964d2d76645c77509f6189092712192d2eb90db8a236435a799f",
+      "bytes": 23467,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d6-800.webp",
-      "sha256": "1a513d091eedfd370d2625f3e410f1f60d78ff63a919ddf6ceacc57e38164d9e",
-      "bytes": 27602,
+      "sha256": "99e1f287458ee0581564fcc94cfb5a420c27983517b959769bc0f26c8ebf217d",
+      "bytes": 30026,
       "category": "reviewed-product-asset"
     },
     {
@@ -826,110 +826,110 @@
     },
     {
       "path": "public/assets/shots/de-d8-1400.avif",
-      "sha256": "57cbca62b8754cc71c10bfb3c7dc89e8773549d41e636c75631739b043fa20a1",
-      "bytes": 23807,
+      "sha256": "581ebaf0a1307417412afdef4987b632cbeb1b085c6f2502fea66a665a06a637",
+      "bytes": 25511,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d8-1400.webp",
-      "sha256": "a37fa6c0326bdac88719cb683481161275c64fbd6a4a637631a2e4024001b7f6",
-      "bytes": 30234,
+      "sha256": "3c1324bc7f82cf8dbc0c9f2d5c080ef33d21f5f5b23445c4a684dd26c05660ca",
+      "bytes": 32742,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d8-2400.avif",
-      "sha256": "e921a7a501a7a8225a762819a3cf12845dfb7cf9edbcf89471d5ac13c67cf164",
-      "bytes": 41980,
+      "sha256": "62b07c8cdb16ba0cfeeee43e31b3216f8b22ffdf96f006d9e4c092db35f30cd3",
+      "bytes": 45393,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d8-2400.webp",
-      "sha256": "e43a95e4ac362513c45e1961544f109e60b58456e5c0b3f63d52eca0c20f10dc",
-      "bytes": 58512,
+      "sha256": "d2b095c7b2a9d452ad1c4ad094ab2e0d57d43b39a6c5f3718d6b25b967a5a97a",
+      "bytes": 63420,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d8-800.avif",
-      "sha256": "083c779403452f70921068c4242bde4b598f879412bdb997f3fc497873491c18",
-      "bytes": 11518,
+      "sha256": "57f13954b552fec258415ba5e086124d67a5e5c00657feabfdc489dd0ae82c07",
+      "bytes": 12862,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-d8-800.webp",
-      "sha256": "4f6da9895db500b32983371e07ca5d9a2f5cc1ccd6c3c72f1eae1bb97346e550",
-      "bytes": 13846,
+      "sha256": "83a99f30b2262ab2f4c189e9c559e0dfc7bac2468352107c5e6b3ed49433612f",
+      "bytes": 15332,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-m1-390.avif",
-      "sha256": "ee58122d78d48ce3c31f6bad2a018116af8c825df9f61c315cc6be5859d69d0b",
-      "bytes": 11085,
+      "sha256": "c163b458976bbffbb8e19c22fe0371c02d0152da663fb12411acdd476a0ef9a5",
+      "bytes": 12940,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-m1-390.webp",
-      "sha256": "8486eab825176e7fbee827f701921aac2bd04c5c6c1b97b0bda0002df4a6efd1",
-      "bytes": 14208,
+      "sha256": "42e5201461704d9eed91bcd5d9d636ae5ffc44837a49ac2eea295982f8a54290",
+      "bytes": 16688,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-m1-780.avif",
-      "sha256": "1117373b1dd53154d1154e17ebdb65a35a6da0f72e0f8b1100e8f4fd82cb8294",
-      "bytes": 22272,
+      "sha256": "4ad7d4cac024065f22c314b53a0c735ad96f1dbafed4d6c113d843a37f6c06f9",
+      "bytes": 26084,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-m1-780.webp",
-      "sha256": "699cc5e0aa6db80ad4ca32828fd323af7feab7331efae158480072556aa3dd51",
-      "bytes": 30876,
+      "sha256": "f4bdd55eab0bfac0f34f83da554587d1a59f7826dd2ba7a7f7124dcf9a4dc4a8",
+      "bytes": 36240,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-m2-390.avif",
-      "sha256": "f8010733ab193974e22e00209ef95e7f778293f155538bbac1c6bb7e8f581a8b",
-      "bytes": 29944,
+      "sha256": "be17440e4c326d300054232f507f38f4273fb2be27e4de72a385ffb0faf0b9f2",
+      "bytes": 33878,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-m2-390.webp",
-      "sha256": "8d38308c99694e2400f1258cc12d3d45ca94a111926f34599c83b70eecd71fae",
-      "bytes": 41994,
+      "sha256": "96c50b883a34e3ded8687f833ca745909f55d67a8d8da221a79dfba5febfa217",
+      "bytes": 48226,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-m2-780.avif",
-      "sha256": "c6d5a2395eedce6de86a40cd0966581fb5df71e311ba69793867dc0f81289839",
-      "bytes": 65244,
+      "sha256": "efcb2f689f7706f75ccd5b814172b7278cd837b23fc466a6ad16a85af6ac7dbf",
+      "bytes": 71653,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-m2-780.webp",
-      "sha256": "9505b71bccec065c9dd55cfe9bcc0693c6b2891d8c35b8e08cbe618ecc9c5f5e",
-      "bytes": 94246,
+      "sha256": "a962d7e04eca95723a441e9d5df94bed3eb4cb3d326f21828c98e1206444b50a",
+      "bytes": 106958,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-m3-390.avif",
-      "sha256": "b0c1980655df5b15cdc539368adea4043ffd1d461f7e98e77cf4def522ac031b",
-      "bytes": 14217,
+      "sha256": "9ccdac2d22865c2cb100c9d4c5059a49e2aef864dd7b81f6af3671baacadc49f",
+      "bytes": 14524,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-m3-390.webp",
-      "sha256": "9627ecc2ec274834e0f40b153f06bb65b2f30086b7ba61fcc01a6f9c861c8952",
-      "bytes": 17968,
+      "sha256": "69fddc4da2950689e02d395e188147cb0f59206151b3cc4f01da0546adc6a5ec",
+      "bytes": 18786,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-m3-780.avif",
-      "sha256": "4db0a41f1cc198f55d9b9ecc6111f0df028e6101b79ba5735a5758255c4783ec",
-      "bytes": 30216,
+      "sha256": "ec7c82239ed9a7a4d72f65e7d0c84f8e1263711c6c6ee5117a922718fe40570d",
+      "bytes": 30315,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-m3-780.webp",
-      "sha256": "9701c5e0aebc7f0b9caad8b981b2b9357f2a2441f6176ce053d67b5b9f5b4676",
-      "bytes": 42038,
+      "sha256": "0184328c2027af412f17e94ec2b110e10ce91c3c5f84ba9e70dc1edcd3454799",
+      "bytes": 44382,
       "category": "reviewed-product-asset"
     },
     {
@@ -958,50 +958,50 @@
     },
     {
       "path": "public/assets/shots/de-m5-390.avif",
-      "sha256": "9fdc3eb33aa570eef0a2d426d3a42b91cacfdf24bf2785e7904daed439f0fde5",
-      "bytes": 13665,
+      "sha256": "5893d6d782f362b9d1f47f974a2046e5c66a7b29e9e3e2f30b2024ef98e8627b",
+      "bytes": 13523,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-m5-390.webp",
-      "sha256": "1b0550071de0a0fe0df347d78ae22c66c208258763c32be6222d9435e645b106",
-      "bytes": 18012,
+      "sha256": "78c7486f5c00eb9fd118db57792136e2e4449a97031fc64c8d6628204cd7f75c",
+      "bytes": 17898,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-m5-780.avif",
-      "sha256": "705664a54303d5e17ca12a35200a585f30f1a7b1283a72fbb8431d76f4ac3662",
-      "bytes": 26978,
+      "sha256": "b4aa16534700af7e9a925239eac6029ab998e9c667c9ec717081efe91a2ae1e4",
+      "bytes": 26979,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-m5-780.webp",
-      "sha256": "ec0ade8be2b2d1663f7e58aa914a938a1cdc1b499c1a57030374dd2b1fb3ee3e",
-      "bytes": 39682,
+      "sha256": "63d09661f94afb2d620be959ace48f36ebedde33e9a7d932c45d276d722e11a6",
+      "bytes": 39560,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-m6-390.avif",
-      "sha256": "b456c20f1d26b252952969ff186d363899a7327faa48470d2efafe02705941bf",
-      "bytes": 10704,
+      "sha256": "ae7409710bbb582d62cd73d458890c8199aa1f184bab2c8422aefca4de9def0c",
+      "bytes": 13305,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-m6-390.webp",
-      "sha256": "81e2c9782b36524a22b57e958e33128fe8ce721f3932624672f48e1a971127fc",
-      "bytes": 12216,
+      "sha256": "f775fadff5f950e393718f0dfae22096abbc5c2a1fa60549010da3a2bebd2d11",
+      "bytes": 15560,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-m6-780.avif",
-      "sha256": "e439a9750926ff67ab1e158dab227bc208174e918b4b28118b175da305516575",
-      "bytes": 21634,
+      "sha256": "2e830a617ee0f78b10f782b4f417ab3947a9bb72850e3df3e84ebe54a128ced6",
+      "bytes": 27382,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/assets/shots/de-m6-780.webp",
-      "sha256": "301575ce8e45e343698cbf1287b852d4dba80f3e6afab9403c9e390fca384a27",
-      "bytes": 27438,
+      "sha256": "b30be360d90b18b5236cccc8c1215d6251dbfc8e8d1b264933efce3dc7784f87",
+      "bytes": 35206,
       "category": "reviewed-product-asset"
     },
     {
@@ -1972,7 +1972,7 @@
     },
     {
       "path": "src/shot-manifest.ts",
-      "sha256": "f33c132885ca91eec51d000e3b3b2903a352dc2263b192bc3c17b342c51d58a4",
+      "sha256": "9917162c78c3c416c9c6bdfcab190dc9e5291f8c17e0187843f913a364189a86",
       "bytes": 3461,
       "category": "product-source-or-build-manifest"
     },
