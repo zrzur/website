@@ -28,7 +28,7 @@
     },
     {
       "path": ".github/workflows/publish.yml",
-      "sha256": "60d4230acb140c1333a78b331fcc8b7c60a70b9905303c3595006d6002d7eb16",
+      "sha256": "2c3c734b69b7a8a9a70c989b4a9454ef96f66097075f44aa373b9c070affb949",
       "bytes": 3750,
       "category": "reviewed-build-and-ci"
     },

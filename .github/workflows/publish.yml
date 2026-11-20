@@ -72,7 +72,7 @@ jobs:
           printf '%s\n' "$KEY" > ~/.ssh/site_key
           chmod 600 ~/.ssh/site_key
           # the server's own public host key: anything else is refused
-          echo "176.100.37.233 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM4vx8U2EtWyJZIK0o8yPW0WKCr7H0fesHWgBodVcRbk" > ~/.ssh/known_hosts
+          echo "176.100.37.233 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINnZnQdBZ3grSj+o7J1K9FFDm+eRbohpnDTeBvpoyf+e" > ~/.ssh/known_hosts
           tar -C dist -czf - . | ssh -i ~/.ssh/site_key -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes zrzur@176.100.37.233 publish
       - name: Every page in every language, live (status, lang/dir, canonical, hreflang, title, no placeholders, 404, redirects, /source)
         run: |
