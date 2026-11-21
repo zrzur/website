@@ -78,6 +78,16 @@ export const REVISION_2026_11_15: Revision = {
   },
 };
 
+/** 21 November 2026: the privacy policy adds the Zrzur Team applications and volunteers */
+export const REVISION_2026_11_21: Revision = {
+  version: "2026-11-21",
+  lastUpdated: {
+    en: "Last updated: 21 November 2026",
+    ar: "آخر تحديث: ٢١ نوفمبر ٢٠٢٦",
+    de: "Stand: 21. November 2026",
+  },
+};
+
 /**
  * Section bodies are plain text. Blocks are separated by a blank line.
  * A block whose lines all start with "- " is rendered as a bullet list.
