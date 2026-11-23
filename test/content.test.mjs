@@ -121,7 +121,7 @@ test("the site has no native select and dark is the default theme", async () => 
 test("no page has an inline script; the theme script is a file in the head", async () => {
   for (const file of ["index.html", "about.html", "download.html", "features.html", "404.html"]) {
     const html = await readFile(new URL(`../${file}`, import.meta.url), "utf8");
-    for (const [tag] of html.matchAll(/<script\b[^>]*>/g)) {
+    for (const [tag] of html.matchAll(/<script\b[^>]*>/gi)) {
       const data = /type="application\/(ld\+)?json"/.test(tag);
       assert.ok(/\bsrc="/.test(tag) || data, `${file}: inline script ${tag}`);
     }
@@ -133,7 +133,7 @@ test("no page has an inline script; the theme script is a file in the head", asy
   const prerender = await readFile(new URL("../scripts/prerender.mjs", import.meta.url), "utf8");
   // it writes data blocks only; the other tags it names are the page's own
   // script files (it moves the stylesheet after theme.js, lowers the entry's priority)
-  for (const [tag] of prerender.matchAll(/<script\b[^>\n]*/g))
+  for (const [tag] of prerender.matchAll(/<script\b[^>\n]*/gi))
     assert.match(tag, /application\/ld\+json|src="\/theme\.js"|type="module"/, `prerender adds ${tag}`);
   // and it refuses a rendered page that carries a script
   assert.match(prerender, /the rendered page carries a script/);
@@ -235,7 +235,7 @@ test("robots.txt and sitemap.xml list only zrzur.com pages", async () => {
   assert.match(robots, /^Sitemap: https:\/\/zrzur\.com\/sitemap\.xml$/m);
   const sitemap = await readFile(new URL("../public/sitemap.xml", import.meta.url), "utf8");
   const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-  assert(locs.includes("https://zrzur.com/"));
+  assert(locs.some((loc) => loc === "https://zrzur.com/"));
   for (const loc of locs) assert.match(loc, /^https:\/\/zrzur\.com\//);
   for (const doc of legalDocuments)
     assert(locs.includes(`https://zrzur.com/legal/${doc.slug}`), doc.slug);

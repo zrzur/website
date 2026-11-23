@@ -2002,8 +2002,8 @@
     },
     {
       "path": "test/content.test.mjs",
-      "sha256": "b3dbcae924ca4ece5abe2fc2745877e0d3d7a5a5c63896cbd4a0ba41c3ec8755",
-      "bytes": 16675,
+      "sha256": "0d1216aad3a5fbad1def1f839c47fe62b2684de999e3a3a4dc79abd7b428dda7",
+      "bytes": 16690,
       "category": "synthetic-test-source-or-fixture"
     },
     {
@@ -2014,8 +2014,8 @@
     },
     {
       "path": "test/legal.test.mjs",
-      "sha256": "be28ecd8bc54afeaba7305d226240ba1007b279875f0b3ba564ded0c2230351f",
-      "bytes": 24239,
+      "sha256": "4250f08051457e6dfca083c7335dba7c7a3d556f4a0a0b0cf471b6462e467811",
+      "bytes": 24250,
       "category": "synthetic-test-source-or-fixture"
     },
     {
