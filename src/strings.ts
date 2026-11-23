@@ -12,7 +12,8 @@ export type FeatureId = "channels" | "voice" | "sharing" | "roles" | "interests"
 export type Pack = {
   labels: Labels;
   features: Record<FeatureId, { title: string; body: string }>;
-  faqs: { question: string; answer: string }[];
+  /** `more`: an optional link under the answer, to a page of this site */
+  faqs: { question: string; answer: string; more?: { path: string; label: Label } }[];
 };
 
 /** One dynamic import per language: Vite splits each into its own chunk */

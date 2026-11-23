@@ -168,3 +168,18 @@ test("a failed load is tried again, a good one is kept", async () => {
   assert.equal(await cachedLoad(cache, "fr", flaky), "words 2", "kept after success");
   assert.equal(calls, 2);
 });
+
+test("every language says who builds Zrzur, and links the FAQ answer to it", () => {
+  for (const code of codes) {
+    const { labels, faqs } = packs[code];
+    for (const key of ["volunteerTitle", "volunteerBody", "volunteerLine", "volunteerMore", "volunteerDownload"])
+      assert(labels[key]?.trim(), `${code}.${key}`);
+    const linked = faqs.filter((faq) => faq.more);
+    assert.equal(linked.length, 1, `${code}: one FAQ answer links on`);
+    assert.equal(linked[0].more.path, "/project#volunteers", code);
+    assert(labels[linked[0].more.label], `${code}: the link has words`);
+    // the volunteer copy never promises a price: no "free" in any form
+    const copy = Object.entries(labels).filter(([key]) => key.startsWith("volunteer")).map(([, value]) => value).join(" ");
+    assert.doesNotMatch(copy, /\bfree\b|مجان/i, code);
+  }
+});
