@@ -2747,6 +2747,29 @@ p { text-wrap: pretty; }
 .license-links svg { color: var(--z-action-text); }
 .feedback-section { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
 
+/* about: who builds Zrzur, as plain prose with one short list (no card) */
+.volunteer-section {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  gap: 24px 64px;
+  padding-block-start: var(--gap);
+  scroll-margin-block-start: calc(var(--header) + 24px);
+}
+.volunteer-prose { display: grid; gap: 16px; justify-items: start; line-height: 1.85; color: var(--z-text-2); }
+.volunteer-prose .text-link { min-height: 44px; }
+.volunteer-means { color: var(--z-title); font-weight: 600; margin-block-end: -8px; }
+.volunteer-list { display: grid; gap: 8px; margin: 0; padding-inline-start: 20px; list-style: disc; }
+.volunteer-list li::marker { color: var(--z-action-text); }
+@media (max-width: 720px) {
+  .volunteer-section { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+}
+/* the same line on other pages: a link to that section */
+.web-only .text-link { justify-self: start; }
+.web-only-note { margin-block-start: 8px; padding-block-start: 16px; border-block-start: 1px solid var(--z-border); }
+.faq-more { margin-block: -12px 16px; }
+.footer-volunteer { font-size: 15px; color: var(--z-text-2); text-decoration: underline; text-decoration-color: var(--z-border-strong); text-underline-offset: 4px; }
+.footer-volunteer:hover { color: var(--z-title); text-decoration-color: currentColor; }
+
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .hero-media { display: contents; }
@@ -3595,6 +3618,7 @@ html { scrollbar-width: none; }
 .home-open-inner h2 { margin: 0; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.2; }
 .home-open-inner p { margin: 0; color: var(--z-text-2); line-height: 1.8; max-width: 60ch; }
 .home-open-links { display: flex; flex-wrap: wrap; gap: 12px 32px; margin-block-start: 20px !important; }
+.home-open-inner .home-open-volunteer { margin-block-start: 12px; }
 @media (max-width: 900px) {
   .home-open-inner { grid-template-columns: minmax(0, 1fr); padding-block: 32px; }
 }

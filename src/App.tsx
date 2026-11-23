@@ -572,6 +572,14 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
                 <Icon name="plus" class="faq-sign" />
               </summary>
               <p>{item.answer}</p>
+              <Show when={item.more}>
+                {(more) => (
+                  <a class="text-link faq-more" href={href(more().path)}>
+                    {t(more().label)}
+                    <Icon name="arrow" class="directional" />
+                  </a>
+                )}
+              </Show>
             </details>
           )}
         </For>
@@ -817,6 +825,7 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
             <h2 id="open-title">{t("openTitle")}</h2>
             <div>
               <p>{t("openBody")}</p>
+              <p class="home-open-volunteer">{t("volunteerLine")}</p>
               <p class="home-open-links">
                 <a class="text-link" href={href("/source")}>
                   {t("homeOpenSource")}
@@ -825,6 +834,10 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
                 <a class="text-link" href={GITHUB} target="_blank" rel="noopener noreferrer">
                   {t("openGithub")}
                   <Icon name="arrowDiagonal" />
+                </a>
+                <a class="text-link" href={href("/project#volunteers")}>
+                  {t("volunteerMore")}
+                  <Icon name="arrow" class="directional" />
                 </a>
               </p>
             </div>
@@ -951,6 +964,27 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
             </a>
           </nav>
         </section>
+        {/* who builds it: volunteers, what that means, how to help, and a request for patience */}
+        <section class="container volunteer-section" id="volunteers" aria-labelledby="volunteers-title">
+          <h2 id="volunteers-title" data-rise>{t("volunteerTitle")}</h2>
+          <div class="volunteer-prose" data-rise>
+            <p>{t("volunteerBody")}</p>
+            <p class="volunteer-means">{t("volunteerMeans")}</p>
+            <ul class="volunteer-list">
+              <li>{t("volunteerPoint1")}</li>
+              <li>{t("volunteerPoint2")}</li>
+              <li>{t("volunteerPoint3")}</li>
+            </ul>
+            <p>{t("volunteerHelp")}</p>
+            <p>
+              <a class="text-link" href={GITHUB} target="_blank" rel="noopener noreferrer">
+                {t("openGithub")}
+                <Icon name="arrowDiagonal" />
+              </a>
+            </p>
+            <p>{t("volunteerRespect")}</p>
+          </div>
+        </section>
         <section class="container feedback-section">
           <div data-rise>
             <h2>{t("projectFeedbackTitle")}</h2>
@@ -1068,6 +1102,12 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
           <div>
             <h2>{t("trustTitle")}</h2>
             <p>{t("trustBody")}</p>
+            {/* no release dates: the people who build it are volunteers (same frame) */}
+            <p class="fine-print web-only-note">{t("volunteerDownload")}</p>
+            <a class="text-link" href={href("/project#volunteers")}>
+              {t("volunteerMore")}
+              <Icon name="arrow" class="directional" />
+            </a>
           </div>
         </section>
       </>
@@ -1306,6 +1346,7 @@ export default function App(props: { language: Language; pack: Pack; posts: Post
             <div class="footer-identity">
               <Brand footer />
               <p>{t("footerTag")}</p>
+              <a class="footer-volunteer" href={href("/project#volunteers")}>{t("volunteerLine")}</a>
               <span class="footer-language-label" id="footer-language-label">{t("language")}</span>
               <div class="footer-controls">
                 <LanguageMenu id="footer-language" up />
