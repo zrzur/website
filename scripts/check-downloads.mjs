@@ -17,7 +17,8 @@ import { pathToFileURL } from "node:url";
 export async function checkDownloads(origin, files, get = fetch) {
   const problems = [];
   for (const file of files) {
-    const at = origin.replace(/\/$/, "") + file.url;
+    // a file on GitHub Releases is named in full, one on this site by its path
+    const at = /^https:\/\//.test(file.url) ? file.url : origin.replace(/\/$/, "") + file.url;
     let response;
     try {
       response = await get(at, { headers: { "user-agent": "zrzur-download-check" } });

@@ -2747,6 +2747,29 @@ p { text-wrap: pretty; }
 .license-links svg { color: var(--z-action-text); }
 .feedback-section { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
 
+/* about: who builds Zrzur, as plain prose with one short list (no card) */
+.volunteer-section {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  gap: 24px 64px;
+  padding-block-start: var(--gap);
+  scroll-margin-block-start: calc(var(--header) + 24px);
+}
+.volunteer-prose { display: grid; gap: 16px; justify-items: start; line-height: 1.85; color: var(--z-text-2); }
+.volunteer-prose .text-link { min-height: 44px; }
+.volunteer-means { color: var(--z-title); font-weight: 600; margin-block-end: -8px; }
+.volunteer-list { display: grid; gap: 8px; margin: 0; padding-inline-start: 20px; list-style: disc; }
+.volunteer-list li::marker { color: var(--z-action-text); }
+@media (max-width: 720px) {
+  .volunteer-section { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+}
+/* the same line on other pages: a link to that section */
+.web-only .text-link { justify-self: start; }
+.web-only-note { margin-block-start: 8px; padding-block-start: 16px; border-block-start: 1px solid var(--z-border); }
+.faq-more { margin-block: -12px 16px; }
+.footer-volunteer { font-size: 15px; color: var(--z-text-2); text-decoration: underline; text-decoration-color: var(--z-border-strong); text-underline-offset: 4px; }
+.footer-volunteer:hover { color: var(--z-title); text-decoration-color: currentColor; }
+
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .hero-media { display: contents; }
@@ -3557,3 +3580,278 @@ html { scrollbar-width: none; }
 /* the flock's wave sits close to the call it becomes; no empty screen before it */
 .home-voice { padding-block-start: 0; }
 .home-voice .home-row { margin-block-start: 16px; }
+
+/* ---- 26.2.0: screenshot slots, release line, open source, download frame ---- */
+/* An empty slot: the frame of the owner's coming screenshot, the same size,
+   flat, with its number and what it will show (src/shots.ts). */
+.shot-placeholder {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  text-align: center;
+  color: var(--z-muted);
+  background: var(--z-nav);
+}
+.shot-empty { border-style: dashed; border-color: var(--z-border-strong); }
+.shot-placeholder-id { font-size: clamp(20px, 2.4vw, 32px); font-weight: 700; letter-spacing: 0.04em; color: var(--z-text-2); }
+.shot-placeholder-note { font-size: 14px; line-height: 1.5; max-width: 24ch; }
+.phone-shot .shot-placeholder-id { font-size: 20px; }
+.phone-shot .shot-placeholder-note { font-size: 12.5px; }
+.product-shot picture { display: block; width: 100%; height: 100%; }
+.shot-pair { display: grid; gap: 16px; }
+
+.home-copy .text-link { margin-block-start: 20px; }
+.home-all { display: flex; justify-content: center; padding-block: 8px 24px; }
+
+/* open source: the title on one side, the words and two links on the other */
+.home-open-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 24px 64px;
+  padding-block: 48px;
+  border-block: 1px solid var(--z-border);
+}
+.home-open-inner h2 { margin: 0; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.2; }
+.home-open-inner p { margin: 0; color: var(--z-text-2); line-height: 1.8; max-width: 60ch; }
+.home-open-links { display: flex; flex-wrap: wrap; gap: 12px 32px; margin-block-start: 20px !important; }
+.home-open-inner .home-open-volunteer { margin-block-start: 12px; }
+@media (max-width: 900px) {
+  .home-open-inner { grid-template-columns: minmax(0, 1fr); padding-block: 32px; }
+}
+
+/* download: one frame, a row per system, hairlines between the rows */
+.download-frame {
+  border: 1px solid var(--z-border);
+  border-radius: 24px;
+  background: var(--z-nav);
+  padding-inline: clamp(20px, 3vw, 40px);
+  margin-block-end: 32px;
+}
+.download-row {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 5fr);
+  grid-template-areas: "name buttons" "how buttons";
+  gap: 8px 40px;
+  padding-block: 32px;
+  border-block-end: 1px solid var(--z-border);
+}
+.download-row:last-child { border-block-end: 0; }
+.download-name { grid-area: name; display: grid; gap: 6px; align-content: start; }
+.download-row h2 { margin: 0; font-size: clamp(24px, 2.4vw, 32px); }
+.download-row .download-buttons { grid-area: buttons; align-self: center; margin: 0; }
+.download-row .download-how { grid-area: how; max-width: 60ch; }
+.download-notes {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 24px 64px;
+  padding-block: 16px 40px;
+}
+.download-notes h2 { margin: 0 0 12px; font-size: clamp(22px, 2.2vw, 28px); }
+.download-notes p { margin: 0 0 12px; color: var(--z-text-2); line-height: 1.8; }
+.download-notes code { font-size: 14px; color: var(--z-text); overflow-wrap: anywhere; }
+.download-notes .download-version { text-align: start; margin: 0 0 12px; }
+@media (max-width: 900px) {
+  .download-row { grid-template-columns: minmax(0, 1fr); grid-template-areas: "name" "buttons" "how"; gap: 16px; padding-block: 24px; }
+  .download-row .download-buttons .button { width: 100%; }
+  .download-notes { grid-template-columns: minmax(0, 1fr); }
+}
+.download-how code { font-size: 13px; color: var(--z-text); unicode-bidi: isolate; overflow-wrap: anywhere; }
+
+/* ---- hero headline, every language and width (owner review 2026-11-20) ----
+   The headline never breaks inside a word ("zusammenkomm-en" on a phone),
+   never reaches into the flock, and keeps its look: the size is the usual
+   one unless the longest word would not fit its column, then just smaller.
+   --longest (set by the page) is that word's width in em. */
+.home-hero-top { grid-template-columns: minmax(0, 11fr) minmax(0, 10fr); }
+.home-hero-top .home-hero-words { container-type: inline-size; width: 100%; }
+.home-hero-top .home-hero-words h1 {
+  max-width: max(13ch, calc(var(--longest, 1) * 1em));
+  font-size: min(clamp(36px, 5.3vw, 76px), calc(100cqi / (var(--longest, 1) * 1.08)));
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+}
+@media (max-width: 900px) {
+  .home-hero-top { grid-template-columns: minmax(0, 1fr); }
+  .home-hero-top .home-hero-words h1 { font-size: min(clamp(34px, 10vw, 48px), calc(100cqi / (var(--longest, 1) * 1.08))); margin-inline: auto; }
+  /* room above and below the flock's word, without making it smaller */
+  .home-hero-top .hero-stage { margin-block: 12px 20px; }
+}
+@media (max-width: 600px) { .home-hero h1 { hyphens: manual; overflow-wrap: normal; } }
+
+/* ---- the voice room, a copy of the app's (src/call-scene.tsx) ----
+   Values from web 26.2.0: tiles 16:9, 12 px corners, the channel list's
+   surface and a subtle border; the speaker's 2 px online outline with a
+   3 px ring at 25 %; the name pill rgba(0,0,0,.55) 13 px semi-bold; the
+   voice card 13 px online status, 11 px place, 32 px buttons at 7 %. */
+.call-scene { display: grid; gap: 12px; margin: 0; width: 100%; }
+.cs-icon { display: block; flex: none; }
+.cs-room {
+  border: 1px solid var(--z-border);
+  border-radius: 14px;
+  background: var(--z-frame);
+  overflow: hidden;
+}
+.cs-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 52px;
+  padding-inline: 16px;
+  border-block-end: 1px solid var(--z-border);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--z-text);
+}
+.cs-header .cs-icon { color: var(--z-text-2); }
+.cs-view { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 12px 12px 48px; }
+.cs-tile {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--z-nav);
+  border: 1px solid color-mix(in srgb, var(--z-border) 75%, transparent);
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+}
+.cs-tile > * { grid-area: 1 / 1; min-width: 0; }
+.cs-focus { aspect-ratio: 16 / 10; }
+.cs-screen { display: grid; }
+.cs-screen .product-shot { border: 0; border-radius: 0; width: 100%; height: 100%; aspect-ratio: auto; }
+.cs-overlay { display: flex; align-items: flex-end; padding: 10px; pointer-events: none; }
+.cs-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #fff;
+  background: rgba(0, 0, 0, .55);
+  backdrop-filter: blur(6px);
+  white-space: nowrap;
+}
+/* the button that hides the others: the app's small tonal round button */
+.cs-toggle {
+  align-self: center;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin-block: -2px;
+  border-radius: 50%;
+  color: var(--z-action-text);
+  background: color-mix(in srgb, var(--z-action) 22%, transparent);
+}
+.cs-grid { display: flex; justify-content: center; gap: 12px; }
+.cs-person { flex: 0 1 calc((100% - 24px) / 3); aspect-ratio: 16 / 9; }
+.cs-avatar-holder { display: grid; place-items: center; }
+.cs-avatar { width: auto; height: min(30%, 112px); min-height: 40px; aspect-ratio: 1; }
+/* who speaks: the outline moves from one person to the next, as in a real call */
+.cs-person-a { animation: cs-speak 7.5s infinite; }
+.cs-person-b { animation: cs-speak 7.5s 2.5s infinite; }
+.cs-person-c { animation: cs-speak 7.5s 5s infinite; }
+@keyframes cs-speak {
+  0%, 30% { outline-color: var(--z-online); box-shadow: 0 0 0 3px color-mix(in srgb, var(--z-online) 25%, transparent); }
+  34%, 100% { outline-color: transparent; box-shadow: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-person { animation: none; }
+  .cs-person-a { outline-color: var(--z-online); box-shadow: 0 0 0 3px color-mix(in srgb, var(--z-online) 25%, transparent); }
+}
+/* full screen: at the end of the bottom edge, as the app places it */
+.cs-fullscreen { position: absolute; inset-block-end: 12px; inset-inline-end: 16px; color: var(--z-text-2); }
+/* the voice card at the foot of the app's channel list */
+.cs-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  justify-self: start;
+  width: min(100%, 300px);
+  padding: 8px 6px 10px 8px;
+  border: 1px solid var(--z-border);
+  border-radius: 12px;
+  background: var(--z-nav);
+}
+.cs-card-head { display: flex; align-items: center; gap: 4px; min-width: 0; }
+.cs-card-target { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; padding: 4px 6px; }
+.cs-status { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; line-height: 16px; color: var(--z-online); }
+.cs-bars { display: inline-flex; align-items: flex-end; justify-content: center; gap: 2px; width: 16px; height: 16px; padding-block: 2px; }
+.cs-bars > span { width: 3.2px; border-radius: 999px; background: currentColor; }
+.cs-bars > span:nth-child(1) { height: 40%; }
+.cs-bars > span:nth-child(2) { height: 70%; }
+.cs-bars > span:nth-child(3) { height: 100%; }
+.cs-location { font-size: 11px; line-height: 14px; color: var(--z-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cs-hangup { display: grid; place-items: center; width: 32px; height: 32px; color: var(--z-danger); }
+.cs-actions { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 6px; }
+.cs-action {
+  display: grid;
+  place-items: center;
+  height: 32px;
+  border-radius: 8px;
+  color: var(--z-text-2);
+  background: color-mix(in srgb, var(--z-text) 7%, transparent);
+}
+@media (max-width: 600px) {
+  .cs-view { padding: 8px 8px 40px; }
+  .cs-grid { gap: 8px; }
+  .cs-person { flex-basis: calc((100% - 16px) / 3); }
+  .cs-pill { font-size: 12px; padding: 2px 8px; gap: 6px; }
+  .cs-overlay { padding: 6px; }
+  .cs-card { justify-self: stretch; width: auto; }
+}
+/* a person's tile: the avatar in the middle and the name pill on top of the
+   same box, as the app layers them (both fill the tile) */
+.cs-person > .cs-avatar-holder,
+.cs-person > .cs-overlay { position: absolute; inset: 0; }
+.cs-person > .cs-avatar-holder { display: grid; place-items: center; }
+.cs-person .cs-avatar { height: 34%; min-height: 32px; width: auto; }
+.cs-focus > .cs-overlay { position: absolute; inset: 0; }
+.cs-focus { position: relative; }
+@media (max-width: 600px) {
+  /* narrow tiles: square, the avatar above the name, nothing covering it */
+  .cs-person { aspect-ratio: 1 / 1; }
+  .cs-person > .cs-avatar-holder { padding-block-end: 26px; }
+  .cs-person .cs-avatar { height: 40%; }
+}
+
+/* ---- the voice room, round 2 (owner 2026-11-20): the same surface and
+   corners as the words' box beside it, no card under it, the box and the
+   words centred on each other, tiles one step lighter than the box ---- */
+.cs-room {
+  border: 0;
+  border-radius: clamp(24px, 2.8vw, 40px);
+  background: var(--z-nav);
+}
+.cs-header { height: 60px; padding-inline: clamp(20px, 2.4vw, 32px); border-block-end-color: color-mix(in srgb, var(--z-border) 80%, transparent); }
+.cs-view { padding: clamp(14px, 1.6vw, 20px) clamp(14px, 1.6vw, 20px) 52px; }
+.cs-tile { background: var(--z-page); }
+.cs-fullscreen { inset-block-end: 16px; inset-inline-end: clamp(20px, 2.4vw, 32px); }
+.home-voice .home-row { align-items: center; }
+.home-voice .home-card { align-self: center; }
+@media (max-width: 600px) {
+  .cs-header { height: 52px; padding-inline: 18px; }
+  .cs-view { padding: 10px 10px 44px; }
+}
+/* round 3 (owner 2026-11-20): the words' box and the room are the same
+   height, the words centred in theirs; the header shows the icon, then the name */
+.home-voice .home-row { align-items: stretch; }
+.home-voice .home-card { align-self: stretch; justify-content: center; }
+.home-voice .home-media { display: flex; }
+.home-voice .home-media > .call-scene { height: 100%; }
+.call-scene .cs-room { height: 100%; display: flex; flex-direction: column; }
+.call-scene .cs-view { flex: 1; justify-content: center; }
+.cs-header { height: 56px; gap: 10px; }
+.cs-header .cs-icon { width: 20px; height: 20px; }
+.cs-header-name { line-height: 1; }
+@media (max-width: 900px) {
+  .home-voice .home-media > .call-scene { height: auto; }
+}

@@ -115,9 +115,10 @@ test("/en/ and upper-case prefixes go to the one address of the page", () => {
   assert.deepEqual(run({ pathname: "/EN/legal", languages: ["en-US"] }).replaced, ["/legal"]);
 });
 
-test("the first picture's larger shade is preloaded only above phone width", () => {
+test("the first picture is preloaded with its sizes, the same in both shades", () => {
   const source = readFileSync(new URL("../src/shots.ts", import.meta.url), "utf8");
-  assert(source.includes('"not all and (max-width: 600px)"'));
+  assert(source.includes("return { dark: entry, light: entry };"));
+  assert(source.includes('type: "image/avif", srcset: files.avif, sizes: files.sizes'));
 });
 
 test("a crafted address never sends the visitor to another site", () => {

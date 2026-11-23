@@ -15,7 +15,7 @@ So we decided to take it and build our own product on it: a new design from the 
 
 ## What that means today
 
-Every server has a welcome page with its icon, banner and description. Voice channels stay open: you join in a click and share your screen inside the call. Roles and permissions decide who reads, who posts and who moderates, and newcomers pick their interests on their first visit. Public servers can be found by topic. The app comes in many languages, and Arabic, English and German are checked line by line.
+Every server can have a welcome page with its icon, banner and description. Voice channels are open rooms: you join in a click and share your screen inside the call. Roles and permissions decide who reads, who posts and who moderates, and newcomers pick their interests on their first visit. Events help a server plan game nights and meetups, and public servers can be found by topic. The app comes in many languages, and Arabic, English and German are checked line by line.
 
 ## What we keep
 

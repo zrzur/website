@@ -22,14 +22,14 @@
     },
     {
       "path": ".github/workflows/ci.yml",
-      "sha256": "b2f8c17838edd3cf81010da4b34d02a9ac789178b0cc0c45ddf4bc72121427f3",
-      "bytes": 1717,
+      "sha256": "755b24d28aa18e63e365a0a5f6eb87704debe16af6e2bd5fd116eea8b6c8038a",
+      "bytes": 1729,
       "category": "reviewed-build-and-ci"
     },
     {
       "path": ".github/workflows/publish.yml",
-      "sha256": "60d4230acb140c1333a78b331fcc8b7c60a70b9905303c3595006d6002d7eb16",
-      "bytes": 3750,
+      "sha256": "65cd35115f3fd6af024bdeee98a5a3e57edad8d5061265481ca3d39aadb2a3da",
+      "bytes": 3758,
       "category": "reviewed-build-and-ci"
     },
     {
@@ -46,14 +46,14 @@
     },
     {
       "path": "CODE_OF_CONDUCT.md",
-      "sha256": "d436e8246b2771a5501e3eac30c24d0a2a38f8dc851a06c8e4f8664168162808",
-      "bytes": 4838,
+      "sha256": "7e96e46b4b380023870b57578c9c6615b7068bc821923a6fff1bb51cbfa50ab2",
+      "bytes": 4955,
       "category": "public-documentation"
     },
     {
       "path": "CONTRIBUTING.md",
-      "sha256": "6bc7bb97b365a50274709c2fb6dd24a227a2aa7ae72fe26583d47a69687cc067",
-      "bytes": 987,
+      "sha256": "ea74efe678bdec135ea44c8944431a239aed5cbb5bab98f97069a748bf6636fa",
+      "bytes": 2238,
       "category": "public-documentation"
     },
     {
@@ -76,8 +76,8 @@
     },
     {
       "path": "NOTICE.md",
-      "sha256": "624a82bc21e0d3ba77a192674fe79f3ceb54e4728924496adefa2a62fc0fe477",
-      "bytes": 2166,
+      "sha256": "4da57f96c472b9f61357706f4e52727d7a1179bfb834719856f633664682b8f7",
+      "bytes": 2233,
       "category": "license-and-attribution"
     },
     {
@@ -88,14 +88,14 @@
     },
     {
       "path": "README.md",
-      "sha256": "e91d8102c17e217f858a6edb78c2945151dbce0451b6425d50910f03928e6370",
-      "bytes": 1952,
+      "sha256": "5d04ec1b5b6b5870fe89609a4ea4ccaca7d7c4c691aee155e7e1f8f654c6c4c4",
+      "bytes": 2033,
       "category": "public-documentation"
     },
     {
       "path": "SECURITY.md",
-      "sha256": "5e8b6d39a56dd15e2a82a5c5e720ef8dfb267ce110ecefd1ff1f48cee23c896a",
-      "bytes": 535,
+      "sha256": "97c1bda0bef0a3042be7aa22ffe6065a298c6c0b1f9193204c7975860eed3209",
+      "bytes": 1992,
       "category": "public-documentation"
     },
     {
@@ -136,8 +136,8 @@
     },
     {
       "path": "package.json",
-      "sha256": "915d83d5598d955fd25bc0d201ac24ef975f851b135274e85238fb7a61a019d6",
-      "bytes": 1202,
+      "sha256": "7a828c91ca1f872c5cd04534b796e1abb1218e3848c069d6512770fa8b4fb787",
+      "bytes": 1269,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -213,939 +213,1191 @@
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-chat-crop-dark.avif",
-      "sha256": "a9bee02bf12186c7fccfe2640244bb41827f7566699a8815a12b971e9cf5b5b9",
-      "bytes": 16677,
+      "path": "public/assets/shots/ar-d1-1400.avif",
+      "sha256": "d74bbdd6ae9efa801f015a2aa9f66e867764200702e6b28e19adffedd0449c72",
+      "bytes": 42762,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-chat-crop-dark.jpg",
-      "sha256": "437b7d8541d29e6e7a881baaa38f9045aed25121901abe46540527ab104f22ac",
-      "bytes": 33303,
+      "path": "public/assets/shots/ar-d1-1400.webp",
+      "sha256": "657ce1539547bbe12aef6b83627ade813f5510d780748c0a63bf4f20de5063f5",
+      "bytes": 55544,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-chat-crop-light.avif",
-      "sha256": "819702e7e7a6c31f4cd3edef920e8d0315db5f595e75492ecd6173f540e73eb9",
-      "bytes": 15145,
+      "path": "public/assets/shots/ar-d1-2400.avif",
+      "sha256": "d3529427056fdb2741d723724ebb76ff59ed14c0c42ba9b7420462d2b262fd8d",
+      "bytes": 77943,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-chat-crop-light.jpg",
-      "sha256": "6004597489426cc4787b9b87449da6a5535e8318e7ea1f5152acb17268c9aa28",
-      "bytes": 34293,
+      "path": "public/assets/shots/ar-d1-2400.webp",
+      "sha256": "c1a4db02fa5c525d541e4b82b26fdf6b6665fbb3a8cc450688bbfbc8039ae531",
+      "bytes": 105530,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-chat-dark-1152.avif",
-      "sha256": "636882a3fa592e2bd915667c0ea4894c2eeb143c17eafec00386b0f96ea33e54",
-      "bytes": 34685,
+      "path": "public/assets/shots/ar-d1-800.avif",
+      "sha256": "6bf5d0c00d908206e5a4ea603bce0d913ddd47af9e041c3c9c8c27bdad61b5d5",
+      "bytes": 21333,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-chat-dark-1152.jpg",
-      "sha256": "d1358c079cb90daa95b4f63260d73b49736f077b2f3be53ce08a470de0a071fb",
-      "bytes": 76056,
+      "path": "public/assets/shots/ar-d1-800.webp",
+      "sha256": "14cc9490cd3333e5de3ba3691db715cb3d9fd5401b9f74b5a2f8954e415ed18a",
+      "bytes": 26142,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-chat-dark.avif",
-      "sha256": "d31c83394ec2b6cd06293149a272b8b45b29618004badfe213d9d9dd3eef3201",
-      "bytes": 91013,
+      "path": "public/assets/shots/ar-d2-1400.avif",
+      "sha256": "70e1bf459177057d2f8f56bcfd0adbc31ce60bfc78f7b6e11828ff601c930582",
+      "bytes": 35889,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-chat-dark.jpg",
-      "sha256": "9b9a55a16acd8e5706b508bf41adb8e7bfb6616aaecc06b3176d45a17bd23f77",
-      "bytes": 250067,
+      "path": "public/assets/shots/ar-d2-1400.webp",
+      "sha256": "a6aa2496cee064dcba97768ca0102fed179ed88e92c0952297a248a5b8bc5e1e",
+      "bytes": 47068,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-chat-light-1152.avif",
-      "sha256": "2757e549035a090c35f2a064aef066ef2bce10093864bfa9f48b04ad781dd5bb",
-      "bytes": 32500,
+      "path": "public/assets/shots/ar-d2-2400.avif",
+      "sha256": "3cf3c89195e4edeaac4d2166854c3b768684b9d67f1d2a2ed0b144bfb86132d0",
+      "bytes": 68169,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-chat-light-1152.jpg",
-      "sha256": "3cad44550d407cf498d36b0661253c9aaede8c3ba2a9d424fc4e1ad571549cd4",
-      "bytes": 77086,
+      "path": "public/assets/shots/ar-d2-2400.webp",
+      "sha256": "fb7edd701d998a6df5df16e9b1a3674cb700ef001658e1d1431e0879027c3941",
+      "bytes": 91538,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-chat-light.avif",
-      "sha256": "1c8acc89153e3ef217d16adae0105779c15d4117d34ec72ec7c12ad4e26c6657",
-      "bytes": 91349,
+      "path": "public/assets/shots/ar-d2-800.avif",
+      "sha256": "ba4f9e8673c0a5e5c97dc4478c34c74b03680d0256c15ff7d8eb194bdc5e524b",
+      "bytes": 18147,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-chat-light.jpg",
-      "sha256": "f8ac16110adf23558aca40187bc1e1be0bf5572e4e7f9dd03951a8442e1a58e5",
-      "bytes": 257203,
+      "path": "public/assets/shots/ar-d2-800.webp",
+      "sha256": "4cc48d2a0dd3b2f0e454737e154ef780726e27ebd4efde135b73a696d142242a",
+      "bytes": 22306,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-chat-phone-dark.jpg",
-      "sha256": "a46c8e53524ea790005d4b5cc01cfaf95f579de0acad221b1717bad5db88a852",
-      "bytes": 139054,
+      "path": "public/assets/shots/ar-d4-1400.avif",
+      "sha256": "a1ce308cf3aa1d393461a3f8420797180ea33b9a6d9529ae89ef2d6a07a1c72c",
+      "bytes": 41433,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-chat-phone-light.jpg",
-      "sha256": "c1bfd6072b947ee8eff3e1d863a27db7d485cb77390007abe66163fb13a87659",
-      "bytes": 142944,
+      "path": "public/assets/shots/ar-d4-1400.webp",
+      "sha256": "7d145b90bf1095f74f30100a4673f93f62d63c08ecdcbaf344abddd46889fd31",
+      "bytes": 53104,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-discover-dark-1152.avif",
-      "sha256": "d6db0ed74d04f56902ecd62d188a0c604fb5c2d3ad8bcfb22c1e7ab889af50f6",
-      "bytes": 17946,
+      "path": "public/assets/shots/ar-d4-2400.avif",
+      "sha256": "0542d098da1af71c75adcf0224508864039624be5fd82144a5d6ba7b28b9bc03",
+      "bytes": 75224,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-discover-dark-1152.jpg",
-      "sha256": "bbf523c074429946034e3e23812de68db318816fe91cd3d7a24cf70c2ccdba43",
-      "bytes": 42264,
+      "path": "public/assets/shots/ar-d4-2400.webp",
+      "sha256": "587c152b344c2fa32f1fe5e3df9e1871040e57cba33a6921b2026c60dd299267",
+      "bytes": 100474,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-discover-dark.avif",
-      "sha256": "f91a6c4f30de17c1066ffc350d5b1c8d9d4e529955cc19198541eb60d79cc9a7",
-      "bytes": 38714,
+      "path": "public/assets/shots/ar-d4-800.avif",
+      "sha256": "95c6e4c05b870d4b8252b8863361061cf8fb3628f45ff52941c8b71998591b40",
+      "bytes": 20756,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-discover-dark.jpg",
-      "sha256": "7e019dbe176e986e00ea7f4fd11f0df16f3d471ae298050e6222148fd2126eb0",
-      "bytes": 124855,
+      "path": "public/assets/shots/ar-d4-800.webp",
+      "sha256": "dfd8ec6a49a2695b5c317ad715d7e9c107d1af1dd8a9884dfa1387afcf8003f6",
+      "bytes": 26076,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-discover-light-1152.avif",
-      "sha256": "d79a05f3ece5f446657ae534f77e51fc377eeb5a1cffe10a27903ac0b180fb76",
-      "bytes": 17610,
+      "path": "public/assets/shots/ar-d5-1400.avif",
+      "sha256": "89c38ecbf005bf3ed99276dfa5b3ec34220782199339de6747415b3f81544bc3",
+      "bytes": 36620,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-discover-light-1152.jpg",
-      "sha256": "68c23c81aff46b4ea6865e000d9e79cf48917e211d6d0fcc52fbaa855e5fcc32",
-      "bytes": 39000,
+      "path": "public/assets/shots/ar-d5-1400.webp",
+      "sha256": "1b47b540be7542ba351ea4f6c4471114af9d436bfdcb8a84253696497b310930",
+      "bytes": 48224,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-discover-light.avif",
-      "sha256": "f7ed260bf90d6f1e6b1e298ec3cf6157438d24538166f1ed1bd41195adebdafa",
-      "bytes": 36788,
+      "path": "public/assets/shots/ar-d5-2400.avif",
+      "sha256": "ec4db11f2d6d84f8260503fea2cc414fbd294cc6ea9e74caae09d2734fe5fd51",
+      "bytes": 65737,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-discover-light.jpg",
-      "sha256": "fa6709a42b92e3dd3c0acd083ee9effb9a68776f86b6b4764fc69a6e6a717ca9",
-      "bytes": 122335,
+      "path": "public/assets/shots/ar-d5-2400.webp",
+      "sha256": "30bda16893c7ab10ae40f4da14b3aa1bfe214a95837d3cb344acc7f21bf400c7",
+      "bytes": 91284,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-lobby-crop-dark.avif",
-      "sha256": "17283c6d0f18d4c1377e5b2c981c40c478114be58becf23a9ef7b13818dd95aa",
-      "bytes": 28549,
+      "path": "public/assets/shots/ar-d5-800.avif",
+      "sha256": "60d1f1ffd65c765a8d0e443dc9913a1482d5880fdfc45ae5460c124dc9cbb7bf",
+      "bytes": 18818,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-lobby-crop-dark.jpg",
-      "sha256": "1411755221bd155c0adf444cc28d7a57637abd198836a1458fd67c5b41b6d022",
-      "bytes": 49051,
+      "path": "public/assets/shots/ar-d5-800.webp",
+      "sha256": "cc425b3beca4f68527c2fb90922625bbaef232b7300eec0026a53281061de5f0",
+      "bytes": 23862,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-lobby-crop-light.avif",
-      "sha256": "dd41df616e56c064d4cccd267d44620338e51c45d1f3cc66acee2eaeb76c09bc",
-      "bytes": 28527,
+      "path": "public/assets/shots/ar-d6-1400.avif",
+      "sha256": "0d2e54cb09b9d41eacd12e9d48c13f979033e60218b845c9e7e746f874bff478",
+      "bytes": 47531,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-lobby-crop-light.jpg",
-      "sha256": "53f0dd666436151f2b4bcb61cd6a596d838b297ec2c35d3d97044a4ffab1958a",
-      "bytes": 50434,
+      "path": "public/assets/shots/ar-d6-1400.webp",
+      "sha256": "6260e84b8e8b187232e51fb0bf8ea1c2a7ef2fbaa86b31ce0fa670dc7275e681",
+      "bytes": 61902,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-lobby-dark-1152.avif",
-      "sha256": "8a0f2a723b0bc4425bbc33ff6757a20e6569c9c628463371f88cba48321859ee",
-      "bytes": 30232,
+      "path": "public/assets/shots/ar-d6-2400.avif",
+      "sha256": "c71255d8e251608d570686c7f5e13ecfa5046a3cfaf4c701c627db1160f33961",
+      "bytes": 86951,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-lobby-dark-1152.jpg",
-      "sha256": "9c949c4aa6cea4e0b7637c3f682c20bc70653b98d61c073a4d3860685c018845",
-      "bytes": 66450,
+      "path": "public/assets/shots/ar-d6-2400.webp",
+      "sha256": "c49b5ce3b0e4a28da3e657c5d3607143f98c172a9ec99ba7c994e156a0c03a48",
+      "bytes": 117260,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-lobby-dark.avif",
-      "sha256": "8b5ee5265acd3706efdc9e93f93f57b92813c370b5c68d6e4e5ed9353b2fc6fe",
-      "bytes": 105796,
+      "path": "public/assets/shots/ar-d6-800.avif",
+      "sha256": "44cffb7d0f2c23d1b53ddb10b22c28b7783ae4e989dfc486db1a74ecfed45958",
+      "bytes": 23289,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-lobby-dark.jpg",
-      "sha256": "edc400da8d38a8ac212bd9efb68ae3db2ea0306ad05424554927ff99666903a4",
-      "bytes": 279086,
+      "path": "public/assets/shots/ar-d6-800.webp",
+      "sha256": "f3447bef97158cecdf9407ffab8c1e9be84fd7ed8180434230c6e192f55ec254",
+      "bytes": 29070,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-lobby-light-1152.avif",
-      "sha256": "b85e635dbb77601b40ad3d8877545bf32001e4e6156b1385a5d4544f8619b48d",
-      "bytes": 30404,
+      "path": "public/assets/shots/ar-d7-1400.avif",
+      "sha256": "6576ccc90bf1da720d79ba334fbbc932cdfcc3750c2eb817a1ee46246e5fa82c",
+      "bytes": 31126,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-lobby-light-1152.jpg",
-      "sha256": "3fedcc579cb65253a0bd69623b90be5920f1afcf3e8ed1d463716d1ae696a190",
-      "bytes": 70811,
+      "path": "public/assets/shots/ar-d7-1400.webp",
+      "sha256": "10079a2c7199a3183e8547bd38a585fff307660222d58473295a750085cc47ba",
+      "bytes": 39040,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-lobby-light.avif",
-      "sha256": "d515acbb91b3859a96b892067b0742f8afd7c2f09644885f92a3cc2249e45c2d",
-      "bytes": 109669,
+      "path": "public/assets/shots/ar-d7-2400.avif",
+      "sha256": "a7e98d1c0ff05ac3251acbfdad7f6feeaada4e34a42b86de5abd4e0333ab1bd6",
+      "bytes": 55793,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-lobby-light.jpg",
-      "sha256": "118308b0ea4d05d44c54f5e4329abccd2de45cfb1565e4a6701ec5747a27eef2",
-      "bytes": 288478,
+      "path": "public/assets/shots/ar-d7-2400.webp",
+      "sha256": "9c0871624f76b264d05b89cca26ed9565567771151dae3651b2e80404cee0b85",
+      "bytes": 74104,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-lobby-phone-dark.jpg",
-      "sha256": "f0430fc116b76b083c1a2bee54dcedd7dd7765467fb1bb39c5234123e8c060ba",
-      "bytes": 133979,
+      "path": "public/assets/shots/ar-d7-800.avif",
+      "sha256": "6c5cf3b94b9122dfc44fbd8de3963682198dc7a55d3fb63214eddc213a5930ad",
+      "bytes": 15239,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-lobby-phone-light.jpg",
-      "sha256": "799f779775db63da3728e18fb2f1aba2a101293e897dc65c8cb36c690c1b7e75",
-      "bytes": 139757,
+      "path": "public/assets/shots/ar-d7-800.webp",
+      "sha256": "3aaf1738377f72e16ddf474e2aee24961c3847e56cf8f19fe0934fe21b89ee2b",
+      "bytes": 18416,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-roles-dark-1152.avif",
-      "sha256": "aaf97a5bbf4347c2b70f3d31bbd3454bc290982675e4643e6f2e2f3a13bbceb7",
-      "bytes": 27684,
+      "path": "public/assets/shots/ar-d8-1400.avif",
+      "sha256": "076b70c4cb3909362457551fae51486264312d628e4c2a69b46ccc27b7566468",
+      "bytes": 25698,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-roles-dark-1152.jpg",
-      "sha256": "d62f9c49be5c3fc3bfbbf32773553300d9cee82a233e59120491db0bce5903e8",
-      "bytes": 61959,
+      "path": "public/assets/shots/ar-d8-1400.webp",
+      "sha256": "c60af6943633646beb7f94c532d361590c5f09be43a654a14cd9f98e9480f055",
+      "bytes": 32142,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-roles-dark.avif",
-      "sha256": "e0edd787839038d02656c39ae71239159ff9791a93fe74e75e5417d326f27bfc",
-      "bytes": 67199,
+      "path": "public/assets/shots/ar-d8-2400.avif",
+      "sha256": "0ac82cee676a12a3c6d99e81d63cedddfd3d309f17624f15907dae2392668ea3",
+      "bytes": 46353,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-roles-dark.jpg",
-      "sha256": "fff7dd49149aa9bc7f747977a99d2e0627fcb7efb3c668fd1dc5f8f673b85004",
-      "bytes": 202270,
+      "path": "public/assets/shots/ar-d8-2400.webp",
+      "sha256": "b6b45c0d5e470cad5ceeab605ab93a191cc8d61bc8e37fb53c95aa8efcb38d59",
+      "bytes": 64280,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-roles-light-1152.avif",
-      "sha256": "69b8caca942e9ef4921207ee3aeb821c829039c8f82bdd3cc42e0108a8de5f7c",
-      "bytes": 26853,
+      "path": "public/assets/shots/ar-d8-800.avif",
+      "sha256": "145e41e058800dbc3ff05c54fbdb9eb8bed8bab5520a20736eef2172f663e80a",
+      "bytes": 12523,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-roles-light-1152.jpg",
-      "sha256": "39356f60f341c0f303369eaf6b168182016b9c2798665a5e67a066935a0de70e",
-      "bytes": 66065,
+      "path": "public/assets/shots/ar-d8-800.webp",
+      "sha256": "cceae940d91834cf673dcaad3f8b58dc68fa19e5bc408f370c8f4ce8c5731e95",
+      "bytes": 14826,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-roles-light.avif",
-      "sha256": "fe48d97240d180de651f6ff359b4d56cbbb292e060f214cd34d5fcfe6a359d13",
-      "bytes": 67715,
+      "path": "public/assets/shots/ar-m1-390.avif",
+      "sha256": "a2e1b740af1b6c7106c39e5eb2ae332c452a22545d7ee41e54d5725160f2c192",
+      "bytes": 10895,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-roles-light.jpg",
-      "sha256": "02712649a47c3d1e7c4e7bc824dc74622d261e4803de4cad5f7c8ee513a59816",
-      "bytes": 214943,
+      "path": "public/assets/shots/ar-m1-390.webp",
+      "sha256": "6229ba1c38ea281916d67f7b12bbb5ed57cf6a3f5ea05d086b317659cb956ae3",
+      "bytes": 13992,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-settings-dark-1152.avif",
-      "sha256": "29a2723a559d4120f40ed2e1370ad3319bbb5098a18f946d8f99ac373892e6b8",
-      "bytes": 13663,
+      "path": "public/assets/shots/ar-m1-780.avif",
+      "sha256": "f4fad1d647c033d457ce964d262836c1ec243ce19f90a58505552266a1b5ddc3",
+      "bytes": 22266,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-settings-dark-1152.jpg",
-      "sha256": "e5c8a7b5d1a5e7fcd7df26e70d5975d9581c4a51cb5098a7846b96928193182e",
-      "bytes": 36742,
+      "path": "public/assets/shots/ar-m1-780.webp",
+      "sha256": "633d9ccd0531db8226c8472d83c61536ffa92c251328a483ec445165d3dde9ec",
+      "bytes": 30604,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-settings-dark.avif",
-      "sha256": "1059f4c6e20099c6558d68c93383c0f36e8c5d2778ca063efd756dab39a42f7a",
-      "bytes": 30511,
+      "path": "public/assets/shots/ar-m2-390.avif",
+      "sha256": "2864677956fccee2bab3eceaba8ab3f8ff0ba4ac81c2253e71ce90b5aa8ef843",
+      "bytes": 26993,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-settings-dark.jpg",
-      "sha256": "786d3abc083ddf9e0042b3c4ede8c8f01c23adc94bac1aebeadf2c257dfbb1c7",
-      "bytes": 107667,
+      "path": "public/assets/shots/ar-m2-390.webp",
+      "sha256": "427a0e619b0731e2151b1225c6d2ac958a0e9c74f694b1b53bcc292406a9c9c7",
+      "bytes": 37528,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-settings-light-1152.avif",
-      "sha256": "f1f94b89143d918863674c2a8e4a729b216dafa3b7150e1d54fcd91a3be677d8",
-      "bytes": 13201,
+      "path": "public/assets/shots/ar-m2-780.avif",
+      "sha256": "cce1348540dfc7f1b3e10a6d20e94c956402bbc843e2f85b1fa959c1e44936c8",
+      "bytes": 57223,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-settings-light-1152.jpg",
-      "sha256": "3109161291437fced37951e8211b247cdcbfd4306d6752642fbb60c3c47f652b",
-      "bytes": 36464,
+      "path": "public/assets/shots/ar-m2-780.webp",
+      "sha256": "66d009f41171f399314f56f24422e508e9fbc1a2e339d4f3db6dd65987412e1c",
+      "bytes": 85888,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-settings-light.avif",
-      "sha256": "a1858e9663a91c43a69d0e72c6e18160a4ba9367d5070c81294ed442f8c1cda5",
-      "bytes": 30997,
+      "path": "public/assets/shots/ar-m3-390.avif",
+      "sha256": "5d9947aa0ef280febfdbded2837b9160fcebbc71f36d7a1ff50c2c7ce9c15b97",
+      "bytes": 11902,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/ar-settings-light.jpg",
-      "sha256": "0196854748501d1928c59ac0f8434e6575c9e2d034c963bca038c41ab909e8fc",
-      "bytes": 108209,
+      "path": "public/assets/shots/ar-m3-390.webp",
+      "sha256": "8a13f9cb164eba454bfbcec7631f04f99b06c087a14e449076862d13066928ef",
+      "bytes": 15062,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-chat-crop-dark.avif",
-      "sha256": "79719221be1b1aac1c29517dba948c8d01fef5bfff7746be35d90fdb355c8c0e",
-      "bytes": 15756,
+      "path": "public/assets/shots/ar-m3-780.avif",
+      "sha256": "e28acdf5c954876db134a601ff409037a5a7b97fb1952fe0679e96d63e9fd39c",
+      "bytes": 25152,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-chat-crop-dark.jpg",
-      "sha256": "8c8fd90e5003919ea03d9ea88aee07336297c3d78aaffec93a1bdd915491ba01",
-      "bytes": 33448,
+      "path": "public/assets/shots/ar-m3-780.webp",
+      "sha256": "c8abf4a5c51bfff8b990186747120de5f2cfdc0a5d70f37893360958df5b7098",
+      "bytes": 36284,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-chat-crop-light.avif",
-      "sha256": "40518ea7273aec1548273ea0b143560e7a0d9ef57944069f295279467de635a2",
-      "bytes": 13441,
+      "path": "public/assets/shots/ar-m4-390.avif",
+      "sha256": "076e2ed9d31a38def62d6beb8589193b198c51939fabab7bba7407b5552535b9",
+      "bytes": 17267,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-chat-crop-light.jpg",
-      "sha256": "977c915ea8dfc3935bb5158f6e3873ea937f8c20d1a7f266eee91bb6a23dddb9",
-      "bytes": 34976,
+      "path": "public/assets/shots/ar-m4-390.webp",
+      "sha256": "30d45ca576685b6bc9c77bd64ac71c9f92bf1701e20144b8f64facf887549bbe",
+      "bytes": 21158,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-chat-dark-1152.avif",
-      "sha256": "279f4b939add8ad6b4e1025399214ce2a5e61d63646adf8503f931d7d1a48d75",
-      "bytes": 35510,
+      "path": "public/assets/shots/ar-m4-780.avif",
+      "sha256": "02546f9b3098e33c717620d34b32977a43ffef57f0176734ae8418d62d32c80c",
+      "bytes": 35990,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-chat-dark-1152.jpg",
-      "sha256": "1e4a04267ea35ec81ef887873c0209b988f5e983beef647c19696b064b343dc1",
-      "bytes": 77940,
+      "path": "public/assets/shots/ar-m4-780.webp",
+      "sha256": "0fbd727c741d7e50641e4b7b4d149cf1f273e049b0547e39ffb291b8347f7b10",
+      "bytes": 46652,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-chat-dark.avif",
-      "sha256": "3ee5a82df70f310ff4b8627913813b1ef915641fec7893e2790e048f3d4fdf40",
-      "bytes": 89287,
+      "path": "public/assets/shots/ar-m5-390.avif",
+      "sha256": "83c31ce8d6b397b419cb6d6d0c150aa3700403f850b3cca6cad2c648ee04eb00",
+      "bytes": 12598,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-chat-dark.jpg",
-      "sha256": "d0a276f239a8ef3c708980fc20357f8ec0e6ce52fc54344f80f716b08013c4d8",
-      "bytes": 249617,
+      "path": "public/assets/shots/ar-m5-390.webp",
+      "sha256": "fb65edcf65360bc5bb2ffef899d646e6cd9be1460f19f0634edf948ee730de3e",
+      "bytes": 16178,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-chat-light-1152.avif",
-      "sha256": "c2a42c0ad29511be09f3ba76e93cc631d4d74d09f4f0649b09aa17adbb748ad2",
-      "bytes": 33785,
+      "path": "public/assets/shots/ar-m5-780.avif",
+      "sha256": "a98589c0af6bae61c7f27a54715c4d5d5a214147fd0488aee9de8d2cc01dfeb9",
+      "bytes": 24871,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-chat-light-1152.jpg",
-      "sha256": "7d6860751e8b8c7b98c0199662e570ac7e3967b32e6d533110bad3ea4070ac50",
-      "bytes": 79439,
+      "path": "public/assets/shots/ar-m5-780.webp",
+      "sha256": "05fb9de1ffe3c87ab51e1f96acf152376b98ec39caf62ec5cfebe81ba2593c5e",
+      "bytes": 35832,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-chat-light.avif",
-      "sha256": "ab54f86e1fc1d4fc7421fbdaec71edfa42a6b2b04d5e021027c077b49bad2258",
-      "bytes": 89419,
+      "path": "public/assets/shots/ar-m6-390.avif",
+      "sha256": "86f339766bb3b718343a841b3c925596d071b56da841d0bd237ad4d01df42164",
+      "bytes": 11830,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-chat-light.jpg",
-      "sha256": "359f294297d455af7e94715ccd59e660d4929d1cd1ee49cbc93a05256dea8b23",
-      "bytes": 258141,
+      "path": "public/assets/shots/ar-m6-390.webp",
+      "sha256": "62b436ba556f8fef417a05af37e35f2bfa50dacecaa98cc13ee6806d02f3c040",
+      "bytes": 13992,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-chat-phone-dark.jpg",
-      "sha256": "6343343e1e5c68ee6479750592fcbbb01c0e773603fe5ee8d1b40a75c34c8821",
-      "bytes": 140466,
+      "path": "public/assets/shots/ar-m6-780.avif",
+      "sha256": "f7e8f07296f10f563016c08d22a95713659fec2d4b38bee91917d53ab4499c4c",
+      "bytes": 24918,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-chat-phone-light.jpg",
-      "sha256": "cd7d735def64cec0eed8a2087d5df2d343110d3e8bf1dcc294dd19244c404e9b",
-      "bytes": 145573,
+      "path": "public/assets/shots/ar-m6-780.webp",
+      "sha256": "d3335ba35c656965d5680bcb1808d5eda63ed21f2c8c6e4b7e88bbfd4c727277",
+      "bytes": 31904,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-discover-dark-1152.avif",
-      "sha256": "e309a6c91de6c82a642d404e3a17a4a66cccb8fe092ec34059bc735a59c1c9ea",
-      "bytes": 22003,
+      "path": "public/assets/shots/de-d1-1400.avif",
+      "sha256": "932742725e30819b317d4abd94e6564c6f5aab7f4998092c105f0cf5e15948af",
+      "bytes": 52954,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-discover-dark-1152.jpg",
-      "sha256": "649e5ba5d7e5971d82955ada6bd732dca7172bc39933474167761def4ad3acad",
-      "bytes": 50606,
+      "path": "public/assets/shots/de-d1-1400.webp",
+      "sha256": "311885f23258909abb68b4ecae3e6af5c5a2a0f9045eda31632098f11a0d8c61",
+      "bytes": 75354,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-discover-dark.avif",
-      "sha256": "9af27dac66c34f7a056e55e523974bb7227a3ac34ff71d72da0aca1a74d65653",
-      "bytes": 47633,
+      "path": "public/assets/shots/de-d1-2400.avif",
+      "sha256": "8246bfa0c3f9a307272aadca570bd51350fc91d0f7687ac456a9c0748dbd1c11",
+      "bytes": 101760,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-discover-dark.jpg",
-      "sha256": "e8da0409a9c6608752e3045f3cae6abaed6ad362874694ed909996d9f2880475",
-      "bytes": 154994,
+      "path": "public/assets/shots/de-d1-2400.webp",
+      "sha256": "f6dcbaae80103254286737a5261cff85c29ade1375a5d15f4e64d553b9c6adad",
+      "bytes": 140832,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-discover-light-1152.avif",
-      "sha256": "a52644411e7964ab5e63678be42d0f8fb01c2d6f76c1242c0de2208f92312417",
-      "bytes": 21448,
+      "path": "public/assets/shots/de-d1-800.avif",
+      "sha256": "0d3c798eb0dbb9b5151f4c41457ec8bd91198d6c92248f26ce91cb2eea803346",
+      "bytes": 25804,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-discover-light-1152.jpg",
-      "sha256": "de321e234b31372a0f5a8f1db72f74e6483ff55208296e2d0c485eb97c2b4a58",
-      "bytes": 47425,
+      "path": "public/assets/shots/de-d1-800.webp",
+      "sha256": "a5d63153ee6726fc8a5ac1afe0f2991114cd53028fbce0a9be8e02c3afd95ef0",
+      "bytes": 34050,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-discover-light.avif",
-      "sha256": "bb23c90f5e021d9f25aa1919a257b39fca3342c089feca12467824f64f26d9ad",
-      "bytes": 44927,
+      "path": "public/assets/shots/de-d2-1400.avif",
+      "sha256": "7e37c504c7347b7b1ec3d4edd94dd2cbcd1e20be899be9a4154c4c3177433073",
+      "bytes": 41129,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-discover-light.jpg",
-      "sha256": "258fa61fc21ac709cb030eff01a096d5fee01218d6777383b13d8104d78ba165",
-      "bytes": 152153,
+      "path": "public/assets/shots/de-d2-1400.webp",
+      "sha256": "aa099d84fb642f8cb412de8e89434823b9c23a4cdd6f27a13ddefd150e9d8f8a",
+      "bytes": 53628,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-lobby-crop-dark.avif",
-      "sha256": "32d0f8f2d1cbae5fdf8472307c15232d050709c724f66c42a326712cf54caa12",
-      "bytes": 28340,
+      "path": "public/assets/shots/de-d2-2400.avif",
+      "sha256": "c9ea752ef0b295e8d826a9ce6db9971ea27044cc28527ea9ca29b74aad40cd49",
+      "bytes": 77894,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-lobby-crop-dark.jpg",
-      "sha256": "328a0cf13b71402306e80d6ea4bba702903f64aaa951dec950a8a0fbb314a8ec",
-      "bytes": 49098,
+      "path": "public/assets/shots/de-d2-2400.webp",
+      "sha256": "6af2de6c5ab9aa0570d6d59bfefd1f8172855467e3f8bff47006f752c58029be",
+      "bytes": 102590,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-lobby-crop-light.avif",
-      "sha256": "3e28487ce11cf17fcba882898d503cfac18ba64a384089dfa3a55c93dcf6f5dc",
-      "bytes": 28290,
+      "path": "public/assets/shots/de-d2-800.avif",
+      "sha256": "14a188348c009c839ec196416c8e53aa54c4c2823f9d72f52af0d3ed1e93a195",
+      "bytes": 19982,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-lobby-crop-light.jpg",
-      "sha256": "fc60536e206d7b42931d082a4584c2e0f094477b8aa8a8f5d57d4f5ff740a5bc",
-      "bytes": 50441,
+      "path": "public/assets/shots/de-d2-800.webp",
+      "sha256": "186f6149c820a77f9b5cd68641213420572506a331b85a0ad8f05e688dc2aa68",
+      "bytes": 24804,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-lobby-dark-1152.avif",
-      "sha256": "5840cfe91948b434d0f4d6a75d6e46243c6bc20c7671164384edfad32032d7b6",
-      "bytes": 33094,
+      "path": "public/assets/shots/de-d4-1400.avif",
+      "sha256": "663fad847c4f755047d3aa95686d7499f0bf9551a27ffb7de10d6451eb8915c3",
+      "bytes": 44791,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-lobby-dark-1152.jpg",
-      "sha256": "50c74653c1b4d6ef824e2fff6f91933c27afbd48bea9f4fbb060e5b95d2121fe",
-      "bytes": 71049,
+      "path": "public/assets/shots/de-d4-1400.webp",
+      "sha256": "7e48ee62de82f0c4750d3e400908bab0c35b07ad6c6b4bf1d96f0021e8ebff80",
+      "bytes": 59500,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-lobby-dark.avif",
-      "sha256": "3137a723475b7bd0cb932454d66cb37eb41a2a7dfa22c61c852db0c6de6e35be",
-      "bytes": 111997,
+      "path": "public/assets/shots/de-d4-2400.avif",
+      "sha256": "8a7e48bb3ff0cfadeb1204d90c2fc90c6eb52d1b6d844aab8f5849383c7d0f26",
+      "bytes": 82540,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-lobby-dark.jpg",
-      "sha256": "bdcd3ee120cb9a0bfc47b6c63e4941d65a7ab20c660ed702e7230045f5d46990",
-      "bytes": 294744,
+      "path": "public/assets/shots/de-d4-2400.webp",
+      "sha256": "0750a984e2b182ebc71f50224182d19f6fe7a4ab6cc42a821a0f79d74290da58",
+      "bytes": 110766,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-lobby-light-1152.avif",
-      "sha256": "50fa64d0d2c6c65f2958766c6162c1bca11c8953f0c823b5d0c413afd3b303dd",
-      "bytes": 33144,
+      "path": "public/assets/shots/de-d4-800.avif",
+      "sha256": "a032e0872c0ab1869dc438b23ed030f3f7e0bf86e2d6204e5ec956317827d7d8",
+      "bytes": 22679,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-lobby-light-1152.jpg",
-      "sha256": "9626ca59e3688dc027227ff40a76acadb25d527779ce1780e699d69f5938883d",
-      "bytes": 75853,
+      "path": "public/assets/shots/de-d4-800.webp",
+      "sha256": "bf0e1e7752852c49a758cf93841be77e4dc24b452b09b28ae32621e090a9c5b9",
+      "bytes": 27970,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-lobby-light.avif",
-      "sha256": "6b25763a9dd26d16360a08dc649e00a3803195daecd88d1151126652eebf2ada",
-      "bytes": 115990,
+      "path": "public/assets/shots/de-d5-1400.avif",
+      "sha256": "84a8a2eb3a326eab647783b40f50b983a7901604810ab13fa308e7a2475895b6",
+      "bytes": 41237,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-lobby-light.jpg",
-      "sha256": "e5d645cbbdba47038ef65b250a20665465da863d4545d6e9f02c4f55dd94cac8",
-      "bytes": 304385,
+      "path": "public/assets/shots/de-d5-1400.webp",
+      "sha256": "68aebf4f6ed99d8bf82b531b9e6da2a7b7f0a5d6e4f3593b365ca4bde7905f90",
+      "bytes": 55706,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-lobby-phone-dark.jpg",
-      "sha256": "2187f4ce172947662d37f3547ee61b292b901e7e3873dbdc89c4507ab3382cd7",
-      "bytes": 145189,
+      "path": "public/assets/shots/de-d5-2400.avif",
+      "sha256": "3a1517cfe70dd04f1714b6fcaffee0ebd4037d8f72c0f7a3a8b489517f59c6df",
+      "bytes": 74945,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-lobby-phone-light.jpg",
-      "sha256": "f9f81e33b9342c939f9728d174b63d392f4229e98a79e99a468cb05b119add11",
-      "bytes": 151121,
+      "path": "public/assets/shots/de-d5-2400.webp",
+      "sha256": "ae3de30d3b8ed97f2777cec142531ff70f2223a8563b1a89ecbf6e2d059008fc",
+      "bytes": 103660,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-roles-dark-1152.avif",
-      "sha256": "f2657d92f0e5cf5c068d3b03e73d5caefd769055ec4dcac437c0b3cadf3e3979",
-      "bytes": 30711,
+      "path": "public/assets/shots/de-d5-800.avif",
+      "sha256": "7ae937107e789f9eca4765d1af3d4bb4c1fa6cbc0de7085c882e0a28078dfbdc",
+      "bytes": 21326,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-roles-dark-1152.jpg",
-      "sha256": "021ea97e0ebf466f3c18f1f2fbf3e8d5d0c7aed970989edf01daeab6170b9685",
-      "bytes": 68444,
+      "path": "public/assets/shots/de-d5-800.webp",
+      "sha256": "1599334b32a95b1c7aa390e0d3950cf6040cb6a9f4de7b1d853f67b9246a07f4",
+      "bytes": 27340,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-roles-dark.avif",
-      "sha256": "1b5e09c8dffadd5e56c0ee9d3ad46fcad6864c9960619c9f5f87a48fc6c2851d",
-      "bytes": 73859,
+      "path": "public/assets/shots/de-d6-1400.avif",
+      "sha256": "2a34ceb5df50c6d0c65515336fcc3078217f7a9a0d10a7cec76d3b0d8c8aff04",
+      "bytes": 47863,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-roles-dark.jpg",
-      "sha256": "e2947956e4910e46d663557ad50d6092eb43d2f47ad28f76ca85ebfe733e6a58",
-      "bytes": 222945,
+      "path": "public/assets/shots/de-d6-1400.webp",
+      "sha256": "6ca3fd4075c9cf07751d909b535c47f861c21588a7f991ee4f04444dfb2e2cee",
+      "bytes": 64488,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-roles-light-1152.avif",
-      "sha256": "dbb740ab349508deaf1d3a5ff4465a67bdc294c1fc469bf72654581acb326244",
-      "bytes": 30347,
+      "path": "public/assets/shots/de-d6-2400.avif",
+      "sha256": "9c0e95f085e370f080dffb64155db3b8eb0bb9960823cd541a31ae1fad7b9954",
+      "bytes": 85257,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-roles-light-1152.jpg",
-      "sha256": "7e1311f68768e0c8b6411aebc0a65c0fb9c8416462dbd7e2bd17949d164f891b",
-      "bytes": 73035,
+      "path": "public/assets/shots/de-d6-2400.webp",
+      "sha256": "b2a6b2be5251c9e50641a41c8b3aa669bc92a80bef3c298c3db69d97e19f437b",
+      "bytes": 122764,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-roles-light.avif",
-      "sha256": "8796dbfbb804c8cccda6639ad0074153119c90fe0c7feba6948520d7b073adde",
-      "bytes": 73789,
+      "path": "public/assets/shots/de-d6-800.avif",
+      "sha256": "61cde6dfb72d964d2d76645c77509f6189092712192d2eb90db8a236435a799f",
+      "bytes": 23467,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-roles-light.jpg",
-      "sha256": "a488a937449889b0c096db977a4b54b486bd313a979fdf69fb2e59a9a39bf3a2",
-      "bytes": 237372,
+      "path": "public/assets/shots/de-d6-800.webp",
+      "sha256": "99e1f287458ee0581564fcc94cfb5a420c27983517b959769bc0f26c8ebf217d",
+      "bytes": 30026,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-settings-dark-1152.avif",
-      "sha256": "1386dec47eba61a8d3a2d3e8b076fa543d2df55325b38012a6923d0ade93b721",
-      "bytes": 15392,
+      "path": "public/assets/shots/de-d7-1400.avif",
+      "sha256": "8080b8f9b4d97b2bef4a52486e33f30ad9a5027eca194be38aaa0b42709961fe",
+      "bytes": 35512,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-settings-dark-1152.jpg",
-      "sha256": "bdabb596ad94883fce75f807fa386f306daec9a5754ba1955904e35b05ab878d",
-      "bytes": 39958,
+      "path": "public/assets/shots/de-d7-1400.webp",
+      "sha256": "47ee29137b4bfcfdf73a6d6df113ab84a4403d16fd9d1ec8559c9a14b945b33b",
+      "bytes": 45518,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-settings-dark.avif",
-      "sha256": "acfd6a929bfec9b06b2222da84091580ca18e5ab2c08fd317243d4816f400417",
-      "bytes": 34210,
+      "path": "public/assets/shots/de-d7-2400.avif",
+      "sha256": "d07c0f0276484308067c71b4229129ff8a1004122568deed59a22236ac77efc5",
+      "bytes": 64991,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-settings-dark.jpg",
-      "sha256": "653ae99608dc9cdafb99e49042386d7544a760a56b9af1b2a491d1a449a64bf0",
-      "bytes": 121428,
+      "path": "public/assets/shots/de-d7-2400.webp",
+      "sha256": "65e4db05650006224bd641ddd5b794505792879c854d4c03c22ac29e49f01b47",
+      "bytes": 86862,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-settings-light-1152.avif",
-      "sha256": "e3d0eea188280f3c18f317de17d8cc0b7227a5b0b09f94ffb2a1049300c00fee",
-      "bytes": 14713,
+      "path": "public/assets/shots/de-d7-800.avif",
+      "sha256": "469a03adbb6773d4d89ff68e85e4cf86acc9ccbb1d96f80bee8aecce87036344",
+      "bytes": 17148,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-settings-light-1152.jpg",
-      "sha256": "30a3ae3ee5047a170e3f63350b10653b627faa0796ca637840a4c76d554e42d7",
-      "bytes": 40143,
+      "path": "public/assets/shots/de-d7-800.webp",
+      "sha256": "88afa3018f3c38aa9a1508a4c9753354f9b3015253609b4b9f78df5a16bf5c81",
+      "bytes": 21036,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-settings-light.avif",
-      "sha256": "b9bb4875b632f2838e53f8431c6ac0c209cd83c75497c507628c3a435a1632c1",
-      "bytes": 35180,
+      "path": "public/assets/shots/de-d8-1400.avif",
+      "sha256": "581ebaf0a1307417412afdef4987b632cbeb1b085c6f2502fea66a665a06a637",
+      "bytes": 25511,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/de-settings-light.jpg",
-      "sha256": "136bcffbb01d91db4bcb6323a14c18438eed151b914690a94b627a8fb182f682",
-      "bytes": 122853,
+      "path": "public/assets/shots/de-d8-1400.webp",
+      "sha256": "3c1324bc7f82cf8dbc0c9f2d5c080ef33d21f5f5b23445c4a684dd26c05660ca",
+      "bytes": 32742,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-chat-crop-dark.avif",
-      "sha256": "e39370f6bc7cec6a356cb868a5fd881cafd521a81943fc8d0cbd90c4e7bf464e",
-      "bytes": 14503,
+      "path": "public/assets/shots/de-d8-2400.avif",
+      "sha256": "62b07c8cdb16ba0cfeeee43e31b3216f8b22ffdf96f006d9e4c092db35f30cd3",
+      "bytes": 45393,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-chat-crop-dark.jpg",
-      "sha256": "eeee4ba727580968fdbe1805481205f02535266e99cf71393ba338ca62505b24",
-      "bytes": 29489,
+      "path": "public/assets/shots/de-d8-2400.webp",
+      "sha256": "d2b095c7b2a9d452ad1c4ad094ab2e0d57d43b39a6c5f3718d6b25b967a5a97a",
+      "bytes": 63420,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-chat-crop-light.avif",
-      "sha256": "a27d5d4377bb1837730a4051dddd5dbf354f29b7bacd46b2c991f5f4faaae58a",
-      "bytes": 11811,
+      "path": "public/assets/shots/de-d8-800.avif",
+      "sha256": "57f13954b552fec258415ba5e086124d67a5e5c00657feabfdc489dd0ae82c07",
+      "bytes": 12862,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-chat-crop-light.jpg",
-      "sha256": "c46353f3a322adb39dfb6292b67e11f0759932358a50f42595dde55b575a661e",
-      "bytes": 30720,
+      "path": "public/assets/shots/de-d8-800.webp",
+      "sha256": "83a99f30b2262ab2f4c189e9c559e0dfc7bac2468352107c5e6b3ed49433612f",
+      "bytes": 15332,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-chat-dark-1152.avif",
-      "sha256": "c36800817a860ed5521cb410ba6bc5b0b8370c74aa637145854812cf6a15dc57",
-      "bytes": 34977,
+      "path": "public/assets/shots/de-m1-390.avif",
+      "sha256": "c163b458976bbffbb8e19c22fe0371c02d0152da663fb12411acdd476a0ef9a5",
+      "bytes": 12940,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-chat-dark-1152.jpg",
-      "sha256": "9de89af1b4e20ae30d069f43c9318676a0035d3cc159f9ea4b77827bcbc6f97f",
-      "bytes": 76060,
+      "path": "public/assets/shots/de-m1-390.webp",
+      "sha256": "42e5201461704d9eed91bcd5d9d636ae5ffc44837a49ac2eea295982f8a54290",
+      "bytes": 16688,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-chat-dark.avif",
-      "sha256": "ea2919c6269867f943df02b743e5c8a87c556274a514f977cf66f142143f1cee",
-      "bytes": 88567,
+      "path": "public/assets/shots/de-m1-780.avif",
+      "sha256": "4ad7d4cac024065f22c314b53a0c735ad96f1dbafed4d6c113d843a37f6c06f9",
+      "bytes": 26084,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-chat-dark.jpg",
-      "sha256": "964a5eefeae18e0d34962084cea99060a8bfafb04e37e476b69d16a0e03aa4b2",
-      "bytes": 245796,
+      "path": "public/assets/shots/de-m1-780.webp",
+      "sha256": "f4bdd55eab0bfac0f34f83da554587d1a59f7826dd2ba7a7f7124dcf9a4dc4a8",
+      "bytes": 36240,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-chat-light-1152.avif",
-      "sha256": "3ba749a1d30b9e120eca2a8bb20db20897baaabe745606222322165d61fb0329",
-      "bytes": 33612,
+      "path": "public/assets/shots/de-m2-390.avif",
+      "sha256": "be17440e4c326d300054232f507f38f4273fb2be27e4de72a385ffb0faf0b9f2",
+      "bytes": 33878,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-chat-light-1152.jpg",
-      "sha256": "e1cb632f98b62136cf566a9233e3f7534e1e0a8f6320451cf1d2732fc749a081",
-      "bytes": 77518,
+      "path": "public/assets/shots/de-m2-390.webp",
+      "sha256": "96c50b883a34e3ded8687f833ca745909f55d67a8d8da221a79dfba5febfa217",
+      "bytes": 48226,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-chat-light.avif",
-      "sha256": "5849ce1483152d2e5053bcb5087112b6cdc8e97fa2962cb6d6166534e8b1bd13",
-      "bytes": 88924,
+      "path": "public/assets/shots/de-m2-780.avif",
+      "sha256": "efcb2f689f7706f75ccd5b814172b7278cd837b23fc466a6ad16a85af6ac7dbf",
+      "bytes": 71653,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-chat-light.jpg",
-      "sha256": "edafa47ee53a4c99125409b7aa4808bd5ef6977f30148a5bf68742ff17def049",
-      "bytes": 253232,
+      "path": "public/assets/shots/de-m2-780.webp",
+      "sha256": "a962d7e04eca95723a441e9d5df94bed3eb4cb3d326f21828c98e1206444b50a",
+      "bytes": 106958,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-chat-phone-dark.jpg",
-      "sha256": "98cb228935f2c6d0d076d75ecf79ce822f5cbb7b8189fb02eef48e45a41d1d20",
-      "bytes": 136362,
+      "path": "public/assets/shots/de-m3-390.avif",
+      "sha256": "9ccdac2d22865c2cb100c9d4c5059a49e2aef864dd7b81f6af3671baacadc49f",
+      "bytes": 14524,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-chat-phone-light.jpg",
-      "sha256": "462d745b67713a346224912637387de07b7d2021b9f569460ffba9f4a127d3b1",
-      "bytes": 141144,
+      "path": "public/assets/shots/de-m3-390.webp",
+      "sha256": "69fddc4da2950689e02d395e188147cb0f59206151b3cc4f01da0546adc6a5ec",
+      "bytes": 18786,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-discover-dark-1152.avif",
-      "sha256": "9e4a80d8621b9c466b3de7a6b44273fdacbb8f9f0a5bc77bad3700115d04c18a",
-      "bytes": 20859,
+      "path": "public/assets/shots/de-m3-780.avif",
+      "sha256": "ec7c82239ed9a7a4d72f65e7d0c84f8e1263711c6c6ee5117a922718fe40570d",
+      "bytes": 30315,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-discover-dark-1152.jpg",
-      "sha256": "3e26d7bb48fed3d53e564ab8da560922ba50741872fca60c6e7c8699c151ebc8",
-      "bytes": 48382,
+      "path": "public/assets/shots/de-m3-780.webp",
+      "sha256": "0184328c2027af412f17e94ec2b110e10ce91c3c5f84ba9e70dc1edcd3454799",
+      "bytes": 44382,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-discover-dark.avif",
-      "sha256": "f5f6fba9e9b33f9bdc8c356ff4568759f0bf965246192fdcb067a1973cee5c5f",
-      "bytes": 45753,
+      "path": "public/assets/shots/de-m4-390.avif",
+      "sha256": "b20e9b9d865d0f4fc93ca99236ce07d46c6053288b9fd10a50e1747247424cdf",
+      "bytes": 18477,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-discover-dark.jpg",
-      "sha256": "597beafab9ef2e2f9faac828913da031c36ecc5b11bb40b65ee70450bd12f819",
-      "bytes": 148254,
+      "path": "public/assets/shots/de-m4-390.webp",
+      "sha256": "975c41cc39cd455593bf8a6e4b21f7afda4d583531a7a093e99da70519c136ea",
+      "bytes": 23420,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-discover-light-1152.avif",
-      "sha256": "b70016eb75e35e608a120d189da2c45618f7140375b33bd058691d4fbc9bf63c",
-      "bytes": 20243,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-discover-light-1152.jpg",
-      "sha256": "2aedac789aecb89e981c3f07407a031d910ae3866d86a6bb67ce5e3ff9df085d",
-      "bytes": 45245,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-discover-light.avif",
-      "sha256": "550378626931249f682d652b89e04c86a93f65db28e972d71fe3e0f0d1c00cdb",
-      "bytes": 43166,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-discover-light.jpg",
-      "sha256": "f41b7c0159a81283ea207c9b226da6da03803ddab8932da22e6ff83df8aa01d0",
-      "bytes": 145195,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-lobby-crop-dark.avif",
-      "sha256": "1f87cb81d1dbeef034554c5685ee95a416dea9dbedb2e3b0cd9d4db8b9f405c1",
-      "bytes": 28706,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-lobby-crop-dark.jpg",
-      "sha256": "f0fa8130b2746cf9f453915db242e764ffe75a43962b64b91f629578b67f085e",
-      "bytes": 49386,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-lobby-crop-light.avif",
-      "sha256": "5b34e44750a1255849843b27a22db709d43e69a967b9a244c82fd7cbf623d059",
-      "bytes": 28600,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-lobby-crop-light.jpg",
-      "sha256": "79784ff7dee904add15f0b9ee71190f67ea41237852c4577eea8970fa156ebe3",
-      "bytes": 50686,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-lobby-dark-1152.avif",
-      "sha256": "ded70e8ec3c3f60c13f926846cc83c1d4aded6362d591765ab68fb3ffc0d03d9",
-      "bytes": 32074,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-lobby-dark-1152.jpg",
-      "sha256": "f4d1d1c6ce97c5f490d0d578b4ca9812505f6c01b6ceffa786eca94d3e197d8f",
-      "bytes": 68869,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-lobby-dark.avif",
-      "sha256": "41ccb46d1a03a4441375ce97d78fe1fd5b04d4d82c897a05e1fc5ab7d49c5668",
-      "bytes": 109704,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-lobby-dark.jpg",
-      "sha256": "059015cb75f48d162dbf3e65ed3c26f55075c6cc31aabe0caffbd6350ddc866b",
-      "bytes": 287846,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-lobby-light-1152.avif",
-      "sha256": "a25e0df2db987ecdea1ada8a1dbf15d35ed8ba03e0cbeccb7c54097066dcf231",
-      "bytes": 32057,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-lobby-light-1152.jpg",
-      "sha256": "5394d4ef0aa6a50fcbbc96a83ff0c9b6d3621e3be3169504169d545dfc401229",
-      "bytes": 73434,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-lobby-light.avif",
-      "sha256": "4481214d82521cb0238f31d43218dc86f8768ea0963ce69e5cf0c1a57d71041c",
-      "bytes": 112946,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-lobby-light.jpg",
-      "sha256": "1ea31ff056cd1a8518e9a898a340d7cc5376ec7cbd91843631de31e9d5e80e69",
-      "bytes": 297108,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-lobby-phone-dark.jpg",
-      "sha256": "aaa0d636d79bf1abdfd163a7f6d477b148fb590c3edb1889bb72bbc5b51a205a",
-      "bytes": 139136,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-lobby-phone-light.jpg",
-      "sha256": "ad8958ba1fb7d2ff3ed6757fec9daaac2506f30c93c9cbb9952b7b8f12c49b2b",
-      "bytes": 145315,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-roles-dark-1152.avif",
-      "sha256": "da7636dd8a0fff50e837a38f929567eb316e03730ec6b99e97835894a6764d80",
-      "bytes": 30224,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-roles-dark-1152.jpg",
-      "sha256": "dfd0f2a5ab3e2ac75431ec959228ca44d9d602bb43f20c49251107ede99f11ed",
-      "bytes": 66566,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-roles-dark.avif",
-      "sha256": "3923d797ef86b73af938467802e57152ad520b768db2233930d64a89dadaf6b8",
-      "bytes": 72191,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-roles-dark.jpg",
-      "sha256": "cbe9bd0ea52255bc49ea5e49a7ab29241f9ff77c29136422466b1f0cb40703cc",
-      "bytes": 216927,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-roles-light-1152.avif",
-      "sha256": "3ee0e764348171359961f2c7093b3a73e3da235ef24925ef966523e20fe9ee17",
-      "bytes": 29994,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-roles-light-1152.jpg",
-      "sha256": "111266b508fadf44ba709e538c5adbe1b1fa34e5cc640e1a08b43514af21cd36",
-      "bytes": 71052,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-roles-light.avif",
-      "sha256": "f0fad0a4c96e707ff8fc6468a8ff4355e296f2b22f6bd49e6328dca001f91fbd",
-      "bytes": 72423,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-roles-light.jpg",
-      "sha256": "848d1a6783aa71a6e68721ca75f6f4862ffaac0ff93f7daedb9e8370a8884984",
-      "bytes": 231347,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-settings-dark-1152.avif",
-      "sha256": "99f51f50d22f084276cf115af2c410b23784bd29206bfaf56ee51d5b060b6dbf",
-      "bytes": 14205,
-      "category": "reviewed-product-asset"
-    },
-    {
-      "path": "public/assets/product/en-settings-dark-1152.jpg",
-      "sha256": "7bb91b34b78dcb82572c8a01d562df8e7a82cad58d9ea0c15f95d6664f44b582",
+      "path": "public/assets/shots/de-m4-780.avif",
+      "sha256": "35eec43e7a41d807e8d2bcd21277e50341ccc332afc5413cf6c2ca1b6d155af5",
       "bytes": 38400,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-settings-dark.avif",
-      "sha256": "23b1011f5551bf18d8a11804bfc3b64d6a8339edffe38c0fd714e6bad07dd94f",
-      "bytes": 32602,
+      "path": "public/assets/shots/de-m4-780.webp",
+      "sha256": "794eaa6d28b292ea95bef0c7b642fe7628328fc0826d930995adb306e701edb3",
+      "bytes": 51634,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-settings-dark.jpg",
-      "sha256": "07e9f4c51f84ab0cd22bd41a19244bf39a93b2f301a1b2b8fe3c7fea814fcce8",
-      "bytes": 116130,
+      "path": "public/assets/shots/de-m5-390.avif",
+      "sha256": "5893d6d782f362b9d1f47f974a2046e5c66a7b29e9e3e2f30b2024ef98e8627b",
+      "bytes": 13523,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-settings-light-1152.avif",
-      "sha256": "1f87ada21831ee94de087d146da79e80ec14757c824637825f90280c05c10586",
-      "bytes": 13809,
+      "path": "public/assets/shots/de-m5-390.webp",
+      "sha256": "78c7486f5c00eb9fd118db57792136e2e4449a97031fc64c8d6628204cd7f75c",
+      "bytes": 17898,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-settings-light-1152.jpg",
-      "sha256": "6ac7d176f43f9f2052424d609dc36ed32ff07eecc091688583d6c5562626d936",
-      "bytes": 38411,
+      "path": "public/assets/shots/de-m5-780.avif",
+      "sha256": "b4aa16534700af7e9a925239eac6029ab998e9c667c9ec717081efe91a2ae1e4",
+      "bytes": 26979,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-settings-light.avif",
-      "sha256": "1f3005161ea61583c2d96c2a98b82b6bc042bf17a6a1a9d21053185534d5f024",
-      "bytes": 33059,
+      "path": "public/assets/shots/de-m5-780.webp",
+      "sha256": "63d09661f94afb2d620be959ace48f36ebedde33e9a7d932c45d276d722e11a6",
+      "bytes": 39560,
       "category": "reviewed-product-asset"
     },
     {
-      "path": "public/assets/product/en-settings-light.jpg",
-      "sha256": "7b4f841a07f1147dd7a33536d151072204e24a219a168dfc45f14106f71e3a4a",
-      "bytes": 116413,
+      "path": "public/assets/shots/de-m6-390.avif",
+      "sha256": "ae7409710bbb582d62cd73d458890c8199aa1f184bab2c8422aefca4de9def0c",
+      "bytes": 13305,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/de-m6-390.webp",
+      "sha256": "f775fadff5f950e393718f0dfae22096abbc5c2a1fa60549010da3a2bebd2d11",
+      "bytes": 15560,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/de-m6-780.avif",
+      "sha256": "2e830a617ee0f78b10f782b4f417ab3947a9bb72850e3df3e84ebe54a128ced6",
+      "bytes": 27382,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/de-m6-780.webp",
+      "sha256": "b30be360d90b18b5236cccc8c1215d6251dbfc8e8d1b264933efce3dc7784f87",
+      "bytes": 35206,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d1-1400.avif",
+      "sha256": "b5c04e357cb28af23cb77dfbe8abe524e16647a17d848c41b7e7d067149a734f",
+      "bytes": 51332,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d1-1400.webp",
+      "sha256": "36435d3eaa377bf7db018cd1ef65a5b583868fd99afc0f99cad2d97162dc5507",
+      "bytes": 69694,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d1-2400.avif",
+      "sha256": "3500e615867153b523f1abdc7c5b5d283c4cded38a27867de38c44d3840b86d1",
+      "bytes": 85873,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d1-2400.webp",
+      "sha256": "7153763f29408cf657ba7ed50fe24c5070234014a815ec2f4918c1bf0dd86f42",
+      "bytes": 128738,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d1-800.avif",
+      "sha256": "71fa29f758cbe37a27e1c892bfdd86db775fd59098eae9a582a6471b09b596bc",
+      "bytes": 24009,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d1-800.webp",
+      "sha256": "77f7683e1336de9ef0ce71463dd4b9c4baedb7616f32513b896292c087996e3c",
+      "bytes": 30748,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d2-1400.avif",
+      "sha256": "f4d06af922cfc978b402c476752ac4b0d2a71c256539abee06a62552837c4f8d",
+      "bytes": 42095,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d2-1400.webp",
+      "sha256": "a6bca5c69e606da318643562266b8d8e8c04eee1764859a64e813727938ad48e",
+      "bytes": 54820,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d2-2400.avif",
+      "sha256": "bba96b3a6be59553245e895ef489af0ef37b5675dc52a86f7b0046bf8dee2504",
+      "bytes": 77876,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d2-2400.webp",
+      "sha256": "9519b95a2fd2783f73433fffb99f52358b61a682761f147466edf38f592e985f",
+      "bytes": 104230,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d2-800.avif",
+      "sha256": "fd121968b9a7845b81966dc12b1fadeef9e7198b5e0af908f733bae14f2fd3f8",
+      "bytes": 19858,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d2-800.webp",
+      "sha256": "b92182f066890465fd1e1058ee9daa98778a26bb5c304f303f3c4841494f307d",
+      "bytes": 25002,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d4-1400.avif",
+      "sha256": "d065c85af3be705689b935814cf7f1c1177975944fd740b7b769be022d36f451",
+      "bytes": 43117,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d4-1400.webp",
+      "sha256": "655d5191cd9c05a52c0788d0d2e4e436e4fb431f2a0042da43dea74a960a9710",
+      "bytes": 57404,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d4-2400.avif",
+      "sha256": "463c00acae2eb530105700a0c8a5e8dfc761f29e27493eac211971a105881d36",
+      "bytes": 79893,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d4-2400.webp",
+      "sha256": "db8e7e827c760f6827a4b5b662a402231de209f84a7467a8acfc7936270b0cfa",
+      "bytes": 107106,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d4-800.avif",
+      "sha256": "a1537fe8840b9406a5b354c2d7b76a921fca14c2a06c590089ae7e3743298936",
+      "bytes": 21750,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d4-800.webp",
+      "sha256": "c013a8a7cdba4775844900fca8e6af67caed96df30f3d4c56854110de9041812",
+      "bytes": 26826,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d5-1400.avif",
+      "sha256": "df192b8db8312fe4f193b20ba3d5f6381269b3926a02a024ce217f7a6e49d29d",
+      "bytes": 38021,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d5-1400.webp",
+      "sha256": "c8ffd1d93a3301ea2f1aea209185bf73bcffd9f427ee97d9215b9754c66e9089",
+      "bytes": 51572,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d5-2400.avif",
+      "sha256": "856e517a5249052c861ccaacd2751731bcbe010cdefc69ce71b045cd51a02065",
+      "bytes": 69821,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d5-2400.webp",
+      "sha256": "bde68359a0672b1918714a5ba1d46420e6ac1c52f330b68c20d8a32a62827d3d",
+      "bytes": 97594,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d5-800.avif",
+      "sha256": "202434d48aa98228a03c6f783d3bc79acae656bbbea7762d621514d2ca2e1341",
+      "bytes": 20088,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d5-800.webp",
+      "sha256": "811375baab6850b91e4f1ee0f02fc0b418de17b8651e5e75cded2dd0a2340575",
+      "bytes": 25236,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d6-1400.avif",
+      "sha256": "259fe40d3f30c72c7a1274f7f629d0e07ccde0018f3c8b872526ec5f29fd3eee",
+      "bytes": 45575,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d6-1400.webp",
+      "sha256": "fc44276e8e3282b6c3930c0cf4ac7d2b044dc309bc6b543c5ad3c5683661c686",
+      "bytes": 59820,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d6-2400.avif",
+      "sha256": "782f033984465268add21037254b382546adeba31b0d1ae3cbe5ac3ee305a51f",
+      "bytes": 78103,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d6-2400.webp",
+      "sha256": "b0d73ffbe911c46c9490fe6f17b67dd6a1578e61966fdde090379f8cd8d78ea4",
+      "bytes": 111070,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d6-800.avif",
+      "sha256": "fd495c633e2a263994017c526d55737ed66de503921ee1b365e5bc67c0cfafc2",
+      "bytes": 21837,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d6-800.webp",
+      "sha256": "ebacc4420656b12cc86db2ff313b25708f04dd7b8595f84f4c76cda751c2629c",
+      "bytes": 27274,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d7-1400.avif",
+      "sha256": "ea9228ce45f9a995050aa21c712b46113626125bb54989cf54329c605a0f3495",
+      "bytes": 32203,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d7-1400.webp",
+      "sha256": "4bf90c964d412f16e58e15a2587ebe48d2de090b2e9357ed9e706d00f44edba2",
+      "bytes": 41006,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d7-2400.avif",
+      "sha256": "009f2f1c0b4856f13f24800e38bc41a656442058c02ffa815d286062e1e097f6",
+      "bytes": 59636,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d7-2400.webp",
+      "sha256": "21f28ef4a3ff92b09d874c812ee863ad2286e690a860b64335433d90d6d22b47",
+      "bytes": 78318,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d7-800.avif",
+      "sha256": "71d36c5334884ac9dcb4a91677bdb0fc84f4b4f77b87220ac4d6d0f069a26576",
+      "bytes": 15715,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d7-800.webp",
+      "sha256": "a6eeb2b7ea4af58fdde79fbc9cbb44d4c532bd562b7257d28e3871e2a3eb2bc8",
+      "bytes": 18942,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d8-1400.avif",
+      "sha256": "d44fd756cbb776bcbb8281aee9f50cc3718d43aa14b4f41b681baeb283517097",
+      "bytes": 23958,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d8-1400.webp",
+      "sha256": "597bbec850e7b5e9b888c1291a8f1cdbb248cc2ea1f3cbfda718b6c5c0a12928",
+      "bytes": 30684,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d8-2400.avif",
+      "sha256": "6b5fcf712f27a8f421f6a02154c8650685c1631b51730eb86b80dfe94884d294",
+      "bytes": 42534,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d8-2400.webp",
+      "sha256": "9a1732bc2a591e15b75bd0ec17e273bdc0b4a3d6ac45c58acaf787c3b36b5fd5",
+      "bytes": 60362,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d8-800.avif",
+      "sha256": "7d2dfad27476a0c51aec00b79a74c2b2bc259508290ef5cbf5abe3a6c06224d9",
+      "bytes": 11385,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-d8-800.webp",
+      "sha256": "5c233a56b174a9901780cc9fb18c16b740f866df1299f4243dbfbe7b37755d68",
+      "bytes": 13638,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m1-390.avif",
+      "sha256": "0f827cb5e8fbb8a600333074885d246c2cdaed9ea5e0c1090ae9d268727dcf4b",
+      "bytes": 10946,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m1-390.webp",
+      "sha256": "e95afd0d9026c8da217593b40214723bf29a09ad23b9e3f0d1098b00dd358704",
+      "bytes": 14094,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m1-780.avif",
+      "sha256": "75e3130c77e684cca52732228dce5ebf6068320c652a9c76afc34447763302ac",
+      "bytes": 22109,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m1-780.webp",
+      "sha256": "cd909a4bdee84f0bc31ac9d7d38ffc58f719278da119d1ae3bc44e806f9eb5a2",
+      "bytes": 30548,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m2-390.avif",
+      "sha256": "744a0e4e5a369c6acaf9146e1cd0120b6880bc511bee3c764cc880f822da4933",
+      "bytes": 29866,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m2-390.webp",
+      "sha256": "1bc8ce7a6147cd621f197f7db8fe725c3f946720d0cc845474d0bc8c21a7ebc3",
+      "bytes": 42226,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m2-780.avif",
+      "sha256": "20e28205f1075cd1b028d4367748bbcd6b4e81187f7f4d11a50809e91d950d0c",
+      "bytes": 65416,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m2-780.webp",
+      "sha256": "37e08443f6abf3510d973dfb0027d9445aaed96191936cfef20f4d6eb7c3d2fd",
+      "bytes": 94628,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m3-390.avif",
+      "sha256": "8b613050242754bd32f1e6e6257886aaabead407b10fae2c0e9f0fffd8d25d2b",
+      "bytes": 13800,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m3-390.webp",
+      "sha256": "b406d05c13954dc1b87b04b159ca7168615b6768cdd989980528afedaf36c918",
+      "bytes": 17098,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m3-780.avif",
+      "sha256": "5ff0babdd4dc979b1ca638257f525386aaf3ca05eace63961228f5458e96dfff",
+      "bytes": 28687,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m3-780.webp",
+      "sha256": "be2c6c2716d506f199333aae4a771abd9baa192cbee3891a5977e6ed86d53656",
+      "bytes": 40164,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m4-390.avif",
+      "sha256": "4acec5be46f7e8244006606b85602f0f31278edf01b3d13b270fd1083ea53572",
+      "bytes": 17866,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m4-390.webp",
+      "sha256": "c49a432837be4485deb898f7bf873b83353769b34671669f0fc5be6b820c8946",
+      "bytes": 22022,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m4-780.avif",
+      "sha256": "82ce3ad85b518f2064dadaff771b16a07da44f638b8bcd1a81efa68d0b2cce6a",
+      "bytes": 36651,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m4-780.webp",
+      "sha256": "226143d4a74305d06256edf74e670f93dda767d2566ab0096b816feb2049b98f",
+      "bytes": 49204,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m5-390.avif",
+      "sha256": "5ede1262337cd81342b9f21d39aae9839c0333077cf72791418b838a57160381",
+      "bytes": 12323,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m5-390.webp",
+      "sha256": "d016b6cf34d273a67e1303f1e06bd04f2f5a8e94cb26bc0e5e0099aa005f4f30",
+      "bytes": 16270,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m5-780.avif",
+      "sha256": "3ae64ef1cc4f90d0f2a885cae238b217ffcfd57d1f31b752980ecc49d5a5406b",
+      "bytes": 24513,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m5-780.webp",
+      "sha256": "098209fed94f704cb42dad72cbc321e2767ab31d7ea77d975d3ac13f1e257e18",
+      "bytes": 35972,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m6-390.avif",
+      "sha256": "07c4d51c8da26793f8b716bb25a34d5685674b1fec9c78c6c3beaa318d39d855",
+      "bytes": 9848,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m6-390.webp",
+      "sha256": "d9f94aec561fc3682f0c0a399e9fc288fefc08c4b743ba549c5977ddc0352324",
+      "bytes": 11404,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m6-780.avif",
+      "sha256": "975540f1c3d12dfcf2af88bfe2897231937102d64bab4a611681bc3135162b53",
+      "bytes": 19832,
+      "category": "reviewed-product-asset"
+    },
+    {
+      "path": "public/assets/shots/en-m6-780.webp",
+      "sha256": "de2ec00ec61594a64b169bccf2c3af41ab47ad670d3b90cd5c4ca35da28f1443",
+      "bytes": 25538,
       "category": "reviewed-product-asset"
     },
     {
@@ -1246,14 +1498,14 @@
     },
     {
       "path": "public/sitemap.xml",
-      "sha256": "9b44e8b19774b3974e1fa2243cd4190f7b9461c4c56e9760d354c793cc4cfa69",
-      "bytes": 84822,
+      "sha256": "325844758dd0ec0399f27cda720978ab68cc86be259f1f694c9a8c4b8c7391db",
+      "bytes": 87948,
       "category": "reviewed-product-asset"
     },
     {
       "path": "public/theme.js",
-      "sha256": "9606354afd74b2c500f7cd266faf9956ff983b01e8a083af5843d80bfbb34ed6",
-      "bytes": 6349,
+      "sha256": "3eafeefbc4ced8c532cc09e0519e560b36938fded50dfb5635ede05c114f3e93",
+      "bytes": 6713,
       "category": "reviewed-product-asset"
     },
     {
@@ -1264,8 +1516,14 @@
     },
     {
       "path": "scripts/check-downloads.mjs",
-      "sha256": "ce518e018de06c7b30d59a9ddfe2e1227f05123f0adf4898c5e21ffad464837b",
-      "bytes": 2227,
+      "sha256": "ba339eeeeb58015576748070193f0b19af96ea5f73d381b58d1b86d656289a07",
+      "bytes": 2349,
+      "category": "reviewed-build-and-ci"
+    },
+    {
+      "path": "scripts/check-release-ready.mjs",
+      "sha256": "b369c1a7a84fa1fe6182f1b5e7ff71e8e91590f204b718e454d6229fb2bcd831",
+      "bytes": 2081,
       "category": "reviewed-build-and-ci"
     },
     {
@@ -1288,8 +1546,8 @@
     },
     {
       "path": "scripts/image-metadata.py",
-      "sha256": "a0609987f623378aa4c6719a2103044f05184e14fbcb6a2391fe2e799b4df5d5",
-      "bytes": 2498,
+      "sha256": "472d1043048f73f64782c7b77ad81fb728b9477b3e45fd039ee0fc8bbf2a37ba",
+      "bytes": 2493,
       "category": "reviewed-build-and-ci"
     },
     {
@@ -1312,26 +1570,8 @@
     },
     {
       "path": "scripts/prerender.mjs",
-      "sha256": "7b1ed6da0fbeb6064ae396e36252b0ce721188f2edbc02d5da1b2acdfa083093",
-      "bytes": 19529,
-      "category": "reviewed-build-and-ci"
-    },
-    {
-      "path": "scripts/product-images.py",
-      "sha256": "c9ff5b5c7dbaec10ef5d38fc6aeeaa84edbb1f3376f434cd2b7d8985a448a221",
-      "bytes": 2057,
-      "category": "reviewed-build-and-ci"
-    },
-    {
-      "path": "scripts/product-versions.d.mts",
-      "sha256": "8bfd78d633434c9e2fa3e0d666354b3de3e510ccb7ef1f544c0662d07f45e0cb",
-      "bytes": 139,
-      "category": "reviewed-build-and-ci"
-    },
-    {
-      "path": "scripts/product-versions.mjs",
-      "sha256": "d3d7601826d406836739a909746a66b0de9d8ca2c38b4a0400d9b2624b4c0722",
-      "bytes": 691,
+      "sha256": "47ab46feca327ded10cfd2a49ed66523dcc90adcae46296ad8bb6efb15c9a472",
+      "bytes": 19680,
       "category": "reviewed-build-and-ci"
     },
     {
@@ -1377,6 +1617,12 @@
       "category": "reviewed-build-and-ci"
     },
     {
+      "path": "scripts/site-shots.py",
+      "sha256": "a118bea298acdcb1244dd003a7a0ef67244d6b170ed001b034be92ea089e9b54",
+      "bytes": 3735,
+      "category": "reviewed-build-and-ci"
+    },
+    {
       "path": "scripts/source-page.d.mts",
       "sha256": "e07d5151feffcca5f5279de3cdaf6481e6742ff0940c0379bb20c1d01b3c5be9",
       "bytes": 876,
@@ -1414,20 +1660,20 @@
     },
     {
       "path": "src/App.tsx",
-      "sha256": "f782c7c8f713a47e27abe58c84c3ae962a1c2cd5ae99ef2a70de33610d6dc89f",
-      "bytes": 57602,
+      "sha256": "7b7657e433ca9e5093b9f552936fb3f933b153623dea1b2fe91f78d414c67d0f",
+      "bytes": 61255,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/blog-languages.ts",
-      "sha256": "dd82d7f0e5027be95bf1c15fd58f97dbc119642c0002b19620ac87118cf38a5e",
-      "bytes": 852,
+      "sha256": "8306d24005f95de3a462d6e6fa5e36c17e26660ae56da9348f787de4843a88de",
+      "bytes": 976,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/blog-md.ts",
-      "sha256": "2598bbeb06fee05fb7530e0039a8b996fa5c99a78cf922ddd4e6da98326f93ca",
-      "bytes": 6522,
+      "sha256": "e8fb768f67999a6f547254e0ae8c01084c3c987e7884ed7ba88382d833d171e0",
+      "bytes": 6610,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1449,6 +1695,12 @@
       "category": "product-source-or-build-manifest"
     },
     {
+      "path": "src/call-scene.tsx",
+      "sha256": "d400664dc1509351fcd1eb1c2226ee885f2123a0a4b180e5c25aa0819b83d3e2",
+      "bytes": 8095,
+      "category": "product-source-or-build-manifest"
+    },
+    {
       "path": "src/config.ts",
       "sha256": "42cb8a777ed6129bc6c4444e40e8a828e93cd6fc2078d8ec45bf8249ae3564de",
       "bytes": 2998,
@@ -1458,12 +1710,6 @@
       "path": "src/content.ts",
       "sha256": "4dbbc741642b3396abd73b9a9ab7fb04f2cabd0dcf81dd8102d13763b025ba69",
       "bytes": 1146,
-      "category": "product-source-or-build-manifest"
-    },
-    {
-      "path": "src/demo.tsx",
-      "sha256": "6f00b8c17d5e64f5c1479688939ab35f419e60ea09345a3d9c9984430d6898cf",
-      "bytes": 6435,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1522,44 +1768,44 @@
     },
     {
       "path": "src/locales/ar.ts",
-      "sha256": "c372e82e27f725fda92910f85259e576bc8c5d6bfa7ea8f62ec5018816108c8d",
-      "bytes": 24569,
+      "sha256": "795cf19b2b1f1b104282be6629c20667c3c6e9cdd7b2a1a550ebd0a65ae92fee",
+      "bytes": 33374,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/de.ts",
-      "sha256": "36ed6a89ef2285af6cd5232bf6ff04b1afba0b6e5f82673130e0fa864db15ece",
-      "bytes": 19339,
+      "sha256": "15c22e872214d651ddc6e6eba450eaa241ddeb93d2833760c648ca0b1a453493",
+      "bytes": 26701,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/en.ts",
-      "sha256": "02f3bd2ee838494b7c76817f88c51b64b5908d578f59846a8bdefd6ec861bdd9",
-      "bytes": 18037,
+      "sha256": "f95a1dc900436e0c8a478921949db13e4b03eb08a2858696072650c76a3c798d",
+      "bytes": 24650,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/es.ts",
-      "sha256": "bbf2645cfef6d4e533b7699bc3408308616390e47ce46363cee1d3e1fc07e9fd",
-      "bytes": 19356,
+      "sha256": "b5d6728d8b9f7b4bc11d0e4b4581d6339e992954669f3357f3c50df9dfcac84c",
+      "bytes": 26499,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/fr.ts",
-      "sha256": "893cd9e432dddd1c8cc61f49f750229ea9c01a6310ba9a0610aed3900a81dafa",
-      "bytes": 20132,
+      "sha256": "c43259c75421689925d4628c05489fc0df4bc5d71def814dd1e5c653e9e5dc8b",
+      "bytes": 27860,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/ru.ts",
-      "sha256": "9093ad6d08b44853e1139c2f9aa58f507f3533917eb0591b4bb723bb25283818",
-      "bytes": 28722,
+      "sha256": "ddcb9aea5a7a3b07bc4248a44b2085f2a112b63236769099d20ed7ea1f676fc6",
+      "bytes": 38943,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/zh.ts",
-      "sha256": "cc00607cf2205d3496a657a7fc0e3e9eee473cda437804b73d6dedb91e7a6858",
-      "bytes": 17622,
+      "sha256": "32c367b3396e5165e92e811065565bb95cf8c5f0ba2e932843f981587c171ed8",
+      "bytes": 23893,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1618,8 +1864,8 @@
     },
     {
       "path": "src/policies/privacy.ts",
-      "sha256": "527eb859982be1d1b52d6e3947c464171d6eeb29ce5ecc13d2ab3022d11be64a",
-      "bytes": 127756,
+      "sha256": "b29cb9733f76520c787e8b618f2b27018d53830cc20c9b8d2696e46ecab400fc",
+      "bytes": 140741,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1630,8 +1876,8 @@
     },
     {
       "path": "src/policies/shared.ts",
-      "sha256": "51d6e6ab6d3e8a1cd91f06045e3b21268c3ec59567e028af2746246646f62712",
-      "bytes": 3109,
+      "sha256": "962afb8b900289306307df26f748501770d6be236f7f577da6454ff27ec32bed",
+      "bytes": 3434,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1642,8 +1888,8 @@
     },
     {
       "path": "src/releases.ts",
-      "sha256": "89abddf6fe638c8774538f5c27f98f863258b72f40119eb1f5575f11a76577c7",
-      "bytes": 4592,
+      "sha256": "7dfa92e4f9282b53e187ae25088716751b42cced0df1741b69b6e404acce947d",
+      "bytes": 5516,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1725,21 +1971,27 @@
       "category": "product-source-or-build-manifest"
     },
     {
+      "path": "src/shot-manifest.ts",
+      "sha256": "9917162c78c3c416c9c6bdfcab190dc9e5291f8c17e0187843f913a364189a86",
+      "bytes": 3461,
+      "category": "product-source-or-build-manifest"
+    },
+    {
       "path": "src/shots.ts",
-      "sha256": "328838e4f018cbe2fc2edae09405fa6ca9a10f20c5169470e2ec3f0e4f5e4606",
-      "bytes": 2857,
+      "sha256": "5e25cf7ef773510405d33e4edda0fafb87b030488a6c2b38777222c6360eb868",
+      "bytes": 4807,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/site.css",
-      "sha256": "f73ea8e5a2b4cfae9fdf16ec5052d7c798342bfcf6c76626bfe4be9f51be549d",
-      "bytes": 119571,
+      "sha256": "88a2378d8861a1d4fbfdaa6e1694a4302e9e7eaa1e0f99e15316ff12abf7f2c7",
+      "bytes": 133022,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/strings.ts",
-      "sha256": "773e6bdbc1afeda3534850f772a74c7c56087f682df921f23940c5d8e3930df4",
-      "bytes": 1814,
+      "sha256": "d2b684336bd14cb3d7c2c2b63571c5a98c13c713638c665fe603502733e8b372",
+      "bytes": 1928,
       "category": "product-source-or-build-manifest"
     },
     {
@@ -1750,20 +2002,20 @@
     },
     {
       "path": "test/content.test.mjs",
-      "sha256": "b53a746e669c0890e1df275aeb42f48e3587559c021b64d6666052e941fe2ef0",
-      "bytes": 16396,
+      "sha256": "0d1216aad3a5fbad1def1f839c47fe62b2684de999e3a3a4dc79abd7b428dda7",
+      "bytes": 16690,
       "category": "synthetic-test-source-or-fixture"
     },
     {
       "path": "test/i18n.test.mjs",
-      "sha256": "4ccc1d858e555bb6340fdcdab25730057bd9d7971462de086df51cbae8325e58",
-      "bytes": 9393,
+      "sha256": "8e916b38d0cb4255f7b24d79e9a2a04ecd74caa2fd17bd36d4e12f16acdf1fd0",
+      "bytes": 10245,
       "category": "synthetic-test-source-or-fixture"
     },
     {
       "path": "test/legal.test.mjs",
-      "sha256": "6aa44f068cb87c7e14aac8fa4d38057f80b618d886043a036c7a9210160941cf",
-      "bytes": 23656,
+      "sha256": "4250f08051457e6dfca083c7335dba7c7a3d556f4a0a0b0cf471b6462e467811",
+      "bytes": 24250,
       "category": "synthetic-test-source-or-fixture"
     },
     {
@@ -1780,8 +2032,8 @@
     },
     {
       "path": "test/release-manifest.test.mjs",
-      "sha256": "cc8368b38e52edfc99795692bc271501dd63756cece0dc5b4b4f7faa5ce0dda0",
-      "bytes": 4649,
+      "sha256": "e314bb81064ca7d03da251e4608d494f4f585755e4430101d9101254ea5ee3da",
+      "bytes": 6044,
       "category": "synthetic-test-source-or-fixture"
     },
     {
@@ -1810,8 +2062,8 @@
     },
     {
       "path": "test/theme-script.test.mjs",
-      "sha256": "8d7bfa6d75330729aea20659038e38340bf0a6c4a4a0d3cbfa3af2c9def07cb7",
-      "bytes": 8430,
+      "sha256": "daa129ffd90440720e7a41b447452c509793d1064dce42c8ab536cdf7102b1b2",
+      "bytes": 8526,
       "category": "synthetic-test-source-or-fixture"
     },
     {
@@ -1822,8 +2074,8 @@
     },
     {
       "path": "vite.config.ts",
-      "sha256": "d46c2a16b9f45a374d159370f98c9eaa209abbcc716b9bc2e108207146b70a68",
-      "bytes": 3415,
+      "sha256": "92eb15ab38a063cddd043c79b11d013fa387dd57c40c63dc2ab6b8975be5d719",
+      "bytes": 3142,
       "category": "product-source-or-build-manifest"
     }
   ],

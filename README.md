@@ -44,12 +44,13 @@ The public addresses are optional and go in `.env.local`; [`.env.example`](./.en
 
 ## Contributing and security
 
-- Contributing: [CONTRIBUTING.md](./CONTRIBUTING.md).
+- Contributing: [CONTRIBUTING.md](./CONTRIBUTING.md). Open pull requests into `beta`.
 - Security reports: [SECURITY.md](./SECURITY.md).
+- Code of conduct: [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md).
 
 ## Licence and origin
 
-Zrzur is an independent, Arabic-first chat platform based on the open-source Stoat software (formerly Revolt), licensed under AGPL-3.0 or later. Zrzur is not affiliated with Stoat, stoat.chat or Revolt Platforms Ltd. Please do not report Zrzur issues to the Stoat team.
+Zrzur is an independent chat platform based on the open-source Stoat software (formerly Revolt), licensed under AGPL-3.0 or later. Zrzur is not affiliated with Stoat, stoat.chat or Revolt Platforms Ltd. Please do not report Zrzur issues to the Stoat team.
 
 - Licence: see [LICENSE](./LICENSE).
 - Notices and changes: [NOTICE](./NOTICE), [NOTICE.md](./NOTICE.md) (images and other assets), [MODIFICATIONS.md](./MODIFICATIONS.md), [THIRD-PARTY-LICENSES.md](./THIRD-PARTY-LICENSES.md).

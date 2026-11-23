@@ -51,6 +51,8 @@ test("every policy has Arabic and English title, intro and sections", () => {
   }
 });
 
+// privacy was revised again on 21 November (Zrzur Team applications and volunteers)
+const REVISED_21 = ["privacy"];
 const REVISED_15 = ["privacy", "terms", "paid-services", "enforcement-appeals", "creator-terms", "community-guidelines"];
 
 test("no policy shows a draft banner, a lawyer note or a placeholder (owner, 2026-11-12)", () => {
@@ -60,9 +62,15 @@ test("no policy shows a draft banner, a lawyer note or a placeholder (owner, 202
     // paid services, enforcement and appeals, creator terms (legal audit),
     // community guidelines (plugins withdrawn); the rest on 12 November
     const revised13 = REVISED_15.includes(doc.slug);
-    assert.equal(doc.lastUpdated.en, revised13 ? "Last updated: 15 November 2026" : "Last updated: 12 November 2026", doc.slug);
-    assert.equal(doc.lastUpdated.ar, revised13 ? "آخر تحديث: ١٥ نوفمبر ٢٠٢٦" : "آخر تحديث: ١٢ نوفمبر ٢٠٢٦", doc.slug);
-    assert.equal(doc.lastUpdated.de, revised13 ? "Stand: 15. November 2026" : "Stand: 12. November 2026", doc.slug);
+    if (REVISED_21.includes(doc.slug)) {
+      assert.equal(doc.lastUpdated.en, "Last updated: 21 November 2026", doc.slug);
+      assert.equal(doc.lastUpdated.ar, "آخر تحديث: ٢١ نوفمبر ٢٠٢٦", doc.slug);
+      assert.equal(doc.lastUpdated.de, "Stand: 21. November 2026", doc.slug);
+    } else {
+      assert.equal(doc.lastUpdated.en, revised13 ? "Last updated: 15 November 2026" : "Last updated: 12 November 2026", doc.slug);
+      assert.equal(doc.lastUpdated.ar, revised13 ? "آخر تحديث: ١٥ نوفمبر ٢٠٢٦" : "آخر تحديث: ١٢ نوفمبر ٢٠٢٦", doc.slug);
+      assert.equal(doc.lastUpdated.de, revised13 ? "Stand: 15. November 2026" : "Stand: 12. November 2026", doc.slug);
+    }
     assert.deepEqual(doc.sources, []);
     const text = JSON.stringify(doc);
     for (const word of ["lawyer", "محامٍ", "محام", "anwaltlich", "Entwurf", "مسودة", "Owner to confirm", "<date>"])
@@ -109,10 +117,11 @@ test("policyVersions covers every slug with the policy date", () => {
   assert.deepEqual(Object.keys(policyVersions).sort(), [...EXPECTED_SLUGS].sort());
   assert.equal(CREATOR_TERMS_VERSION, "2026-11-15");
   for (const slug of EXPECTED_SLUGS)
-    assert.equal(policyVersions[slug], REVISED_15.includes(slug) ? "2026-11-15" : "2026-11-12", slug);
+    assert.equal(policyVersions[slug], REVISED_21.includes(slug) ? "2026-11-21" : REVISED_15.includes(slug) ? "2026-11-15" : "2026-11-12", slug);
   // the date shown matches the version
   const privacy = legalDocuments.find((doc) => doc.slug === "privacy");
-  assert.match(privacy.lastUpdated.en, /15 November 2026/);
+  assert.match(privacy.lastUpdated.en, /21 November 2026/);
+  assert.match(JSON.stringify(privacy), /team-volunteers/);
   assert.match(JSON.stringify(privacy), /linked-accounts/);
   assert.match(JSON.stringify(privacy), /ko-fi\.com\/zrzur/);
 });
@@ -355,7 +364,7 @@ test("pages in English under another prefix point at the English page", async ()
   assert.equal(pageLanguages("/legal").length, LOCALES.length);
   assert.equal(canonicalLanguage("/report", "zh"), "zh");
   const sitemap = await readFile(new URL("../public/sitemap.xml", import.meta.url), "utf8");
-  assert(!sitemap.includes("https://zrzur.com/fr/legal/privacy"));
+  assert.doesNotMatch(sitemap, /https:\/\/zrzur\.com\/fr\/legal\/privacy\b/);
   assert(!sitemap.includes('hreflang="fr" href="https://zrzur.com/fr/legal/privacy"'));
   assert(sitemap.includes("<loc>https://zrzur.com/ar/legal/privacy</loc>"));
   assert(sitemap.includes("<loc>https://zrzur.com/fr/legal</loc>"));
@@ -389,7 +398,7 @@ test("plugins are not offered: no Plugin Policy and no plugin text in any policy
 
 test("each policy changed for the withdrawal says so in en, ar and de, with the 15 November version", () => {
   for (const slug of ["terms", "privacy", "community-guidelines", "enforcement-appeals"]) {
-    assert.equal(policyVersions[slug], "2026-11-15", slug);
+    assert.equal(policyVersions[slug], slug === "privacy" ? "2026-11-21" : "2026-11-15", slug);
     const changes = policy(slug).sections.find((s) => s.id === "changes");
     assert(changes, `${slug} has a changes section`);
     for (const lang of ["en", "ar", "de"]) assert.match(changes.body[lang], new RegExp(WITHDRAWN[lang].source), `${slug} ${lang}`);

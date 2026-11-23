@@ -1,17 +1,15 @@
 ---
-title: ¿Buscas una alternativa a Discord? Esto es todo lo que hace Zrzur
-summary: Servidores, canales de voz, pantalla compartida, roles y bots, de código abierto. Lo que ya conoces de Discord, cómo funciona en Zrzur y cómo traer a tu comunidad.
+title: ¿Buscas una alternativa a Discord? Esto hace Zrzur
+summary: Servidores, canales de voz, pantalla compartida, roles, eventos y bots, de código abierto. Lo que conoces de Discord y cómo traer a tu comunidad.
 date: 2026-11-13
 cover: /blog/discord-alternative/cover.jpg
 tags: alternativa a Discord, código abierto, chat de voz, comunidad
 ---
-Si llevas una comunidad en Discord, o simplemente pasas el rato allí con amigos, ya sabes cómo es una buena app de chat: un servidor para tu grupo, un canal para cada tema y un canal de voz al que entrar cuando quieras. Zrzur funciona igual. Es de código abierto, está alojado en la Unión Europea y está hecho para el árabe desde el principio. Este artículo repasa lo que ya conoces, muestra cómo funciona en Zrzur y explica cómo traer a tu comunidad.
+Si llevas una comunidad en Discord, o simplemente pasas el rato allí con amigos, ya sabes cómo es una buena app de chat: un servidor para tu grupo, un canal para cada tema y un canal de voz al que entrar cuando quieras. Zrzur funciona igual. Es de código abierto, está alojado en la Unión Europea y está hecho para el árabe desde el principio. Este artículo repasa lo que ya conoces, muestra cómo funciona en Zrzur y explica cómo traer a tu comunidad. Zrzur es un proyecto independiente y no tiene relación con Discord.
 
 ## La misma idea que ya conoces
 
 Zrzur gira en torno a los **servidores**. Un servidor es la casa de tu comunidad: lo creas en un minuto, le pones nombre e imagen e invitas a la gente con un enlace. Dentro, las **categorías** y los **canales** dan a cada tema su sitio. Si has usado Discord, aquí no hace falta explicar nada, y es a propósito: tu forma de hablar con tu gente no debería tener que cambiar.
-
-Lo que cambia es el precio. En Zrzur, lo de cada día no cuesta nada: hablar, llamar, compartir la pantalla y llevar una comunidad. En esta versión no hay nada que pagar: ni suscripción ni proceso de pago.
 
 ## Texto: canales, foros e hilos
 
@@ -19,13 +17,14 @@ Lo que cambia es el precio. En Zrzur, lo de cada día no cuesta nada: hablar, ll
 - Los **canales de foro** acogen las conversaciones más largas: cada publicación tiene sus respuestas y se puede ordenar por etiquetas.
 - Los **hilos** sacan una conversación paralela de un canal lleno sin perderla.
 - Los **mensajes** llevan imágenes, archivos, formato, emoji y reacciones, y cada servidor puede añadir **sus propios emoji**.
+- **Mensajes guardados** y **Recuérdamelo** guardan un mensaje para después o lo traen de vuelta a la hora que elijas.
 
 ## Voz, vídeo y pantalla compartida
 
-- Los **canales de voz** están siempre abiertos: entras con un clic y sales cuando quieres.
-- La **pantalla compartida** desde la propia llamada; pasa el cursor sobre quien está transmitiendo para ver una vista previa.
+- Los **canales de voz** son salas abiertas: entras con un clic y sales cuando quieras.
+- La **pantalla compartida** desde la propia llamada; pasa el ratón sobre quien está transmitiendo para ver una imagen de su pantalla.
 - Los **canales escenario** para charlas y eventos: quienes hablan hablan, el público escucha y cualquiera puede pedir la palabra.
-- La **mesa de sonidos**, con una biblioteca de más de cien sonidos que cualquier servidor puede añadir.
+- La **mesa de sonidos**, con una biblioteca de 115 sonidos que cualquier servidor puede añadir.
 - **Pulsar para hablar y sensibilidad de voz**, para que tu micrófono solo envíe lo que quieres decir.
 
 ## Llevar una comunidad
@@ -33,9 +32,10 @@ Lo que cambia es el precio. En Zrzur, lo de cada día no cuesta nada: hablar, ll
 Aquí se ve si una app de chat está hecha para comunidades o solo para grupos pequeños.
 
 - Los **roles y permisos** deciden quién puede leer, escribir y moderar, hasta en cada canal.
-- **Una página de bienvenida** para cada servidor, con su imagen, su banner y su descripción.
-- **Preguntas de intereses**: en su primera visita, los recién llegados responden unas pocas preguntas y reciben al momento los roles que les corresponden.
-- **Normas y solicitudes de acceso**: los nuevos miembros aceptan tus normas al unirse, y puedes aprobar a los miembros a mano.
+- **Una página de bienvenida** para tu servidor, con su icono, su banner y su descripción.
+- **Preguntas de bienvenida**: cuando abren el servidor por primera vez, los recién llegados responden unas pocas preguntas y reciben al momento los roles que les corresponden.
+- **Normas y solicitudes de acceso**: los nuevos miembros aceptan tus normas antes de escribir, y puedes aprobar a los miembros a mano.
+- **Eventos** para noches de juegos y quedadas: los miembros responden «Voy», «Quizá» o «No puedo».
 - **AutoMod** frena palabras bloqueadas, spam de menciones, spam de enlaces y mensajes repetidos. Puede bloquearlos, avisar a tu equipo o silenciar temporalmente a quien los envía.
 - **El registro de auditoría** muestra quién cambió qué.
 - **Pausa** las invitaciones y los mensajes directos durante un tiempo si tu servidor sufre un ataque.
@@ -63,11 +63,11 @@ Aquí se ve si una app de chat está hecha para comunidades o solo para grupos p
 4. Crea un enlace de invitación. Se ve como `zrzur.cc/tu-codigo` y funciona en cualquier navegador, nadie tiene que instalar nada.
 5. Comparte el enlace donde ya está tu comunidad y empezad a hablar.
 
-No hace falta mover a todo el mundo de golpe. Muchas comunidades empiezan con un canal o una llamada de voz semanal y crecen desde ahí.
+No hace falta mover a todo el mundo de golpe. Puedes empezar con un canal o una llamada de voz semanal y crecer desde ahí.
 
 ## Lo que aún no está
 
-Preferimos contártelo a que lo descubras tú. Algunas cosas que conoces de otras apps, como las encuestas y los eventos programados, aún no están activadas. Estamos trabajando en ellas, y este blog te contará cuándo llegan.
+Preferimos contártelo a que lo descubras tú: Zrzur es joven, y algunas cosas que conoces de otras apps aún no están. Dinos qué echas más de menos; en este blog contamos lo que construimos.
 
 ## Pruébalo
 

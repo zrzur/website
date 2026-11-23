@@ -20,13 +20,11 @@ import { canonicalUrl } from "../src/config.ts";
 import { legalDocuments } from "../src/legal.ts";
 import { localize } from "../src/content.ts";
 import { canonicalLanguage, metaDescription, metaTitle, pageLanguages } from "../src/seo.ts";
-import { heroPreload } from "../src/shots.ts";
-import { readProductVersions } from "./product-versions.mjs";
+import { SHOTS, heroPreload } from "../src/shots.ts";
+import { PRODUCT_VERSION, RELEASE_PAGE } from "../src/releases.ts";
 import { stripSsrScripts } from "./ssr-scripts.mjs";
 
-const productVersions = readProductVersions(fileURLToPath(new URL("../public/assets/product", import.meta.url)));
 /** the languages the app screens were captured in (src/App.tsx SHOT_LANGUAGES) */
-const shotLanguage = (code) => (["ar", "en", "de"].includes(code) ? code : "en");
 
 /**
  * The app renders each page here exactly as the browser will draw it
@@ -139,13 +137,16 @@ function structured(path, code, words) {
       alternateName: "زرزور",
       applicationCategory: "CommunicationApplication",
       operatingSystem: "Windows, macOS, Linux, Web",
+      softwareVersion: PRODUCT_VERSION,
       url: url("/", code),
-      downloadUrl: url("/download", code),
+      downloadUrl: RELEASE_PAGE,
+      installUrl: url("/download", code),
+      releaseNotes: url("/blog/everything-in-zrzur", canonicalLanguage("/blog/everything-in-zrzur", code)),
       description: t.seoHomeBody,
       inLanguage: tagOf(code),
-      isAccessibleForFree: true,
       license: "https://www.gnu.org/licenses/agpl-3.0.html",
-      offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
+      // no Offer and no price: search engines would show it as "free", which
+      // the site does not claim without the owner's word (website rule 2)
       publisher: { "@id": `${SITE}/#org` },
     });
   if (path === "/guide")
@@ -212,7 +213,9 @@ async function page(path, code) {
   const app = stripSsrScripts(await renderPage(localizedPath(path, code), code), `${path} ${code}`);
   if (/<(script)\b/.test(app)) throw new Error(`${path} ${code}: the rendered page carries a script`);
   // the first picture of the home page, in both shades, for theme.js
-  const hero = path === "/" ? `<meta name="zrzur-hero" content="${esc(JSON.stringify(heroPreload(productVersions, shotLanguage(code), "chat")))}" />` : "";
+  // the home page's first picture, once the owner's shot of it exists (src/shots.ts)
+  const heroFiles = path === "/" ? heroPreload(SHOTS, code) : null;
+  const hero = heroFiles ? `<meta name="zrzur-hero" content="${esc(JSON.stringify(heroFiles))}" />` : "";
   const head = [
     ...(notFound
       ? ['<meta name="robots" content="noindex" />']

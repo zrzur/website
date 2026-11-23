@@ -1,11 +1,11 @@
 ---
-title: Eine datenschutzfreundliche Chat-App aus der EU: was Zrzur speichert und wie lange
-summary: Wo die Server von Zrzur stehen, welche Firmen uns helfen, was verschlüsselt ist und was nicht, wie lange wir Protokolle aufbewahren und wie du deine Daten herunterlädst oder löschst. Klare Antworten.
+title: Chat aus der EU: was Zrzur speichert und wie lange
+summary: Wo die Server von Zrzur stehen, welche Firmen helfen, was verschlüsselt ist und was nicht, wie lange wir Daten speichern und wie du sie löschst.
 date: 2026-11-13
 cover: /blog/private-chat-eu/cover.jpg
-tags: Datenschutz, DSGVO, Chat-App EU, Datensicherheit, sicherer Chat
+tags: Datenschutz, DSGVO, Chat-App EU, Datensicherheit
 ---
-Wenn du eine Chat-App für deine Freunde oder deine Community auswählst, wählst du auch, wer deine Nachrichten aufbewahrt. Wir finden, das solltest du in einer Minute beantworten können, nicht nach vierzig Seiten. Dieser Beitrag gibt die klaren Antworten: wo Zrzur läuft, wer uns hilft, was wir speichern, wie lange und was du tun kannst. Alle Einzelheiten stehen in unserer [Datenschutzerklärung](/de/legal/privacy).
+Wenn du eine Chat-App für deine Freunde oder deine Community auswählst, wählst du auch, wer deine Nachrichten aufbewahrt. Wir finden, das solltest du in einer Minute beantworten können, nicht nach vierzig Seiten. Dieser Beitrag gibt die kurzen Antworten: wo Zrzur läuft, wer uns hilft, was wir speichern, wie lange und was du tun kannst. Alle Einzelheiten stehen in unserer [Datenschutzerklärung](/de/legal/privacy).
 
 ## Wo deine Daten liegen
 
@@ -15,13 +15,15 @@ Sprache und Video laufen auf **unserem eigenen Sprachserver** auf Basis der Open
 
 ## Die Firmen, die uns helfen
 
-Wir halten diese Liste kurz, und jede Firma darauf arbeitet für uns auf Grundlage eines Auftragsverarbeitungsvertrags:
+Diese Firmen verarbeiten Daten für uns auf Grundlage eines Auftragsverarbeitungsvertrags:
 
-- **Cloudflare** schützt unsere Server vor Angriffen und liefert die App aus. Der gesamte Datenverkehr läuft darüber. Cloudflare hat seinen Sitz in den USA; die Übermittlung stützt sich auf das EU-US Data Privacy Framework und die Standardvertragsklauseln.
-- **Cloudflare Turnstile** prüft, ob du ein Mensch bist, wenn du dich registrierst, dich nach mehreren falschen Passwörtern anmeldest, dein Passwort zurücksetzt, eine neue Bestätigungs-E-Mail anforderst oder das öffentliche Meldeformular absendest. Es nutzt keine Werbe-Cookies.
-- **Resend** verschickt Service-E-Mails wie Bestätigung und Passwort-Zurücksetzung. Es erhält deine E-Mail-Adresse und die E-Mail.
+- **Cloudflare** schützt unsere Server vor Angriffen und liefert die App aus. Der gesamte Datenverkehr zu unserer App und unseren Servern läuft darüber. Cloudflare hat seinen Sitz in den USA; die Übermittlung stützt sich auf das EU-US Data Privacy Framework und die Standardvertragsklauseln.
+- **Cloudflare Turnstile** prüft, ob du ein Mensch bist, wenn du dich registrierst, dich nach mehreren Fehlversuchen anmeldest, dein Passwort zurücksetzt, eine neue Bestätigungs-E-Mail anforderst oder das öffentliche Meldeformular absendest. Es nutzt keine Cookies für Werbung.
+- **Resend** verschickt Service-E-Mails wie Bestätigung und Passwort-Zurücksetzung. Es erhält deine E-Mail-Adresse und den Inhalt der E-Mail und speichert beides in den USA.
 
-Zahlungen sind nicht freigeschaltet, deshalb erhält kein Zahlungsdienst etwas von uns.
+Zwei weitere kommen nur ins Spiel, wenn du dich dafür entscheidest. Schaltest du Benachrichtigungen ein, laufen ein Benachrichtigungs-Token und der Inhalt der Benachrichtigung über den Push-Dienst deines Geräts oder Browsers. Und wenn du Zrzur über Ko-fi unterstützt, wickelt Ko-fi die Zahlung nach seiner eigenen Datenschutzerklärung ab; mit deinem Zrzur-Konto wird das nicht verknüpft.
+
+Zahlungen sind in Zrzur nicht freigeschaltet, deshalb erhält kein Zahlungsdienst etwas von uns.
 
 ## Was verschlüsselt ist und was nicht
 
@@ -29,21 +31,21 @@ Zahlungen sind nicht freigeschaltet, deshalb erhält kein Zahlungsdienst etwas v
 - Passwörter werden nur als **Hash** gespeichert, nie im Klartext.
 - Die **Anmeldung in zwei Schritten** steht allen offen, die sie möchten.
 
-In einem Punkt wollen wir ehrlich sein: Nachrichten sind **nicht Ende-zu-Ende-verschlüsselt**. Sie liegen auf unseren Servern, damit du sie auf jedem Gerät lesen kannst.
+In einem Punkt wollen wir deutlich sein: Nachrichten sind **nicht Ende-zu-Ende-verschlüsselt**. Sie liegen auf unseren Servern, damit du sie auf jedem Gerät lesen kannst.
 
 ## Was wir über dich speichern und wie lange
 
-Wir fragen so wenig wie möglich. Von deinem Geburtstag speichern wir nur **Monat und Jahr**, nie den Tag, um das Mindestalter von 16 Jahren anzuwenden. Manche Daten bewahren wir nur kurz auf:
+Von deinem Geburtstag speichern wir nur **Monat und Jahr**, nie den Tag, um das Mindestalter von 16 Jahren anzuwenden. Manche Daten bewahren wir nur kurz auf:
 
 - Webserver-Protokolle (IP-Adresse, Anfragen): **14 Tage**.
-- Sprach-Metadaten (wer wann einem Gespräch beigetreten ist): **30 Tage**.
-- Backups: Gelöschte Daten können **bis zu 30 Tage** in Backups bleiben, dann sind sie weg.
+- Sprach-Metadaten (wer wann beigetreten ist): **30 Tage**.
+- Backups: Gelöschte Daten können **bis zu 30 Tage** in Backups bleiben, dann werden sie gelöscht.
 
 Wir zeigen niemandem **Werbung auf Grundlage von Profiling**.
 
 ## Lade deine Daten herunter
 
-Unter **Einstellungen › Meine Daten** kannst du jederzeit eine Kopie deiner Daten anfordern, einmal alle 24 Stunden. Du bestätigst mit deinem Passwort oder dem Code der Zwei-Schritt-Anmeldung. Wenn die Datei fertig ist, sagen wir dir Bescheid; der Link gilt **7 Tage**, dann wird die Datei gelöscht. Andere Personen erscheinen darin nur als Nutzernummern.
+Unter **Einstellungen › Meine Daten** kannst du eine Kopie deiner Daten in einem gängigen, maschinenlesbaren Format herunterladen. Die Datei bleibt **7 Tage** bestehen, dann wird sie gelöscht.
 
 ## Lösche dein Konto
 
@@ -51,9 +53,9 @@ Du kannst dein Konto selbst löschen. Du bestätigst per E-Mail, das Konto ist *
 
 ## Noch mehr Privatsphäre
 
-- **Aktive Sitzungen**: Sieh, wo du angemeldet bist, und beende jede Sitzung jederzeit.
-- Der **Streamer-Modus** versteckt deine E-Mail, deinen Tag, Einladungslinks und die Vorschau von Direktnachrichten, während du streamst.
-- 16- und 17-Jährige bekommen Direktnachrichten **nur von ihren Freunden**.
+- **Sitzungen**: Sieh, wo du angemeldet bist, und beende jede Sitzung jederzeit.
+- Der **Streamer-Modus** verbirgt deine E-Mail, deinen Tag, Einladungslinks und die Vorschau von Direktnachrichten, während du streamst.
+- Mit 16- und 17-Jährigen können nur ihre Freunde eine Direktnachricht beginnen.
 
 ## Open Source
 
@@ -61,4 +63,4 @@ Zrzur ist Open Source unter der AGPL-Lizenz, wie es funktioniert, ist also kein 
 
 ## Probier es aus
 
-[Öffne Zrzur](https://app.zrzur.com) und lege ein Konto an; es gibt nichts zu bezahlen. Fragen zu deinen Daten gehen an privacy@zrzur.com. Was Zrzur alles kann, liest du in [Zrzur als Discord-Alternative](/de/blog/discord-alternative).
+[Öffne Zrzur](https://app.zrzur.com) und lege ein Konto an. Fragen zu deinen Daten gehen an privacy@zrzur.com. Was Zrzur alles kann, liest du in [Zrzur als Discord-Alternative](/de/blog/discord-alternative).

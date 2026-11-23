@@ -15,7 +15,7 @@ Also haben wir beschlossen, darauf ein eigenes Produkt zu bauen: ein neues Desig
 
 ## Was das heute heißt
 
-Jeder Server hat eine Willkommensseite mit Symbol, Banner und Beschreibung. Sprachkanäle bleiben offen: Ein Klick, und du bist drin, und den Bildschirm teilst du direkt im Gespräch. Rollen und Berechtigungen legen fest, wer liest, wer schreibt und wer moderiert, und Neue wählen beim ersten Besuch ihre Interessen. Öffentliche Server findest du nach Thema. Die App gibt es in vielen Sprachen, Arabisch, Englisch und Deutsch prüfen wir Zeile für Zeile.
+Jeder Server kann eine Willkommensseite mit Symbol, Banner und Beschreibung haben. Sprachkanäle sind offene Räume: Ein Klick, und du bist drin, und den Bildschirm teilst du direkt im Gespräch. Rollen und Berechtigungen legen fest, wer liest, wer schreibt und wer moderiert, und Neue wählen beim ersten Besuch ihre Interessen. Mit Events plant ein Server Spieleabende und Treffen, und öffentliche Server findest du nach Thema. Die App gibt es in vielen Sprachen, Arabisch, Englisch und Deutsch prüfen wir Zeile für Zeile.
 
 ## Was wir bewahren
 

@@ -2,7 +2,6 @@ import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import solid from 'vite-plugin-solid';
 import { buildDefine, readReleaseInfo } from './scripts/release-info.mjs';
-import { readProductVersions } from './scripts/product-versions.mjs';
 import { thirdPartyNotices } from './scripts/third-party-notices.mjs';
 import { noticesPages, noticesPagesPlugin } from './scripts/notices-page.mjs';
 import { sourcePages, sourcePagesPlugin, sourceRows } from './scripts/source-page.mjs';
@@ -36,13 +35,10 @@ const noticePages = noticesPages(LOCALES, (code) => packs[code as keyof typeof p
 /** The /source page in every site language (scripts/source-page.mjs): this build plus the release manifest */
 const sourcePageList = sourcePages(LOCALES, (code) => packs[code as keyof typeof packs].labels);
 
-/** Content hash per product picture (scripts/product-versions.mjs) */
-export const productVersions = readProductVersions(`${assets}/product`);
 
 export default defineConfig(({ isSsrBuild }) => ({
   define: {
     __ZRZUR_BUILD__: buildDefine(releaseInfo, 'website'),
-    __PRODUCT_VERSIONS__: JSON.stringify(productVersions),
   },
   // the --ssr build (src/entry-server.tsx) renders the pages to HTML for
   // scripts/prerender.mjs; it stays in build/ssr and is never served

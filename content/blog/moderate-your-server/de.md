@@ -1,6 +1,6 @@
 ---
-title: So schützt du deinen Community-Server: AutoMod, Slowmode und Notfall-Pausen
-summary: Rollen, AutoMod-Filter, Slowmode, Timeouts, Sperren, das Protokoll und Pausen per Klick bei Raids. Ein praktischer Leitfaden für die Moderation einer Community auf Zrzur.
+title: Schütze deinen Server: AutoMod, Slowmode und Notfall-Pausen
+summary: Rollen, AutoMod-Filter, Slowmode, Timeouts, Sperren, das Protokoll und Pausen bei Raids. Ein praktischer Leitfaden für die Moderation auf Zrzur.
 date: 2026-11-13
 cover: /blog/moderate-your-server/cover.jpg
 tags: Moderation, AutoMod, Community-Sicherheit, Server-Moderation, Anti-Spam
@@ -21,57 +21,57 @@ Lass in Ankündigungskanälen nur dein Team schreiben, und gib neuen Mitgliedern
 
 ## AutoMod: Filter, die arbeiten, während du schläfst
 
-**AutoMod** prüft jede Nachricht, bevor sie erscheint. Du findest ihn unter **Servereinstellungen › Schutz**, bei den Filtern. Jede Regel sucht nach einer Sache:
+**AutoMod** prüft Nachrichten, bevor sie erscheinen. Du findest ihn unter **Servereinstellungen › Sicherheit**, bei den Filtern. Jede Regel sucht nach einer Sache:
 
-- **Gesperrte Wörter**: Wörter und Sätze, eins pro Zeile. Setz `*` an den Anfang oder das Ende, um einen Teil eines Wortes zu treffen, und führe eine Liste von Wörtern, die **immer erlaubt** sind. Eine fertige Liste **arabischer Beleidigungen** steht zum Start bereit.
+- **Gesperrte Wörter**: Wörter und Sätze, eins pro Zeile. Setz `*` an den Anfang oder das Ende, um einen Teil eines Wortes zu treffen, und führe eine Liste von Wörtern, die **immer erlaubt** sind. Eine optionale Liste häufiger **arabischer Beleidigungen** steht zum Start bereit: Schalte sie ein, und sie wird zu einer Regel, die du bearbeiten kannst.
 - **Erwähnungsspam**: die meisten Erwähnungen, die in einer Nachricht erlaubt sind.
 - **Linkspam**: Links von Mitgliedern, die vor weniger als 10 Minuten, 1 Stunde, 1 Tag oder 7 Tagen beigetreten sind. Du kannst **erlaubte Domains** festlegen, die immer in Ordnung sind.
-- **Wiederholte Nachrichten**: der gleiche Text in mehreren Kanälen innerhalb weniger Sekunden, das klassische Spam-Muster.
+- **Wiederholte Nachrichten**: der gleiche Text in mehreren Kanälen innerhalb einer kurzen Zeit, die du festlegst, das klassische Spam-Muster.
 
-Wenn eine Regel greift, kann AutoMod eins oder mehreres tun: die Nachricht **blockieren**, eine **Warnung** an einen Kanal deines Teams **senden** und den Absender für 1 Minute, 10 Minuten, 1 Stunde, 1 Tag oder 7 Tage **stummschalten**. Der Absender sieht einen kurzen Hinweis, dass seine Nachricht blockiert wurde.
+Wenn eine Regel greift, kann AutoMod eins oder mehreres tun: die Nachricht **blockieren**, eine **Warnung** an einen Kanal deines Teams **senden** und dem Absender ein **Timeout** von 1 Minute, 10 Minuten, 1 Stunde, 1 Tag oder 7 Tagen geben. Der Absender sieht einen kurzen Hinweis, dass der AutoMod des Servers seine Nachricht blockiert hat.
 
 ## Slowmode für volle Kanäle
 
-Wenn ein Kanal zu schnell läuft, um mitzulesen, schalte in den Kanaleinstellungen den **Slowmode** ein. Dann muss jedes Mitglied zwischen zwei Nachrichten kurz warten. Rollen, die frei reden müssen, etwa dein Team, können **vom Slowmode ausgenommen** sein.
+Wenn ein Kanal zu schnell läuft, um mitzulesen, schalte in den Kanaleinstellungen den **langsamen Modus** ein. Dann muss jedes Mitglied zwischen zwei Nachrichten kurz warten. Rollen, die frei reden müssen, etwa dein Team, können **vom Slowmode ausgenommen** sein.
 
 ## Timeouts, Kicks und Sperren
 
 Nicht jedes Problem braucht eine Sperre.
 
-- Ein **Timeout** schaltet jemanden für eine Weile stumm: lesen geht, schreiben und sprechen nicht.
+- Ein **Timeout** hält jemanden für eine Weile raus: Lesen geht, Schreiben und Sprechen nicht.
 - Ein **Kick** wirft jemanden aus dem Server; mit einer neuen Einladung kann er zurückkommen.
 - Eine **Sperre** entfernt ihn dauerhaft: Gesperrte können nicht zurück, auch nicht mit einer Einladung, bis du die Sperre aufhebst.
 
-Wenn du gegen ein Mitglied vorgehst, schreibst du einen **Grund**. Er wird im Protokoll gespeichert, damit der Rest deines Teams weiß, warum.
+Wenn du gegen ein Mitglied vorgehst, kannst du einen **Grund** angeben. Er wird im Protokoll gespeichert, damit der Rest deines Teams weiß, warum.
 
 ## Wer beitreten kann
 
 Unter **Servereinstellungen › Beitritt** legst du fest, wie Leute hereinkommen:
 
-- **Prüfung**: Verlange eine bestätigte E-Mail-Adresse oder eine bestätigte E-Mail und ein Konto, das älter als 5 Minuten ist, bevor jemand schreiben kann.
-- **Zu akzeptierende Regeln**: Neue Mitglieder lesen und akzeptieren beim Beitritt deine Regeln.
+- **Verifizierung**: Bevor jemand schreiben kann, verlangst du eine bestätigte E-Mail-Adresse; oder eine bestätigte E-Mail und ein Konto, das älter als 5 Minuten ist; oder all das und 10 Minuten in deinem Server.
+- **Zu akzeptierende Regeln**: Neue Mitglieder lesen und akzeptieren deine Regeln, bevor sie schreiben.
 - **Beitrittsanfragen**: Statt sofort beizutreten, schicken die Leute eine Anfrage, und dein Team nimmt sie von Hand an.
 
-## Notfall: alles mit einem Klick pausieren
+## Notfall: pausieren mit einem Klick
 
-Manchmal wird ein Server angegriffen: Viele neue Konten treten auf einmal bei und fangen an zu posten. Dafür gibt es **Servereinstellungen › Schutz**, beim Notfall. Mit einem Klick kannst du:
+Manchmal wird ein Server angegriffen: Viele neue Konten treten auf einmal bei und fangen an zu posten. Dafür gibt es **Servereinstellungen › Sicherheit**, beim Notfall. Mit einem Klick kannst du:
 
 - **Einladungen pausieren**: Niemand Neues kann beitreten, auch nicht mit einem Link.
 - **Direktnachrichten pausieren** zwischen den Mitgliedern deines Servers.
 
-Jede Pause dauert **1 Stunde, 6 Stunden, 12 Stunden oder 1 Tag**, und du kannst sie mit **Jetzt beenden** früher aufheben. Die Leute sehen einen kurzen Hinweis, dass der Server neue Mitglieder gerade pausiert hat.
+Jede Pause dauert **1 Stunde, 6 Stunden, 12 Stunden oder 1 Tag**, und du kannst sie mit **Jetzt beenden** früher aufheben. Wer in der Zeit beitreten will, sieht einen kurzen Hinweis, dass der Server neue Mitglieder gerade pausiert hat.
 
 ## Das Protokoll: wer hat was geändert
 
-Das **Protokoll** listet jede Änderung in deinem Server auf: Rollen, Kanäle, Sperren, Einstellungen, und wer sie gemacht hat, mit Grund. Wenn etwas komisch aussieht, schaust du zuerst hier.
+Das **Protokoll** listet die Änderungen in deinem Server auf: Rollen, Kanäle, Sperren und Einstellungen, wer sie gemacht hat und mit welchem Grund. Wenn etwas komisch aussieht, schaust du zuerst hier.
 
-## Statistiken: wie es deiner Community geht
+## Einblicke: wie es deiner Community geht
 
-Die **Statistiken** zeigen, wie dein Server wächst: Nachrichten pro Kanal, wer beigetreten ist und wer gegangen ist, und wie viele Leute jeden Tag schreiben. Ein plötzlicher Sprung bei den Beitritten ist oft das erste Zeichen, dass etwas nicht stimmt.
+Die **Einblicke** zeigen, wie dein Server wächst: Nachrichten pro Kanal, wer beigetreten ist und wer gegangen ist, und wie viele Leute jeden Tag schreiben. Ein plötzlicher Sprung bei den Beitritten ist oft das erste Zeichen, dass etwas nicht stimmt.
 
 ## Wann du uns etwas meldest
 
-Deine Werkzeuge kümmern sich um deinen Server. Bei allem Illegalen oder bei einer Person, die anderen über mehrere Server hinweg schadet, **melde** die Nachricht, das Profil oder den Server. Unser Team prüft jede Meldung. Konten von 16- und 17-Jährigen bekommen Direktnachrichten nur von ihren Freunden.
+Deine Werkzeuge kümmern sich um deinen Server. Bei allem Illegalen oder bei einer Person, die anderen über mehrere Server hinweg schadet, **melde** die Nachricht, das Profil oder den Server, und unser Team prüft die Meldung. Mit 16- und 17-Jährigen können außerdem nur ihre Freunde eine Direktnachricht beginnen.
 
 ## Probier es aus
 

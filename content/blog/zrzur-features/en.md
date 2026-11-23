@@ -1,6 +1,6 @@
 ---
 title: Zrzur: why we built it, and everything it can do
-summary: Chat should not cost a monthly fee. We took an open-source chat project, redesigned every screen and added much more. Here is why, and everything Zrzur can do today.
+summary: We took an open-source chat project, redesigned every screen and added much more. Here is why we built Zrzur, and everything it can do today.
 date: 2026-11-12
 cover: /blog/zrzur-features/cover.jpg
 tags: Discord alternative, open source, servers, voice chat
@@ -9,9 +9,9 @@ Zrzur is a place where friends and communities meet: servers with text and voice
 
 ## Why we built Zrzur
 
-Chat apps used to be simple: you made a server, invited your friends, and talked. Over the years, more and more of what made Discord fun moved behind a monthly subscription. Bigger uploads, sharper screen sharing, your own emoji everywhere, the look of your profile: one paid extra after another. We are not against paying for something good, but talking with your friends should not need a credit card.
+Chat apps used to be simple: you made a server, invited your friends, and talked. We wanted that simplicity back, in an app that is open source, hosted in the European Union and made for Arabic from the start, not translated as an afterthought.
 
-We wanted a place where the everyday things cost nothing: talking, calling, sharing your screen and running a community.
+We wanted a place where the everyday things just work: talking, calling, sharing your screen and running a community.
 
 ## Where Zrzur comes from
 
@@ -29,20 +29,25 @@ Every community gets a server, and every topic gets a place inside it.
 - **Forum channels** hold longer discussions, each post with its own replies, sorted by tags.
 - **Threads** take a side conversation out of a busy channel without losing it.
 - **Messages** carry images, files, formatting, emoji and reactions. Each server can add its own emoji.
+- **Saved messages** and **Remind me**: keep a message for later, or have it come back to you at the time you pick.
 
 ## Voice, video and screen sharing
 
-- **Voice channels** are always open: you join in one click and leave when you want.
-- **Screen sharing** from inside the call, with a preview when you hover over someone who is streaming.
+- **Voice channels** are open rooms: you join in one click and leave when you want.
+- **Screen sharing** from inside the call; hover over someone who is streaming to see a still of their screen.
 - **Stage channels** for talks and events: speakers talk, listeners listen, and anyone can ask to speak.
-- **Soundboard**: short sounds you play into the call, with a ready library of more than a hundred sounds that any server can add.
-- **Push-to-talk and voice sensitivity**, so your microphone sends only what you mean to say.
+- **Soundboard**: short sounds you play into the call, with a ready library of 115 sounds that any server can add.
+- **Push-to-talk and input sensitivity**, so your microphone sends only what you mean to say.
 
 ## A welcome that fits your community
 
-- Every server has a **welcome page** with its icon, banner and description.
-- On their first visit, newcomers **pick their interests** by answering a few questions, and get the matching roles at once. They can skip it and change it later.
-- **Rules**: new members accept your server's rules when they join, and **join requests** let you approve members by hand.
+- Every server can have a **welcome page** with its icon, banner and description.
+- When they first open the server, newcomers **pick their interests** by answering a few questions, and get the matching roles at once. They can skip it and change it later.
+- **Rules**: new members accept your server's rules before they write, and **join requests** let you approve members by hand.
+
+## Events
+
+- **Events** let a server plan game nights and meetups. Members answer Going, Maybe or Can't go, and an Events row shows for everyone.
 
 ## Roles, moderation and safety
 
@@ -51,7 +56,7 @@ Every community gets a server, and every topic gets a place inside it.
 - The **audit log** shows who changed what in your server.
 - **Pause** invites and direct messages for a while when a server is under attack.
 - **Server insights** show how your community grows: messages per channel, people who joined and left, and how many people write each day.
-- Anyone can **report** a message, a profile or a server, and our team reviews it. Accounts of people aged 16 and 17 get direct messages only from their friends.
+- Anyone can **report** a message, a profile or a server, and our team reviews it. Only friends can start a direct message with people aged 16 and 17.
 
 ## Discover: find your community
 
@@ -71,12 +76,13 @@ Developers can build **bots and apps** for Zrzur. A verified bot carries a clear
 - **Dark or light**, with an accent colour you choose.
 - **Keyboard shortcuts** for what you do most; press Ctrl+/ to see them all.
 - **Streamer mode** hides your personal details while you stream.
-- **Reduced motion** for anyone who prefers less animation.
-- **Arabic, English and German** are checked line by line, Arabic fully from right to left, and the app speaks many more languages.
+- **Reduce motion** for anyone who prefers less animation.
+- **Save data**: on this device, GIFs and videos wait until you tap them, and animated emoji show still.
+- **Arabic, English and German** are checked line by line, Arabic fully from right to left, and the app offers many other languages.
 
 ## Your account, your data
 
-- **Two-step sign-in** and a list of your active sessions, which you can end at any time.
+- **Two-step sign-in** and a list of your sessions, which you can end at any time.
 - **Download your data** whenever you want.
 - **Delete your account** yourself: it locks at once and is erased 14 days later.
 - We do not show anyone advertising based on profiling.
@@ -87,4 +93,4 @@ Zrzur runs in any current browser, on a computer or a phone. For your computer t
 
 ## Open, and staying open
 
-There is nothing to pay for anything in this post in this version. Zrzur is at its beginning, and this blog is where we tell you what we build and why. [Open Zrzur](https://app.zrzur.com), make a server for your friends, and tell us what is missing.
+Zrzur is at its beginning, and this blog is where we tell you what we build and why. [Open Zrzur](https://app.zrzur.com), make a server for your friends, and tell us what is missing.

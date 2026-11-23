@@ -1,6 +1,16 @@
 // Written by scripts/generate-sitemap.mjs from content/blog; do not edit by hand.
 /** The languages each blog post is written in */
 export const postLanguages: Record<string, readonly string[]> = {
+  "everything-in-zrzur": [
+    "en",
+    "de",
+    "ar"
+  ],
+  "why-it-looks-familiar": [
+    "en",
+    "de",
+    "ar"
+  ],
   "arabic-chat-app": [
     "en",
     "de",

@@ -15,16 +15,35 @@ test("every part names a version and a full commit", () => {
   }
 });
 
-test("every desktop file carries the desktop version in its name, a SHA-256 and a size", () => {
+test("every desktop file is on the GitHub release of the desktop version", () => {
   const files = Object.values(DESKTOP_DOWNLOADS).flat();
   assert.equal(files.length, 6);
+  const release = `https://github.com/zrzur/desktop/releases/download/v${RELEASES.desktop.version}/`;
   for (const file of files) {
-    assert.ok(file.url.startsWith("/downloads/"), file.url);
+    assert.ok(file.url.startsWith(release), file.url);
     assert.ok(file.url.includes(`-${RELEASES.desktop.version}`) || file.url.includes(`_${RELEASES.desktop.version}_`), `${file.url} is not ${RELEASES.desktop.version}`);
-    assert.match(file.sha256, /^[0-9a-f]{64}$/, file.url);
-    assert.ok(file.size > 0, file.url);
+    // a checksum and a size, or both still open (then CI refuses to build, see below)
+    if (file.sha256 !== null) {
+      assert.match(file.sha256, /^[0-9a-f]{64}$/, file.url);
+      assert.ok(file.size > 0, file.url);
+    }
   }
-  assert.equal(new Set(files.map((f) => f.sha256)).size, files.length, "two files share a checksum");
+  const sums = files.map((f) => f.sha256).filter(Boolean);
+  assert.equal(new Set(sums).size, sums.length, "two files share a checksum");
+});
+
+test("a CI build refuses a release whose files are not filled in", async () => {
+  const { releaseProblems } = await import("../scripts/check-release-ready.mjs");
+  const file = (sha256, size) => ({ url: "https://github.com/zrzur/desktop/releases/download/v1.0.0/a.zip", sha256, size });
+  assert.deepEqual(releaseProblems(false, { windows: [file("a".repeat(64), 10)] }), []);
+  assert.equal(releaseProblems(true, { windows: [file("a".repeat(64), 10)] }).length, 1);
+  assert.equal(releaseProblems(false, { windows: [file(null, null)] }).length, 2);
+  const { slotProblems } = await import("../scripts/check-release-ready.mjs");
+  const full = { "ar-d1": {}, "en-d1": {}, "ar-m2": {}, "en-m2": {}, "de-m2": {} };
+  assert.deepEqual(slotProblems({ d1: {}, m2: {} }, full), []);
+  assert.deepEqual(slotProblems({ d1: {}, m2: {} }, { ...full, "de-m2": undefined }), ["no screenshot de-m2 (src/shots.ts)"]);
+  const pkg = JSON.parse(await (await import("node:fs/promises")).readFile(new URL("../package.json", import.meta.url), "utf8"));
+  assert.match(pkg.scripts.build, /^node --experimental-strip-types scripts\/check-release-ready\.mjs && /);
 });
 
 test("the shown version follows the manifest", () => {

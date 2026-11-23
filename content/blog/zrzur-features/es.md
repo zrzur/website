@@ -1,6 +1,6 @@
 ---
 title: Zrzur: por qué lo creamos y todo lo que puede hacer
-summary: Chatear no debería costar una suscripción. Rediseñamos un proyecto de código abierto y añadimos mucho más. Aquí está el porqué, y todo lo que hace Zrzur.
+summary: Tomamos un proyecto de chat de código abierto, rediseñamos cada pantalla y añadimos mucho más. Aquí está por qué creamos Zrzur, y todo lo que hace hoy.
 date: 2026-11-12
 cover: /blog/zrzur-features/cover.jpg
 tags: alternativa a Discord, código abierto, servidores, chat de voz
@@ -9,9 +9,9 @@ Zrzur es un lugar donde se reúnen amigos y comunidades: servidores con canales 
 
 ## Por qué creamos Zrzur
 
-Las apps de chat eran sencillas: creabas un servidor, invitabas a tus amigos y hablabais. Con los años, cada vez más de lo que hacía divertido a Discord pasó detrás de una suscripción mensual: archivos más grandes, una pantalla compartida más nítida, tus propios emojis en todas partes, el aspecto de tu perfil, un extra de pago tras otro. No estamos en contra de pagar por algo bueno, pero hablar con tus amigos no debería necesitar una tarjeta de crédito.
+Las apps de chat eran sencillas: creabas un servidor, invitabas a tus amigos y hablabais. Queríamos recuperar esa sencillez en una app de código abierto, alojada en la Unión Europea y pensada para el árabe desde el principio, no traducida a última hora.
 
-Queríamos un lugar donde lo de todos los días no cueste nada: escribir, llamar, compartir pantalla y llevar una comunidad.
+Queríamos un lugar donde lo de todos los días simplemente funcione: escribir, llamar, compartir pantalla y llevar una comunidad.
 
 ## De dónde viene Zrzur
 
@@ -29,20 +29,25 @@ Cada comunidad tiene su servidor, y cada tema su lugar dentro de él.
 - **Los canales de foro** recogen las conversaciones más largas: cada publicación tiene sus propias respuestas, ordenadas por etiquetas.
 - **Los hilos** sacan una conversación paralela de un canal concurrido sin que se pierda.
 - **Los mensajes** llevan imágenes, archivos, formato, emojis y reacciones. Cada servidor puede añadir sus propios emojis.
+- **Mensajes guardados** y **Recuérdamelo**: guarda un mensaje para después, o haz que vuelva a ti a la hora que elijas.
 
 ## Voz, vídeo y pantalla compartida
 
-- **Los canales de voz** están siempre abiertos: entras con un clic y sales cuando quieras.
-- **Pantalla compartida** desde la propia llamada, con una vista previa al pasar el ratón sobre quien está transmitiendo.
+- **Los canales de voz** son salas abiertas: entras con un clic y sales cuando quieras.
+- **Pantalla compartida** desde la propia llamada; pasa el ratón sobre quien está transmitiendo para ver una imagen de su pantalla.
 - **Los canales de escenario** para charlas y eventos: los ponentes hablan, el público escucha y cualquiera puede pedir la palabra.
-- **Panel de sonidos**: sonidos cortos para la llamada, con una biblioteca de más de cien sonidos que cualquier servidor puede añadir.
+- **Panel de sonidos**: sonidos cortos para la llamada, con una biblioteca de 115 sonidos que cualquier servidor puede añadir.
 - **Pulsar para hablar y sensibilidad del micrófono**, para que tu micrófono envíe solo lo que quieres decir.
 
 ## Una bienvenida a la medida de tu comunidad
 
-- Cada servidor tiene una **página de bienvenida** con su icono, su banner y su descripción.
-- En su primera visita, los recién llegados **eligen sus intereses** respondiendo unas pocas preguntas y reciben al momento los roles que les corresponden. Pueden saltarse este paso y cambiarlo después.
-- **Las normas**: los miembros nuevos aceptan las normas de tu servidor al unirse, y **las solicitudes de acceso** te dejan aprobar a los miembros tú mismo.
+- Cada servidor puede tener una **página de bienvenida** con su icono, su banner y su descripción.
+- Cuando abren el servidor por primera vez, los recién llegados **eligen sus intereses** respondiendo unas pocas preguntas y reciben al momento los roles que les corresponden. Pueden saltarse este paso y cambiarlo después.
+- **Las normas**: los miembros nuevos aceptan las normas de tu servidor antes de escribir, y **las solicitudes de acceso** te dejan aprobar a los miembros tú mismo.
+
+## Eventos
+
+- **Los eventos** permiten a un servidor planear noches de juegos y quedadas. Los miembros responden «Voy», «Quizá» o «No puedo», y una fila de Eventos aparece para todos.
 
 ## Roles, moderación y seguridad
 
@@ -51,7 +56,7 @@ Cada comunidad tiene su servidor, y cada tema su lugar dentro de él.
 - **El registro de auditoría** muestra quién cambió qué en tu servidor.
 - **Pausa** las invitaciones y los mensajes directos durante un tiempo cuando tu servidor sufre un ataque.
 - **Las estadísticas del servidor** muestran cómo crece tu comunidad: mensajes por canal, quién entró y quién se fue, y cuántas personas escriben cada día.
-- Cualquiera puede **denunciar** un mensaje, un perfil o un servidor, y nuestro equipo revisa la denuncia. Las cuentas de personas de 16 y 17 años solo reciben mensajes directos de sus amigos.
+- Cualquiera puede **denunciar** un mensaje, un perfil o un servidor, y nuestro equipo revisa la denuncia. Solo sus amigos pueden iniciar un mensaje directo con personas de 16 y 17 años.
 
 ## Descubrir: encuentra tu comunidad
 
@@ -72,11 +77,12 @@ Quienes desarrollan pueden crear **bots y aplicaciones** para Zrzur. Un bot veri
 - **Atajos de teclado** para lo que más haces; pulsa Ctrl+/ para verlos todos.
 - **El modo streamer** oculta tus datos personales mientras transmites.
 - **Menos movimiento** para quien prefiere menos animación.
+- **Ahorro de datos**: en este dispositivo, los GIF y los vídeos esperan a que los toques, y los emojis animados se muestran quietos.
 - **El árabe, el inglés y el alemán** se revisan línea por línea, el árabe por completo de derecha a izquierda, y la app habla muchos idiomas más.
 
 ## Tu cuenta, tus datos
 
-- **Inicio de sesión en dos pasos** y una lista de tus sesiones activas, que puedes cerrar cuando quieras.
+- **Inicio de sesión en dos pasos** y una lista de tus sesiones, que puedes cerrar cuando quieras.
 - **Descarga tus datos** cuando quieras.
 - **Elimina tu cuenta** tú mismo: se bloquea al instante y se borra 14 días después.
 - No mostramos a nadie publicidad basada en perfiles.
@@ -87,4 +93,4 @@ Zrzur funciona en cualquier navegador actual, en el ordenador o en el móvil. Pa
 
 ## Abierto, y seguirá abierto
 
-En esta versión no hay nada que pagar por lo que cuenta este artículo. Zrzur está empezando, y este blog es donde te contamos qué construimos y por qué. [Abre Zrzur](https://app.zrzur.com), crea un servidor para tus amigos y dinos qué le falta.
+Zrzur está empezando, y este blog es donde te contamos qué construimos y por qué. [Abre Zrzur](https://app.zrzur.com), crea un servidor para tus amigos y dinos qué le falta.
