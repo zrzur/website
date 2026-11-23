@@ -364,7 +364,7 @@ test("pages in English under another prefix point at the English page", async ()
   assert.equal(pageLanguages("/legal").length, LOCALES.length);
   assert.equal(canonicalLanguage("/report", "zh"), "zh");
   const sitemap = await readFile(new URL("../public/sitemap.xml", import.meta.url), "utf8");
-  assert(!sitemap.includes("https://zrzur.com/fr/legal/privacy"));
+  assert.doesNotMatch(sitemap, /https:\/\/zrzur\.com\/fr\/legal\/privacy\b/);
   assert(!sitemap.includes('hreflang="fr" href="https://zrzur.com/fr/legal/privacy"'));
   assert(sitemap.includes("<loc>https://zrzur.com/ar/legal/privacy</loc>"));
   assert(sitemap.includes("<loc>https://zrzur.com/fr/legal</loc>"));
