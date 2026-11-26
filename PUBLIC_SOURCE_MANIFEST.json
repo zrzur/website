@@ -1768,43 +1768,43 @@
     },
     {
       "path": "src/locales/ar.ts",
-      "sha256": "795cf19b2b1f1b104282be6629c20667c3c6e9cdd7b2a1a550ebd0a65ae92fee",
-      "bytes": 33374,
+      "sha256": "fcf9c71b6af54ee64d4dbe6a08f362b171a5d3d8a02b661fc7ec929a5f5c56b5",
+      "bytes": 33376,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/de.ts",
-      "sha256": "15c22e872214d651ddc6e6eba450eaa241ddeb93d2833760c648ca0b1a453493",
-      "bytes": 26701,
+      "sha256": "2f01ca1dcf6c70608233e2a3f9dc4bed8cb1f970e2637a08594e559c02620929",
+      "bytes": 26703,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/en.ts",
-      "sha256": "f95a1dc900436e0c8a478921949db13e4b03eb08a2858696072650c76a3c798d",
-      "bytes": 24650,
+      "sha256": "af9e764c1977d9f10c6c276abe3f588617bba691b8aa2c1afbacfd5748630488",
+      "bytes": 24651,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/es.ts",
-      "sha256": "b5d6728d8b9f7b4bc11d0e4b4581d6339e992954669f3357f3c50df9dfcac84c",
-      "bytes": 26499,
+      "sha256": "6fe5efad5645452c7dfd55dc7bc09a7fff45d9d08d0f6d3c174dd59734bdc7c4",
+      "bytes": 26505,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/fr.ts",
-      "sha256": "c43259c75421689925d4628c05489fc0df4bc5d71def814dd1e5c653e9e5dc8b",
+      "sha256": "5e99fe62ccb9691a94e51b16c7e07616ba3a8d75e343e08ff8f8e09a662bce51",
       "bytes": 27860,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/ru.ts",
-      "sha256": "ddcb9aea5a7a3b07bc4248a44b2085f2a112b63236769099d20ed7ea1f676fc6",
-      "bytes": 38943,
+      "sha256": "be3677bf6fd6e29dd6a3f93b52a341858a4068bd31e8f9a134b8e76d30c4beeb",
+      "bytes": 38947,
       "category": "product-source-or-build-manifest"
     },
     {
       "path": "src/locales/zh.ts",
-      "sha256": "32c367b3396e5165e92e811065565bb95cf8c5f0ba2e932843f981587c171ed8",
+      "sha256": "b6311de0dd7f87b6e092ef5babae27049dec89adb5513d7445d427cf83c81df0",
       "bytes": 23893,
       "category": "product-source-or-build-manifest"
     },
@@ -1888,7 +1888,7 @@
     },
     {
       "path": "src/releases.ts",
-      "sha256": "7dfa92e4f9282b53e187ae25088716751b42cced0df1741b69b6e404acce947d",
+      "sha256": "02389a00ca8b272b1bd60d41fa194ad687c1519ab8124179580c1a4814b09d20",
       "bytes": 5516,
       "category": "product-source-or-build-manifest"
     },
