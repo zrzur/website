@@ -1,7 +1,7 @@
-import { doc, list, para, REVISION_2026_11_15, revisedOn, section } from "./shared.ts";
+import { doc, list, para, REVISION_2026_11_28, revisedOn, section } from "./shared.ts";
 
 // 15 November 2026: plugins are not offered; the Plugin Policy was withdrawn
-export const communityGuidelines = revisedOn(REVISION_2026_11_15, doc({
+export const communityGuidelines = revisedOn(REVISION_2026_11_28, doc({
   slug: "community-guidelines",
   group: "everyone",
   title: { en: "Community Guidelines", ar: "إرشادات المجتمع",
@@ -111,21 +111,21 @@ export const communityGuidelines = revisedOn(REVISION_2026_11_15, doc({
       {
         en: list(
           "Pornography and other sexually explicit images or videos are not allowed anywhere on Zrzur, not even in mature channels. Zrzur cannot verify ages (people state their own), so we do not host content that needs a real age check.",
-          "Other content for adults only — for example very graphic news, art or discussion — is allowed only in channels or Servers marked as mature. For now, these are closed to everyone, because a stated age is not proof of age.",
+          "Other content for adults only — for example very graphic news, art or discussion — is allowed only in channels or Servers marked as mature. These open only to accounts whose stated age is 18 or over. Mark a channel or Server as mature whenever its content is for adults; content for adults in an unmarked place breaks these guidelines.",
           "It must never appear in avatars, banners, usernames, Server icons, Discover listings or public areas.",
           "Never share intimate images of someone without their consent, or threaten to do so.",
           "Content involving non-consent, bestiality or real-world sexual violence is not allowed anywhere.",
         ),
         ar: list(
           "لا يُسمح بالمواد الإباحية ولا بغيرها من الصور أو الفيديوهات الجنسية الصريحة في أي مكان على زرزور، ولا حتى في القنوات المخصّصة للبالغين. فزرزور لا يستطيع التحقق من الأعمار (إذ يصرّح كل شخص بعمره بنفسه)، لذلك لا نستضيف محتوى يحتاج إلى تحقق فعلي من العمر.",
-          "أما المحتوى الآخر المخصّص للبالغين فقط — مثل الأخبار أو الأعمال الفنية أو النقاشات الصادمة جدًا — فيُسمح به فقط في القنوات أو السيرفرات المحددة كمحتوى للبالغين. وهي مغلقة أمام الجميع حاليًا، لأن العمر المصرَّح به ليس إثباتًا للعمر.",
+          "أما المحتوى الآخر المخصّص للبالغين فقط — مثل الأخبار أو الأعمال الفنية أو النقاشات الصادمة جدًا — فيُسمح به فقط في القنوات أو السيرفرات المحددة كمحتوى للبالغين، ولا تُفتح إلا للحسابات التي صرّح أصحابها بأن عمرهم ١٨ عامًا فأكثر. حدِّد القناة أو السيرفر كمحتوى للبالغين متى كان محتواه للبالغين؛ ونشر محتوى للبالغين في مكان غير محدد كذلك مخالفٌ لهذه الإرشادات.",
           "ولا يجوز أن يظهر أبدًا في الصور الرمزية أو الأغلفة أو أسماء المستخدمين أو أيقونات السيرفرات أو قوائم «اكتشف» أو الأماكن العامة.",
           "لا تشارك أبدًا صورًا حميمة لأي شخص دون موافقته، ولا تهدّد بذلك.",
           "لا يُسمح في أي مكان بالمحتوى الذي يتضمّن انعدام الموافقة أو البهيمية أو العنف الجنسي الحقيقي.",
         ),
         de: list(
           "Pornografie und andere sexuell explizite Bilder oder Videos sind nirgends auf Zrzur erlaubt, auch nicht in Kanälen für Erwachsene. Zrzur kann das Alter nicht überprüfen (jede Person gibt ihr Alter selbst an), daher hosten wir keine Inhalte, die eine echte Altersprüfung erfordern.",
-          "Andere Inhalte nur für Erwachsene – zum Beispiel sehr drastische Nachrichten, Kunst oder Diskussionen – sind nur in Kanälen oder Servern erlaubt, die als nur für Erwachsene markiert sind. Sie sind vorerst für alle geschlossen, weil eine Altersangabe kein Altersnachweis ist.",
+          "Andere Inhalte nur für Erwachsene – zum Beispiel sehr drastische Nachrichten, Kunst oder Diskussionen – sind nur in Kanälen oder Servern erlaubt, die als nur für Erwachsene markiert sind. Diese öffnen sich nur für Konten, deren angegebenes Alter 18 Jahre oder mehr beträgt. Markiere einen Kanal oder Server als nur für Erwachsene, sobald seine Inhalte für Erwachsene sind; Inhalte für Erwachsene an einem nicht markierten Ort verstoßen gegen diese Richtlinien.",
           "Solche Inhalte dürfen niemals in Avataren, Bannern, Benutzernamen, Serversymbolen, Einträgen in Entdecken oder öffentlichen Bereichen erscheinen.",
           "Teile niemals intime Bilder einer Person ohne deren Einwilligung und drohe nicht damit.",
           "Inhalte mit nicht einvernehmlichen Handlungen, sexuellen Handlungen mit Tieren oder realer sexueller Gewalt sind nirgends erlaubt.",

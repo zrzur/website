@@ -1,8 +1,8 @@
-import { doc, list, para, REVISION_2026_11_21, revisedOn, section } from "./shared.ts";
+import { doc, list, para, REVISION_2026_11_28, revisedOn, section } from "./shared.ts";
 
 // Text in square brackets is still to be supplied.
 
-export const privacy = revisedOn(REVISION_2026_11_21, doc({
+export const privacy = revisedOn(REVISION_2026_11_28, doc({
   slug: "privacy",
   group: "everyone",
   title: { en: "Privacy Policy", ar: "سياسة الخصوصية",
@@ -556,7 +556,7 @@ export const privacy = revisedOn(REVISION_2026_11_21, doc({
           list(
             "We ask for your month and year of birth, never the day, when you first sign in. If the age is below 16, we delete the new account at once, with your email address, password and everything else created at sign-up. We keep nothing.",
             "We keep the month and year for as long as your account exists, to apply the age rules. Only you can see them, in Settings › Account.",
-            "For now, channels and Servers marked as mature are closed to everyone, and they are hidden from Discover. Our servers enforce this, not only the app. Pornography is not allowed anywhere.",
+            "Channels and Servers marked as mature open only to accounts whose stated age is 18 or over. In Discover, mature Servers show only to signed-in accounts of people aged 18 or over, never to visitors without an account. Our servers enforce this, not only the app. Pornography is not allowed anywhere.",
             "Accounts of people aged 16 or 17 cannot open mature content. Only their friends can start a direct message with accounts of people aged 16 or 17, and there is no public directory of people. We do not show advertising based on profiling to anyone.",
             "Correcting your age: in Settings › Account you can make yourself younger at any time; making yourself older is possible once, and only within the same age group. For anything else, or if you think we got it wrong, write to privacy@zrzur.com. We log changes of age group, without the dates.",
             "Accounts created before we asked for an age keep working. They are asked once per sign-in, and cannot open mature content until they answer.",
@@ -570,7 +570,7 @@ export const privacy = revisedOn(REVISION_2026_11_21, doc({
           list(
             "نطلب شهر ميلادك وسنته، ولا نطلب اليوم أبدًا، عند أول تسجيل دخول. وإذا كان العمر دون ١٦ عامًا، نحذف الحساب الجديد فورًا مع بريدك الإلكتروني وكلمة مرورك وكل ما أُنشئ عند التسجيل. ولا نحتفظ بأي شيء.",
             "نحتفظ بالشهر والسنة ما دام حسابك موجودًا لتطبيق قواعد العمر، ولا يراهما غيرك، في الإعدادات › الحساب.",
-            "في الوقت الحالي تُغلق القنوات والسيرفرات المحددة كمحتوى للبالغين أمام الجميع، وهي مخفية في «اكتشف». وتطبّق سيرفراتنا التقنية هذه القاعدة، لا التطبيق وحده. ولا يُسمح بالمواد الإباحية في أي مكان.",
+            "لا تُفتح القنوات والسيرفرات المحددة كمحتوى للبالغين إلا للحسابات التي صرّح أصحابها بأن عمرهم ١٨ عامًا فأكثر. وفي «اكتشف» لا تظهر السيرفرات المخصصة للبالغين إلا للحسابات المسجّلة لمن عمرهم ١٨ عامًا فأكثر، ولا تظهر أبدًا للزوّار بلا حساب. وتطبّق سيرفراتنا التقنية هذه القاعدة، لا التطبيق وحده. ولا يُسمح بالمواد الإباحية في أي مكان.",
             "لا تستطيع حسابات من عمرهم ١٦ أو ١٧ عامًا فتح المحتوى المخصص للبالغين. ولا يستطيع بدء رسالة مباشرة مع حسابات من عمرهم ١٦ أو ١٧ عامًا إلا أصدقاؤهم، ولا يوجد دليل عام للأشخاص. ولا نعرض على أحد إعلانات مبنية على التنميط.",
             "تصحيح عمرك: يمكنك من الإعدادات › الحساب تصغير عمرك في أي وقت، ولا يمكنك تكبيره إلا مرة واحدة وضمن الفئة العمرية نفسها. ولأي تغيير آخر، أو إن رأيت أننا أخطأنا، راسل privacy@zrzur.com. ونسجّل تغيّر الفئة العمرية دون التواريخ.",
             "الحسابات التي أُنشئت قبل أن نطلب العمر تستمر في العمل، ويُطلب منها العمر مرة واحدة عند كل تسجيل دخول، ولا تستطيع فتح المحتوى المخصص للبالغين إلى أن تجيب.",
@@ -584,7 +584,7 @@ export const privacy = revisedOn(REVISION_2026_11_21, doc({
           list(
             "Wir fragen bei der ersten Anmeldung nach deinem Geburtsmonat und -jahr, nie nach dem Tag. Liegt das Alter unter 16, löschen wir das neue Konto sofort, mit deiner E-Mail-Adresse, deinem Passwort und allem anderen, was bei der Registrierung angelegt wurde. Wir behalten nichts.",
             "Monat und Jahr speichern wir, solange dein Konto besteht, um die Altersregeln anzuwenden. Nur du kannst sie sehen, unter Einstellungen › Konto.",
-            "Als nur für Erwachsene markierte Kanäle und Server sind vorerst für alle geschlossen und in Entdecken verborgen. Unsere Server erzwingen das, nicht nur die App. Pornografie ist nirgends erlaubt.",
+            "Als nur für Erwachsene markierte Kanäle und Server öffnen sich nur für Konten, deren angegebenes Alter 18 Jahre oder mehr beträgt. In Entdecken erscheinen solche Server nur angemeldeten Konten von Personen ab 18 Jahren, nie Besuchern ohne Konto. Unsere Server erzwingen das, nicht nur die App. Pornografie ist nirgends erlaubt.",
             "Konten von Personen im Alter von 16 oder 17 Jahren können Inhalte für Erwachsene nicht öffnen. Nur ihre Freunde können eine Direktnachricht an Konten von Personen mit 16 oder 17 Jahren beginnen, und es gibt kein öffentliches Personenverzeichnis. Wir zeigen niemandem Werbung auf Grundlage von Profiling.",
             "Alter korrigieren: Unter Einstellungen › Konto kannst du dich jederzeit jünger machen; älter machen ist einmal möglich und nur innerhalb derselben Altersgruppe. Für alles andere, oder wenn wir deiner Meinung nach falsch liegen, schreib an privacy@zrzur.com. Wir protokollieren Wechsel der Altersgruppe ohne die Daten.",
             "Konten, die vor der Altersabfrage angelegt wurden, funktionieren weiter. Sie werden bei jeder Anmeldung einmal gefragt und können Inhalte für Erwachsene erst öffnen, wenn sie antworten.",
@@ -592,6 +592,54 @@ export const privacy = revisedOn(REVISION_2026_11_21, doc({
           ),
           "Verknüpfte Konten von Personen im Alter von 16 oder 17 Jahren und von Konten ohne Altersangabe sehen nur Freunde, auch den Live-Status bei Twitch. Erfolgssymbole werden Personen mit 16 oder 17 Jahren oder ohne Altersangabe nicht gezeigt. Steam sagt uns nicht, welche Spiele für Erwachsene sind; deshalb siehst du zuerst eine Vorschau und kannst jedes Spiel ausblenden.",
           "Das Alter ist deine eigene Angabe und kein Altersnachweis. Wir könnten später eine Altersprüfung für Inhalte für Erwachsene einführen; wir aktualisieren dann diese Erklärung und nennen vorher jeden Anbieter. Wenn du glaubst, dass ein Kind Zrzur nutzt, wende dich an privacy@zrzur.com.",
+        ),
+      },
+    ),
+    section(
+      "badge-applications",
+      { en: "Badge applications", ar: "طلبات الشارات", de: "Bewerbungen um Abzeichen" },
+      {
+        en: para(
+          "You can apply for some badges from the app: Partner and Verified Server for a Server you run, Verified Bot Developer for a bot you made, and Content Creator for your channel or profile on another platform. Applying is voluntary. When you apply, we keep:",
+          list(
+            "your account, the badge you apply for, the Server or bot it is about, the date and what happens to the application;",
+            "what you write: why it fits, and the public https links you add (for example a website or a rules page), and that you confirmed you may act for the Server, organisation or bot;",
+            "to check that a website is yours: its domain, and a fingerprint (hash) of the code we give you, never the code itself. We look up a DNS record or a file on that website;",
+            "for Content Creator: the platform, the address of your channel or profile, its category and up to 10 links to recent work. A reviewer looks at it in a browser; our servers do not read it. The reviewer writes down what they saw: the number of followers on that one platform, the day they saw it, the days of activity and the original works they counted;",
+            "up to 10 extra links or notes you add as evidence, and the checklist of numbers we show you when you apply (counts only, for example how long the Server has existed);",
+            "the reviewer's decision, the reasons and the note they write to you, and your appeal if you make one.",
+          ),
+          "Who sees it. Only the members of the Zrzur staff who review badges, and you. Some decisions need two staff members. The numbers in the checklist do not decide anything on their own: a person decides.",
+          "Why and on what basis. To review your application and give or refuse the badge (steps at your request, Art. 6(1)(b) GDPR), and to handle appeals, re-checks of a badge and misuse of the programmes (our legitimate interests, Art. 6(1)(f) GDPR).",
+          "How long. An application you start and do not send is deleted after 30 days. If you withdraw, your evidence and the ownership check go at once and the application after 30 days. If it is refused, the evidence is deleted 120 days later (the 30 days to appeal, and 90 days after that) and the application after one year. If it is accepted, the evidence is deleted after 90 days; the application stays while you hold the badge and is deleted one year after it ends. Everything is deleted when you delete your account.",
+        ),
+        ar: para(
+          "يمكنك أن تتقدّم من داخل التطبيق لبعض الشارات: «شريك» و«سيرفر موثّق» لسيرفر تديره، و«مطوّر بوت موثّق» لبوت صنعته، و«صانع محتوى» لقناتك أو حسابك على منصة أخرى. والتقديم اختياري. وعندما تتقدّم نحتفظ بما يلي:",
+          list(
+            "حسابك، والشارة التي تتقدّم لها، والسيرفر أو البوت المعنيّ، والتاريخ، وما يحدث للطلب؛",
+            "ما تكتبه: لماذا يستحق الشارة، والروابط العامة (https) التي تضيفها (مثل موقع أو صفحة قواعد)، وتأكيدك أنك مخوّل بالتصرّف باسم السيرفر أو الجهة أو البوت؛",
+            "للتحقق من أن الموقع لك: اسم نطاقه، وبصمة (تجزئة) للرمز الذي نعطيك إياه، ولا نحفظ الرمز نفسه أبدًا. ونبحث عن سجل DNS أو ملف على ذلك الموقع؛",
+            "لصانع المحتوى: المنصة، وعنوان قناتك أو حسابك، وتصنيفه، وحتى ١٠ روابط لأعمال حديثة. ويطّلع عليها أحد المراجعين بالمتصفح، ولا تقرؤها سيرفراتنا. ويسجّل المراجع ما رآه: عدد المتابعين على تلك المنصة وحدها، واليوم الذي رآه فيه، وأيام النشاط، والأعمال الأصلية التي أحصاها؛",
+            "حتى ١٠ روابط أو ملاحظات إضافية تضيفها كإثبات، وقائمة الأرقام التي نعرضها عليك عند التقديم (أعداد فقط، مثل عمر السيرفر)؛",
+            "قرار المراجع، وأسبابه، والملاحظة التي يكتبها لك، واعتراضك إن قدّمته.",
+          ),
+          "من يراها: أعضاء فريق زرزور الذين يراجعون الشارات فقط، وأنت. وتحتاج بعض القرارات إلى عضوين من الفريق. ولا تقرّر أرقام القائمة شيئًا بنفسها: الذي يقرّر شخص.",
+          "لماذا وعلى أي أساس: لمراجعة طلبك ومنح الشارة أو رفضها (خطوات بناءً على طلبك، المادة ٦(١)(ب) من اللائحة العامة لحماية البيانات)، ولمعالجة الاعتراضات وإعادة فحص الشارات ومنع إساءة استخدام البرامج (مصلحتنا المشروعة، المادة ٦(١)(و)).",
+          "المدة: يُحذف الطلب الذي تبدؤه ولا ترسله بعد ٣٠ يومًا. وإذا سحبت طلبك، تُحذف إثباتاتك والتحقق من الملكية فورًا، والطلب بعد ٣٠ يومًا. وإذا رُفض، تُحذف الإثباتات بعد ١٢٠ يومًا (٣٠ يومًا للاعتراض ثم ٩٠ يومًا) والطلب بعد سنة. وإذا قُبل، تُحذف الإثباتات بعد ٩٠ يومًا، ويبقى الطلب ما دمت تحمل الشارة ويُحذف بعد سنة من انتهائها. ويُحذف كل ذلك عند حذف حسابك.",
+        ),
+        de: para(
+          "Für einige Abzeichen kannst du dich in der App bewerben: Partner und Verifizierter Server für einen Server, den du betreibst, Verifizierte:r Bot-Entwickler:in für einen Bot, den du gemacht hast, und Content Creator für deinen Kanal oder dein Profil auf einer anderen Plattform. Die Bewerbung ist freiwillig. Wenn du dich bewirbst, speichern wir:",
+          list(
+            "dein Konto, das Abzeichen, um das du dich bewirbst, den Server oder Bot, um den es geht, das Datum und was mit der Bewerbung geschieht;",
+            "was du schreibst: warum es passt, und die öffentlichen https-Links, die du angibst (etwa eine Website oder eine Regelseite), und dass du bestätigt hast, für den Server, die Organisation oder den Bot handeln zu dürfen;",
+            "um zu prüfen, dass eine Website dir gehört: ihre Domain und einen Fingerabdruck (Hash) des Codes, den wir dir geben, nie den Code selbst. Wir sehen dafür einen DNS-Eintrag oder eine Datei auf dieser Website nach;",
+            "für Content Creator: die Plattform, die Adresse deines Kanals oder Profils, seine Kategorie und bis zu 10 Links zu aktuellen Werken. Eine prüfende Person sieht sie sich im Browser an; unsere Server lesen sie nicht. Sie notiert, was sie gesehen hat: die Zahl der Follower auf dieser einen Plattform, den Tag, an dem sie sie gesehen hat, die Tage der Aktivität und die gezählten eigenen Werke;",
+            "bis zu 10 weitere Links oder Notizen, die du als Nachweis angibst, und die Liste mit Zahlen, die wir dir bei der Bewerbung zeigen (nur Zahlen, etwa wie lange der Server besteht);",
+            "die Entscheidung der prüfenden Person, die Gründe und die Notiz an dich, und deinen Einspruch, wenn du einen einlegst.",
+          ),
+          "Wer es sieht. Nur die Mitglieder des Zrzur-Teams, die Abzeichen prüfen, und du. Manche Entscheidungen brauchen zwei Teammitglieder. Die Zahlen der Liste entscheiden nichts von selbst: Ein Mensch entscheidet.",
+          "Wozu und auf welcher Grundlage. Um deine Bewerbung zu prüfen und das Abzeichen zu vergeben oder abzulehnen (Schritte auf deine Anfrage, Art. 6 Abs. 1 lit. b DSGVO), und um Einsprüche, erneute Prüfungen eines Abzeichens und Missbrauch der Programme zu bearbeiten (unser berechtigtes Interesse, Art. 6 Abs. 1 lit. f DSGVO).",
+          "Wie lange. Eine Bewerbung, die du beginnst und nicht abschickst, wird nach 30 Tagen gelöscht. Ziehst du zurück, werden deine Nachweise und die Eigentumsprüfung sofort gelöscht und die Bewerbung nach 30 Tagen. Wird sie abgelehnt, werden die Nachweise nach 120 Tagen gelöscht (30 Tage für den Einspruch, dann 90 Tage) und die Bewerbung nach einem Jahr. Wird sie angenommen, werden die Nachweise nach 90 Tagen gelöscht; die Bewerbung bleibt, solange du das Abzeichen hast, und wird ein Jahr nach dessen Ende gelöscht. Wenn du dein Konto löschst, wird all das gelöscht.",
         ),
       },
     ),
