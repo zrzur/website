@@ -52,6 +52,9 @@ test("every policy has Arabic and English title, intro and sections", () => {
 });
 
 // privacy was revised again on 21 November (Zrzur Team applications and volunteers)
+// 28 November: mature content by stated age (terms, privacy, community
+// guidelines) and badge applications (privacy)
+const REVISED_28 = ["privacy", "terms", "community-guidelines"];
 const REVISED_21 = ["privacy"];
 const REVISED_15 = ["privacy", "terms", "paid-services", "enforcement-appeals", "creator-terms", "community-guidelines"];
 
@@ -62,7 +65,11 @@ test("no policy shows a draft banner, a lawyer note or a placeholder (owner, 202
     // paid services, enforcement and appeals, creator terms (legal audit),
     // community guidelines (plugins withdrawn); the rest on 12 November
     const revised13 = REVISED_15.includes(doc.slug);
-    if (REVISED_21.includes(doc.slug)) {
+    if (REVISED_28.includes(doc.slug)) {
+      assert.equal(doc.lastUpdated.en, "Last updated: 28 November 2026", doc.slug);
+      assert.equal(doc.lastUpdated.ar, "آخر تحديث: ٢٨ نوفمبر ٢٠٢٦", doc.slug);
+      assert.equal(doc.lastUpdated.de, "Stand: 28. November 2026", doc.slug);
+    } else if (REVISED_21.includes(doc.slug)) {
       assert.equal(doc.lastUpdated.en, "Last updated: 21 November 2026", doc.slug);
       assert.equal(doc.lastUpdated.ar, "آخر تحديث: ٢١ نوفمبر ٢٠٢٦", doc.slug);
       assert.equal(doc.lastUpdated.de, "Stand: 21. November 2026", doc.slug);
@@ -117,10 +124,10 @@ test("policyVersions covers every slug with the policy date", () => {
   assert.deepEqual(Object.keys(policyVersions).sort(), [...EXPECTED_SLUGS].sort());
   assert.equal(CREATOR_TERMS_VERSION, "2026-11-15");
   for (const slug of EXPECTED_SLUGS)
-    assert.equal(policyVersions[slug], REVISED_21.includes(slug) ? "2026-11-21" : REVISED_15.includes(slug) ? "2026-11-15" : "2026-11-12", slug);
+    assert.equal(policyVersions[slug], REVISED_28.includes(slug) ? "2026-11-28" : REVISED_21.includes(slug) ? "2026-11-21" : REVISED_15.includes(slug) ? "2026-11-15" : "2026-11-12", slug);
   // the date shown matches the version
   const privacy = legalDocuments.find((doc) => doc.slug === "privacy");
-  assert.match(privacy.lastUpdated.en, /21 November 2026/);
+  assert.match(privacy.lastUpdated.en, /28 November 2026/);
   assert.match(JSON.stringify(privacy), /team-volunteers/);
   assert.match(JSON.stringify(privacy), /linked-accounts/);
   assert.match(JSON.stringify(privacy), /ko-fi\.com\/zrzur/);
@@ -396,9 +403,9 @@ test("plugins are not offered: no Plugin Policy and no plugin text in any policy
     }
 });
 
-test("each policy changed for the withdrawal says so in en, ar and de, with the 15 November version", () => {
+test("each policy changed for the withdrawal says so in en, ar and de, with the 15 November version or a later one", () => {
   for (const slug of ["terms", "privacy", "community-guidelines", "enforcement-appeals"]) {
-    assert.equal(policyVersions[slug], slug === "privacy" ? "2026-11-21" : "2026-11-15", slug);
+    assert.equal(policyVersions[slug], REVISED_28.includes(slug) ? "2026-11-28" : "2026-11-15", slug);
     const changes = policy(slug).sections.find((s) => s.id === "changes");
     assert(changes, `${slug} has a changes section`);
     for (const lang of ["en", "ar", "de"]) assert.match(changes.body[lang], new RegExp(WITHDRAWN[lang].source), `${slug} ${lang}`);
@@ -431,4 +438,19 @@ test("the fixes from the outside legal audit stay in every policy language", asy
   // P-84: the report form names every purpose, not "only" one
   const { default: report } = await import("../src/report-text/en.ts");
   assert.match(JSON.stringify(report), /protect reporting from misuse/);
+});
+
+test("mature content opens by stated age 18+, and badge applications are in the privacy policy, in en, ar and de", () => {
+  for (const slug of ["terms", "privacy", "community-guidelines"]) {
+    const text = JSON.stringify(policy(slug));
+    assert.doesNotMatch(text, /closed to everyone|مغلقة أمام الجميع|تُغلق القنوات|vorerst für alle geschlossen/, slug);
+    assert.match(text, /18 or over/, slug);
+    assert.match(text, /١٨ عامًا فأكثر/, slug);
+    assert.match(text, /18 Jahre/, slug);
+  }
+  const badges = policy("privacy").sections.find((s) => s.id === "badge-applications");
+  assert(badges, "privacy has a badge applications section");
+  for (const lang of ["en", "ar", "de"]) assert(badges.body[lang].length > 800, lang);
+  assert.match(badges.body.en, /never the code itself/);
+  assert.match(badges.body.en, /do not send is deleted after 30 days/);
 });

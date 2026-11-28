@@ -89,6 +89,20 @@ export const REVISION_2026_11_21: Revision = {
 };
 
 /**
+ * 28 November 2026: mature channels and Servers open to accounts with a
+ * stated age of 18 or over (terms, privacy, community guidelines); the
+ * privacy policy adds badge applications
+ */
+export const REVISION_2026_11_28: Revision = {
+  version: "2026-11-28",
+  lastUpdated: {
+    en: "Last updated: 28 November 2026",
+    ar: "آخر تحديث: ٢٨ نوفمبر ٢٠٢٦",
+    de: "Stand: 28. November 2026",
+  },
+};
+
+/**
  * Section bodies are plain text. Blocks are separated by a blank line.
  * A block whose lines all start with "- " is rendered as a bullet list.
  */

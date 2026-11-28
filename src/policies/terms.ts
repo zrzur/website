@@ -1,8 +1,8 @@
-import { doc, list, para, REVISION_2026_11_15, revisedOn, section } from "./shared.ts";
+import { doc, list, para, REVISION_2026_11_28, revisedOn, section } from "./shared.ts";
 
 // 15 November 2026: no native apps, licence after deletion, liability cap (legal audit);
 // plugins are not offered, the Plugin Policy was withdrawn
-export const terms = revisedOn(REVISION_2026_11_15, doc({
+export const terms = revisedOn(REVISION_2026_11_28, doc({
   slug: "terms",
   group: "everyone",
   title: { en: "Terms of Service", ar: "شروط الخدمة",
@@ -39,7 +39,7 @@ export const terms = revisedOn(REVISION_2026_11_15, doc({
       { en: "Your account and minimum age", ar: "حسابك والحد الأدنى للعمر", de: "Dein Konto und Mindestalter" },
       {
         en: para(
-          "You must be at least 16 years old to use Zrzur, wherever you live. When you sign up you give your month and year of birth, and it must be true. This is your own statement: Zrzur does not verify ages. For now, channels and Servers marked as mature are closed to everyone, because a stated age is not proof of age, and pornography is not allowed anywhere. The Privacy Policy explains how we use your age and how you can correct it.",
+          "You must be at least 16 years old to use Zrzur, wherever you live. When you sign up you give your month and year of birth, and it must be true. This is your own statement: Zrzur does not verify ages. Channels and Servers marked as mature open only to accounts whose stated age is 18 or over. Because a stated age is not proof of age, pornography is not allowed anywhere, not even there. The Privacy Policy explains how we use your age and how you can correct it.",
           "When you create an account:",
           list(
             "give accurate information, including a working email address;",
@@ -50,7 +50,7 @@ export const terms = revisedOn(REVISION_2026_11_15, doc({
           "You are responsible for what happens through your account, unless it was used without your fault after you told us it was compromised.",
         ),
         ar: para(
-          "يجب ألا يقلّ عمرك عن ١٦ عامًا لاستخدام زرزور أينما كنت تقيم. وعند التسجيل تذكر شهر ميلادك وسنته، ويجب أن يكونا صحيحين. وهذا تصريح منك، ولا يتحقق زرزور من الأعمار. وفي الوقت الحالي تُغلق القنوات والسيرفرات المحددة كمحتوى للبالغين أمام الجميع، لأن العمر المصرَّح به ليس إثباتًا للعمر، ولا يُسمح بالمواد الإباحية في أي مكان. وتشرح سياسة الخصوصية كيف نستخدم عمرك وكيف يمكنك تصحيحه.",
+          "يجب ألا يقلّ عمرك عن ١٦ عامًا لاستخدام زرزور أينما كنت تقيم. وعند التسجيل تذكر شهر ميلادك وسنته، ويجب أن يكونا صحيحين. وهذا تصريح منك، ولا يتحقق زرزور من الأعمار. ولا تُفتح القنوات والسيرفرات المحددة كمحتوى للبالغين إلا للحسابات التي صرّح أصحابها بأن عمرهم ١٨ عامًا فأكثر. ولأن العمر المصرَّح به ليس إثباتًا للعمر، لا يُسمح بالمواد الإباحية في أي مكان، ولا حتى فيها. وتشرح سياسة الخصوصية كيف نستخدم عمرك وكيف يمكنك تصحيحه.",
           "عند إنشاء حسابك:",
           list(
             "قدّم معلومات صحيحة، ومنها بريد إلكتروني فعّال؛",
@@ -61,7 +61,7 @@ export const terms = revisedOn(REVISION_2026_11_15, doc({
           "أنت مسؤول عمّا يحدث عبر حسابك، إلا إذا استُخدم دون تقصير منك بعد أن أبلغتنا باختراقه.",
         ),
         de: para(
-          "Du musst mindestens 16 Jahre alt sein, um Zrzur zu nutzen, unabhängig davon, wo du lebst. Bei der Registrierung gibst du Monat und Jahr deiner Geburt an, und diese Angabe muss wahr sein. Es handelt sich um deine eigene Erklärung: Zrzur überprüft das Alter nicht. Als nur für Erwachsene markierte Kanäle und Server sind vorerst für alle geschlossen, weil eine Altersangabe kein Altersnachweis ist, und Pornografie ist nirgends erlaubt. Die Datenschutzerklärung erläutert, wie wir dein Alter verwenden und wie du es berichtigen kannst.",
+          "Du musst mindestens 16 Jahre alt sein, um Zrzur zu nutzen, unabhängig davon, wo du lebst. Bei der Registrierung gibst du Monat und Jahr deiner Geburt an, und diese Angabe muss wahr sein. Es handelt sich um deine eigene Erklärung: Zrzur überprüft das Alter nicht. Als nur für Erwachsene markierte Kanäle und Server öffnen sich nur für Konten, deren angegebenes Alter 18 Jahre oder mehr beträgt. Weil eine Altersangabe kein Altersnachweis ist, ist Pornografie nirgends erlaubt, auch dort nicht. Die Datenschutzerklärung erläutert, wie wir dein Alter verwenden und wie du es berichtigen kannst.",
           "Wenn du ein Konto erstellst:",
           list(
             "mache zutreffende Angaben, einschließlich einer funktionierenden E-Mail-Adresse;",
